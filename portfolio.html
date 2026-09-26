@@ -96,13 +96,22 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 .foot-bottom p { font-size:11px; color:var(--muted); }
 
 @media(max-width:900px) {
-  nav { padding:16px 24px; }
+  nav { padding:14px 20px; }
   .nav-links { display:none; }
-  .lang-toggle { top:70px; right:12px; }
-  #portfolio-page { padding: 130px 24px 60px; }
-  .port-grid { grid-template-columns: 1fr; gap: 24px; }
-  footer { grid-template-columns:1fr; gap:40px; padding:40px 24px; }
-  .foot-bottom { padding:16px 24px; flex-direction:column; gap:8px; }
+  .lang-toggle { top:16px; right:16px; padding:3px; }
+  .lang-btn { padding:4px 10px; font-size:11px; }
+  #portfolio-page { padding: 90px 16px 40px; }
+  .port-header { margin-bottom: 28px; }
+  .port-header .badge { margin-bottom: 10px; padding: 4px 12px; font-size: 9px; }
+  .port-header h1 { font-size: 42px; margin-bottom: 12px; }
+  .port-header p { font-size: 13px; line-height: 1.6; }
+  .port-grid { grid-template-columns: 1fr; gap: 16px; }
+  .card-info { padding: 16px; }
+  .card-title { font-size: 22px; }
+  footer { grid-template-columns: 1fr; gap: 28px; padding: 32px 20px; margin-top: 40px; }
+  .foot-bottom { padding: 14px 20px; flex-direction: column; gap: 6px; }
+  .video-container { width: 94%; border-radius: 8px; }
+  .video-close { top: -36px; right: 4px; font-size: 26px; }
 }
 </style>
 </head>
@@ -114,16 +123,16 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 </div>
 
 <nav>
-  <a href="/ka" class="logo">
+  <a href="index.html" class="logo">
     <div class="logo-bars"><span></span><span></span></div>
     <div class="logo-text">STUDIO <em>Lane</em></div>
   </a>
   <ul class="nav-links">
-    <li><a href="/ka#segments" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
+    <li><a href="index.html#segments" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
     <li><a href="about.html" data-ka="ჩვენს შესახებ" data-en="About">ჩვენს შესახებ</a></li>
-    <li><a href="/ka#gallery" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
+    <li><a href="index.html#gallery" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
     <li><a href="portfolio.html" style="color:var(--white);" data-ka="ნამუშევრები" data-en="Portfolio">ნამუშევრები</a></li>
-    <li><a href="/ka/დაჯავშნა" class="nav-book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
+    <li><a href="index.html" class="nav-book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
   </ul>
 </nav>
 
@@ -253,22 +262,22 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 
 <footer>
   <div class="foot-brand">
-    <a href="/ka" class="logo"><div class="logo-bars"><span></span><span></span></div><div class="logo-text">STUDIO <em>Lane</em></div></a>
+    <a href="index.html" class="logo"><div class="logo-bars"><span></span><span></span></div><div class="logo-text">STUDIO <em>Lane</em></div></a>
     <p style="white-space: nowrap; max-width: none;" data-ka="პოდკასტზე ორიენტირებული მედია სივრცე. თბილისი." data-en="Podcast-focused media space. Tbilisi.">პოდკასტზე ორიენტირებული მედია სივრცე. თბილისი.</p>
   </div>
   <div class="foot-col">
     <h4 data-ka="მომსახურება" data-en="Services">მომსახურება</h4>
     <ul>
-      <li><a href="/ka#segments">Podcast Studio</a></li>
-      <li><a href="/ka#segments">Voice Over Booth</a></li>
-      <li><a href="/ka#segments">Photo / Video</a></li>
-      <li><a href="/ka#segments">Short AD</a></li>
+      <li><a href="index.html#segments">Podcast Studio</a></li>
+      <li><a href="index.html#segments">Voice Over Booth</a></li>
+      <li><a href="index.html#segments">Photo / Video</a></li>
+      <li><a href="index.html#segments">Short AD</a></li>
     </ul>
   </div>
   <div class="foot-col">
     <h4 data-ka="კავშირი" data-en="Contact">კავშირი</h4>
     <ul>
-      <li><a href="/ka#book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
+      <li><a href="index.html#book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
       <li><a href="mailto:podcast@studiolane.ge">podcast@studiolane.ge</a></li>
       <li><a href="https://instagram.com/studiothelane" target="_blank">Instagram</a></li>
     </ul>
