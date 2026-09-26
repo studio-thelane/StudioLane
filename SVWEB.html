@@ -1,0 +1,3679 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+    try { emailjs.init("NIL9t2PxNROH2sagN"); } catch(e){}
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio The Lane — Smartphone Version</title>
+<meta name="description" content="Studio The Lane - პოდკასტზე ორიენტირებული პროფესიონალური მედია სივრცე თბილისში. პოდკასტები, ფოტო/ვიდეო გადაღება, ხმის ჩაწერა.">
+<meta name="keywords" content="პოდკასტ სტუდია, Studio The Lane, თბილისი, ხმის ჩაწერა, ვიდეო გადაღება, პოდკასტი">
+<meta property="og:title" content="Studio The Lane - Modular Media Space">
+<meta property="og:description" content="პოდკასტზე ორიენტირებული პროფესიონალური მედია სივრცე თბილისში.">
+<meta property="og:image" content="LOGO_STL/stopkadr_clean.png">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'BPG Nino Mtavruli';
+  src: url('bpg_nino_mtavruli_bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --black: #0a0a0b;
+  --dark: #111114;
+  --dark2: #1a1a1f;
+  --dark3: #222228;
+  --sapphire: #1a3a6b;
+  --sapphire-light: #2150a0;
+  --mai: #c8b8a2;
+  --orange: #e8621a;
+  --orange-light: #ff7a2f;
+  --white: #f0ece6;
+  --muted: #888890;
+  --border: rgba(255,255,255,0.07);
+  --vh: 1vh; /* მყარი სიმაღლის ცვლადი */
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { background:var(--black); color:var(--white); font-family:'BPG Nino Mtavruli', 'Montserrat', 'Noto Sans Georgian', sans-serif; font-weight:300; overflow-x:hidden; text-transform: uppercase; }
+
+/* FIXED TOP-RIGHT WIDGETS (BOOK BUTTON + LANG TOGGLE) */
+.fixed-top-right-wrap {
+  position: fixed;
+  top: 72px;
+  right: 12px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.btn-book-top {
+  background: var(--orange);
+  color: white;
+  padding: 7px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(232, 98, 26, 0.45);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  font-family: 'Montserrat', 'BPG Nino Mtavruli', sans-serif;
+  display: inline-block;
+}
+.btn-book-top:hover {
+  background: var(--orange-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 98, 26, 0.6);
+}
+.lang-toggle { display:flex; gap:3px; background:rgba(10,10,11,0.85); border:1px solid var(--border); border-radius:5px; padding:2.5px 3px; backdrop-filter:blur(10px); }
+.lang-btn { padding:3.5px 8px; border:none; background:transparent; color:var(--muted); font-size:9.5px; font-weight:600; letter-spacing:0.8px; cursor:pointer; border-radius:3px; transition:all .2s; font-family:'Montserrat',sans-serif; }
+.lang-btn.active { background:var(--orange); color:white; }
+
+/* NAV & BURGER MENU */
+nav { position:fixed; top:0; left:0; right:0; z-index:1005; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; background:rgba(10, 10, 11, 0.98); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-bars { display:flex; gap:3px; align-items:center; margin-bottom:3px; }
+.logo-bars span { display:block; width:9px; height:18px; background:var(--orange); border-radius:1px; }
+.logo-text {
+  font-family: 'Bebas Neue','BPG Nino Mtavruli',sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.logo-word { display: flex; }
+.logo-word span {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 900;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+  position: relative;
+}
+.logo-word span:nth-child(1) { transition-delay: 0ms; }
+.logo-word span:nth-child(2) { transition-delay: 50ms; }
+.logo-word span:nth-child(3) { transition-delay: 100ms; }
+.logo-word span:nth-child(4) { transition-delay: 150ms; }
+.logo-word span:nth-child(5) { transition-delay: 200ms; }
+.logo-word span:nth-child(6) { transition-delay: 250ms; }
+.logo-word span:nth-child(7) { transition-delay: 300ms; }
+.logo-word span:nth-child(8) { transition-delay: 350ms; }
+
+.logo-word.em-word span { color: var(--orange); }
+@media (hover: hover) {
+  .logo:hover .logo-word.text-word span { color: var(--orange); }
+  .logo:hover .logo-word.em-word span { color: var(--white); }
+  .logo-word span:hover { transform: translateY(-4px); color: var(--white) !important; }
+}
+.logo:active .logo-word span,
+.logo-word span:active {
+  transform: translateY(0) !important;
+}
+
+/* MENU BACKDROP OVERLAY */
+.menu-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 995;
+}
+.menu-backdrop.active {
+  display: block;
+}
+
+/* მობილური ჩამოსაშლელი მენიუ - MARJVENA KUTKHIS PANEL */
+.nav-links { 
+  display:none; 
+  flex-direction:column; 
+  position:fixed; 
+  top:0; 
+  right:0; 
+  left:auto;
+  width:70%; 
+  max-width:260px; 
+  min-height:100vh;
+  height:100vh;
+  background: rgba(10, 10, 15, 0.55); 
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-left:1px solid var(--border); 
+  padding:85px 24px 30px; 
+  gap:22px; 
+  list-style:none;
+  z-index: 1010; 
+  box-shadow:-10px 0 40px rgba(0,0,0,0.8); 
+}
+.nav-links.active { display:flex; }
+.nav-links a { color:#ffffff !important; text-decoration:none; font-size:15px; font-weight:700; letter-spacing:1px; text-transform:none !important; transition:color .2s; font-family:'Montserrat', 'Noto Sans Georgian', sans-serif; }
+.nav-links a:hover { color:var(--orange) !important; }
+.nav-book { background:var(--orange)!important; color:white!important; padding:10px 20px; border-radius:4px; text-align:center; }
+.lang-toggle-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10,10,11,0.85);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px;
+  width: max-content;
+  margin: 6px auto 0;
+}
+
+.mobile-nav-toggle {
+  display:block;
+  background:none;
+  border:none;
+  color:var(--white);
+  font-size:28px;
+  cursor:pointer;
+  z-index: 1010;
+  outline:none;
+}
+
+/* HERO MOBILE */
+#home {
+  min-height:100vh;
+  min-height:calc(var(--vh, 1vh) * 100);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:0 24px 70px;
+  position:relative;
+  overflow:hidden;
+}
+.slideshow { position:absolute; inset:0; z-index:0; }
+.slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 0.4s ease-in-out; }
+.slide.active { opacity:1; }
+.hero-overlay { position:absolute; inset:0; z-index:2; background:radial-gradient(circle at 50% 50%,rgba(14,14,16,.6) 0%,rgba(10,10,11,.92) 80%),linear-gradient(to top,rgba(10,10,11,1) 0%,transparent 60%); }
+.hero-structure-wrap {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 55vh;
+  max-width: 100vw;
+  z-index: 2.5;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 60%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 60%, transparent 95%);
+}
+.hero-structure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: none;
+  background-size: contain;
+  opacity: 0.85;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-origin: center 55%;
+  transition: opacity 0.4s ease-in-out;
+}
+.hero-video-crop-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-video-crop-wrap video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  z-index: 3;
+  mix-blend-mode: screen;
+  transition: opacity 0.5s ease-in-out;
+}
+.hero-structure.show-png {
+  background: url('LOGO_STL/Tagi%20SVWeb%20photo00182028.jpg') no-repeat center center;
+  background-size: 104.5% auto;
+  transform: scale(1.045);
+}
+.hero-glow { position:absolute; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(232,98,26,.12) 0%,transparent 70%); right:5%; top:30%; z-index:2; animation:pulse 4s ease-in-out infinite; }
+.hero-content { position:relative; z-index:3; max-width:100%; }
+.hero-title { font-family:'Bebas Neue','BPG Nino Mtavruli',sans-serif; font-size:48px; line-height:1; letter-spacing:1px; margin-bottom:24px; }
+.hero-title .t2 { color:var(--orange); }
+.hero-mod { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:30px; display:flex; align-items:center; gap:10px; }
+.hero-mod::before { content:''; display:block; width:20px; height:1px; background:var(--orange); }
+.hero-btns { display:flex; flex-direction:column; gap:12px; width:100%; }
+.btn-p {
+  background: var(--orange);
+  color: white;
+  padding: 14px 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+}
+.btn-p:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px 8px rgba(232, 98, 26, 0.85), 0 0 15px 2px rgba(255, 122, 47, 0.6);
+}
+.btn-o {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid var(--orange);
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.btn-o:hover {
+  background: rgba(232, 98, 26, 0.15);
+  border-color: var(--orange-light);
+  color: var(--white);
+}
+
+/* SEGMENTS (01-05 NUMBERED SERVICE CARDS) */
+#segments { padding: 48px 8px; background: var(--dark); position: relative; z-index: 5; scroll-margin-top: 60px; }
+.seg-grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 6px; 
+}
+.seg-card {
+  position: relative;
+  min-height: 165px;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.seg-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--orange);
+  box-shadow: 0 8px 25px rgba(232, 98, 26, 0.25);
+}
+.seg-purple { background: linear-gradient(145deg, #1b0a2a 0%, #0d0417 100%); }
+.seg-teal   { background: linear-gradient(145deg, #09222c 0%, #041117 100%); }
+.seg-red    { background: linear-gradient(145deg, #2a0a0a 0%, #170404 100%); }
+.seg-gold   { background: linear-gradient(145deg, #251c07 0%, #140e03 100%); }
+.seg-navy   { background: linear-gradient(145deg, #09192c 0%, #040c17 100%); }
+
+.seg-num {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 0.8;
+  text-align: right;
+}
+.seg-name {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: var(--white);
+  margin-bottom: 3px;
+  line-height: 1.15;
+  word-break: break-word;
+}
+.seg-short {
+  font-size: 8px;
+  color: var(--muted);
+  line-height: 1.25;
+  margin-bottom: 6px;
+  text-transform: none;
+  word-break: break-word;
+}
+.seg-cta {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.seg-cta::after { content: '→'; }
+.seg-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.seg-card:hover .seg-bar { transform: scaleX(1); }
+
+/* SPACES MOBILE - VERTICAL & BIG */
+section { padding:48px 20px; }
+#portfolio { padding-top: 90px; margin-top: 0; scroll-margin-top: 80px; }
+#spaces { padding-top:20px; position:relative; z-index:5; }
+.s-label { font-size:9px; letter-spacing:4px; margin-bottom:12px; }
+.s-title { font-size:28px; letter-spacing:1px; margin-bottom:12px; }
+.divider { width:30px; margin:16px 0 28px; }
+
+.spaces-block { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:40px; }
+.spaces-block:last-child { margin-bottom:0; }
+.spaces-block:nth-child(even) .spaces-text { order:0; }
+
+.spaces-photos {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  aspect-ratio: 16/9;
+  width: 100%;
+  background: var(--dark2);
+  will-change: transform, box-shadow;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+}
+.spaces-photos:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 15px 35px rgba(232,98,26,0.12);
+  border-color: var(--orange);
+}
+.spaces-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 10;
+  pointer-events: none;
+}
+.spaces-progress-fill {
+  width: 14.28%;
+  height: 100%;
+  background: #e8621a;
+  border-radius: 2px;
+  box-shadow: 0 0 10px #e8621a, 0 0 3px #ff7a2f;
+  transition: width 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.spaces-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: opacity 0.4s ease;
+}
+.spaces-photo.active {
+  opacity: 1;
+  visibility: visible;
+}
+.spaces-photo img {
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.18);
+  transform-origin: center center;
+}
+.spaces-photo-ph { width:100%; height:100%; }
+.spaces-name { font-family:'Bebas Neue','BPG Nino Mtavruli',sans-serif; font-size:26px; color:var(--white); margin-bottom:12px; }
+.spaces-desc { font-size:13px; color:var(--mai); line-height:1.7; }
+
+/* PORTFOLIO MOBILE - COMPACT HORIZONTAL 4-COLUMN CARDS WITH FOREGROUND ZOOM */
+#portfolio { background:var(--dark); padding:48px 8px; position:relative; scroll-margin-top: 60px; }
+.port-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.port-card {
+  position: relative;
+  aspect-ratio: 16/9;
+  min-height: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.port-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--orange);
+  box-shadow: 0 8px 25px rgba(232, 98, 26, 0.25);
+}
+.port-card img { width:100%; height:100%; object-fit:contain; opacity:0.85; transition: opacity 0.3s ease, transform 0.3s ease; }
+.port-card:hover img { opacity: 1; transform: scale(1.03); }
+.port-info { position:absolute; inset:0; padding:6px 4px; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(to top, rgba(10,10,11,0.95) 10%, rgba(10,10,11,0.3) 60%, transparent 100%); pointer-events:none; }
+.port-cat { font-size:7px; letter-spacing:0.5px; margin-bottom:1px; color:var(--orange); font-weight:700; text-transform:uppercase; }
+.port-name { font-family:'Bebas Neue','BPG Nino Mtavruli',sans-serif; font-size:10px; color:var(--white); line-height:1.1; margin:0; word-break:break-word; }
+.port-by { font-size:7.5px; color:var(--orange); margin-top:1px; font-weight:600; word-break:break-word; }
+
+/* FOREGROUND ZOOM LIGHTBOX EXPANSION */
+.port-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 99990;
+  backdrop-filter: blur(10px);
+}
+.port-backdrop.open {
+  display: block;
+}
+.port-zoom-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 820px;
+  aspect-ratio: 16/9;
+  background: var(--dark2);
+  border: 2px solid var(--orange);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 99999;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.9), 0 0 45px rgba(232,98,26,0.45);
+  cursor: pointer;
+  animation: fgZoomIn 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.port-zoom-box.open {
+  display: block;
+}
+.port-zoom-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+.port-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.2) 35%, transparent 100%);
+  pointer-events: none;
+}
+.port-zoom-overlay .port-cat {
+  font-size: 8px;
+  margin-bottom: 1px;
+}
+.port-zoom-title {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 14px;
+  color: var(--white);
+  line-height: 1.1;
+  margin: 1px 0;
+}
+.port-zoom-overlay .port-by {
+  font-size: 8.5px;
+  margin-top: 1px;
+}
+.port-zoom-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(232, 98, 26, 0.2);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.port-zoom-close:hover {
+  background: var(--orange);
+  color: #ffffff;
+  border-color: var(--orange);
+  transform: rotate(90deg) scale(1.08);
+  box-shadow: 0 0 20px rgba(232, 98, 26, 0.6);
+}
+.port-zoom-hint {
+  font-size: 8.5px;
+  color: var(--orange);
+  margin-top: 3px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+@keyframes fgZoomIn {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.85); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* BOOK GALLERY THUMBNAILS WITH ORANGE GLOW */
+.book-thumbs-strip::-webkit-scrollbar, .lane-thumbs-strip::-webkit-scrollbar { display: none; }
+.book-thumb, .lane-thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: var(--dark2);
+}
+.book-thumb img, .lane-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.book-thumb:hover, .lane-thumb:hover {
+  opacity: 0.85;
+  border-color: rgba(232, 98, 26, 0.5);
+}
+.book-thumb.active, .lane-thumb.active {
+  opacity: 1 !important;
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 10px #e8621a, 0 0 3px #ff7a2f;
+  transform: scale(1.08);
+}
+
+.modal-thumbs-strip {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 2px;
+  pointer-events: auto;
+  width: 100%;
+}
+.modal-thumbs-strip::-webkit-scrollbar { display: none; }
+
+/* SPACES BLOCKS CLICKABLE STYLING */
+.spaces-block {
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.spaces-block:hover .spaces-name {
+  color: var(--orange);
+}
+
+/* HERO STRUCTURE FOR MOBILE PORTRAIT */
+
+/* BOOKING & PAY BOX RESPONSIVE */
+#book { background:var(--dark); padding:50px 24px; }
+.booking-wrapper { width:100%; margin-top:20px; }
+.booking-container { width:100%; min-height:650px; background:var(--dark2); border-top:2px solid var(--orange); padding:10px; border-radius:12px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.4); }
+#my-cal-inline-podcast-studio iframe { width:100% !important; min-height:620px !important; border:none; border-radius:8px; }
+#custom-success-screen {
+  display: none;
+  background: var(--dark2);
+  border-top: 2px solid var(--orange);
+  padding: 30px 20px;
+  border-radius: 6px;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.success-title { font-family:'Bebas Neue',sans-serif; font-size:28px; margin-bottom:16px; }
+.payment-title { font-family:'Bebas Neue',sans-serif; font-size:22px; margin-bottom:8px; }
+.success-text { font-size:12px; line-height:1.6; margin-bottom:24px; }
+.payment-box { background:var(--dark3); border:1px solid var(--border); border-radius:6px; padding:20px 16px; width:100%; gap:20px; }
+.qr-container { width:100%; }
+.qr-box {
+  width: 100%; /* სრულად ერგება მობილურის ეკრანის სიგანეს */
+  max-width: 280px;
+  height: 280px;
+  background: var(--black);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.qr-image-dark { width:100%; height:100%; object-fit:contain; filter:invert(0.9) contrast(1.3) brightness(1.1); mix-blend-mode:lighten; }
+.iban-row { width:100%; }
+.iban-copy-container { padding:10px 12px; gap:8px; }
+.iban-text { font-size:11px; letter-spacing:0; }
+.btn-copy { padding:6px 12px; font-size:10px; }
+
+/* CHAT WIDGET MOBILE - PREMIUM POPUP UI */
+.chat-container { position:fixed; bottom:20px; right:20px; z-index:9999; font-family:'Montserrat', sans-serif; }
+.chat-toggle { width:56px; height:56px; border-radius:50%; background:var(--orange); box-shadow:0 8px 30px rgba(232,98,26,0.65); display:flex; justify-content:center; align-items:center; cursor:pointer; transition:transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.chat-toggle:hover { transform:scale(1.08); }
+.chat-toggle svg { width:26px; height:26px; fill:white; }
+
+.chat-window {
+  position: fixed;
+  bottom: 84px;
+  right: 16px;
+  width: calc(100vw - 32px);
+  max-width: 350px;
+  height: 470px;
+  background: rgba(15, 15, 18, 0.97);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.92);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 10000;
+}
+.chat-window.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+.chat-header {
+  padding: 14px 18px;
+  background: var(--orange);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-header-info h3 {
+  font-family: 'Bebas Neue','BPG Nino Mtavruli',sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+.chat-header-info p {
+  font-size: 10px;
+  opacity: 0.9;
+}
+.chat-close {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  color: white;
+  font-size: 22px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s;
+}
+.chat-close:hover {
+  background: rgba(0,0,0,0.4);
+}
+.chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) transparent;
+}
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+.message {
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.message.bot {
+  background: var(--dark3);
+  color: var(--white);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--border);
+}
+.message.user {
+  background: var(--orange);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+.chat-quick {
+  padding: 8px 14px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  background: rgba(10,10,11,0.4);
+}
+.q-btn {
+  background: rgba(232,98,26,0.12);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.q-btn:hover {
+  background: var(--orange);
+  color: white;
+}
+.chat-input {
+  padding: 12px 14px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.chat-input input {
+  flex: 1;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: white;
+  font-size: 12px;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+.chat-input button {
+  background: var(--orange);
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.chat-input button:hover {
+  background: var(--orange-light);
+}
+
+.modal-bg { 
+  display:none; 
+  position:fixed; 
+  inset:0; 
+  background:rgba(0,0,0,0.95); 
+  z-index:99999999; 
+  align-items:center; 
+  justify-content:center; 
+  backdrop-filter:blur(16px); 
+  -webkit-backdrop-filter:blur(16px); 
+}
+.modal-bg.open { display:flex; }
+.modal { 
+  background:var(--dark2); 
+  max-width:560px; 
+  width:92%; 
+  max-height:92vh; 
+  overflow-y:auto; 
+  border-top:2px solid var(--orange); 
+  position:relative; 
+  padding:36px 24px; 
+  border-radius:16px; 
+  box-shadow:0 25px 70px rgba(0,0,0,0.8); 
+  scrollbar-width:none; 
+  -ms-overflow-style:none; 
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(232, 98, 26, 0.15);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 100;
+  line-height: 1;
+}
+.modal-close:hover {
+  background: var(--orange);
+  color: #ffffff;
+  border-color: var(--orange);
+  transform: rotate(90deg) scale(1.08);
+  box-shadow: 0 0 20px rgba(232, 98, 26, 0.6);
+}
+
+/* DIRECT CONTACT MODAL (4 BUTTONS) */
+.direct-modal-content {
+  max-width: 520px !important;
+  width: 90% !important;
+  padding: 36px 24px !important;
+  border-radius: 16px !important;
+  background: var(--dark2) !important;
+  border-top: 3px solid var(--orange) !important;
+}
+.direct-modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.direct-modal-title {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 32px;
+  color: var(--white);
+  margin: 4px 0 8px;
+  letter-spacing: 1px;
+}
+.direct-modal-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+.direct-contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.direct-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.direct-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.direct-wa:hover   { border-color: #25D366; background: rgba(37, 211, 102, 0.08); }
+.direct-call:hover { border-color: var(--orange); background: rgba(232, 98, 26, 0.08); }
+.direct-ig:hover   { border-color: #E1306C; background: rgba(225, 48, 108, 0.08); }
+.direct-fb:hover   { border-color: #1877F2; background: rgba(24, 119, 242, 0.08); }
+
+.direct-icon {
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.direct-text-wrap {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+}
+.direct-title {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+.direct-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.direct-arrow {
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.direct-btn:hover .direct-arrow {
+  transform: translateX(4px);
+  color: var(--white);
+}
+
+.modal.modal-wide { max-width: 1340px; width: 95%; max-height: 92vh; padding: 28px 20px; scrollbar-width:none; -ms-overflow-style:none; }
+.modal.modal-wide::-webkit-scrollbar { display:none; width:0; height:0; }
+.pricing-tiers-grid { 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  padding-top: 18px;
+}
+.pricing-tier-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tier-sub {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  min-height: 34px;
+}
+.pricing-tier-card.featured-cyan {
+  border: 2px solid #00d2ff;
+  box-shadow: 0 0 35px 5px rgba(0, 210, 255, 0.35);
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(26, 26, 31, 0.98) 100%);
+}
+.pricing-tier-card.featured-cyan .tier-price {
+  color: #00d2ff;
+}
+.pricing-tier-card.featured-cyan .tier-badge {
+  background: #00d2ff;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.5);
+  color: #000;
+}
+.pricing-tier-card.full-width-bottom {
+  grid-column: 1 / -1;
+  width: 100%;
+  border: 2px solid #00d2ff;
+  box-shadow: 0 0 35px 5px rgba(0, 210, 255, 0.35);
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(26, 26, 31, 0.98) 100%);
+}
+.pricing-tier-card.full-width-bottom .tier-price {
+  color: #00d2ff;
+}
+.pricing-tier-card.full-width-bottom .tier-badge {
+  background: #00d2ff;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.5);
+  color: #000;
+}
+@media (max-width: 1024px) {
+  .pricing-tiers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 600px) {
+  .pricing-tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+.pricing-tier-card.featured {
+  border: 2px solid var(--orange);
+  box-shadow: 0 0 35px 5px rgba(232, 98, 26, 0.45);
+  background: linear-gradient(135deg, rgba(232, 98, 26, 0.12) 0%, rgba(26, 26, 31, 0.98) 100%);
+}
+.tier-badge {
+  position: absolute;
+  top: -14px;
+  right: 16px;
+  background: var(--orange);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(232, 98, 26, 0.5);
+  z-index: 10;
+}
+.tier-name {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+.tier-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+.tier-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.tier-feature {
+  font-size: 11px;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Montserrat', 'BPG Nino Mtavruli', sans-serif;
+  text-transform: none;
+}
+.tier-feature.included {
+  color: var(--white);
+  font-weight: 500;
+}
+.tier-feature.included .icon {
+  color: var(--orange);
+  font-weight: bold;
+}
+.tier-feature.excluded {
+  color: var(--muted);
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+.tier-feature.excluded .icon {
+  color: #888890;
+  text-decoration: none;
+  display: inline-block;
+}
+.tier-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 13px;
+  background: var(--orange);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(232, 98, 26, 0.55);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.tier-btn:hover {
+  background: var(--orange-light);
+  box-shadow: 0 0 35px 8px rgba(232, 98, 26, 0.85), 0 0 15px 2px rgba(255, 122, 47, 0.6);
+  transform: translateY(-2px);
+}
+
+/* FOOTER MOBILE - PREMIUM DESIGN */
+footer {
+  padding: 48px 24px 32px;
+  background: #08080a;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.foot-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.foot-brand p {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--mai);
+  line-height: 1.6;
+  font-weight: 400;
+}
+.foot-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+.foot-col h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.foot-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.foot-col ul a {
+  color: var(--white);
+  font-size: 12px;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+.foot-col ul a:hover {
+  opacity: 1;
+  color: var(--orange);
+}
+.foot-bottom {
+  padding: 20px 24px 36px;
+  background: #050506;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ULTRA-SLIM CONTINUOUS SCROLL PROGRESS BAR */
+.scroll-progress-container {
+  position: fixed;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 320px;
+  max-height: 45vh;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  z-index: 9999999;
+  pointer-events: none;
+  overflow: hidden;
+}
+.scroll-progress-fill {
+  width: 100%;
+  height: 0%;
+  background: #e8621a;
+  border-radius: 2px;
+  box-shadow: 0 0 10px #e8621a, 0 0 3px #ff7a2f;
+  transition: height 0.1s linear;
+/* PULL TO REFRESH STYLES */
+.ptr-element {
+  position: fixed;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--dark2);
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(232, 98, 26, 0.4);
+  transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.ptr-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+}
+.ptr-element.refreshing .ptr-spinner {
+  animation: ptrSpin 0.7s linear infinite;
+}
+@keyframes ptrSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- PULL TO REFRESH INDICATOR -->
+<div class="ptr-element" id="ptr-element">
+  <div class="ptr-spinner" id="ptr-spinner"></div>
+</div>
+
+<!-- ULTRA-SLIM CONTINUOUS SCROLL PROGRESS BAR -->
+<div class="scroll-progress-container" id="scroll-progress-container">
+  <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
+</div>
+
+<!-- Menu Blur Overlay Backdrop -->
+<div class="menu-backdrop" id="menu-backdrop" onclick="toggleMobileMenu()"></div>
+
+<!-- Top Right Fixed Widgets (Book Button + Language Toggle) -->
+<div class="fixed-top-right-wrap">
+  <button onclick="openDirectContactModal()" class="btn-book-top" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+  <div class="lang-toggle">
+    <button class="lang-btn btn-ka active" onclick="setLang('ka')" id="btn-ka" aria-label="ქართული ენა">KA</button>
+    <button class="lang-btn btn-en" onclick="setLang('en')" id="btn-en" aria-label="English Language">EN</button>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- Header -->
+<nav>
+  <a href="#home" class="logo">
+    <div class="logo-bars"><span></span><span></span></div>
+    <div class="logo-text">
+      <span class="logo-word text-word">
+        <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
+      </span>
+      <span class="logo-word em-word">
+        <span>T</span><span>h</span><span>e</span>&nbsp;<span>L</span><span>a</span><span>n</span><span>e</span>
+      </span>
+    </div>
+  </a>
+  <button class="mobile-nav-toggle" onclick="toggleMobileMenu(event)">☰</button>
+  <ul class="nav-links">
+    <li><a href="#segments" onclick="toggleMobileMenu(event)" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
+    <li><a href="about.html" onclick="toggleMobileMenu(event)" data-ka="ჩვენს შესახებ" data-en="About" style="white-space:nowrap">ჩვენს შესახებ</a></li>
+    <li><a href="#gallery-section" onclick="toggleMobileMenu(event)" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
+    <li><a href="portfolio.html" onclick="toggleMobileMenu(event)" data-ka="ნამუშევრები" data-en="Portfolio">ნამუშევრები</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="slideshow">
+    <div class="slide active" style="background-image:url('IMAGE/stopkadr_clean.png')"></div>
+  </div>
+  <div class="hero-structure-wrap">
+    <div class="hero-structure">
+      <div class="hero-video-crop-wrap">
+        <video id="hero-video" autoplay muted playsinline webkit-playsinline src="LOGO_STL/Tagi%20SVWeb%20.mov">
+        </video>
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span>STUDIO</span><br>
+      <span class="t2">THE LANE</span>
+    </h1>
+    <p class="hero-mod" data-ka="მოდულარული პოდკასტ სტუდია" data-en="Modular Podcast Studio">მოდულარული პოდკასტ სტუდია</p>
+    <div class="hero-btns">
+      <a href="javascript:void(0)" onclick="openModal('podcast')" class="btn-p" data-ka="სივრცის დაჯავშნა" data-en="Book a Session">სივრცის დაჯავშნა</a>
+      <a href="#spaces" class="btn-o" data-ka="მომსახურება" data-en="Our Services">მომსახურება</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <p class="s-label" data-ka="აქტიური შოუები" data-en="Active Shows">აქტიური შოუები</p>
+  <h2 class="s-title" data-ka="სტუდიაში არსებული პროექტები" data-en="Projects in the Studio">სტუდიაში არსებული პროექტები</h2>
+  <div class="divider"></div>
+  
+  <div class="port-grid">
+    <div class="port-card" onclick="openForegroundZoom(0)">
+      <img src="Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.jpeg" alt="Beauty Talks">
+      <div class="port-info">
+        <span class="port-cat">PODCAST</span>
+        <h3 class="port-name">Beauty Talks</h3>
+        <span class="port-by">by Natalli Group</span>
+      </div>
+    </div>
+    <div class="port-card" onclick="openForegroundZoom(1)">
+      <img src="Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.jpeg" alt="ჩცდ Rewatch">
+      <div class="port-info">
+        <span class="port-cat">PODCAST</span>
+        <h3 class="port-name">ჩცდ Rewatch</h3>
+        <span class="port-by">by Cavea</span>
+      </div>
+    </div>
+    <div class="port-card" onclick="openForegroundZoom(2)">
+      <img src="Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.jpeg" alt="Biblusi Talks">
+      <div class="port-info">
+        <span class="port-cat">PODCAST</span>
+        <h3 class="port-name">Biblusi Talks</h3>
+        <span class="port-by">by ბიბლუსი</span>
+      </div>
+    </div>
+    <div class="port-card" onclick="openForegroundZoom(3)">
+      <img src="Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.jpeg" alt="ლაი ლაი Live">
+      <div class="port-info">
+        <span class="port-cat">LIVE SHOW</span>
+        <h3 class="port-name">ლაი ლაი World Cup Live</h3>
+      </div>
+    </div>
+    <div class="port-card" onclick="openForegroundZoom(4)">
+      <img src="Podcast_Studio_photo/AA POKER PODCAST_2K_.jpg" alt="AA POKER PODCAST">
+      <div class="port-info">
+        <span class="port-cat">PERSONAL</span>
+        <h3 class="port-name">AA POKER PODCAST</h3>
+        <span class="port-by">პოდკასტი პოკერის შესახებ</span>
+      </div>
+    </div>
+    <div class="port-card" onclick="openForegroundZoom(5)">
+      <img src="Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.jpg" alt="EEU PODCAST">
+      <div class="port-info">
+        <span class="port-cat">PODCAST</span>
+        <h3 class="port-name">EEU PODCAST</h3>
+        <span class="port-by">აღმოსავლეთ ევროპის უნივერსიტეტის პოდკასტი</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section id="spaces">
+  <p class="s-label" data-ka="რას გთავაზობთ" data-en="What We Offer">რას გთავაზობთ</p>
+  <h2 class="s-title" data-ka="სივრცეები და მიმართულებები" data-en="Spaces & Services">სივრცეები და მიმართულებები</h2>
+  <div class="divider"></div>
+
+  <div class="spaces-block" id="space-podcast">
+    <div class="spaces-photos" id="podcast-photos" onclick="nextPodcastPhoto()">
+      <div class="spaces-photo active"><img src="Podcast_Studio_photo/PODCAST STUDIO SONY FX 30.jpg" alt="Podcast Studio FX30"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO MODULARITY.jpg" alt="Podcast Studio Modularity"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO ATHEM .jpg" alt="Podcast Studio ATEM"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO RODECASTER PRO.JPG" alt="Podcast Studio RODE"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO  GANATEBA.jpg" alt="Podcast Studio Lighting"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/thumb_11.jpg" alt="Podcast Studio Teleprompter"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/MODULAR STUDIO.jpeg" alt="Modular Studio"></div>
+      <div class="spaces-progress-bar">
+        <div class="spaces-progress-fill" id="spaces-progress-fill"></div>
+      </div>
+    </div>
+    <div class="spaces-text">
+      <h3 class="spaces-name">PODCAST STUDIO</h3>
+      <p class="spaces-desc" id="podcast-desc" style="transition: opacity 0.2s ease-in-out; line-height:1.6;">
+        <strong style="color:var(--orange);">კინემატოგრაფიული ხარისხი:</strong> სტუდია აღჭურვილია SONY FX 30 კამერებით , იდეალური გამოსახულებისთვის.
+      </p>
+      <a href="javascript:void(0)" onclick="openModal('podcast')" class="btn-p" style="display:inline-block; margin-top:20px; font-size:12px; font-weight:700;" data-ka="პოდკასტის დაჯავშნა" data-en="Book Podcast">პოდკასტის დაჯავშნა</a>
+    </div>
+  </div>
+
+  <div class="spaces-block" id="space-voiceover">
+    <div class="spaces-photos">
+      <div class="spaces-photo active"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0a1f28,#0d3044)"></div></div>
+      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0d3044,#0a1f28)"></div></div>
+      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#12445c,#0a1f28)"></div></div>
+      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0a1f28,#061218)"></div></div>
+    </div>
+    <div class="spaces-text">
+      <h3 class="spaces-name">CREATOR / SOLO STUDIO</h3>
+      <p class="spaces-desc" data-ka="იდეალური გარემო პირადი ბრენდის პიარისთვის, ქოუჩინგისა და სასწავლო ვიდეოებისთვის. სუფლიორის მხარდაჭერა დაგეხმარებათ ტექსტის გამართულად კითხვაში." data-en="Ideal environment for personal branding, coaching, and educational videos. Teleprompter support helps with clean script reading.">იდეალური გარემო პირადი ბრენდის პიარისთვის, ქოუჩინგისა და სასწავლო ვიდეოებისთვის. სუფლიორის მხარდაჭერა დაგეხმარებათ ტექსტის გამართულად კითხვაში.</p>
+      <a href="javascript:void(0)" onclick="openDirectContactModal()" class="btn-p" style="display:inline-block; margin-top:20px; font-size:12px; font-weight:700;" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a>
+    </div>
+  </div>
+
+  <div class="spaces-block" id="space-commercial">
+    <div class="spaces-photos">
+      <div class="spaces-photo active"><img src="Podcast_Studio_photo/COMMERCIAL VIDEO COVER.jpg" alt="Commercial Video"></div>
+    </div>
+    <div class="spaces-text">
+      <h3 class="spaces-name">COMMERCIAL VIDEO</h3>
+      <p class="spaces-desc" data-ka="სრული სარეკლამო ვიდეო პროდაქშენი. სცენარი, გადაღება, მონტაჟი, გრაფიკა." data-en="Full commercial video production. Script, shoot, edit, graphics.">სრული სარეკლამო ვიდეო პროდაქშენი. სცენარი, გადაღება, მონტაჟი, გრაფიკა.</p>
+      <div style="display:flex; gap:12px; margin-top:20px;">
+        <a href="javascript:void(0)" onclick="openDirectContactModal()" class="btn-p" style="font-size:12px; font-weight:700;" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a>
+        <a href="portfolio.html" class="btn-o" style="font-size:12px; font-weight:700;" data-ka="ნამუშევრები" data-en="Our Work">ნამუშევრები</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="spaces-block" id="space-photo">
+    <div class="spaces-photos">
+      <div class="spaces-photo active"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 1.jpg" alt="Advertising Photo 1"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO  2.jpg" alt="Advertising Photo 2"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 3.jpg" alt="Advertising Photo 3"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 4.jpg" alt="Advertising Photo 4"></div>
+      <div class="spaces-progress-bar">
+        <div class="spaces-progress-fill" style="width: 25%;"></div>
+      </div>
+    </div>
+    <div class="spaces-text">
+      <h3 class="spaces-name">ADVERTISING PHOTO / VIDEO</h3>
+      <p class="spaces-desc" data-ka="სივრცე სარეკლამო გადაღებებისთვის. პროდუქტი, ბრენდი, ანბოქსინგი, ტუტორიალი." data-en="A space for commercial shoots where brands can fully create their own content. Product, brand, unboxing, tutorial.">სივრცე სარეკლამო გადაღებებისთვის. პროდუქტი, ბრენდი, ანბოქსინგი, ტუტორიალი.</p>
+      <a href="javascript:void(0)" onclick="openDirectContactModal()" class="btn-p" style="display:inline-block; margin-top:20px; font-size:12px; font-weight:700;" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS (01-04 NUMBERED SERVICE CARDS) -->
+<section id="segments">
+  <p class="s-label" data-ka="მომსახურება" data-en="Our Services">მომსახურება</p>
+  <h2 class="s-title" data-ka="სივრცეები და მიმართულებები" data-en="Spaces & Services">სივრცეები და მიმართულებები</h2>
+  <div class="divider"></div>
+
+  <div class="seg-grid">
+    <!-- 01 PODCAST STUDIO -->
+    <div class="seg-card seg-purple" onclick="openModal('podcast')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,18,40,0.85), rgba(45,16,64,0.85)), url('studio_gen_photo/PODCAST STUDIO 2.png') center/cover;position:absolute;inset:0;"></div>
+      <div class="seg-num">01</div>
+      <div style="position:relative; z-index:2;">
+        <h3 class="seg-name">PODCAST STUDIO</h3>
+        <p class="seg-short" data-ka="RECORDED & LIVE. მოდულარული სეტები." data-en="RECORDED & LIVE. Modular sets.">RECORDED & LIVE. მოდულარული სეტები.</p>
+        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+      </div>
+      <div class="seg-bar"></div>
+    </div>
+
+    <!-- 02 CREATOR / SOLO STUDIO -->
+    <div class="seg-card seg-teal" onclick="openModal('solo')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(10,31,40,0.85), rgba(13,48,68,0.85)), url('studio_gen_photo/ONE PERSON STUDIO.png') center/cover;position:absolute;inset:0;"></div>
+      <div class="seg-num">02</div>
+      <div style="position:relative; z-index:2;">
+        <h3 class="seg-name">CREATOR / SOLO STUDIO</h3>
+        <p class="seg-short" data-ka="ერთპერსონიანი სტუდია. კამერა, ხმა, განათება." data-en="One-person studio. Camera, audio, lighting.">ერთპერსონიანი სტუდია. კამერა, ხმა, განათება.</p>
+        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+      </div>
+      <div class="seg-bar"></div>
+    </div>
+
+    <!-- 03 COMMERCIAL VIDEO -->
+    <div class="seg-card seg-red" onclick="openModal('commercial')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,10,10,0.85), rgba(46,13,13,0.85)), url('studio_gen_photo/COMMERCIAL VIDEO.png') center/cover;position:absolute;inset:0;"></div>
+      <div class="seg-num">03</div>
+      <div style="position:relative; z-index:2;">
+        <h3 class="seg-name">COMMERCIAL VIDEO</h3>
+        <p class="seg-short" data-ka="სრული სარეკლამო ვიდეო პროდაქშენი." data-en="Full commercial video production.">სრული სარეკლამო ვიდეო პროდაქშენი.</p>
+        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+      </div>
+      <div class="seg-bar"></div>
+    </div>
+
+    <!-- 04 ADVERTISING PHOTO / VIDEO -->
+    <div class="seg-card seg-gold" onclick="openModal('photo')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,16,10,0.85), rgba(46,26,8,0.85)), url('studio_gen_photo/ADVERTISING PHOTO.VIDEO 3.jpg') center/cover;position:absolute;inset:0;"></div>
+      <div class="seg-num">04</div>
+      <div style="position:relative; z-index:2;">
+        <h3 class="seg-name">ADVERTISING PHOTO / VIDEO</h3>
+        <p class="seg-short" data-ka="სარეკლამო ფოტო, პროდუქტი, ბრენდი." data-en="Commercial photo, product, brand.">სარეკლამო ფოტო, პროდუქტი, ბრენდი.</p>
+        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+      </div>
+      <div class="seg-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOREGROUND ZOOM LIGHTBOX BOX & BACKDROP -->
+<div class="port-backdrop" id="port-backdrop" onclick="closeForegroundZoom()"></div>
+<div class="port-zoom-box" id="port-zoom-box" onclick="nextForegroundZoom(event)">
+  <button class="port-zoom-close" onclick="closeForegroundZoom(); event.stopPropagation();">✕</button>
+  <img id="port-zoom-img" src="Beauty Talks.jpg" alt="Enlarged Project">
+  <div class="port-zoom-overlay">
+    <span id="port-zoom-cat" class="port-cat">PODCAST</span>
+    <h3 id="port-zoom-title" class="port-zoom-title">Beauty Talks</h3>
+    <span id="port-zoom-by" class="port-by">by Natalli Group</span>
+    <div class="modal-progress-bar" id="modal-progress-bar" style="position:absolute; bottom:0; left:0; width:100%; height:3.5px; background:rgba(255,255,255,0.15); pointer-events:none; z-index:10;">
+      <div class="modal-progress-fill" id="modal-progress-fill" style="width:5.55%; height:100%; background:#e8621a; border-radius:2px; box-shadow:0 0 10px #e8621a, 0 0 3px #ff7a2f; transition:width 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-bg" id="modal-bg" onclick="closeModalBg(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- DIRECT CONTACT MODAL (4 BUTTONS) -->
+<div class="modal-bg" id="direct-contact-modal" onclick="closeDirectContactModalBg(event)">
+  <div class="modal direct-modal-content">
+    <button class="modal-close" onclick="closeDirectContactModal()">✕</button>
+    <div class="direct-modal-header">
+      <span class="decor-sub-label" data-ka="პირდაპირი კავშირი" data-en="DIRECT CONTACT">პირდაპირი კავშირი</span>
+      <h2 class="direct-modal-title" data-ka="სივრცის დაჯავშნა" data-en="Book a Session">სივრცის დაჯავშნა</h2>
+      <p class="direct-modal-desc" data-ka="აირჩიეთ თქვენთვის მოსახერხებელი არხი დაჯავშნისა და კონსულტაციისთვის:" data-en="Choose your preferred channel for booking & consultation:">აირჩიეთ თქვენთვის მოსახერხებელი არხი დაჯავშნისა და კონსულტაციისთვის:</p>
+    </div>
+    
+    <div class="direct-contact-grid">
+      <!-- 1. WHATSAPP -->
+      <a href="https://wa.me/995555123456" target="_blank" class="direct-btn direct-wa">
+        <div class="direct-icon">💬</div>
+        <div class="direct-text-wrap">
+          <span class="direct-title">WhatsApp</span>
+          <span class="direct-sub" data-ka="მყისიერი ჩატი და კონსულტაცია" data-en="Instant chat & support">მყისიერი ჩატი და კონსულტაცია</span>
+        </div>
+        <span class="direct-arrow">→</span>
+      </a>
+
+      <!-- 2. CALL / დარეკვა -->
+      <a href="tel:+995555123456" class="direct-btn direct-call">
+        <div class="direct-icon">📞</div>
+        <div class="direct-text-wrap">
+          <span class="direct-title" data-ka="დარეკვა" data-en="Call Us">დარეკვა</span>
+          <span class="direct-sub" data-ka="+995 555 123 456 (პირდაპირი ზარი)" data-en="+995 555 123 456 (Direct Call)">+995 555 123 456 (პირდაპირი ზარი)</span>
+        </div>
+        <span class="direct-arrow">→</span>
+      </a>
+
+      <!-- 3. INSTAGRAM -->
+      <a href="https://ig.me/m/studio_the_lane" target="_blank" class="direct-btn direct-ig">
+        <div class="direct-icon">📸</div>
+        <div class="direct-text-wrap">
+          <span class="direct-title">Instagram</span>
+          <span class="direct-sub" data-ka="@studio_the_lane დირექტი" data-en="@studio_the_lane Direct">@studio_the_lane დირექტი</span>
+        </div>
+        <span class="direct-arrow">→</span>
+      </a>
+
+      <!-- 4. FACEBOOK -->
+      <a href="https://m.me/studiothelane" target="_blank" class="direct-btn direct-fb">
+        <div class="direct-icon">📘</div>
+        <div class="direct-text-wrap">
+          <span class="direct-title">Facebook</span>
+          <span class="direct-sub" data-ka="Studio The Lane მესინჯერი" data-en="Studio The Lane Messenger">Studio The Lane მესინჯერი</span>
+        </div>
+        <span class="direct-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- OVERALL GALLERY SECTION HEADER -->
+<div id="gallery-section" style="text-align:left; padding:40px 24px 10px;">
+  <h2 class="s-title" style="font-size:32px; letter-spacing:2px; color:var(--white); margin:0; text-align:left;" data-ka="გალერეა" data-en="GALLERY">გალერეა</h2>
+  <div class="divider" style="margin:12px 0 20px 0;"></div>
+</div>
+
+<!-- STUDIO LANE SPACE SHOWCASE -->
+<section id="space-lane" style="padding-bottom:10px; padding-top:10px;">
+  <h2 class="s-title" style="font-size:20px; font-weight:700; text-align:center;" data-ka="სივრცე STUDIO LANE" data-en="Space Studio Lane">სივრცე STUDIO LANE</h2>
+  <div class="divider" style="margin:10px auto 20px;"></div>
+  
+  <div class="lane-gallery-wrapper" style="max-width:650px; margin:0 auto;">
+    <!-- MAIN BIG FEATURED PHOTO FRAME -->
+    <div class="lane-main-frame" onclick="nextLanePhoto()" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 40px rgba(0,0,0,0.5); cursor:pointer; background:var(--dark2);">
+      <img id="lane-main-img" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Studio Lane Main Photo" style="width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;">
+      <div onclick="event.stopPropagation(); openLanePhotoZoom(activeLaneIndex);" title="გადიდება" style="position:absolute; bottom:12px; right:12px; background:rgba(10,10,11,0.75); border:1px solid rgba(255,255,255,0.2); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </div>
+    </div>
+
+    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
+    <div class="lane-thumbs-strip" style="display:flex; gap:6px; margin-top:14px; overflow-x:auto; scrollbar-width:none; padding:4px 2px 10px;">
+      <div class="lane-thumb active" onclick="selectLanePhoto(0)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Interier 1"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(1)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg" alt="Interier 2"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(2)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg" alt="Interier 3"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(3)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg" alt="Interier 4"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(4)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg" alt="Interier 5"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(5)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG" alt="Interier 6"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(6)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG" alt="Interier 7"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK / GALLERY SHOWCASE -->
+<section id="book" style="padding-top:10px;">
+  <h2 class="s-title" style="font-size:20px; font-weight:700; text-align:center;" data-ka="სტუდიის ტიპოლოგიები" data-en="Studio Typologies">სტუდიის ტიპოლოგიები</h2>
+  <div class="divider" style="margin:10px auto 20px;"></div>
+  
+  <div class="book-gallery-wrapper" style="max-width:650px; margin:0 auto;">
+    <!-- MAIN BIG FEATURED PHOTO FRAME -->
+    <div class="book-main-frame" onclick="openBookPhotoZoom(activeBookIndex)" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 40px rgba(0,0,0,0.5); cursor:pointer; background:var(--dark2);">
+      <img id="book-main-img" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Studio Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
+    </div>
+
+    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
+    <div class="book-thumbs-strip" style="display:flex; gap:6px; margin-top:14px; overflow-x:auto; scrollbar-width:none; padding:4px 2px 10px;">
+      <div class="book-thumb active" onclick="selectBookPhoto(0)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Thumb 1"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(1)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg" alt="Thumb 2"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(2)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg" alt="Thumb 3"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(3)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg" alt="Thumb 4"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(4)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg" alt="Thumb 5"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(5)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg" alt="Thumb 6"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(6)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg" alt="Thumb 7"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(7)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg" alt="Thumb 8"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(8)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg" alt="Thumb 9"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(9)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg" alt="Thumb 10"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(10)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg" alt="Thumb 11"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(11)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg" alt="Thumb 12"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(12)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg" alt="Thumb 13"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(13)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg" alt="Thumb 14"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(14)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg" alt="Thumb 15"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(15)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg" alt="Thumb 16"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(16)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg" alt="Thumb 17"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(17)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg" alt="Thumb 18"></div>
+    </div>
+  </div>
+</section>
+
+    <!-- CUSTOM SUCCESS SCREEN WITH DYNAMIC PAYMENT & QR -->
+    <div id="custom-success-screen">
+      <div class="success-icon pending-color">⏳</div>
+      <h3 class="success-title">ჯავშანი მიღებულია! (PENDING)</h3>
+      <h4 class="payment-title">ჯავშნის დასადასტურებლად:</h4>
+      <p class="success-text">
+        გთხოვთ 1 საათის განმავლობაში ჩარიცხოთ ჯავშნის გადასახადი. <br>
+        <strong>ჯავშნის გადასახადის გარეშე ჯავშანი ავტომატურად გაუქმდება 1 საათში.</strong> <br><br>
+        მადლობა, რომ ირჩევთ ჩვენს სტუდიას!
+      </p>
+
+      <div class="payment-box">
+        <div class="qr-container">
+          <p class="qr-label">გადახდა QR კოდით (დასკანერეთ მობილბანკით):</p>
+          <div class="qr-box">
+            <img class="qr-image-dark" src="https://i.ibb.co/cK5j5R26/TBC-QR.png" alt="TBC QR Code" onerror="this.style.display='none'; document.querySelector('.qr-placeholder').style.display='block';">
+            <div class="qr-placeholder" style="display:none;">TBC QR კოდი</div>
+          </div>
+        </div>
+
+        <div class="iban-row">
+          <span class="iban-label">ან ჩარიცხეთ IBAN ანგარიშზე (TBC - ლუკა მუხიგული):</span>
+          <div class="iban-copy-container">
+            <span class="iban-text" id="studio-iban">GE22TB7682736010100045</span>
+            <button class="btn-copy" onclick="copyIBAN()">კოპირება</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT WIDGET -->
+<div class="chat-container">
+    <div class="chat-toggle" onclick="toggleChat()" aria-label="ონლაინ ასისტენტის ჩათი">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </div>
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <h3 data-ka="Studio The Lane ასისტენტი" data-en="The Lane Assistant">Studio The Lane ასისტენტი</h3>
+                <p data-ka="ონლაინ (პასუხობს მყისიერად)" data-en="Online (Replies instantly)">ონლაინ (პასუხობს მყისიერად)</p>
+            </div>
+            <button class="chat-close" onclick="toggleChat()" aria-label="ჩათის დახურვა">&times;</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot" data-ka="გამარჯობა! რით შემიძლია დაგეხმაროთ?" data-en="Hello! How can I help you?">გამარჯობა! რით შემიძლია დაგეხმაროთ?</div>
+        </div>
+        <div class="chat-quick">
+            <button class="q-btn" onclick="chatAction('prices')" data-ka="ფასები" data-en="Prices">ფასები</button>
+            <button class="q-btn" onclick="chatAction('availability')" data-ka="თავისუფალი ადგილი" data-en="Availability">თავისუფალი ადგილი</button>
+            <button class="q-btn" onclick="chatAction('whatsapp')" data-ka="WhatsApp" data-en="WhatsApp">WhatsApp</button>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="მოგვწერეთ..." onkeypress="checkEnter(event)">
+            <button onclick="sendMsg()">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="foot-brand">
+    <a href="#home" class="logo">
+      <div class="logo-bars"><span></span><span></span></div>
+      <div class="logo-text">
+        <span class="logo-word text-word"><span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span></span>
+        <span class="logo-word em-word"><span>T</span><span>h</span><span>e</span>&nbsp;<span>L</span><span>a</span><span>n</span><span>e</span></span>
+      </div>
+    </a>
+    <p style="white-space: nowrap; max-width: none;" data-ka="პოდკასტზე ორიენტირებული მედია სივრცე. თბილისი." data-en="Podcast-focused media space. Tbilisi.">პოდკასტზე ორიენტირებული მედია სივრცე. თბილისი.</p>
+  </div>
+  <div class="foot-cols">
+    <div class="foot-col">
+      <h4 data-ka="მომსახურება" data-en="Services">მომსახურება</h4>
+      <ul>
+        <li><a href="#space-podcast" onclick="scrollToSpace('space-podcast', event)">Podcast Studio</a></li>
+        <li><a href="#space-photo" onclick="scrollToSpace('space-photo', event)">Photo / Video</a></li>
+        <li><a href="#space-commercial" onclick="scrollToSpace('space-commercial', event)">Short AD</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4 data-ka="კავშირი" data-en="Contact">კავშირი</h4>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
+        <li><a href="mailto:studio@thelane.ge">studio@thelane.ge</a></li>
+        <li><a href="https://instagram.com/studio_the_lane" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<div class="foot-bottom">
+  <p style="white-space: nowrap;">© 2026 Studio The Lane</p>
+  <p style="white-space: nowrap;" data-ka="თბილისი, საქართველო" data-en="Tbilisi, Georgia">თბილისი, საქართველო</p>
+</div>
+
+<script>
+// SLIDESHOW
+(function() {
+  const slides = document.querySelectorAll('.slide');
+  let cur = 0;
+  setInterval(function() {
+    slides[cur].classList.remove('active');
+    cur = (cur + 1) % slides.length;
+    slides[cur].classList.add('active');
+  }, 1400);
+})();
+
+// MODAL DATA
+const modals = {
+  podcast: {
+    images: ['', '', '', '', '', ''],
+    ka: {
+      title: 'PODCAST STUDIO',
+      desc: 'მოდულარული პოდკასტ სტუდია 4+1 კამერიანი ჩაწერის შესაძლებლობით, სუფლიორის მხარდაჭერით, პროფესიონალური განათებითა და ხმის/ვიზუალის ლაივ კონტროლით.',
+      sections: [
+        {
+          heading: 'საათობრივი ტარიფები (RECORDING & EDITING)',
+          prices: [
+            { 
+              name: 'Recording', 
+              sub: 'ნედლი მასალა · 3x Sony FX30 Cinema Line კამერა · ოპერატორი · RODE CASTER PRO II · ALIENWARE ლეპტოპი · სუფლიორი · 2 პერსონა უფასოდ.', 
+              val: '180₾ / სთ' 
+            },
+            { 
+              name: 'Recording + PRO Editing', 
+              sub: 'ჩაწერა + PRO მონტაჟი · Zoom, YouTube, OBS მხარდაჭერა · ოპერატორი · 3x Sony FX30 · პოდკასტის პროფესიული მონტაჟი · 2 პერსონა უფასოდ.', 
+              val: '400₾ / სთ' 
+            }
+          ]
+        },
+        {
+          heading: 'ყოველთვიური პაკეტები (PARTNERSHIP)',
+          prices: [
+            { 
+              name: 'Partnership Standard', 
+              sub: 'RECORDING + PRO EDITING-ის სრული პაკეტი · 4 ეპიზოდი თვეში (ჩაწერა+მონტაჟი+გრაფიკა) · 3 Shorts ვიდეო ყველა ეპიზოდიდან · 4 პერსონა უფასოდ.', 
+              val: '2500₾ / თვე' 
+            },
+            { 
+              name: 'Partnership Pro', 
+              sub: 'PARTNERSHIP STANDARD-ის სრული პაკეტი · 4 ეპიზოდი თვეში · 5 Shorts ვიდეო ყველა ეპიზოდიდან · არხის მენეჯმენტი და SEO ოპტიმიზაცია · გრაფიკა და ვიზუალური გაფორმება · 5 პერსონა უფასოდ.', 
+              val: '5500₾ / თვე' 
+            }
+          ]
+        }
+      ]
+    },
+    en: {
+      title: 'PODCAST STUDIO',
+      desc: 'Modular podcast studio with 4+1 camera setup, teleprompter support, professional lighting and live audio/video control.',
+      sections: [
+        {
+          heading: 'HOURLY RATES (RECORDING & EDITING)',
+          prices: [
+            { 
+              name: 'Recording', 
+              sub: 'Raw files · 3x Sony FX30 Cinema Line · operator · RODE CASTER PRO II · ALIENWARE laptop · teleprompter · 2 people free.', 
+              val: '₾180 / hr' 
+            },
+            { 
+              name: 'Recording + PRO Editing', 
+              sub: 'Recording + PRO editing · Zoom, YouTube, OBS support · operator · 3x Sony FX30 · professional podcast edit · 2 people free.', 
+              val: '₾400 / hr' 
+            }
+          ]
+        },
+        {
+          heading: 'MONTHLY PACKAGES (PARTNERSHIP)',
+          prices: [
+            { 
+              name: 'Partnership Standard', 
+              sub: 'RECORDING + PRO EDITING full package · 4 episodes/mo (recording+edit+graphics) · 3 Shorts from each episode · 4 people free.', 
+              val: '₾2500 / mo' 
+            },
+            { 
+              name: 'Partnership Pro', 
+              sub: 'PARTNERSHIP STANDARD full package · 4 episodes/mo · 5 Shorts from each episode · Channel management & SEO optimization · Graphics & visual design · 5 people free.', 
+              val: '₾5500 / mo' 
+            }
+          ]
+        }
+      ]
+    }
+  },
+  voiceover: {
+    images: ['', ''],
+    ka: {
+      title: 'VOICE OVER BOOTH',
+      desc: 'იზოლირებული გარემო სუფთა ხმისთვის. რეკლამების, გახმოვანებისა და აუდიოწიგნების პროფესიონალური ჩაწერა.',
+      sections: [{
+        heading: 'სტანდარტული ტარიფები',
+        prices: [
+          { name: '30 წუთი', sub: '', val: '50₾' },
+          { name: '1 საათი', sub: '', val: '80₾' },
+          { name: '2 საათი', sub: '', val: '150₾' },
+          { name: 'დამატებითი საათი', sub: '', val: '100₾' },
+        ]
+      }]
+    },
+    en: {
+      title: 'VOICE OVER BOOTH',
+      desc: 'Isolated environment for clean sound. Professional recording of ads, voice-overs, and audiobooks.',
+      sections: [{
+        heading: 'Standard Rates',
+        prices: [
+          { name: '30 minutes', sub: '', val: '₾50' },
+          { name: '1 hour', sub: '', val: '₾80' },
+          { name: '2 hours', sub: '', val: '₾150' },
+          { name: 'Each additional hour', sub: '', val: '₾100' }
+        ]
+      }]
+    }
+  },
+  photo: {
+    images: ['', ''],
+    ka: {
+      title: 'ADVERTISING PHOTO / VIDEO',
+      desc: 'სივრცე სარეკლამო გადაღებებისთვის.',
+      sections: [{
+        heading: 'ფასი შეთანხმებით',
+        prices: [
+          { name: 'სარეკლამო ფოტო-ვიდეო კონტენტი', sub: 'პროდუქტი, ბრენდი, ანბოქსინგი, ტუტორიალი', val: 'შეთანხმებით' },
+        ]
+      }]
+    },
+    en: {
+      title: 'ADVERTISING PHOTO / VIDEO',
+      desc: 'A space for commercial shoots where brands can fully create their own content.',
+      sections: [{
+        heading: 'Pricing by Quote',
+        prices: [
+          { name: 'Advertising Photo & Video Content', sub: 'Product, brand, unboxing, tutorial', val: 'By Quote' },
+        ]
+      }]
+    }
+  },
+  solo: {
+    images: ['', '', '', ''],
+    ka: {
+      title: 'CREATOR / SOLO STUDIO',
+      desc: 'იდეალური გარემო პირადი ბრენდის პიარისთვის, ქოუჩინგისა და სასწავლო ვიდეოებისთვის. სუფლიორის მხარდაჭერა დაგეხმარებათ ტექსტის გამართულად კითხვაში.',
+      sections: [{
+        heading: 'ᲔᲠᲗᲞᲔᲠᲡᲝᲜᲘᲐᲜᲘ ᲡᲢᲣᲓᲘᲐ',
+        prices: [
+          { name: '1 კამერა', sub: 'კამერა, ხმა, განათება, ლეპტოპი. Raw ფაილი.', val: '150₾ / სთ' },
+          { name: '2 კამერა', sub: 'ორი რაკურსი, ხმა, განათება. Raw ფაილები.', val: '250₾ / სთ' },
+          { name: '2 კამერა + მონტაჟი', sub: 'ჩაწერა, მონტაჟი, გრაფიკა, მზა ეპიზოდი.', val: '350₾ / ეპ' },
+        ]
+      }]
+    },
+    en: {
+      title: 'CREATOR / SOLO STUDIO',
+      desc: 'Ideal environment for personal branding, coaching, and educational videos. Teleprompter support helps with clean script reading.',
+      sections: [{
+        heading: 'One-Person Studio',
+        prices: [
+          { name: '1 Camera', sub: 'Camera, audio, lighting, laptop. Raw files.', val: '₾150 / hr' },
+          { name: '2 Cameras', sub: 'Two angles, audio, lighting. Raw files.', val: '₾250 / hr' },
+          { name: '2 Cameras + Edit', sub: 'Recording, edit, graphics, final episode.', val: '₾350 / ep' }
+        ]
+      }]
+    }
+  },
+  commercial: {
+    ka: {
+      title: 'COMMERCIAL VIDEO',
+      sections: [{
+        heading: 'ᲡᲐᲠᲔᲙᲚᲐᲛᲝ ᲕᲘᲓᲔᲝ ᲞᲠᲝᲓᲐᲥᲨᲔᲜᲘ',
+        prices: [
+          { name: 'Commercial Video', sub: 'სცენარი · გადაღება · მონტაჟი · გრაფიკა · მზა ფაილი.', val: 'შეთანხმებით' },
+        ]
+      }]
+    },
+    en: {
+      title: 'COMMERCIAL VIDEO',
+      sections: [{
+        heading: 'Commercial Video Production',
+        prices: [
+          { name: 'Commercial Video', sub: 'Script · Shoot · Edit · Graphics · Final file.', val: 'By Quote' }
+        ]
+      }]
+    }
+  }
+};
+modals.shortad = modals.commercial;
+
+let lang = 'ka';
+
+function scrollToSpace(id, e) {
+  if (e) e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function openModal(key) {
+  const data = modals[key][lang];
+  const modalEl = document.querySelector('.modal');
+  if (modalEl) {
+    if (key === 'podcast') modalEl.classList.add('modal-wide');
+    else modalEl.classList.remove('modal-wide');
+  }
+
+  let html = `<h2 class="modal-title">${data.title}</h2>`;
+  
+  if (key === 'podcast') {
+    const isKa = (lang === 'ka');
+    html += `
+      <div class="pricing-tiers-grid">
+        <!-- 1. RECORDING -->
+        <div class="pricing-tier-card">
+          <div>
+            <div class="tier-name">RECORDING</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი მხოლოდ ჩაწერა' : 'One-time recording only'}</div>
+            <div class="tier-price">200 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'არსებული სტუდიის ტიპოლოგია' : 'Existing studio setup'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '3 კამერა Sony FX30 / Sony A7IV' : '3x Sony FX30 / Sony A7IV cameras'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'RODE CASTER PRO II / 2 MIC RODE PodMic' : 'RODE CASTER PRO II / 2 MIC RODE PodMic'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'FHD / 4K ვიდეო და აუდიო ფაილი' : 'FHD / 4K video and audio file'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'მონტაჟი EDIT' : 'Editing (EDIT)'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'Shorts ვიდეო ყველა ეპიზოდიდან' : 'Shorts videos from all episodes'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'თამბნეილი' : 'Thumbnail design'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'გრაფიკა და ვიზუალური გაფორმება' : 'Graphics & visual styling'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ანონსი' : 'Teaser / Announcement'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ბექსთეიჯი' : 'Backstage footage'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('podcast', 'RECORDING', 200, 'hourly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+
+        <!-- 2. RECORDING + EDITING (WITH ADD-ON CHECKBOXES) -->
+        <div class="pricing-tier-card" id="tier-card-editing">
+          <div>
+            <div class="tier-name">RECORDING + EDITING</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი ჩაწერა + მონტაჟი' : 'One-time recording + editing'}</div>
+            <div class="tier-price" id="tier-2-price-display">300 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'არსებული სტუდიის ტიპოლოგია' : 'Existing studio setup'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '3 კამერა Sony FX30 / Sony A7IV' : '3x Sony FX30 / Sony A7IV cameras'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'RODE CASTER PRO II / MIC RODE PodMic' : 'RODE CASTER PRO II / MIC RODE PodMic'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'FHD / 4K ვიდეო და აუდიო ფაილი' : 'FHD / 4K video and audio file'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მონტაჟი EDIT' : 'Editing (EDIT)'}</li>
+
+              <!-- ADD-ON 1: Shorts (+100 GEL) -->
+              <li class="tier-feature excluded" id="item-shorts" onclick="toggleAddon('shorts')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="icon-shorts">✕</span> 
+                  <span id="label-shorts">${isKa ? '3 Short ვიდეო (+100₾)' : '3 Shorts (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="addon-shorts" onchange="calcTier2Price()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 2: Thumbnail (+50 GEL) -->
+              <li class="tier-feature excluded" id="item-thumb" onclick="toggleAddon('thumb')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="icon-thumb">✕</span> 
+                  <span id="label-thumb">${isKa ? 'თამბნეილი (+50₾)' : 'Thumbnail (+50₾)'}</span>
+                </div>
+                <input type="checkbox" id="addon-thumb" onchange="calcTier2Price()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 3: Teaser (+100 GEL) -->
+              <li class="tier-feature excluded" id="item-teaser" onclick="toggleAddon('teaser')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="icon-teaser">✕</span> 
+                  <span id="label-teaser">${isKa ? 'ანონსი (+100₾)' : 'Teaser (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="addon-teaser" onchange="calcTier2Price()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ბექსთეიჯი' : 'Backstage footage'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectTier2WithAddons('podcast', 'RECORDING + EDITING')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+
+        <!-- 3. PARTNERSHIP STANDARD -->
+        <div class="pricing-tier-card featured">
+          <div>
+            <div class="tier-badge">${isKa ? '⚡ პოპულარული' : '⚡ POPULAR'}</div>
+            <div class="tier-name">PARTNERSHIP STANDARD</div>
+            <div class="tier-sub">${isKa ? '4 ეპიზოდი თვეში (2სთ) ჩაწერა და მონტაჟი' : '4 episodes / mo (2h) shoot & edit'}</div>
+            <div class="tier-price">2500 ₾ / თვე</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'არსებული სტუდიის ტიპოლოგია ან ინდივიდუალური სტუდიის მოწყობის შესაძლებლობა' : 'Existing studio setup or custom studio configuration'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '4 ეპიზოდი თვეში (2სთ) ჩაწერა და მონტაჟი' : '4 episodes / mo (2h) shoot and edit'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '3 კამერა Sony FX30 / Sony A7IV' : '3x Sony FX30 / Sony A7IV cameras'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'აუდიო RODE CASTER PRO II / MIC RODE PodMic / Shure mic' : 'Audio RODE CASTER PRO II / PodMic / Shure mic'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '3 Short ვიდეო ყველა ეპიზოდიდან' : '3 Shorts videos from all episodes'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'თამბნეილი' : 'Thumbnail design'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ანონსი' : 'Teaser / Announcement'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ბექსთეიჯი' : 'Backstage footage'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'გრაფიკა და ვიზუალური გაფორმება' : 'Graphics & visual styling'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'სოც. ქსელების მენეჯმენტი / მართვა' : 'Social media management'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('podcast', 'PARTNERSHIP STANDARD', 2500, 'monthly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+
+        <!-- 4. PARTNERSHIP PRO -->
+        <div class="pricing-tier-card full-width-bottom">
+          <div>
+            <div class="tier-badge">${isKa ? '💎 სრული პაკეტი' : '💎 FULL SUITE'}</div>
+            <div class="tier-name">PARTNERSHIP PRO</div>
+            <div class="tier-sub">${isKa ? '4 ეპიზოდი თვეში ჩაწერა + მონტაჟი + სრული მენეჯმენტი' : '4 episodes / mo shoot + edit + full management'}</div>
+            <div class="tier-price">5500 ₾ / თვე</div>
+            <ul class="tier-features" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 16px;">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '4 ეპიზოდი თვეში ჩაწერა და მონტაჟი' : '4 episodes / mo shoot and edit'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '5 კამერა Sony FX30 / Sony A7IV' : '5x Sony FX30 / Sony A7IV cameras'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'RODE CASTER PRO II / 4 MIC RODE PodMic / 2 Shure mic' : 'RODE CASTER PRO II / 4 MIC RODE PodMic / 2 Shure mic'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '5 Shorts ვიდეო ყველა ეპიზოდიდან (20 Shorts თვეში!)' : '5 Shorts per episode (20 Shorts per month!)'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'თამბნეილი' : 'Thumbnail design'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? '5 პერსონა უფასოდ' : '5 people included free'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'გრაფიკა და ვიზუალური გაფორმება' : 'Graphics and visual styling'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ანონსი' : 'Teaser / Announcement'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ბექსთეიჯი' : 'Backstage footage'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სოციალური ქსელების მენეჯმენტი / მართვა' : 'Social media management'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" style="background:#00d2ff; color:#000; font-weight:800; box-shadow: 0 4px 22px rgba(0, 210, 255, 0.55);" onclick="selectPackage('podcast', 'PARTNERSHIP PRO', 5500, 'monthly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+      </div>
+    `;
+  } else {
+    data.sections.forEach(sec => {
+      html += `<div class="modal-section"><h4>${sec.heading}</h4>`;
+      sec.prices.forEach(p => {
+        html += `<div class="price-row"><div class="price-name">${p.name}${p.sub ? `<small>${p.sub}</small>` : ''}</div><div class="price-val">${p.val}</div></div>`;
+      });
+      html += `</div>`;
+    });
+    html += `<a href="#book" class="btn-p modal-book" onclick="closeModal(); handleModalBooking('${key}')" data-ka="დაჯავშნა" data-en="Book Now">${lang==='ka'?'დაჯავშნა':'Book Now'}</a>`;
+  }
+
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('modal-bg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (typeof pushModalHistoryState === 'function') pushModalHistoryState();
+}
+
+let selectedPackageKey = '';
+let selectedPackageTier = '';
+let selectedBasePrice = 0;
+let selectedPackageType = 'hourly';
+let selectedHours = 1;
+let selectedDecorPrice = 0;
+let selectedDecorName = 'STANDART DECOR (უფასო)';
+let selectedAddonsTotal = 0;
+
+function toggleAddon(id) {
+  const cb = document.getElementById('addon-' + id);
+  if (cb) {
+    cb.checked = !cb.checked;
+    calcTier2Price();
+  }
+}
+
+function calcTier2Price() {
+  let hourlyRate = 300;
+  let addonsTotal = 0;
+  let addons = [];
+
+  const cbShorts = document.getElementById('addon-shorts');
+  const itemShorts = document.getElementById('item-shorts');
+  const iconShorts = document.getElementById('icon-shorts');
+  if (cbShorts && cbShorts.checked) {
+    addonsTotal += 100;
+    addons.push('3 Shorts (+100₾)');
+    if (itemShorts) itemShorts.className = 'tier-feature included';
+    if (iconShorts) { iconShorts.textContent = '✓'; iconShorts.style.color = '#2ecc71'; }
+  } else {
+    if (itemShorts) itemShorts.className = 'tier-feature excluded';
+    if (iconShorts) { iconShorts.textContent = '✕'; iconShorts.style.color = ''; }
+  }
+
+  const cbThumb = document.getElementById('addon-thumb');
+  const itemThumb = document.getElementById('item-thumb');
+  const iconThumb = document.getElementById('icon-thumb');
+  if (cbThumb && cbThumb.checked) {
+    addonsTotal += 50;
+    addons.push('თამბნეილი (+50₾)');
+    if (itemThumb) itemThumb.className = 'tier-feature included';
+    if (iconThumb) { iconThumb.textContent = '✓'; iconThumb.style.color = '#2ecc71'; }
+  } else {
+    if (itemThumb) itemThumb.className = 'tier-feature excluded';
+    if (iconThumb) { iconThumb.textContent = '✕'; iconThumb.style.color = ''; }
+  }
+
+  const cbTeaser = document.getElementById('addon-teaser');
+  const itemTeaser = document.getElementById('item-teaser');
+  const iconTeaser = document.getElementById('icon-teaser');
+  if (cbTeaser && cbTeaser.checked) {
+    addonsTotal += 100;
+    addons.push('ანონსი (+100₾)');
+    if (itemTeaser) itemTeaser.className = 'tier-feature included';
+    if (iconTeaser) { iconTeaser.textContent = '✓'; iconTeaser.style.color = '#2ecc71'; }
+  } else {
+    if (itemTeaser) itemTeaser.className = 'tier-feature excluded';
+    if (iconTeaser) { iconTeaser.textContent = '✕'; iconTeaser.style.color = ''; }
+  }
+
+  const displayPrice = hourlyRate + addonsTotal;
+  const display = document.getElementById('tier-2-price-display');
+  if (display) display.textContent = `${displayPrice} ₾ / სთ`;
+
+  return { hourlyRate, addonsTotal, addons };
+}
+
+function selectTier2WithAddons(key, name) {
+  const info = calcTier2Price();
+  let fullName = name + ' (300₾/სთ)';
+  if (info.addons.length > 0) {
+    fullName += ' [' + info.addons.join(', ') + ']';
+  }
+  selectedAddonsTotal = info.addonsTotal;
+  selectPackage(key, fullName, 300, 'hourly');
+}
+
+function selectPackage(key, tierName, basePrice, type = 'hourly') {
+  selectedPackageKey = key;
+  selectedPackageTier = tierName;
+  selectedBasePrice = basePrice || 0;
+  selectedPackageType = type;
+  selectedHours = 1;
+  selectedDecorPrice = 0;
+  selectedDecorName = 'STANDART DECOR (უფასო)';
+
+  if (!tierName.includes('RECORDING + EDITING')) {
+    selectedAddonsTotal = 0;
+  }
+
+  if (type === 'hourly') {
+    openHoursView(key, tierName, basePrice);
+  } else {
+    openDecorationView(key, tierName, basePrice, 1);
+  }
+}
+
+function openHoursView(key, tierName, basePrice) {
+  const isKa = (lang === 'ka');
+  const modalEl = document.querySelector('.modal');
+  if (modalEl) modalEl.classList.add('modal-wide');
+
+  let html = `
+    <button class="decor-back-btn" onclick="openModal('${key}')">
+      ← ${isKa ? 'პაკეტებში დაბრუნება' : 'Back to Packages'}
+    </button>
+    <div class="decor-header">
+      <span class="decor-sub-label">${isKa ? 'ნაბიჯი 2: ხანგრძლივობის არჩევა' : 'STEP 2: SELECT DURATION'}</span>
+      <h2 class="decor-title">SELECT DURATION / HOURS</h2>
+      <p style="font-size:14px; color:var(--orange); margin:0; font-weight:600;">
+        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName} (${basePrice} ₾/სთ${selectedAddonsTotal > 0 ? ` + ${selectedAddonsTotal}₾ დანამატი` : ''})</strong>
+      </p>
+    </div>
+
+    <!-- HOURS SELECTOR GRID -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap:12px; margin:24px 0;">
+      ${[1, 2, 3, 4, 5].map(h => {
+        const totalForH = (basePrice * h) + (selectedAddonsTotal || 0);
+        return `
+        <div onclick="setHoursChoice(${h}, ${basePrice}, '${key}', '${tierName}')" style="background:var(--dark3); border:2px solid ${selectedHours===h ? 'var(--orange)' : 'var(--border)'}; border-radius:12px; padding:16px 10px; text-align:center; cursor:pointer; transition:all 0.25s ease;">
+          <div style="font-size:22px; font-weight:800; color:var(--white);">${h}${h===5 ? '+' : ''} ${isKa ? 'საათი' : 'hr'}</div>
+          <div style="font-size:14px; color:var(--orange); font-weight:700; margin-top:4px;">${totalForH} ₾</div>
+        </div>
+      `}).join('')}
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <button onclick="confirmHoursAndProceed('${key}', '${tierName}', ${basePrice})" class="btn-p" style="padding:14px 32px; font-size:14px; font-weight:800; text-transform:uppercase;">
+        ${isKa ? 'შემდეგი: დეკორაცია →' : 'Next: Decoration →'}
+      </button>
+    </div>
+  `;
+
+  document.getElementById('modal-body').innerHTML = html;
+}
+
+function setHoursChoice(h, basePrice, key, tierName) {
+  selectedHours = h;
+  openHoursView(key, tierName, basePrice);
+}
+
+function confirmHoursAndProceed(key, tierName, basePrice) {
+  openDecorationView(key, tierName, basePrice, selectedHours);
+}
+
+function openDecorationView(key, tierName, basePrice, hours = 1) {
+  const isKa = (lang === 'ka');
+  const modalEl = document.querySelector('.modal');
+  if (modalEl) modalEl.classList.add('modal-wide');
+
+  const packageSubtotal = selectedPackageType === 'hourly' ? ((basePrice * hours) + (selectedAddonsTotal || 0)) : basePrice;
+
+  let html = `
+    <button class="decor-back-btn" onclick="${selectedPackageType === 'hourly' ? `openHoursView('${key}', '${tierName}', ${basePrice})` : `openModal('${key}')`}">
+      ← ${isKa ? 'უკან დაბრუნება' : 'Back'}
+    </button>
+    <div class="decor-header">
+      <span class="decor-sub-label">${isKa ? 'ნაბიჯი 3: სტუდიის დეკორაციის არჩევა' : 'STEP 3: SELECT STUDIO DECORATION'}</span>
+      <h2 class="decor-title">STUDIO DECORATION / USAGE RULES</h2>
+      <p style="font-size:13px; color:var(--orange); margin:0; font-weight:600;">
+        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName}</strong> ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
+      </p>
+    </div>
+
+    <!-- 3 DECORATION CARDS GRID -->
+    <div class="decor-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin:20px 0;">
+      
+      <!-- 1. STANDART DECOR -->
+      <div class="decor-card decor-green" style="background:var(--dark3); border:1px solid #2ecc71; border-radius:12px; padding:18px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h3 class="decor-card-title" style="font-size:18px; font-weight:800; color:var(--white); margin:0;">STANDART DECOR</h3>
+            <span class="decor-dot dot-green" style="width:12px; height:12px; border-radius:50%; background:#2ecc71; display:inline-block;"></span>
+          </div>
+          <div class="decor-price" style="font-size:16px; font-weight:800; color:#2ecc71; margin-bottom:10px;">
+            FREE <small style="font-size:11px; color:var(--muted); font-weight:400;">[Included in package]</small>
+          </div>
+          <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 10px 0; font-size:12px; color:var(--white); line-height:1.5;">
+            <li>• ფარდებით მოწყობილი სტანდარტული სივრცე</li>
+            <li>• ნეიტრალური, უნივერსალური ვიზუალი</li>
+            <li>• გადაღების დღეს შესაძლებელია მხოლოდ მცირე დეტალების შეცვლა</li>
+          </ul>
+          <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+          <div style="font-size:11px; color:#3498db; margin-top:4px; line-height:1.4;">◆ სტანდარტულ დეკორაციაზე შესაძლებელია მხოლოდ მცირე დეტალების ცვლილება</div>
+          <div style="font-size:11px; color:#3498db; margin-top:4px; line-height:1.4;">◆ ძირითადი კონცეფცია რჩება უცვლელი</div>
+        </div>
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'STANDART DECOR', 0)" class="btn-p" style="width:100%; margin-top:16px; padding:12px; font-size:13px; font-weight:800; text-transform:uppercase;">
+          არჩევა
+        </button>
+      </div>
+
+      <!-- 2. SELECT STUDIO -->
+      <div class="decor-card decor-blue" style="background:var(--dark3); border:1px solid #3498db; border-radius:12px; padding:18px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h3 class="decor-card-title" style="font-size:18px; font-weight:800; color:var(--white); margin:0;">SELECT STUDIO</h3>
+            <span class="decor-dot dot-blue" style="width:12px; height:12px; border-radius:50%; background:#3498db; display:inline-block;"></span>
+          </div>
+          <div class="decor-price" style="font-size:16px; font-weight:800; color:#3498db; margin-bottom:10px;">
+            +250 GEL <small style="font-size:11px; color:var(--muted); font-weight:400;">/ recording</small>
+          </div>
+          <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 10px 0; font-size:12px; color:var(--white); line-height:1.5;">
+            <li>• 3 ტიპოლოგიიდან არჩევა</li>
+            <li>• არჩეული ტიპოლოგიის განლაგება</li>
+          </ul>
+          <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+          <div style="font-size:11px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! არჩეული ტიპოლოგიის ცვლილება ხდება გადაღებამდე 24 საათით ადრე</div>
+          <div style="font-size:11px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! გადაღების დღეს ტიპოლოგიის შეცვლა შეუძლებელია</div>
+          <div style="font-size:11px; color:#f39c12; margin-top:4px; line-height:1.4; font-weight:600;">👉 24 საათზე ნაკლებ დროში ცვლილების მოთხოვნის შემთხვევაში ემატება +100 GEL</div>
+        </div>
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'SELECT STUDIO', 250)" class="btn-p" style="width:100%; margin-top:16px; padding:12px; font-size:13px; font-weight:800; text-transform:uppercase;">
+          არჩევა
+        </button>
+      </div>
+
+      <!-- 3. FULL CUSTOM STUDIO -->
+      <div class="decor-card decor-red" style="background:var(--dark3); border:1px solid #e74c3c; border-radius:12px; padding:18px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h3 class="decor-card-title" style="font-size:18px; font-weight:800; color:var(--white); margin:0;">FULL CUSTOM STUDIO</h3>
+            <span class="decor-dot dot-red" style="width:12px; height:12px; border-radius:50%; background:#e74c3c; display:inline-block;"></span>
+          </div>
+          <div class="decor-price" style="font-size:16px; font-weight:800; color:#e74c3c; margin-bottom:10px;">
+            1 500 – 2 000 GEL <small style="font-size:11px; color:var(--muted); font-weight:400;">+250GEL/build</small>
+          </div>
+          <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 10px 0; font-size:12px; color:var(--white); line-height:1.5;">
+            <li>• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
+            <li>• სივრცის სრული გარდაქმნა</li>
+            <li>• ინდივიდუალური დიზაინერის მომსახურება</li>
+          </ul>
+          <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+          <div style="font-size:11px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! აუცილებელია მინიმუმ 7-10 დღით ადრე შეკვეთა</div>
+          <div style="font-size:11px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! პროექტის დამტკიცების შემდეგ ცვლილებები აღარ მიიღება</div>
+        </div>
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'FULL CUSTOM STUDIO', 1500)" class="btn-p" style="width:100%; margin-top:16px; padding:12px; font-size:13px; font-weight:800; text-transform:uppercase;">
+          არჩევა
+        </button>
+      </div>
+
+    </div>
+  `;
+
+  document.getElementById('modal-body').innerHTML = html;
+}
+
+function selectDecorAndProceed(key, tierName, basePrice, hours, decorName, decorPrice) {
+  selectedDecorName = decorName;
+  selectedDecorPrice = decorPrice || 0;
+  openContactFormView(key, tierName, basePrice, hours, decorName, decorPrice);
+}
+
+function openContactFormView(key, tierName, basePrice, hours, decorName, decorPrice) {
+  const isKa = (lang === 'ka');
+  const modalEl = document.querySelector('.modal');
+  if (modalEl) modalEl.classList.add('modal-wide');
+
+  const packageSubtotal = selectedPackageType === 'hourly' ? ((basePrice * hours) + (selectedAddonsTotal || 0)) : basePrice;
+  const finalTotalPrice = packageSubtotal + decorPrice;
+
+  let html = `
+    <button class="decor-back-btn" onclick="openDecorationView('${key}', '${tierName}', ${basePrice}, ${hours})">
+      ← ${isKa ? 'დეკორაციაში დაბრუნება' : 'Back to Decoration'}
+    </button>
+    <div class="decor-header">
+      <span class="decor-sub-label">${isKa ? 'ნაბიჯი 4: საკონტაქტო ინფორმაცია და ჯავშანი' : 'STEP 4: CONTACT & FINAL TOTAL'}</span>
+      <h2 class="decor-title">RESERVATION SUMMARY</h2>
+    </div>
+
+    <!-- FINAL TOTAL PRICE SUMMARY BOX -->
+    <div id="decor-summary-price" style="background:var(--dark3); border:2px solid var(--orange); border-radius:12px; padding:16px; margin:16px 0; text-align:center;">
+      <div style="font-size:13px; color:var(--white); margin-bottom:4px;">
+        <strong>არჩეული პაკეტი:</strong> ${tierName} ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
+      </div>
+      <div style="font-size:13px; color:var(--white); margin-bottom:8px;">
+        <strong>დეკორაცია:</strong> ${decorName} (${decorPrice > 0 ? '+' + decorPrice + ' ₾' : 'უფასო'})
+      </div>
+      <div style="font-size:24px; font-weight:800; color:var(--orange); border-top:1px solid rgba(255,255,255,0.1); padding-top:8px; margin-top:4px;">
+        საბოლოო ჯამური ფასი: ${finalTotalPrice} ₾
+      </div>
+    </div>
+
+    <!-- HIDDEN IFRAME FOR DIRECT POST SUBMISSION -->
+    <iframe name="hidden_mail_iframe" id="hidden_mail_iframe" style="display:none;"></iframe>
+
+    <!-- CLIENT CONTACT FORM -->
+    <form id="decor-app-form" action="https://formsubmit.co/studiothelane@gmail.com" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:left;">
+      <input type="hidden" name="_subject" id="h-subject" value="[ახალი ჯავშანი] Studio The Lane">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="არჩეული_პაკეტი" value="${selectedPackageTier}">
+      <input type="hidden" name="ხანგრძლივობა" value="${selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე'}">
+      <input type="hidden" name="დეკორაცია" value="${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})">
+      <input type="hidden" name="საბოლოო_ფასი" value="${finalTotalPrice} ₾">
+
+      <h3 style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--white); margin-bottom:12px;">კლიენტის მონაცემები</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>სახელი *</label>
+          <input type="text" name="სახელი" id="m-fname" placeholder="მაგ: გიორგი" style="transition:border-color 0.25s ease;">
+        </div>
+        <div class="form-group">
+          <label>გვარი *</label>
+          <input type="text" name="გვარი" id="m-lname" placeholder="მაგ: ბერიძე" style="transition:border-color 0.25s ease;">
+        </div>
+        <div class="form-group">
+          <label>ტელეფონის ნომერი *</label>
+          <input type="tel" name="ტელეფონი" id="m-phone" value="+995 " placeholder="+995 5xx xxx xxx" style="transition:border-color 0.25s ease;">
+        </div>
+        <div class="form-group">
+          <label>ელ-ფოსტა *</label>
+          <input type="email" name="ელფოსტა" id="m-email" placeholder="name@example.com" style="transition:border-color 0.25s ease;">
+        </div>
+      </div>
+
+      <div id="m-error-msg" style="display:none; color:#e74c3c; font-size:12px; font-weight:700; margin-top:14px; text-align:center; background:rgba(231,76,60,0.12); border:1px solid #e74c3c; padding:10px; border-radius:8px; line-height:1.4;"></div>
+
+      <button type="submit" class="btn-p config-submit-btn" style="margin-top:16px; width:100%; padding:14px; font-size:14px; font-weight:800; text-transform:uppercase;">
+        განაცხადის გაგზავნა
+      </button>
+    </form>
+
+    <div id="m-success-box" class="config-success-box" style="display:none; text-align:center; padding:24px 12px;">
+      <div class="success-icon" style="margin:0 auto 12px; width:56px; height:56px; border-radius:50%; background:#2ecc71; color:#fff; font-size:24px; line-height:56px;">✓</div>
+      <h2 style="font-family:'Bebas Neue','BPG Nino Mtavruli',sans-serif; font-size:28px; color:var(--white); margin-bottom:6px; letter-spacing:1px;">
+        ჯავშანი მიღებულია!
+      </h2>
+      <p style="font-size:14px; color:var(--orange); font-weight:600; margin:0 0 20px 0;">
+        დაგიკავშირდებით უახლოეს 5 წუთში.
+      </p>
+
+      <!-- CLEAN WHATSAPP FAST SEND BUTTON WITHOUT RECTANGLE WRAPPER -->
+      <a id="wa-fast-link" href="#" target="_blank" style="display:inline-flex; flex-direction:column; align-items:center; text-decoration:none; gap:8px; cursor:pointer; transition:transform 0.25s ease;">
+        <div style="width:60px; height:60px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 0 14px rgba(232, 98, 26, 0.45); transition:transform 0.3s ease, box-shadow 0.3s ease;">
+          <svg style="width:34px; height:34px; fill:#ffffff;" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.15 4.197 4.223-1.108z"/>
+          </svg>
+        </div>
+        <span style="font-family:'Bebas Neue','BPG Nino Mtavruli',sans-serif; font-size:18px; color:var(--white); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">
+          სწრაფი გაგზავნა
+        </span>
+      </a>
+    </div>
+  `;
+
+  document.getElementById('modal-body').innerHTML = html;
+}
+
+function handleModalFormSubmit(e, finalTotalPrice) {
+  const elFname = document.getElementById('m-fname');
+  const elLname = document.getElementById('m-lname');
+  const elPhone = document.getElementById('m-phone');
+  const elEmail = document.getElementById('m-email');
+  const errorMsgBox = document.getElementById('m-error-msg');
+
+  // Reset border highlights and error message
+  [elFname, elLname, elPhone, elEmail].forEach(el => {
+    if (el) el.style.borderColor = 'var(--border)';
+  });
+  if (errorMsgBox) { errorMsgBox.style.display = 'none'; errorMsgBox.textContent = ''; }
+
+  const fname = elFname ? elFname.value.trim() : '';
+  const lname = elLname ? elLname.value.trim() : '';
+  const phone = elPhone ? elPhone.value.trim() : '';
+  const email = elEmail ? elEmail.value.trim() : '';
+
+  // 1. Validation check for Name
+  if (!fname) {
+    if (elFname) elFname.style.borderColor = '#e74c3c';
+    showFormError('⚠️ გთხოვთ შეავსოთ სახელი!');
+    if (e) e.preventDefault();
+    return false;
+  }
+
+  // 2. Validation check for Last Name
+  if (!lname) {
+    if (elLname) elLname.style.borderColor = '#e74c3c';
+    showFormError('⚠️ გთხოვთ შეავსოთ გვარი!');
+    if (e) e.preventDefault();
+    return false;
+  }
+
+  // 3. Validation check for Phone Number
+  const rawDigits = phone.replace(/\D/g, '');
+  if (!phone || phone === '+995' || phone === '+995 ' || rawDigits.length < 9) {
+    if (elPhone) elPhone.style.borderColor = '#e74c3c';
+    showFormError('⚠️ გთხოვთ შეავსოთ ტელეფონის ნომერი!');
+    if (e) e.preventDefault();
+    return false;
+  }
+
+  // 4. Validation check for Email
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    if (elEmail) elEmail.style.borderColor = '#e74c3c';
+    showFormError('⚠️ გთხოვთ მიუთითოთ ვალიდური ელ-ფოსტა!');
+    if (e) e.preventDefault();
+    return false;
+  }
+
+  // Update hidden subject field
+  const hSub = document.getElementById('h-subject');
+  if (hSub) hSub.value = `[ახალი ჯავშანი] Studio The Lane: ${fname} ${lname}`;
+
+  // Formatted message text for WhatsApp & Email
+  const msgText = `📥 ახალი განაცხადი საიტიდან!\n\n👤 კლიენტი: ${fname} ${lname}\n📞 ტელეფონი: ${phone}\n✉️ ელ-ფოსტა: ${email}\n🎬 არჩეული პაკეტი: ${selectedPackageTier}\n⏱ ხანგრძლივობა: ${selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე'}\n🎨 დეკორაცია: ${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})\n💰 საბოლოო ჯამური ფასი: ${finalTotalPrice} ₾`;
+
+  // Set WhatsApp fast send link to target phone 577114355 (+995577114355)
+  const waUrl = `https://wa.me/995577114355?text=${encodeURIComponent(msgText)}`;
+  const waLinkEl = document.getElementById('wa-fast-link');
+  if (waLinkEl) waLinkEl.href = waUrl;
+
+  // Direct EmailJS send execution using user credentials
+  const templateParams = {
+    fname: fname,
+    lname: lname,
+    phone: phone,
+    email: email,
+    package: selectedPackageTier,
+    duration: selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
+    decor: `${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})`,
+    total_price: `${finalTotalPrice} ₾`
+  };
+
+  if (typeof emailjs !== 'undefined') {
+    emailjs.send("service_abc123", "template_kqsobyd", templateParams)
+      .then(function(response) {
+        console.log('EmailJS SUCCESS!', response.status, response.text);
+      }, function(error) {
+        console.log('EmailJS FAILED...', error);
+      });
+  }
+
+  // Hide form and summary box, display success box inline in the same modal view
+  setTimeout(() => {
+    const formEl = document.getElementById('decor-app-form');
+    const summaryEl = document.getElementById('decor-summary-price');
+    if (formEl) formEl.style.display = 'none';
+    if (summaryEl) summaryEl.style.display = 'none';
+    const successBox = document.getElementById('m-success-box');
+    if (successBox) successBox.style.display = 'block';
+  }, 100);
+
+  return true; // Form submits natively into hidden_mail_iframe
+}
+
+function showFormError(msg) {
+  const errorMsgBox = document.getElementById('m-error-msg');
+  if (errorMsgBox) {
+    errorMsgBox.textContent = msg;
+    errorMsgBox.style.display = 'block';
+  }
+}
+
+// SMARTPHONE BACK-BUTTON / SWIPE-BACK POPUP CLOSE HANDLER
+let pushedModalState = false;
+
+function pushModalHistoryState() {
+  if (!pushedModalState) {
+    pushedModalState = true;
+    try {
+      history.pushState({ modalOpen: true }, '');
+    } catch(e) {}
+  }
+}
+
+window.addEventListener('popstate', function(e) {
+  const modalBg = document.getElementById('modal-bg');
+  const portBackdrop = document.getElementById('port-backdrop');
+  const portZoomBox = document.getElementById('port-zoom-box');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (modalBg && modalBg.classList.contains('open')) {
+    modalBg.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (portBackdrop && portBackdrop.classList.contains('open')) {
+    portBackdrop.classList.remove('open');
+    if (portZoomBox) portZoomBox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (navLinks && navLinks.classList.contains('active')) {
+    navLinks.classList.remove('active');
+  }
+
+  pushedModalState = false;
+});
+
+function openDirectContactModal() {
+  const isKa = (lang === 'ka');
+  const modalEl = document.querySelector('.modal');
+  if (modalEl) modalEl.classList.remove('modal-wide');
+
+  let html = `
+    <h2 class="modal-title">${isKa ? 'დაჯავშნა და კონტაქტი' : 'BOOKING & CONTACT'}</h2>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:20px; line-height:1.6;">
+      ${isKa ? 'დაგვიკავშირდით პირდაპირ ან დაჯავშნეთ სასურველი სივრცე:' : 'Contact us directly or book your desired space:'}
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <a href="https://wa.me/995577114355" target="_blank" class="direct-btn direct-wa" style="display:flex; align-items:center; gap:12px; padding:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--white); transition:all 0.25s ease;">
+        <div class="direct-icon" style="background:#25D366; color:white; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;">💬</div>
+        <div class="direct-text-wrap" style="flex:1;">
+          <div class="direct-title" style="font-size:16px; font-weight:700;">WhatsApp</div>
+          <div class="direct-sub" style="font-size:11px; color:var(--muted);">+995 577 11 43 55</div>
+        </div>
+        <span class="direct-arrow" style="font-size:16px; color:var(--orange);">→</span>
+      </a>
+
+      <a href="tel:+995577114355" class="direct-btn direct-call" style="display:flex; align-items:center; gap:12px; padding:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--white); transition:all 0.25s ease;">
+        <div class="direct-icon" style="background:var(--orange); color:white; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;">📞</div>
+        <div class="direct-text-wrap" style="flex:1;">
+          <div class="direct-title" style="font-size:16px; font-weight:700;">${isKa ? 'სატელეფონო ზარი' : 'Phone Call'}</div>
+          <div class="direct-sub" style="font-size:11px; color:var(--muted);">+995 577 11 43 55</div>
+        </div>
+        <span class="direct-arrow" style="font-size:16px; color:var(--orange);">→</span>
+      </a>
+
+      <a href="#book" onclick="closeModal()" class="direct-btn direct-cal" style="display:flex; align-items:center; gap:12px; padding:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--white); transition:all 0.25s ease;">
+        <div class="direct-icon" style="background:#3498db; color:white; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;">📅</div>
+        <div class="direct-text-wrap" style="flex:1;">
+          <div class="direct-title" style="font-size:16px; font-weight:700;">${isKa ? 'კალენდრით დაჯავშნა' : 'Calendar Booking'}</div>
+          <div class="direct-sub" style="font-size:11px; color:var(--muted);">${isKa ? 'ონლაინ ჯავშნის ფორმა' : 'Online booking form'}</div>
+        </div>
+        <span class="direct-arrow" style="font-size:16px; color:var(--orange);">→</span>
+      </a>
+    </div>
+  `;
+
+  document.getElementById('modal-body').innerHTML = html;
+  document.getElementById('modal-bg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushModalHistoryState();
+}
+
+function closeModal() {
+  const modalBg = document.getElementById('modal-bg');
+  if (modalBg) modalBg.classList.remove('open');
+  document.body.style.overflow = '';
+  if (pushedModalState) {
+    pushedModalState = false;
+    try { history.back(); } catch(e) {}
+  }
+}
+
+function closeModalBg(e) {
+  if (e.target === document.getElementById('modal-bg')) closeModal();
+}
+
+// FOREGROUND ZOOM PORTFOLIO LOGIC
+const foregroundProjects = [
+  { img: 'Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.jpeg', title: 'Beauty Talks', cat: 'PODCAST', by: 'by Natalli Group' },
+  { img: 'Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.jpeg', title: 'ჩცდ Rewatch', cat: 'PODCAST', by: 'by Cavea' },
+  { img: 'Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.jpeg', title: 'Biblusi Talks', cat: 'PODCAST', by: 'by ბიბლუსი' },
+  { img: 'Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.jpeg', title: 'ლაი ლაი World Cup Live', cat: 'LIVE SHOW', by: '' },
+  { img: 'Podcast_Studio_photo/AA POKER PODCAST_2K_.jpg', title: 'AA POKER PODCAST', cat: 'PERSONAL', by: 'პოდკასტი პოკერის შესახებ' },
+  { img: 'Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.jpg', title: 'EEU PODCAST', cat: 'PODCAST', by: 'აღმოსავლეთ ევროპის უნივერსიტეტის პოდკასტი' }
+];
+let activeFgIndex = 0;
+let activeZoomMode = 'portfolio'; // 'portfolio' or 'spaces'
+
+function openForegroundZoom(index) {
+  activeZoomMode = 'portfolio';
+  activeFgIndex = index;
+  renderForegroundZoom();
+  document.getElementById('port-backdrop').classList.add('open');
+  document.getElementById('port-zoom-box').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushModalHistoryState();
+}
+
+function renderForegroundZoom() {
+  const item = foregroundProjects[activeFgIndex];
+  const imgEl = document.getElementById('port-zoom-img');
+  const pBar = document.getElementById('modal-progress-bar');
+  if (pBar) pBar.style.display = 'none';
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = item.img;
+      document.getElementById('port-zoom-cat').textContent = item.cat;
+      document.getElementById('port-zoom-title').textContent = item.title;
+      document.getElementById('port-zoom-by').textContent = item.by || '';
+      imgEl.style.opacity = '1';
+    }, 100);
+  }
+}
+
+function nextForegroundZoom(e) {
+  if (e && e.target && e.target.classList.contains('port-zoom-close')) return;
+  if (activeZoomMode === 'lane') {
+    activeLaneIndex = (activeLaneIndex + 1) % studioSpacesPhotos.length;
+    renderLaneZoomPhoto();
+  } else if (activeZoomMode === 'spaces') {
+    activeBookIndex = (activeBookIndex + 1) % studioSpacesPhotos.length;
+    renderBookZoomPhoto();
+  } else {
+    activeFgIndex = (activeFgIndex + 1) % foregroundProjects.length;
+    renderForegroundZoom();
+  }
+}
+
+function prevForegroundZoom(e) {
+  if (e && e.target && e.target.classList.contains('port-zoom-close')) return;
+  if (activeZoomMode === 'lane') {
+    activeLaneIndex = (activeLaneIndex - 1 + studioSpacesPhotos.length) % studioSpacesPhotos.length;
+    renderLaneZoomPhoto();
+  } else if (activeZoomMode === 'spaces') {
+    activeBookIndex = (activeBookIndex - 1 + studioSpacesPhotos.length) % studioSpacesPhotos.length;
+    renderBookZoomPhoto();
+  } else {
+    activeFgIndex = (activeFgIndex - 1 + foregroundProjects.length) % foregroundProjects.length;
+    renderForegroundZoom();
+  }
+}
+
+(function() {
+  const zoomBox = document.getElementById('port-zoom-box');
+  if (!zoomBox) return;
+  let startX = 0;
+  let startY = 0;
+
+  zoomBox.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  zoomBox.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      const diffX = startX - e.changedTouches[0].clientX;
+      const diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextForegroundZoom();
+        } else {
+          prevForegroundZoom();
+        }
+      }
+    }
+  }, { passive: true });
+})();
+
+function closeForegroundZoom() {
+  document.getElementById('port-backdrop').classList.remove('open');
+  document.getElementById('port-zoom-box').classList.remove('open');
+  document.body.style.overflow = '';
+  if (pushedModalState) {
+    pushedModalState = false;
+    try { history.back(); } catch(e) {}
+  }
+}
+
+document.addEventListener('keydown', e => { 
+  if(e.key==='Escape') {
+    closeModal();
+    closeForegroundZoom();
+  }
+});
+
+function toggleMobileMenu(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
+  const navLinks = document.querySelector('.nav-links');
+  const backdrop = document.getElementById('menu-backdrop');
+  if (navLinks) {
+    const isOpen = navLinks.classList.toggle('active');
+    if (backdrop) backdrop.classList.toggle('active', isOpen);
+    if (isOpen) {
+      pushModalHistoryState();
+    }
+  }
+}
+
+// CLOSE MOBILE MENU ON OUTSIDE CLICK OR TOUCH
+document.addEventListener('click', function(e) {
+  const navLinks = document.querySelector('.nav-links');
+  const backdrop = document.getElementById('menu-backdrop');
+  const toggleBtn = document.querySelector('.mobile-nav-toggle');
+  if (navLinks && navLinks.classList.contains('active')) {
+    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
+      if (backdrop) backdrop.classList.remove('active');
+    }
+  }
+});
+
+document.addEventListener('touchstart', function(e) {
+  const navLinks = document.querySelector('.nav-links');
+  const backdrop = document.getElementById('menu-backdrop');
+  const toggleBtn = document.querySelector('.mobile-nav-toggle');
+  if (navLinks && navLinks.classList.contains('active')) {
+    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
+      if (backdrop) backdrop.classList.remove('active');
+    }
+  }
+}, { passive: true });
+
+// LANG
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('#btn-ka, .btn-ka').forEach(el => el.classList.toggle('active', l==='ka'));
+  document.querySelectorAll('#btn-en, .btn-en').forEach(el => el.classList.toggle('active', l==='en'));
+  document.querySelectorAll('[data-ka]').forEach(el => {
+    const v = el.getAttribute('data-'+l);
+    if (!v) return;
+    if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder=v;
+    else if (el.tagName==='OPTION') el.textContent=v;
+    else el.innerHTML=v;
+  });
+}
+
+function openDirectContactModal() {
+  const modal = document.getElementById('direct-contact-modal');
+  if (modal) modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDirectContactModal() {
+  const modal = document.getElementById('direct-contact-modal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeDirectContactModalBg(e) {
+  if (e.target === document.getElementById('direct-contact-modal')) {
+    closeDirectContactModal();
+  }
+}
+
+// ----------------------------------------------------
+// NATIVE SMOOTH SCROLL FOR MENU ANCHORS
+// ----------------------------------------------------
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    
+    if (typeof closeModal === 'function') closeModal();
+    
+    // თუ კლიენტი აჭერს ლოგოს, საიტი ადის აბსოლუტურ ნულზე
+    if (href === '#home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// FORM
+function submitForm() {
+  const fname=document.getElementById('fname').value;
+  const email=document.getElementById('email').value;
+  const phone=document.getElementById('phone').value;
+  const service=document.getElementById('service').value;
+  const dt=document.getElementById('datetime').value;
+  if (!fname||!email||!phone||!service) { alert(lang==='ka'?'შეავსეთ სავალდებულო ველები.':'Please fill required fields.'); return; }
+  if (dt) {
+    const d=new Date(dt), de=new Date(d.getTime()+2*60*60*1000);
+    const fmt=x=>x.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+    const title=encodeURIComponent('Studio The Lane — '+service);
+    const det=encodeURIComponent(fname+' '+document.getElementById('lname').value+'\n'+email+'\n'+phone);
+    document.getElementById('gcal-link').href='https://calendar.google.com/calendar/r/eventedit?text='+title+'&dates='+fmt(d)+'/'+fmt(de)+'&details='+det;
+  }
+  document.getElementById('success').style.display='block';
+  setTimeout(()=>document.getElementById('success').style.display='none',5000);
+}
+
+// REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}})},{threshold:0.1});
+document.querySelectorAll('.seg-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s,transform .5s';obs.observe(el);});
+document.querySelectorAll('.spaces-photos').forEach(function(wrap) {
+  if (wrap.id === 'podcast-photos') return;
+  var photos = Array.from(wrap.querySelectorAll('.spaces-photo')).filter(function(p) {
+    return p.querySelector('img') !== null;
+  });
+  if (photos.length <= 1) return;
+  var cur = 0;
+  var fill = wrap.querySelector('.spaces-progress-fill');
+  photos.forEach(function(p, i) {
+    if (i === 0) p.classList.add('active');
+    else p.classList.remove('active');
+  });
+  if (fill) fill.style.width = ((1 / photos.length) * 100) + '%';
+  wrap.addEventListener('click', function() {
+    photos[cur].classList.remove('active');
+    cur = (cur + 1) % photos.length;
+    photos[cur].classList.add('active');
+    if (fill) {
+      fill.style.width = (((cur + 1) / photos.length) * 100) + '%';
+    }
+  });
+});
+
+// CHAT STATE & LOGIC
+let chatState = 'idle'; 
+let bookingData = { name: '', service: '', time: '' };
+
+const GEMINI_API_KEY = "";
+
+// Studio Knowledge Base
+const studioInfo = `
+მისამართი: ვიტალი დარასელიას 2 (გაგარინის მოედნიდან სოფრომ მგალობლიშვილის ქუჩაზე, პირველივე ჩასახვევი მარჯვნივ).
+სტუდია: Studio The Lane - მოდულარული კრეატიული სივრცე.
+მიმართულებები: პოდკასტები, ფოტო/ვიდეო გადაღება, ხმის ჩაწერა, სოლო სტრიმინგი.
+
+ფასები და მომსახურებები:
+1. პოდკასტი (Podcast Studio):
+- Recording Only: 180 ₾/სთ (1-2 ადამიანი, დამატებითი +50 ₾) - სტუდია, 3 კამერა, აუდიო, Raw ფაილები.
+- Only Edit: 250 ₾/ეპიზოდი - 3 კამერის მონტაჟი და ხმის დამუშავება.
+- Episode + Graphics: 350 ₾/ეპიზოდი - სრული ეპიზოდი, გრაფიკა, Intro/Outro, ტიტრები.
+
+2. პარტნიორობა (Monthly Partnership):
+- Standard: 2500 ₾/თვე - 4 ეპიზოდი, სრული მონტაჟი, გრაფიკა, თითოზე 3 Shorts.
+- Pro: 5500 ₾/თვე - 4 ეპიზოდი, სრული მონტაჟი, 5 Shorts, არხების მართვა.
+
+3. Live Podcast (პირდაპირი ეთერი):
+- 1 კამერა: 200 ₾/სთ. 2 კამერა: 500 ₾/სთ. 3 კამერა: 1500 ₾/სთ.
+
+4. სტუდიის დეკორი:
+- Standard Decor: უფასო. Select Studio: +150 ₾/ჩაწერა. Full Custom Studio: 1500-2000 ₾ (ერთჯერადი).
+
+5. სოლო სტუდია (One-Person):
+- Recording Only: 120 ₾/სთ. Video + Edit + Graphics: 350 ₾/ეპიზოდი.
+
+6. სარეკლამო ვიდეო / ფოტო: ფასი ინდივიდუალურია (დამოკიდებულია სირთულეზე).
+
+7. Voice Over Booth (ხმის ჩაწერა):
+- 30 წთ: 50 ₾. 1 სთ: 80 ₾. 2 სთ: 150 ₾. დამატებითი სთ: 100 ₾.
+
+8. გარე სიუჟეტური ვიდეო (თბილისი): 800 ₾ - 1 კამერა, 2 ლოკაცია, ნახევარი დღე, მონტაჟი.
+`;
+
+function toggleChat() {
+  document.getElementById('chat-window').classList.toggle('active');
+}
+
+function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+  addChatMsg(text, 'user');
+  input.value = '';
+  
+  if (chatState !== 'idle') {
+    handleBookingFlow(text);
+  } else {
+    setTimeout(() => botResponse(text), 600);
+  }
+}
+
+function checkEnter(e) { if(e.key==='Enter') sendMsg(); }
+
+function addChatMsg(text, sender, isLink = false) {
+  const box = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + sender;
+  if(isLink) div.innerHTML = text;
+  else div.innerText = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function handleBookingFlow(text) {
+  if (chatState === 'booking_name') {
+    bookingData.name = text;
+    chatState = 'booking_service';
+    setTimeout(() => addChatMsg(lang === 'ka' ? "რომელი მომსახურება გსურთ? (პოდკასტი, სოლო, ხმის ჩაწერა...)" : "Which service would you like? (Podcast, Solo, Voiceover...)", 'bot'), 600);
+  } else if (chatState === 'booking_service') {
+    bookingData.service = text;
+    chatState = 'booking_time';
+    setTimeout(() => addChatMsg(lang === 'ka' ? "როდის გსურთ მობრძანება? (მაგ: ხვალ 15:00)" : "When would you like to come? (e.g., Tomorrow 15:00)", 'bot'), 600);
+  } else if (chatState === 'booking_time') {
+    bookingData.time = text;
+    chatState = 'idle';
+    generateCalendarLink();
+  }
+}
+
+function generateCalendarLink() {
+  const title = encodeURIComponent('Studio Booking: ' + bookingData.service);
+  const details = encodeURIComponent('Customer: ' + bookingData.name + '\nTime: ' + bookingData.time);
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
+  
+  const msg = lang === 'ka' 
+    ? `შესანიშნავია, ${bookingData.name}! ჯავშნის ჩასანიშნად დააჭირეთ ქვედა ღილაკს:<br><br><a href="${url}" target="_blank" class="btn-p" style="display:block;text-align:center;text-decoration:none;font-size:11px;">📅 კალენდარში დამატება</a>`
+    : `Great, ${bookingData.name}! Click the button below to add to your calendar:<br><br><a href="${url}" target="_blank" class="btn-p" style="display:block;text-align:center;text-decoration:none;font-size:11px;">📅 Add to Calendar</a>`;
+  
+  setTimeout(() => addChatMsg(msg, 'bot', true), 600);
+}
+
+async function callGemini(prompt) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    
+    const data = {
+        contents: [{ parts: [{ text: `შენ ხარ Studio The Lane-ის ასისტენტი. გამოიყენე ეს ინფორმაცია: ${studioInfo}. უპასუხე ქართულად მოკლედ. კითხვა: ${prompt}` }] }]
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const json = await response.json();
+        
+        if (json.error) {
+            return `შეცდომა: ${json.error.message}`;
+        }
+        return json.candidates[0].content.parts[0].text;
+    } catch (e) {
+        return "კავშირის შეცდომა: " + e.message;
+    }
+}
+
+async function botResponse(text) {
+  const lowerText = text.toLowerCase();
+  
+  if (lowerText.includes('დაჯავშნა') || lowerText.includes('book') || lowerText.includes('ჯავშანი')) {
+    chatState = 'booking_name';
+    addChatMsg(lang === 'ka' ? "სიამოვნებით! ჯერ მითხარით თქვენი სახელი." : "Certainly! First, tell me your name.", 'bot');
+    return;
+  }
+
+  if (GEMINI_API_KEY) {
+      const typingMsg = document.createElement('div');
+      typingMsg.className = 'message bot';
+      typingMsg.innerText = "...";
+      document.getElementById('chat-messages').appendChild(typingMsg);
+      
+      const aiResponse = await callGemini(text);
+      typingMsg.innerText = aiResponse;
+      document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+      return;
+  }
+
+  let r = "";
+  if(lowerText.includes('ფასი') || lowerText.includes('price')) {
+    r = lang === 'ka' ? "ჩვენი ფასები დეტალურად შეგიძლიათ ნახოთ 'მომსახურების' სექციაში. პოდკასტის ჩაწერა იწყება 180₾-დან." : "Detailed prices are in the 'Services' section. Podcast starts at ₾180.";
+  } else if(lowerText.includes('მისამართი') || lowerText.includes('ადგილი') || lowerText.includes('location')) {
+    r = "ჩვენი მისამართია: ვიტალი დარასელიას 2 (გაგარინის მოედანთან).";
+  } else if(lowerText.includes('whatsapp') || lowerText.includes('ვატსაპ')) {
+    r = "გადაგიყვანთ WhatsApp-ზე...";
+    setTimeout(() => window.open('https://wa.me/995555123456', '_blank'), 1000);
+  } else {
+    r = "გმადლობთ! დაჯავშნისთვის მოგვწერეთ 'დაჯავშნა' ან გამოიყენეთ WhatsApp დამატებითი კითხვებისთვის.";
+  }
+  addChatMsg(r, 'bot');
+}
+
+function chatAction(act) {
+  if(act === 'prices') botResponse('ფასი');
+  else if(act === 'availability') botResponse('ადგილი');
+  else if(act === 'whatsapp') botResponse('whatsapp');
+}
+
+function openVideo(id) {
+  alert(lang === 'ka' ? "ვიდეოს გახსნა: " + id : "Opening video: " + id);
+}
+
+const podcastTexts = [
+  '<strong style="color:var(--orange);">კინემატოგრაფიული ხარისხი:</strong> სტუდია აღჭურვილია SONY FX 30 კამერებით , იდეალური გამოსახულებისთვის.',
+  '<strong style="color:var(--orange);">კინემატოგრაფიული ხარისხი:</strong> სტუდია აღჭურვილია SONY FX 30 კამერებით , იდეალური გამოსახულებისთვის.',
+  '<strong style="color:var(--orange);">ლაივ მონტაჟი და მართვა:</strong> ATEM Mini Pro ISO სვიჩერით მარტივად აკონტროლებთ კამერებს და იწერთ ტრეკებს ცალ-ცალკე.',
+  '<strong style="color:var(--orange);">პროფესიონალური ჟღერადობა:</strong> RØDECaster Pro II და RØDE PodMic-ები უზრუნველყოფს ხმის უზადო სტუდიურ ხარისხს.',
+  '<strong style="color:var(--orange);">სტუდიური განათება:</strong> შექმენი იდეალური ატმოსფერო პრემიუმ კლასის პროფესიონალური განათების სისტემით.',
+  '<strong style="color:var(--orange);">სუფლიორის მხარდაჭერა:</strong> წაიკითხეთ ტექსტი თავისუფლად პირდაპირ კამერაში ყურებისას, დამატებითი დუბლების გარეშე.',
+  '<strong style="color:var(--orange);">სრული მოდულარულობა:</strong> სივრცე, სადაც ნებისმიერი დეტალი მორგებულია პრემიუმ კონტენტის მარტივად შექმნაზე.'
+];
+let currentPodcastIndex = 0;
+
+function nextPodcastPhoto() {
+  const container = document.getElementById('podcast-photos');
+  if (!container) return;
+  const photos = container.querySelectorAll('.spaces-photo');
+  const desc = document.getElementById('podcast-desc');
+  const fill = document.getElementById('spaces-progress-fill');
+
+  if (photos.length === 0) return;
+
+  photos[currentPodcastIndex].classList.remove('active');
+  currentPodcastIndex = (currentPodcastIndex + 1) % photos.length;
+  photos[currentPodcastIndex].classList.add('active');
+
+  if (fill) {
+    fill.style.width = (((currentPodcastIndex + 1) / photos.length) * 100) + '%';
+  }
+  
+  if (desc) {
+    desc.style.opacity = '0';
+    setTimeout(() => {
+      desc.innerHTML = podcastTexts[currentPodcastIndex];
+      desc.style.opacity = '1';
+    }, 200);
+  }
+}
+
+function prevPodcastPhoto() {
+  const container = document.getElementById('podcast-photos');
+  if (!container) return;
+  const photos = container.querySelectorAll('.spaces-photo');
+  const desc = document.getElementById('podcast-desc');
+  const fill = document.getElementById('spaces-progress-fill');
+
+  if (photos.length === 0) return;
+
+  photos[currentPodcastIndex].classList.remove('active');
+  currentPodcastIndex = (currentPodcastIndex - 1 + photos.length) % photos.length;
+  photos[currentPodcastIndex].classList.add('active');
+
+  if (fill) {
+    fill.style.width = (((currentPodcastIndex + 1) / photos.length) * 100) + '%';
+  }
+  
+  if (desc) {
+    desc.style.opacity = '0';
+    setTimeout(() => {
+      desc.innerHTML = podcastTexts[currentPodcastIndex];
+      desc.style.opacity = '1';
+    }, 200);
+  }
+}
+
+// STUDIO GALLERY BOOK SHOWCASE LOGIC
+const studioSpacesPhotos = [
+  "Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg"
+];
+let activeBookIndex = 0;
+
+function selectBookPhoto(index) {
+  activeBookIndex = index;
+  updateBookGalleryUI();
+}
+
+function nextBookPhoto() {
+  activeBookIndex = (activeBookIndex + 1) % studioSpacesPhotos.length;
+  updateBookGalleryUI();
+}
+
+function prevBookPhoto() {
+  activeBookIndex = (activeBookIndex - 1 + studioSpacesPhotos.length) % studioSpacesPhotos.length;
+  updateBookGalleryUI();
+}
+
+function openBookPhotoZoom(index) {
+  activeZoomMode = 'spaces';
+  if (index !== undefined) activeBookIndex = index;
+  renderBookZoomPhoto();
+  document.getElementById('port-backdrop').classList.add('open');
+  document.getElementById('port-zoom-box').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushModalHistoryState();
+}
+
+function renderBookZoomPhoto() {
+  const imgEl = document.getElementById('port-zoom-img');
+  const pBar = document.getElementById('modal-progress-bar');
+  const pFill = document.getElementById('modal-progress-fill');
+  if (pBar) pBar.style.display = 'block';
+  if (pFill) {
+    pFill.style.width = (((activeBookIndex + 1) / studioSpacesPhotos.length) * 100) + '%';
+  }
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = studioSpacesPhotos[activeBookIndex];
+      document.getElementById('port-zoom-cat').textContent = '';
+      document.getElementById('port-zoom-title').textContent = 'STUDIO SPACE';
+      document.getElementById('port-zoom-by').textContent = 'სტუდიის სივრცეები';
+      imgEl.style.opacity = '1';
+      updateBookGalleryUI();
+    }, 100);
+  }
+}
+
+function updateBookGalleryUI() {
+  const mainImg = document.getElementById('book-main-img');
+  if (mainImg) {
+    mainImg.style.opacity = '0.3';
+    setTimeout(() => {
+      mainImg.src = studioSpacesPhotos[activeBookIndex];
+      mainImg.style.opacity = '1';
+    }, 120);
+  }
+  const thumbs = document.querySelectorAll('.book-thumb');
+  thumbs.forEach((th, i) => {
+    const thumbIndex = i % studioSpacesPhotos.length;
+    th.classList.toggle('active', thumbIndex === activeBookIndex);
+    if (thumbIndex === activeBookIndex) {
+      th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  });
+}
+
+const studioLanePhotos = [
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG"
+];
+
+let activeLaneIndex = 0;
+
+function selectLanePhoto(index) {
+  activeLaneIndex = index;
+  if (activeZoomMode === 'lane' && document.getElementById('port-zoom-box').classList.contains('open')) {
+    renderLaneZoomPhoto();
+  } else {
+    updateLaneGalleryUI();
+  }
+}
+
+function nextLanePhoto() {
+  activeLaneIndex = (activeLaneIndex + 1) % studioLanePhotos.length;
+  updateLaneGalleryUI();
+}
+
+function prevLanePhoto() {
+  activeLaneIndex = (activeLaneIndex - 1 + studioLanePhotos.length) % studioLanePhotos.length;
+  updateLaneGalleryUI();
+}
+
+function openLanePhotoZoom(index) {
+  activeZoomMode = 'lane';
+  if (index !== undefined) activeLaneIndex = index;
+  renderLaneZoomPhoto();
+  document.getElementById('port-backdrop').classList.add('open');
+  document.getElementById('port-zoom-box').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushModalHistoryState();
+}
+
+function renderLaneZoomPhoto() {
+  const imgEl = document.getElementById('port-zoom-img');
+  const pBar = document.getElementById('modal-progress-bar');
+  const pFill = document.getElementById('modal-progress-fill');
+  if (pBar) pBar.style.display = 'block';
+  if (pFill) {
+    pFill.style.width = (((activeLaneIndex + 1) / studioLanePhotos.length) * 100) + '%';
+  }
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = studioLanePhotos[activeLaneIndex];
+      document.getElementById('port-zoom-cat').textContent = '';
+      document.getElementById('port-zoom-title').textContent = 'STUDIO LANE';
+      document.getElementById('port-zoom-by').textContent = 'სივრცე Studio Lane';
+      imgEl.style.opacity = '1';
+      updateLaneGalleryUI();
+    }, 100);
+  }
+}
+
+function updateLaneGalleryUI() {
+  const mainImg = document.getElementById('lane-main-img');
+  if (mainImg) {
+    mainImg.style.opacity = '0.3';
+    setTimeout(() => {
+      mainImg.src = studioLanePhotos[activeLaneIndex];
+      mainImg.style.opacity = '1';
+    }, 120);
+  }
+  const thumbs = document.querySelectorAll('.lane-thumb');
+  thumbs.forEach((th, i) => {
+    const thumbIndex = i % studioLanePhotos.length;
+    th.classList.toggle('active', thumbIndex === activeLaneIndex);
+    if (thumbIndex === activeLaneIndex) {
+      th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  });
+}
+
+// TOUCH SWIPE FOR LANE MAIN FRAME
+(function() {
+  const mainFrame = document.querySelector('.lane-main-frame');
+  if (!mainFrame) return;
+  let startX = 0;
+  let startY = 0;
+
+  mainFrame.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  mainFrame.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      const diffX = startX - e.changedTouches[0].clientX;
+      const diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextLanePhoto();
+        } else {
+          prevLanePhoto();
+        }
+      }
+    }
+  }, { passive: true });
+})();
+
+// TOUCH SWIPE FOR BOOK MAIN FRAME
+(function() {
+  const mainFrame = document.querySelector('.book-main-frame');
+  if (!mainFrame) return;
+  let startX = 0;
+  let startY = 0;
+
+  mainFrame.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  mainFrame.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      const diffX = startX - e.changedTouches[0].clientX;
+      const diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextBookPhoto();
+        } else {
+          prevBookPhoto();
+        }
+      }
+    }
+  }, { passive: true });
+})();
+
+(function() {
+  const photosBox = document.getElementById('podcast-photos');
+  if (!photosBox) return;
+  let startX = 0;
+  let startY = 0;
+
+  photosBox.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  photosBox.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      const diffX = startX - e.changedTouches[0].clientX;
+      const diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextPodcastPhoto();
+        } else {
+          prevPodcastPhoto();
+        }
+      }
+    }
+  }, { passive: true });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// ----------------------------------------------------
+// MOBILE REAL HEIGHT & GSAP HERO ARCH ZOOM
+// ----------------------------------------------------
+let lastWinWidth = window.innerWidth;
+function setVh() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setVh();
+window.addEventListener('resize', () => {
+  if (window.innerWidth !== lastWinWidth) {
+    lastWinWidth = window.innerWidth;
+    setVh();
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    if (typeof ScrollTrigger.config === 'function') {
+      ScrollTrigger.config({ ignoreMobileResize: true });
+    }
+
+    // 1. HERO ARCH INFINITE ZOOM WITH ONE-SWIPE SNAP TO #SEGMENTS
+    if (document.querySelector(".hero-structure-wrap")) {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#home",
+          start: "top top",
+          endTrigger: "#portfolio",
+          end: "top 80px",
+          scrub: 0.5,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.25, max: 0.5 },
+            delay: 0.05,
+            ease: "power1.inOut"
+          },
+          invalidateOnRefresh: true,
+        }
+      })
+      .to(".hero-structure-wrap", {
+        scale: 25,
+        opacity: 0.15,
+        ease: "power1.inOut"
+      }, 0)
+      .to(".hero-content", {
+        y: -140,
+        opacity: 0.15,
+        ease: "power1.out"
+      }, 0);
+    }
+
+    // 2. HORIZONTAL SCROLL FOR PROJECTS SECTION (პროექტების ჰორიზონტალური სრიალი)
+    const track = document.querySelector(".horizontal-track");
+    const pinSection = document.querySelector("#portfolio");
+
+    if (track && pinSection && window.innerWidth > 900) {
+      const scrollWidth = track.scrollWidth - window.innerWidth;
+
+      gsap.to(track, {
+        x: () => -scrollWidth - 100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: pinSection,
+          pin: true,
+          scrub: 0.5, // 0.5 უზრუნველყოფს იდეალურ სირბილეს ლუფტის გარეშე
+          start: "top top",
+          end: () => `+=${scrollWidth}`,
+          invalidateOnRefresh: true,
+        }
+      });
+    }
+
+    // 3. SPACES IMAGE INNER PARALLAX (სივრცეების ფოტოების შიდა პარალაქსის მკვეთრი 130px ეფექტი)
+    gsap.utils.toArray('.spaces-photos').forEach(photosWrap => {
+      const imgs = photosWrap.querySelectorAll('img');
+      imgs.forEach(img => {
+        gsap.fromTo(img, 
+          { y: -22 },
+          {
+            y: 22,
+            ease: "none",
+            scrollTrigger: {
+              trigger: photosWrap.closest('.spaces-block') || photosWrap,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.2
+            }
+          }
+        );
+      });
+    });
+
+    ScrollTrigger.refresh();
+    
+    console.log("[+] GSAP Animations successfully initialized on Native Scroll!");
+  } else {
+    console.warn("[!] GSAP or ScrollTrigger libraries are missing.");
+  }
+});
+
+// SPOTLIGHT & VIDEO MOUSE EVENT LISTENERS
+(function() {
+  const heroVid = document.getElementById('hero-video');
+  const homeSec = document.getElementById('home');
+  const heroStruct = document.querySelector('.hero-structure');
+  const logoBtn = document.querySelector('.logo');
+
+  if (heroVid) {
+    heroVid.addEventListener('error', function() {
+      heroVid.style.opacity = '0';
+      if (heroStruct) heroStruct.classList.add('show-png');
+    });
+
+    const playPromise = heroVid.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        heroVid.style.opacity = '0';
+        if (heroStruct) heroStruct.classList.add('show-png');
+      });
+    }
+
+    // On video end, smoothly fade out video and show clean PNG arch
+    heroVid.addEventListener('ended', function() {
+      heroVid.style.opacity = '0';
+      if (heroStruct) heroStruct.classList.add('show-png');
+    });
+  }
+
+  if (logoBtn) {
+    logoBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (heroVid) {
+        if (heroStruct) heroStruct.classList.remove('show-png');
+        heroVid.style.opacity = '1';
+        heroVid.currentTime = 0;
+        heroVid.play().catch(() => {});
+      }
+      if (document.activeElement) document.activeElement.blur();
+    });
+    logoBtn.addEventListener('touchend', function() {
+      setTimeout(function() {
+        if (document.activeElement) document.activeElement.blur();
+      }, 100);
+    });
+  }
+
+  if (homeSec && heroStruct) {
+    homeSec.addEventListener('mousemove', function(e) {
+      const rect = homeSec.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      heroStruct.style.setProperty('--mouse-x', x + 'px');
+      heroStruct.style.setProperty('--mouse-y', y + 'px');
+      heroStruct.classList.add('active-spotlight');
+    });
+
+    homeSec.addEventListener('mouseleave', function() {
+      heroStruct.classList.remove('active-spotlight');
+      heroStruct.style.setProperty('--mouse-x', '-2000px');
+      heroStruct.style.setProperty('--mouse-y', '-2000px');
+    });
+  }
+})();
+
+// VERTICAL SCROLL INDICATOR FUNCTIONALITY
+function scrollToSection(selector) {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// ULTRA-SLIM CONTINUOUS SCROLL PROGRESS BAR JS
+(function() {
+  const fill = document.getElementById('scroll-progress-fill');
+  function updateScrollProgress() {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight > 0) {
+      const progress = (window.scrollY / docHeight) * 100;
+      if (fill) {
+        fill.style.height = Math.min(100, Math.max(0, progress)) + '%';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  window.addEventListener('resize', updateScrollProgress, { passive: true });
+  window.addEventListener('load', updateScrollProgress);
+  document.addEventListener('DOMContentLoaded', updateScrollProgress);
+  updateScrollProgress();
+})();
+
+// PULL TO REFRESH TOUCH SCRIPT
+(function() {
+  const ptr = document.getElementById('ptr-element');
+  const spinner = document.getElementById('ptr-spinner');
+  let startY = 0;
+  let currentY = 0;
+  let isPulling = false;
+  const threshold = 75;
+
+  window.addEventListener('touchstart', function(e) {
+    if (window.scrollY <= 2) {
+      startY = e.touches[0].pageY;
+      isPulling = true;
+    } else {
+      isPulling = false;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (!isPulling) return;
+    currentY = e.touches[0].pageY;
+    const diff = currentY - startY;
+
+    if (diff > 0 && window.scrollY <= 2) {
+      const pullDistance = Math.min(diff * 0.45, 90);
+      if (ptr) {
+        ptr.style.opacity = Math.min(pullDistance / threshold, 1);
+        ptr.style.transform = `translate(-50%, ${pullDistance}px)`;
+      }
+      if (spinner) {
+        spinner.style.transform = `rotate(${pullDistance * 4}deg)`;
+      }
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', function() {
+    if (!isPulling) return;
+    isPulling = false;
+    const diff = currentY - startY;
+
+    if (diff * 0.45 >= threshold && window.scrollY <= 2) {
+      if (ptr) {
+        ptr.classList.add('refreshing');
+        ptr.style.transform = `translate(-50%, ${threshold}px)`;
+      }
+      setTimeout(function() {
+        window.location.reload();
+      }, 300);
+    } else {
+      if (ptr) {
+        ptr.style.opacity = '0';
+        ptr.style.transform = 'translate(-50%, 0px)';
+      }
+    }
+    startY = 0;
+    currentY = 0;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
