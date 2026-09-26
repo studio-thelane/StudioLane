@@ -2043,79 +2043,47 @@ function openModal(key) {
   } else if (key === 'commercial') {
     const isKa = (lang === 'ka');
     html += `
-      <div class="pricing-tiers-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <!-- 1. SHORT COMMERCIAL -->
-        <div class="pricing-tier-card">
-          <div>
-            <div class="tier-name">SHORT COMMERCIAL</div>
-            <div class="tier-sub">${isKa ? 'სარეკლამო ვიდეო სოციალური ქსელებისთვის' : 'Commercial video for social media'}</div>
-            <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
-            <ul class="tier-features">
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სცენარის მომზადება & კონცეფცია' : 'Scriptwriting & Concept'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური გადაღება (Sony FX30)' : 'Pro Shoot (Sony FX30)'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'განათების და აუდიოს სრული სეტი' : 'Full Lighting & Audio setup'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მონტაჟი, ფერთა კორექცია & ხმის დიზაინი' : 'Editing, Color Grading & Sound Design'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა 4K / FHD ფაილი' : 'Final 4K / FHD file'}</li>
-            </ul>
-          </div>
-          <button class="tier-btn" onclick="selectPackage('commercial', 'SHORT COMMERCIAL', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
-        </div>
-
-        <!-- 2. FULL COMMERCIAL PRODUCTION -->
+      <div class="pricing-tiers-grid" style="grid-template-columns: 1fr; max-width: 540px; margin: 0 auto;">
         <div class="pricing-tier-card featured">
           <div>
             <div class="tier-badge">${isKa ? '⚡ FULL PRODUCTION' : '⚡ FULL PRODUCTION'}</div>
-            <div class="tier-name">FULL PRODUCTION</div>
-            <div class="tier-sub">${isKa ? 'სრული სარეკლამო ვიდეო პროდაქშენი' : 'Full scale commercial production'}</div>
+            <div class="tier-name">COMMERCIAL VIDEO</div>
+            <div class="tier-sub">${isKa ? 'სრული სარეკლამო ვიდეო პროდაქშენი' : 'Full commercial video production'}</div>
             <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
             <ul class="tier-features">
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'იდეა, სცენარი & რეჟისურა' : 'Idea, Script & Directing'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მრავალკამერიანი გადაღება & ლოკაცია' : 'Multi-camera Shoot & Location'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მსახიობები / ლოკაციების შერჩევა' : 'Casting / Location Scouting'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური მონტაჟი & VFX გრაფიკა' : 'Pro Edit & VFX Graphics'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'საუნდ დიზაინი & დიქტორის ხმა' : 'Sound Design & Voiceover'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ადაპტაცია ყველა პლატფორმისთვის' : 'All platform adaptations'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'იდეა, სცენარი & კონცეფციის შემუშავება' : 'Idea, script & concept development'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური ვიდეოგადაღება' : 'Professional video shooting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სტუდიური განათება & აუდიო სისტემა' : 'Studio lighting & audio system'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მონტაჟი, ფერთა კორექცია & ხმის დიზაინი' : 'Editing, color grading & sound design'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'VFX & გრაფიკული გაფორმება' : 'VFX & graphic styling'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ადაპტაცია სოციალური ქსელებისთვის (Reels, TikTok, Web)' : 'Social media adaptations (Reels, TikTok, Web)'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა 4K / FHD ვიდეო ფაილი' : 'Final 4K / FHD video file'}</li>
             </ul>
           </div>
-          <button class="tier-btn" onclick="selectPackage('commercial', 'FULL COMMERCIAL PRODUCTION', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
+          <button class="tier-btn" onclick="selectPackage('commercial', 'COMMERCIAL VIDEO', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
         </div>
       </div>
     `;
   } else if (key === 'photo') {
     const isKa = (lang === 'ka');
     html += `
-      <div class="pricing-tiers-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <!-- 1. PRODUCT & BRAND PHOTO -->
-        <div class="pricing-tier-card">
-          <div>
-            <div class="tier-name">PRODUCT & BRAND PHOTO</div>
-            <div class="tier-sub">${isKa ? 'სარეკლამო ფოტოგადაღება' : 'Commercial photo shooting'}</div>
-            <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
-            <ul class="tier-features">
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროდუქტის & ბრენდის ფოტოგადაღება' : 'Product & Brand Photography'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სტუდიური განათების სრული სეტი' : 'Full Studio Lighting Setup'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ფონების და დეკორაციების არჩევანი' : 'Choice of Backgrounds & Decor'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მაღალი რეზოლუციის დამუშავებული ფოტოები' : 'High-Res Retouched Photos'}</li>
-            </ul>
-          </div>
-          <button class="tier-btn" onclick="selectPackage('photo', 'PRODUCT & BRAND PHOTO', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
-        </div>
-
-        <!-- 2. CONTENT PRODUCTION (PHOTO + VIDEO) -->
+      <div class="pricing-tiers-grid" style="grid-template-columns: 1fr; max-width: 540px; margin: 0 auto;">
         <div class="pricing-tier-card featured">
           <div>
-            <div class="tier-badge">${isKa ? '⚡ POPULAR' : '⚡ POPULAR'}</div>
-            <div class="tier-name">PHOTO + VIDEO CONTENT</div>
-            <div class="tier-sub">${isKa ? 'კომბინირებული ფოტო და ვიდეო კონტენტი' : 'Combined Photo & Video Content'}</div>
+            <div class="tier-badge">${isKa ? '⚡ PHOTO & VIDEO' : '⚡ PHOTO & VIDEO'}</div>
+            <div class="tier-name">ADVERTISING PHOTO / VIDEO</div>
+            <div class="tier-sub">${isKa ? 'სარეკლამო ფოტო და ვიდეო კონტენტი' : 'Commercial photo & video content'}</div>
             <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
             <ul class="tier-features">
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სარეკლამო ფოტო + მოკლე ვიდეო როლიკები' : 'Advertising Photo + Short Video Reels'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'Unboxing, Tutorial & Review კონტენტი' : 'Unboxing, Tutorial & Review Content'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სრული დამუშავება & რიტუში' : 'Full Retouching & Editing'}</li>
-              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა კონტენტი სოციალური ქსელებისთვის' : 'Ready Content for Social Media'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროდუქტის, ბრენდის & ანბოქსინგის გადაღება' : 'Product, brand & unboxing shooting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სტუდიური სივრცე, ფონები & დეკორაციები' : 'Studio space, backgrounds & decorations'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათების სრული სეტი' : 'Full professional lighting setup'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ფოტოების დამუშავება & რიტუში' : 'Photo retouching & processing'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მოკლე სარეკლამო ვიდეო როლიკები' : 'Short commercial video reels'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა კონტენტი სოციალური ქსელებისთვის' : 'Ready content for social media'}</li>
             </ul>
           </div>
-          <button class="tier-btn" onclick="selectPackage('photo', 'PHOTO + VIDEO CONTENT', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
+          <button class="tier-btn" onclick="selectPackage('photo', 'ADVERTISING PHOTO / VIDEO', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
         </div>
       </div>
     `;
