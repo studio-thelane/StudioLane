@@ -6,6 +6,13 @@
 <title>Portfolio | Studio Lane</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'BPG Nino Mtavruli';
+  src: url('bpg_nino_mtavruli_bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --black: #0a0a0b;
   --dark: #111114;
@@ -22,7 +29,7 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; width:100%; max-width:100vw; overflow-x:hidden; }
-body { background:var(--black); color:var(--white); font-family:'Montserrat','Noto Sans Georgian',sans-serif; font-weight:300; overflow-x:hidden; width:100%; max-width:100vw; position:relative; }
+body { background:var(--black); color:var(--white); font-family:'BPG Nino Mtavruli', 'Montserrat', 'Noto Sans Georgian', sans-serif; font-weight:300; overflow-x:hidden; width:100%; max-width:100vw; position:relative; text-transform: uppercase; }
 
 /* LANG */
 .lang-toggle { position:fixed; top:80px; right:16px; z-index:1000; display:flex; gap:4px; background:rgba(10,10,11,0.85); border:1px solid var(--border); border-radius:6px; padding:4px; backdrop-filter:blur(10px); }
