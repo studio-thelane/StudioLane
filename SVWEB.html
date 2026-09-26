@@ -1990,16 +1990,87 @@ function scrollToSpace(id, e) {
 }
 
 function openModal(key) {
-  const data = modals[key][lang];
+  const data = modals[key] ? modals[key][lang] : null;
   const modalEl = document.querySelector('.modal');
   if (modalEl) {
-    if (key === 'podcast') modalEl.classList.add('modal-wide');
+    if (key === 'podcast' || key === 'solo') modalEl.classList.add('modal-wide');
     else modalEl.classList.remove('modal-wide');
   }
 
-  let html = `<h2 class="modal-title">${data.title}</h2>`;
+  let html = `<h2 class="modal-title">${data ? data.title : (key === 'solo' ? 'CREATOR / SOLO STUDIO' : '')}</h2>`;
   
-  if (key === 'podcast') {
+  if (key === 'solo') {
+    const isKa = (lang === 'ka');
+    html += `
+      <div class="pricing-tiers-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <!-- 1. RECORDING ONLY -->
+        <div class="pricing-tier-card">
+          <div>
+            <div class="tier-name">RECORDING ONLY</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი მხოლოდ ჩაწერა' : 'One-time recording only'}</div>
+            <div class="tier-price">200 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ერთი კამერა' : '1 Camera'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათება' : 'Professional lighting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ხმის და კადრის ლაივ კონტროლი' : 'Live audio & video control'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? '3 Short ვიდეო' : '3 Shorts'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'თამბნეილი' : 'Thumbnail'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ანონსი' : 'Teaser'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> <s style="opacity:0.4;">${isKa ? 'ბექსთეიჯი' : 'Backstage'}</s></li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('solo', 'RECORDING ONLY', 200, 'hourly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+
+        <!-- 2. RECORDING + EDITING (WITH ADD-ON CHECKBOXES) -->
+        <div class="pricing-tier-card featured" id="solo-tier-card-editing">
+          <div>
+            <div class="tier-badge">${isKa ? '⚡ პოპულარული' : '⚡ POPULAR'}</div>
+            <div class="tier-name">RECORDING + EDITING</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი ჩაწერა + მონტაჟი' : 'Recording + Editing'}</div>
+            <div class="tier-price" id="solo-price-display">300 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ერთი კამერა' : '1 Camera'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათება' : 'Professional lighting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ხმის და კადრის ლაივ კონტროლი' : 'Live audio & video control'}</li>
+
+              <!-- ADD-ON 1: 3 Shorts (+100 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-shorts" onclick="toggleSoloAddon('shorts')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-shorts">✕</span> 
+                  <span id="solo-label-shorts">${isKa ? '3 Short ვიდეო (+100₾)' : '3 Shorts (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-shorts" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 2: Thumbnail (+50 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-thumb" onclick="toggleSoloAddon('thumb')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-thumb">✕</span> 
+                  <span id="solo-label-thumb">${isKa ? 'თამბნეილი (+50₾)' : 'Thumbnail (+50₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-thumb" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 3: Teaser (+100 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-teaser" onclick="toggleSoloAddon('teaser')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-teaser">✕</span> 
+                  <span id="solo-label-teaser">${isKa ? 'ანონსი (+100₾)' : 'Teaser (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-teaser" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <li class="tier-feature excluded"><span class="icon">✕</span> <s style="opacity:0.4;">${isKa ? 'ბექსთეიჯი' : 'Backstage'}</s></li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectSoloWithAddons()">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+      </div>
+    `;
+  } else if (key === 'podcast') {
     const isKa = (lang === 'ka');
     html += `
       <div class="pricing-tiers-grid">
@@ -2143,6 +2214,75 @@ let selectedHours = 1;
 let selectedDecorPrice = 0;
 let selectedDecorName = 'STANDART DECOR (უფასო)';
 let selectedAddonsTotal = 0;
+
+function toggleSoloAddon(id) {
+  const cb = document.getElementById('solo-addon-' + id);
+  if (cb) {
+    cb.checked = !cb.checked;
+    calcSoloPrice();
+  }
+}
+
+function calcSoloPrice() {
+  let hourlyRate = 300;
+  let addonsTotal = 0;
+  let addons = [];
+
+  const cbShorts = document.getElementById('solo-addon-shorts');
+  const itemShorts = document.getElementById('solo-item-shorts');
+  const iconShorts = document.getElementById('solo-icon-shorts');
+  if (cbShorts && cbShorts.checked) {
+    addonsTotal += 100;
+    addons.push('3 Shorts (+100₾)');
+    if (itemShorts) itemShorts.className = 'tier-feature included';
+    if (iconShorts) { iconShorts.textContent = '✓'; iconShorts.style.color = '#2ecc71'; }
+  } else {
+    if (itemShorts) itemShorts.className = 'tier-feature excluded';
+    if (iconShorts) { iconShorts.textContent = '✕'; iconShorts.style.color = ''; }
+  }
+
+  const cbThumb = document.getElementById('solo-addon-thumb');
+  const itemThumb = document.getElementById('solo-item-thumb');
+  const iconThumb = document.getElementById('solo-icon-thumb');
+  if (cbThumb && cbThumb.checked) {
+    addonsTotal += 50;
+    addons.push('თამბნეილი (+50₾)');
+    if (itemThumb) itemThumb.className = 'tier-feature included';
+    if (iconThumb) { iconThumb.textContent = '✓'; iconThumb.style.color = '#2ecc71'; }
+  } else {
+    if (itemThumb) itemThumb.className = 'tier-feature excluded';
+    if (iconThumb) { iconThumb.textContent = '✕'; iconThumb.style.color = ''; }
+  }
+
+  const cbTeaser = document.getElementById('solo-addon-teaser');
+  const itemTeaser = document.getElementById('solo-item-teaser');
+  const iconTeaser = document.getElementById('solo-icon-teaser');
+  if (cbTeaser && cbTeaser.checked) {
+    addonsTotal += 100;
+    addons.push('ანონსი (+100₾)');
+    if (itemTeaser) itemTeaser.className = 'tier-feature included';
+    if (iconTeaser) { iconTeaser.textContent = '✓'; iconTeaser.style.color = '#2ecc71'; }
+  } else {
+    if (itemTeaser) itemTeaser.className = 'tier-feature excluded';
+    if (iconTeaser) { iconTeaser.textContent = '✕'; iconTeaser.style.color = ''; }
+  }
+
+  const displayPrice = hourlyRate + addonsTotal;
+  const display = document.getElementById('solo-price-display');
+  if (display) display.textContent = `${displayPrice} ₾ / სთ`;
+
+  return { hourlyRate, addonsTotal, addons };
+}
+
+function selectSoloWithAddons() {
+  const info = calcSoloPrice();
+  let fullName = 'RECORDING + EDITING (300₾/სთ)';
+  if (info.addons.length > 0) {
+    fullName += ' [' + info.addons.join(', ') + ']';
+  }
+  selectedAddonsTotal = info.addonsTotal;
+  selectPackage('solo', fullName, 300, 'hourly');
+}
 
 function toggleAddon(id) {
   const cb = document.getElementById('addon-' + id);

@@ -78,11 +78,11 @@ nav { position:fixed; top:0; left:0; right:0; z-index:999; padding:20px 60px; di
 .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--white); margin: 0; line-height: 1.1; }
 
 /* LIGHTBOX MODAL */
-.video-modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+.video-modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 16px; }
 .video-modal-bg.open { display: flex; }
-.video-container { width: 90%; max-width: 1000px; aspect-ratio: 16/9; position: relative; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.video-container { width: 100%; max-width: 900px; aspect-ratio: 16/9; position: relative; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
 .video-container iframe { width: 100%; height: 100%; border: none; }
-.video-close { position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 30px; cursor: pointer; }
+.video-close { position: absolute; top: -38px; right: 0; background: none; border: none; color: white; font-size: 32px; cursor: pointer; line-height: 1; }
 
 /* FOOTER */
 footer { background:var(--black); padding:60px; border-top:1px solid var(--border); display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; margin-top: 60px; position: relative; z-index: 1;}
@@ -110,8 +110,8 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
   .card-title { font-size: 22px; }
   footer { grid-template-columns: 1fr; gap: 28px; padding: 32px 20px; margin-top: 40px; }
   .foot-bottom { padding: 14px 20px; flex-direction: column; gap: 6px; }
-  .video-container { width: 94%; border-radius: 8px; }
-  .video-close { top: -36px; right: 4px; font-size: 26px; }
+  .video-container { width: 100%; max-width: 100%; aspect-ratio: 16/9; border-radius: 8px; }
+  .video-close { top: -34px; right: 2px; font-size: 28px; }
 }
 </style>
 </head>
@@ -151,101 +151,99 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
     <!-- Card 1 -->
     <div class="port-card" onclick="openYoutubeModal('fVP33hKsVsc')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/fVP33hKsVsc/maxresdefault.jpg" alt="Beauty Talks">
+        <img src="https://img.youtube.com/vi/fVP33hKsVsc/maxresdefault.jpg" alt="ბუდვაიზერი">
       </div>
       <div class="card-info">
-        <span class="card-cat">PODCAST STUDIO</span>
-        <h3 class="card-title">BEAUTY TALKS — EPISODE 01</h3>
+        <span class="card-cat">დამკვეთი - ბუდვაიზერი</span>
+        <h3 class="card-title">ნამდვილი ჩეხური ლუდი</h3>
       </div>
     </div>
 
     <!-- Card 2 -->
     <div class="port-card" onclick="openYoutubeModal('xKaF4jGWGiA')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/xKaF4jGWGiA/maxresdefault.jpg" alt="ჩცდ Rewatch">
+        <img src="https://img.youtube.com/vi/xKaF4jGWGiA/maxresdefault.jpg" alt="სტამბა კოლორ პაკი">
       </div>
       <div class="card-info">
-        <span class="card-cat">PODCAST STUDIO</span>
-        <h3 class="card-title">ჩცდ REWATCH — SPECIAL EPISODE</h3>
+        <span class="card-cat">დამკვეთი - სტამბა კოლორ პაკი</span>
+        <h3 class="card-title">იდეიდან რეალობამდე</h3>
       </div>
     </div>
 
     <!-- Card 3 -->
     <div class="port-card" onclick="openYoutubeModal('sldgPCxYTtY')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/sldgPCxYTtY/maxresdefault.jpg" alt="Biblusi Talks">
+        <img src="https://img.youtube.com/vi/sldgPCxYTtY/maxresdefault.jpg" alt="ევროპის უნივერსიტეტი">
       </div>
       <div class="card-info">
-        <span class="card-cat">PODCAST STUDIO</span>
-        <h3 class="card-title">BIBLUSI TALKS — CULT BOOKS</h3>
+        <span class="card-cat">დამკვეთი - ევროპის უნივერსიტეტი</span>
+        <h3 class="card-title">ეს შენი ევროპული სახლია</h3>
       </div>
     </div>
 
     <!-- Card 4 -->
     <div class="port-card" onclick="openYoutubeModal('TGozI5t6QB8')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/TGozI5t6QB8/maxresdefault.jpg" alt="Commercial Shoot">
+        <img src="https://img.youtube.com/vi/TGozI5t6QB8/maxresdefault.jpg" alt="მაჭახელა">
       </div>
       <div class="card-info">
-        <span class="card-cat">COMMERCIAL VIDEO</span>
-        <h3 class="card-title">BRAND COMMERCIAL SHOOT</h3>
+        <span class="card-cat">დამკვეთი - მაჭახელა</span>
+        <h3 class="card-title">შენც გამოაცხობ</h3>
       </div>
     </div>
 
     <!-- Card 5 -->
     <div class="port-card" onclick="openYoutubeModal('3AZ3oKpCc0E')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/3AZ3oKpCc0E/maxresdefault.jpg" alt="Solo Creator">
+        <img src="https://img.youtube.com/vi/3AZ3oKpCc0E/maxresdefault.jpg" alt="George Pirali">
       </div>
       <div class="card-info">
-        <span class="card-cat">CREATOR STUDIO</span>
-        <h3 class="card-title">SOLO CREATOR SHOW</h3>
+        <span class="card-cat">PODCAST</span>
+        <h3 class="card-title">George Pirali</h3>
       </div>
     </div>
 
-
-
-    <!-- Card 7 -->
+    <!-- Card 6 -->
     <div class="port-card" onclick="openYoutubeModal('fdzlqbJbir8')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/fdzlqbJbir8/maxresdefault.jpg" alt="Brand Commercial">
+        <img src="https://img.youtube.com/vi/fdzlqbJbir8/maxresdefault.jpg" alt="Luxury Watches">
       </div>
       <div class="card-info">
-        <span class="card-cat">COMMERCIAL VIDEO</span>
-        <h3 class="card-title">COMMERCIAL PRODUCTION</h3>
+        <span class="card-cat">Luxury Watches</span>
+        <h3 class="card-title">Watch Advertisement</h3>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="port-card" onclick="openYoutubeModal('tYaenBsi-pc')">
+      <div class="thumb-wrap">
+        <img src="https://img.youtube.com/vi/tYaenBsi-pc/maxresdefault.jpg" alt="Shoe Advertisement">
+      </div>
+      <div class="card-info">
+        <span class="card-cat">ADVERTISING</span>
+        <h3 class="card-title">Shoe Advertisement</h3>
       </div>
     </div>
 
     <!-- Card 8 -->
-    <div class="port-card" onclick="openYoutubeModal('tYaenBsi-pc')">
+    <div class="port-card" onclick="openYoutubeModal('jmlGcQWLkHA')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/tYaenBsi-pc/maxresdefault.jpg" alt="Voice Over Reel">
+        <img src="https://img.youtube.com/vi/jmlGcQWLkHA/maxresdefault.jpg" alt="AD SUMMIT 2023">
       </div>
       <div class="card-info">
-        <span class="card-cat">VOICE OVER BOOTH</span>
-        <h3 class="card-title">VOICE OVER RECORDING</h3>
+        <span class="card-cat">EVENT COVERAGE</span>
+        <h3 class="card-title">AD SUMMIT 2023</h3>
       </div>
     </div>
 
     <!-- Card 9 -->
-    <div class="port-card" onclick="openYoutubeModal('jmlGcQWLkHA')">
-      <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/jmlGcQWLkHA/maxresdefault.jpg" alt="Creative Talk">
-      </div>
-      <div class="card-info">
-        <span class="card-cat">PODCAST STUDIO</span>
-        <h3 class="card-title">CREATIVE TALK & LIVE EDIT</h3>
-      </div>
-    </div>
-
-    <!-- Card 10 -->
     <div class="port-card" onclick="openYoutubeModal('wUps2DbtJxs')">
       <div class="thumb-wrap">
-        <img src="https://img.youtube.com/vi/wUps2DbtJxs/maxresdefault.jpg" alt="Studio Showcase">
+        <img src="https://img.youtube.com/vi/wUps2DbtJxs/maxresdefault.jpg" alt="DEEP HOUSE">
       </div>
       <div class="card-info">
-        <span class="card-cat">COMMERCIAL VIDEO</span>
-        <h3 class="card-title">STUDIO REEL & SHOWCASE</h3>
+        <span class="card-cat">MUSIC VIDEO</span>
+        <h3 class="card-title">DEEP HOUSE</h3>
       </div>
     </div>
 
