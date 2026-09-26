@@ -414,6 +414,9 @@ section { padding:48px 20px; }
   background: var(--dark2);
   will-change: transform, box-shadow;
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .spaces-photos:hover {
   transform: translateY(-5px) scale(1.01);
@@ -3064,13 +3067,50 @@ document.querySelectorAll('.spaces-photos').forEach(function(wrap) {
     else p.classList.remove('active');
   });
   if (fill) fill.style.width = ((1 / photos.length) * 100) + '%';
-  wrap.addEventListener('click', function() {
+
+  function updatePhoto(newIdx) {
     photos[cur].classList.remove('active');
-    cur = (cur + 1) % photos.length;
+    cur = (newIdx + photos.length) % photos.length;
     photos[cur].classList.add('active');
     if (fill) {
       fill.style.width = (((cur + 1) / photos.length) * 100) + '%';
     }
+  }
+
+  var startX = 0;
+  var startY = 0;
+  var isSwiping = false;
+
+  wrap.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isSwiping = false;
+    }
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      var diffX = startX - e.changedTouches[0].clientX;
+      var diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 25 && Math.abs(diffX) > Math.abs(diffY)) {
+        isSwiping = true;
+        if (diffX > 0) {
+          updatePhoto(cur + 1);
+        } else {
+          updatePhoto(cur - 1);
+        }
+      }
+    }
+  }, { passive: true });
+
+  wrap.addEventListener('click', function(e) {
+    if (isSwiping) {
+      isSwiping = false;
+      return;
+    }
+    updatePhoto(cur + 1);
   });
 });
 
