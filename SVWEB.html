@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-<meta charset="UTF-8">
+<script type="text/javascript">
+  // Clean URL Masking for Mobile
+  (function(){
+    try {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '/');
+      }
+    } catch(e) {}
+  })();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
   (function(){
