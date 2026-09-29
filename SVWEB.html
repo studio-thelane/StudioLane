@@ -3503,7 +3503,7 @@ async function dispatchBookingEmailJS() {
 }
 
 async function callGemini(prompt) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const models = ['gemini-3.8-flash', 'gemini-3.7-flash'];
     
     const systemInstruction = `
     შენ ხარ Studio The Lane-ის ოფიციალური ასისტენტი ჩათბოტში.
@@ -3520,21 +3520,30 @@ async function callGemini(prompt) {
         contents: [{ parts: [{ text: `${systemInstruction}\n\nკითხვა: ${prompt}` }] }]
     };
 
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        const json = await response.json();
-        
-        if (json.error) {
-            return `შეცდომა: ${json.error.message}`;
+    let lastError = "";
+
+    for (const model of models) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const json = await response.json();
+            
+            if (json.candidates && json.candidates[0] && json.candidates[0].content) {
+                return json.candidates[0].content.parts[0].text;
+            }
+            if (json.error) {
+                lastError = json.error.message;
+            }
+        } catch (e) {
+            lastError = e.message;
         }
-        return json.candidates[0].content.parts[0].text;
-    } catch (e) {
-        return "კავშირის შეცდომა: " + e.message;
     }
+
+    return `შეცდომა: ${lastError || "კავშირის შეცდომა"}`;
 }
 
 async function botResponse(text) {
