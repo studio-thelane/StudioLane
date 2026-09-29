@@ -3092,7 +3092,7 @@ async function dispatchBookingEmailJS() {
 }
 
 async function callGemini(prompt) {
-    const models = ['gemini-3.8-flash', 'gemini-3.7-flash'];
+    const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
     
     const systemInstruction = `
     შენ ხარ Studio The Lane-ის ოფიციალური ასისტენტი ჩათბოტში.
@@ -3109,8 +3109,6 @@ async function callGemini(prompt) {
         contents: [{ parts: [{ text: `${systemInstruction}\n\nკითხვა: ${prompt}` }] }]
     };
 
-    let lastError = "";
-
     for (const model of models) {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
         try {
@@ -3121,18 +3119,13 @@ async function callGemini(prompt) {
             });
             const json = await response.json();
             
-            if (json.candidates && json.candidates[0] && json.candidates[0].content) {
+            if (json.candidates && json.candidates[0] && json.candidates[0].content && json.candidates[0].content.parts && json.candidates[0].content.parts[0]) {
                 return json.candidates[0].content.parts[0].text;
             }
-            if (json.error) {
-                lastError = json.error.message;
-            }
-        } catch (e) {
-            lastError = e.message;
-        }
+        } catch (e) {}
     }
 
-    return `შეცდომა: ${lastError || "კავშირის შეცდომა"}`;
+    return null;
 }
 
 async function botResponse(text) {
@@ -3164,21 +3157,27 @@ async function botResponse(text) {
       document.getElementById('chat-messages').appendChild(typingMsg);
       
       const aiResponse = await callGemini(text);
-      typingMsg.innerText = aiResponse;
-      document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
-      return;
+      if (aiResponse) {
+          typingMsg.innerText = aiResponse;
+          document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+          return;
+      } else {
+          typingMsg.remove();
+      }
   }
 
   let r = "";
   if(lowerText.includes('ფასი') || lowerText.includes('price')) {
     r = lang === 'ka' ? "ჩვენი ფასები დეტალურად შეგიძლიათ ნახოთ 'მომსახურების' სექციაში. პოდკასტის ჩაწერა იწყება 180₾-დან." : "Detailed prices are in the 'Services' section. Podcast starts at ₾180.";
   } else if(lowerText.includes('მისამართი') || lowerText.includes('ადგილი') || lowerText.includes('location')) {
-    r = "ჩვენი მისამართია: ვიტალი დარასელიას 2 (გაგარინის მოედანთან).";
+    r = "ჩვენი მისამართია: ვიტალი დარასელიას 2 (გაგარინის მოედნიდან სოფრომ მგალობლიშვილის ქუჩაზე, პირველივე ჩასახვევი მარჯვნივ).";
   } else if(lowerText.includes('whatsapp') || lowerText.includes('ვატსაპ')) {
     r = "გადაგიყვანთ WhatsApp-ზე...";
     setTimeout(() => window.open('https://wa.me/995577114355', '_blank'), 1000);
   } else {
-    r = "გმადლობთ! დაჯავშნისთვის მოგვწერეთ 'დაჯავშნა' ან გამოიყენეთ WhatsApp დამატებითი კითხვებისთვის.";
+    r = lang === 'ka' 
+      ? "Studio The Lane — პოდკასტებისა და მედია გადაღებების სივრცე თბილისში (ვიტალი დარასელიას 2). დაჯავშნისთვის მოგვწერეთ 'დაჯავშნა' ან დაგვიკავშირდით WhatsApp-ით (+995 577 11 43 55)."
+      : "Studio The Lane — Media & Podcast space in Tbilisi. To book, type 'book' or contact us via WhatsApp (+995 577 11 43 55).";
   }
   addChatMsg(r, 'bot');
 }
