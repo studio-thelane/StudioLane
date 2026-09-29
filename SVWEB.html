@@ -709,9 +709,11 @@ section { padding:48px 20px; }
   position: fixed;
   bottom: 84px;
   right: 16px;
-  width: calc(100vw - 32px);
-  max-width: 350px;
+  width: calc(100vw - 32px) !important;
+  max-width: 350px !important;
+  box-sizing: border-box !important;
   height: 470px;
+  max-height: calc(100vh - 120px) !important;
   background: rgba(15, 15, 18, 0.97);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border);
@@ -739,6 +741,7 @@ section { padding:48px 20px; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box !important;
 }
 .chat-header-info h3 {
   font-family: 'Bebas Neue','BPG Nino Mtavruli',sans-serif;
@@ -771,19 +774,21 @@ section { padding:48px 20px; }
 .chat-messages {
   flex: 1;
   padding: 16px;
-  overflow-y: auto;
+  overflow-y: auto !important;
   overflow-x: hidden !important;
   display: flex;
   flex-direction: column;
   gap: 10px;
   scrollbar-width: thin;
   scrollbar-color: var(--orange) transparent;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 .chat-messages::-webkit-scrollbar { width: 4px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
 .message {
-  max-width: 88%;
+  max-width: 88% !important;
   padding: 10px 14px;
   border-radius: 14px;
   font-size: 12px;
@@ -791,18 +796,28 @@ section { padding:48px 20px; }
   word-break: break-word !important;
   overflow-wrap: anywhere !important;
   white-space: pre-wrap !important;
+  box-sizing: border-box !important;
 }
 .message * {
   max-width: 100% !important;
   box-sizing: border-box !important;
   word-break: break-word !important;
   overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+.message strong, .message span, .message p, .message div, .message b {
+  white-space: normal !important;
+  display: inline !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
 }
 .message a {
-  display: inline-block !important;
+  display: block !important;
+  width: 100% !important;
   max-width: 100% !important;
   word-break: break-word !important;
   white-space: normal !important;
+  box-sizing: border-box !important;
 }
 .message.bot {
   background: var(--dark3);
