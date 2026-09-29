@@ -2814,14 +2814,33 @@ function sendMsg() {
 
 function checkEnter(e) { if(e.key==='Enter') sendMsg(); }
 
-function addChatMsg(text, sender, isLink = false) {
+function addChatMsg(text, sender, isLink = false, animateTypewriter = true) {
   const box = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = 'message ' + sender;
-  if(isLink) div.innerHTML = text;
-  else div.innerText = text;
   box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+
+  if (isLink) {
+    div.innerHTML = text;
+    box.scrollTop = box.scrollHeight;
+  } else if (sender === 'bot' && animateTypewriter) {
+    div.innerText = '';
+    let i = 0;
+    const speed = 15;
+    function type() {
+      if (i < text.length) {
+        div.innerText += text.charAt(i);
+        i++;
+        box.scrollTop = box.scrollHeight;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  } else {
+    div.innerText = text;
+    box.scrollTop = box.scrollHeight;
+  }
+  return div;
 }
 
 function isRussianText(str) {
@@ -3170,8 +3189,19 @@ async function botResponse(text) {
       
       const aiResponse = await callGemini(text);
       if (aiResponse) {
-          typingMsg.innerText = aiResponse;
-          document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+          typingMsg.innerText = '';
+          let i = 0;
+          const speed = 15;
+          function type() {
+            if (i < aiResponse.length) {
+              typingMsg.innerText += aiResponse.charAt(i);
+              i++;
+              const box = document.getElementById('chat-messages');
+              if (box) box.scrollTop = box.scrollHeight;
+              setTimeout(type, speed);
+            }
+          }
+          type();
           return;
       } else {
           typingMsg.remove();
