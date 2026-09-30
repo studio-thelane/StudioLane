@@ -3315,6 +3315,35 @@ function resetBookingData() {
   isSubmittingBooking = false;
 }
 
+let leadEmailSentForThisSession = false;
+
+async function dispatchImmediateLeadEmailJS() {
+  if (leadEmailSentForThisSession) return;
+  if (!bookingData.name && !bookingData.phone) return;
+  
+  leadEmailSentForThisSession = true;
+
+  const templateParams = {
+    fname: bookingData.name || 'მომხმარებელი',
+    lname: '(Immediate Chatbot Lead)',
+    phone: bookingData.phone || 'არ არის მითითებული',
+    email: bookingData.email || 'არ არის მითითებული',
+    package: bookingData.service || 'პოდკასტის დაწყება/ინტერესი',
+    duration: `${bookingData.duration || 'N/A'} (თარიღი: ${bookingData.date || 'N/A'}, დრო: ${bookingData.startTime || 'N/A'})`,
+    decor: bookingData.decor || 'Standard',
+    total_price: 'მყისიერი ლიდი ჩათბოტიდან'
+  };
+
+  try {
+    if (typeof emailjs !== 'undefined') {
+      await emailjs.send("service_abc123", "template_kqsobyd", templateParams);
+      console.log("Immediate Lead EmailJS Sent!");
+    }
+  } catch (err) {
+    console.error("Immediate Lead EmailJS Error:", err);
+  }
+}
+
 function extractBookingEntities(text) {
   const lower = text.toLowerCase();
   
@@ -3378,6 +3407,11 @@ function extractBookingEntities(text) {
       const dateMatch = text.match(/\b\d{1,2}[\/\.-]\d{1,2}([\/\.-]\d{2,4})?\b/) || text.match(/\b\d{1,2}\s*(იანვარს|თებერვალს|მარტს|აპრილს|მაისს|ივნისს|ივლისს|აგვისტოს|სექტემბერს|ოქტომბერს|ნოემბერს|დეკემბერს)/i);
       if (dateMatch) bookingData.date = dateMatch[0];
     }
+  }
+
+  // Immediately dispatch email as soon as name or phone is extracted
+  if ((bookingData.name || bookingData.phone) && !leadEmailSentForThisSession) {
+    dispatchImmediateLeadEmailJS();
   }
 }
 
