@@ -3129,39 +3129,53 @@ async function dispatchBookingEmailJS() {
   resetBookingData();
 }
 
+let chatHistory = [];
+
 async function callGemini(prompt) {
     const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
     
-    const systemInstruction = `
+    const systemInstructionText = `
     შენ ხარ Studio The Lane-ის გამოცდილი, მეგობრული და ემპათიური კონსულტანტი ჩათბოტში.
     გამოიყენე ეს სტუდიის ინფორმაცია: ${studioInfo}.
 
     მნიშვნელოვანი ქცევითი წესები და საუბრის ლოგიკა (Human Conversation & Contextual Need Recognition):
 
     1. კონტექსტური საჭიროების ამოცნობა (Contextual Need Recognition):
-       - ამოიცანი მომხმარებლის შიში, ეჭვი, გამოუცდელობა ან ინტერესი საუბრის შინაარსიდან და კონტექსტიდან, და არა მხოლოდ კონკრეტული საკვანძო სიტყვებით ("მეშინია კამერის", "პირველად ვაკეთებ").
+       - ამოიცანი მომხმარებლის შიში, ეჭვი, გამოუცდელობა ან ინტერესი საუბრის შინაარსიდან და წინა დიალოგის კონტექსტიდან (გაითვალისწინე ჩათის მთლიანი ისტორია), და არა მხოლოდ კონკრეტული საკვანძო სიტყვებით ("მეშინია კამერის", "პირველად ვაკეთებ").
        - მაგალითად: თუ მომხმარებელი სვამს ბევრ კითხვას მომზადებაზე, პროცესზე, კამერებთან ურთიერთობაზე, ტელესუფლიორზე, სტუმრებთან საუბარზე, ყოყმანობს ან სვამს დაზუსტებით კითხვებს, უპასუხე ამომწურავად და მხარდამჭერად.
 
     2. საკვანძო განსხვავება: "დაწყება მინდა" vs "ჩაწერა მინდა":
-       - "პოდკასტის დაწყება მინდა" (ან იდეის/პროექტის დაწყების სურვილი): ეს ნიშნავს, რომ მომხმარებელი ახლა იწყებს გზას. შესთავაზეთ უფასო კონსულტაცია, სტუდიის დათვალიერება და ადგილზე უფასოდ ჩაწერის სინჯი ("სცადე ჩაწერა"), რათა ნახოს, როგორ ერგება ფორმატი. (მაგალითად: "თუ პოდკასტის დაწყებას ახლა გეგმავ, შეგიძლია ჯერ მოხვიდე, გაიარო უფასო კონსულტაცია და ადგილზე უფასოდ სცადო ჩაწერა. ასე ნახავ, რამდენად გიხდება ფორმატი და მერე გადაწყვეტ დაწყებას.")
+       - "პოდკასტის დაწყება მინდა" (ან იდეის/პროექტის დაწყების სურვილი): ეს ნიშნავს, რომ მომხმარებელი ახლა იწყებს გზას. შესთავაზე უფასო კონსულტაცია, სტუდიის დათვალიერება და ადგილზე უფასოდ ჩაწერის სინჯი ("სცადე ჩაწერა"), რათა ნახოს, როგორ ერგება ფორმატი.
        - "პოდკასტის ჩაწერა მინდა" (ან კონკრეტული სესიის მოთხოვნა): მომხმარებელს უკვე გადაწყვეტილი აქვს და ეძებს სტუდიას/დროს/ფასს. ნუ შესთავაზებ ავტომატურად უფასო სინჯს/დათვალიერებას! პირდაპირ მიეცი მოთხოვნილი ინფორმაცია ან გადაიყვანე დაჯავშნის პროცესზე.
 
-    3. სელექციური შეთავაზება (Selective Offering):
+    3. ოთხივე საკონტაქტო საშუალების მიწოდების წესი (Contact Methods Requirement):
+       - ყოველთვის, როდესაც მომხმარებელს შესთავაზებ უფასო ცდას / დათვალიერებას / კონსულტაციას, ან როდესაც დააზუსტებ მომხმარებელთან, რომ მას პოდკასტის დაწყება/ჩაწერა სურს, აუცილებლად მიაწოდე დაკავშირების ოთხივე საშუალება (სურვილისამებრ):
+         1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ: "დაჯავშნა")
+         2. ტელეფონით დარეკვა: +995 577 11 43 55
+         3. WhatsApp: +995 577 11 43 55
+         4. ელ-ფოსტა: podcast@studiolane.ge
+
+    4. სელექციური შეთავაზება (Selective Offering):
        - ფასის კითხვაზე: მიეცი კონკრეტული ფასები პირდაპირ. ნუ შესთავაზებ უფასო კონსულტაციას/სინჯს, თუ თავად არ გამოხატა ეჭვი ან დაწყების სურვილი.
        - ტექნიკურ კითხვაზე: უპასუხე ტექნიკურად მოკლედ და ამომწურავად.
        - მზადყოფნისას ("ჩაწერა მინდა", "დაჯავშნა მინდა"): გადაიყვანე დაჯავშნის პროცესზე.
 
-    4. ტონი და სტილი:
+    5. ტონი და სტილი:
        - ბიზნესური + ადამიანური + დამხმარე + ზომიერად გაყიდვებზე ორიენტირებული.
-       - ილაპარაკე ბუნებრივად, პასუხები იყოს მოკლე (1-3 წინადადება).
+       - ილაპარაკე ბუნებრივად, პასუხები იყოს მოკლე და მკაფიო (1-3 წინადადება).
        - კატეგორიულად მოერიდე გადაჭარბებულ ქება-დიდებას ან კლიშეებს: "ძალიან მაგარი ინიციატივაა", "წარმატებებს გისურვებ", "ძალიან კარგი იდეაა".
        - ნუ გაიმეორებ სტუდიის სახელს ("The Lane Studio") ყოველ მეორე წინადადებაში.
        - რუსულ ენაზე მოთხოვნებზე უპასუხე strictly: "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად."
        - არასოდეს თქვა "Booking Confirmed" ან "ადგილი დაჯავშნილია".
     `;
 
+    chatHistory.push({ role: 'user', parts: [{ text: prompt }] });
+
     const data = {
-        contents: [{ parts: [{ text: `${systemInstruction}\n\nკითხვა: ${prompt}` }] }]
+        system_instruction: {
+            parts: [{ text: systemInstructionText }]
+        },
+        contents: chatHistory
     };
 
     for (const model of models) {
@@ -3175,11 +3189,14 @@ async function callGemini(prompt) {
             const json = await response.json();
             
             if (json.candidates && json.candidates[0] && json.candidates[0].content && json.candidates[0].content.parts && json.candidates[0].content.parts[0]) {
-                return json.candidates[0].content.parts[0].text;
+                const botReply = json.candidates[0].content.parts[0].text;
+                chatHistory.push({ role: 'model', parts: [{ text: botReply }] });
+                return botReply;
             }
         } catch (e) {}
     }
 
+    chatHistory.pop();
     return null;
 }
 
@@ -3235,12 +3252,12 @@ async function botResponse(text) {
   let r = "";
   if (lowerText.includes('დაწყება') || lowerText.includes('იდეა') || lowerText.includes('პირველად') || lowerText.includes('როგორ დავიწყო')) {
     r = lang === 'ka' 
-      ? "თუ პოდკასტის დაწყებას ახლა გეგმავ, შეგიძლია ჯერ მოხვიდე, გაიარო უფასო კონსულტაცია და ადგილზე უფასოდ სცადო ჩაწერა. ასე ნახავ, რამდენად გიხდება ფორმატი და მერე გადაწყვეტ დაწყებას."
-      : "If you're planning to start a podcast, you can visit us first for a free consultation and try a test recording to see how the format suits you.";
+      ? "თუ პოდკასტის დაწყებას ახლა გეგმავ, შეგიძლია ჯერ მოხვიდე, გაიარო უფასო კონსულტაცია და ადგილზე უფასოდ სცადო ჩაწერა. დაკავშირება შეგიძლიათ ოთხივე საშუალებით (სურვილისამებრ):\n1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ 'დაჯავშნა')\n2. დარეკვა: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. ელ-ფოსტა: podcast@studiolane.ge"
+      : "If you're planning to start a podcast, you can visit us for a free consultation and try a test recording. You can contact us via any of these 4 options:\n1. Book in chat (type 'book')\n2. Call: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. Email: podcast@studiolane.ge";
   } else if (lowerText.includes('არ ვიცი') || lowerText.includes('კამერა') || lowerText.includes('დაბნეული') || lowerText.includes('კონსულტაცია') || lowerText.includes('ნახვა')) {
     r = lang === 'ka' 
-      ? "შეგიძლია მოხვიდე სტუდიაში, დაათვალიერო სივრცე, გაიარო უფასო კონსულტაცია ჩვენს გუნდთან და სცადო ჩაწერა. ასე ადგილზე ნახავ ყველა დეტალს."
-      : "You can visit the studio, check out the space, get a free consultation with our team, and try recording to see all details first-hand.";
+      ? "შეგიძლია მოხვიდე სტუდიაში, დაათვალიერო სივრცე, გაიარო უფასო კონსულტაცია ჩვენს გუნდთან და სცადო ჩაწერა. დაკავშირება შეგიძლიათ თქვენთვის სასურველი გზით:\n1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ 'დაჯავშნა')\n2. დარეკვა: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. ელ-ფოსტა: podcast@studiolane.ge"
+      : "You can visit the studio, check out the space, get a free consultation with our team, and try recording. Contact us via:\n1. Book in chat (type 'book')\n2. Call: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. Email: podcast@studiolane.ge";
   } else if(lowerText.includes('ფასი') || lowerText.includes('price')) {
     r = lang === 'ka' ? "ჩვენი პოდკასტის ჩაწერა იწყება 180₾-დან/სთ (3 კამერა, აუდიო, raw ფაილები). დეტალური ფასები შეგიძლიათ ნახოთ 'მომსახურების' სექციაში." : "Podcast recording starts at ₾180/hr (3 cameras, audio, raw files). Detailed prices are in the 'Services' section.";
   } else if(lowerText.includes('მისამართი') || lowerText.includes('ადგილი') || lowerText.includes('location')) {
