@@ -1658,12 +1658,84 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 }
 </style>
 
+
+
+
+
+<!-- OVERALL GALLERY SECTION HEADER -->
+<div id="gallery-section" style="text-align:left; padding:60px 60px 10px;">
+  <h2 class="s-title" style="font-size:42px; letter-spacing:2px; color:var(--white); margin:0; text-align:left;" data-ka="გალერეა" data-en="GALLERY">გალერეა</h2>
+  <div class="divider" style="margin:16px 0 30px 0;"></div>
+</div>
+
+<!-- STUDIO LANE SPACE SHOWCASE -->
+<section id="space-lane" style="padding: 20px 60px 40px;">
+  <h2 class="s-title" style="font-size:26px; font-weight:700; text-align:center;" data-ka="სივრცე STUDIO LANE" data-en="Space Studio Lane">სივრცე STUDIO LANE</h2>
+  <div class="divider" style="margin:12px auto 30px;"></div>
+  
+  <div class="lane-gallery-wrapper" style="max-width:900px; margin:0 auto;">
+    <!-- MAIN BIG FEATURED PHOTO FRAME -->
+    <div class="lane-main-frame" onclick="nextLanePhoto()" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:14px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 45px rgba(0,0,0,0.6); cursor:pointer; background:var(--dark2);">
+      <img id="lane-main-img" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Studio Lane Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
+      <div onclick="event.stopPropagation(); openLanePhotoZoom(activeLaneIndex);" title="გადიდება" style="position:absolute; bottom:16px; right:16px; background:rgba(10,10,11,0.75); border:1px solid rgba(255,255,255,0.2); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </div>
+    </div>
+
+    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
+    <div class="lane-thumbs-strip" style="display:flex; gap:10px; margin-top:18px; overflow-x:auto; scrollbar-width:none; padding:6px 2px 12px; justify-content:center;">
+      <div class="lane-thumb active" onclick="selectLanePhoto(0)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Interier 1"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(1)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg" alt="Interier 2"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(2)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg" alt="Interier 3"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(3)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg" alt="Interier 4"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(4)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg" alt="Interier 5"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(5)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG" alt="Interier 6"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(6)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG" alt="Interier 7"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK / GALLERY SHOWCASE -->
+<section id="book" style="padding: 20px 60px 60px;">
+  <h2 class="s-title" style="font-size:26px; font-weight:700; text-align:center;" data-ka="სტუდიის ტიპოლოგიები" data-en="Studio Typologies">სტუდიის ტიპოლოგიები</h2>
+  <div class="divider" style="margin:12px auto 30px;"></div>
+  
+  <div class="book-gallery-wrapper" style="max-width:900px; margin:0 auto;">
+    <!-- MAIN BIG FEATURED PHOTO FRAME -->
+    <div class="book-main-frame" onclick="openBookPhotoZoom(activeBookIndex)" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:14px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 45px rgba(0,0,0,0.6); cursor:pointer; background:var(--dark2);">
+      <img id="book-main-img" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Studio Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
+    </div>
+
+    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
+    <div class="book-thumbs-strip" style="display:flex; gap:10px; margin-top:18px; overflow-x:auto; scrollbar-width:none; padding:6px 2px 12px;">
+      <div class="book-thumb active" onclick="selectBookPhoto(0)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Thumb 1"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(1)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg" alt="Thumb 2"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(2)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg" alt="Thumb 3"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(3)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg" alt="Thumb 4"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(4)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg" alt="Thumb 5"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(5)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg" alt="Thumb 6"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(6)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg" alt="Thumb 7"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(7)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg" alt="Thumb 8"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(8)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg" alt="Thumb 9"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(9)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg" alt="Thumb 10"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(10)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg" alt="Thumb 11"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(11)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg" alt="Thumb 12"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(12)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg" alt="Thumb 13"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(13)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg" alt="Thumb 14"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(14)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg" alt="Thumb 15"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(15)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg" alt="Thumb 16"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(16)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg" alt="Thumb 17"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(17)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg" alt="Thumb 18"></div>
+    </div>
+  </div>
+</section>
+
 <section id="site-pricing-showcase" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
   
   <!-- PODCAST STUDIO SECTION -->
   <div style="margin-bottom: 50px;">
-    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="PODCAST STUDIO — პაკეტები" data-en="PODCAST STUDIO — PACKAGES">PODCAST STUDIO — პაკეტები</h2>
-    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="PODCAST STUDIO — პაკეტები" data-en="PODCAST STUDIO — PACKAGES">PODCAST STUDIO — პაკეტები</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 24px auto;"></div>
 
     <div class="sp-showcase-grid-4">
       <!-- 1. RECORDING -->
@@ -1738,10 +1810,10 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 
   <!-- CREATOR / SOLO STUDIO SECTION -->
   <div style="margin-bottom: 50px;">
-    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="CREATOR / SOLO STUDIO" data-en="CREATOR / SOLO STUDIO">CREATOR / SOLO STUDIO</h2>
-    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="CREATOR / SOLO STUDIO" data-en="CREATOR / SOLO STUDIO">CREATOR / SOLO STUDIO</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 24px auto;"></div>
 
-    <div class="sp-showcase-grid-2">
+    <div class="sp-showcase-grid-2" style="margin: 0 auto; justify-content: center;">
       <!-- 1. SOLO RECORDING -->
       <div class="sp-card">
         <div>
@@ -1780,8 +1852,8 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 
   <!-- STUDIO DECORATION / USAGE RULES SECTION -->
   <div>
-    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="STUDIO DECORATION / USAGE RULES" data-en="STUDIO DECORATION / USAGE RULES">STUDIO DECORATION / USAGE RULES</h2>
-    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="STUDIO DECORATION / USAGE RULES" data-en="STUDIO DECORATION / USAGE RULES">STUDIO DECORATION / USAGE RULES</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 24px auto;"></div>
 
     <div class="sp-showcase-grid-3">
       <!-- 1. STANDARD DECOR -->
@@ -1837,74 +1909,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 </section>
 
 
-
-<!-- OVERALL GALLERY SECTION HEADER -->
-<div id="gallery-section" style="text-align:left; padding:60px 60px 10px;">
-  <h2 class="s-title" style="font-size:42px; letter-spacing:2px; color:var(--white); margin:0; text-align:left;" data-ka="გალერეა" data-en="GALLERY">გალერეა</h2>
-  <div class="divider" style="margin:16px 0 30px 0;"></div>
-</div>
-
-<!-- STUDIO LANE SPACE SHOWCASE -->
-<section id="space-lane" style="padding: 20px 60px 40px;">
-  <h2 class="s-title" style="font-size:26px; font-weight:700; text-align:center;" data-ka="სივრცე STUDIO LANE" data-en="Space Studio Lane">სივრცე STUDIO LANE</h2>
-  <div class="divider" style="margin:12px auto 30px;"></div>
-  
-  <div class="lane-gallery-wrapper" style="max-width:900px; margin:0 auto;">
-    <!-- MAIN BIG FEATURED PHOTO FRAME -->
-    <div class="lane-main-frame" onclick="nextLanePhoto()" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:14px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 45px rgba(0,0,0,0.6); cursor:pointer; background:var(--dark2);">
-      <img id="lane-main-img" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Studio Lane Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
-      <div onclick="event.stopPropagation(); openLanePhotoZoom(activeLaneIndex);" title="გადიდება" style="position:absolute; bottom:16px; right:16px; background:rgba(10,10,11,0.75); border:1px solid rgba(255,255,255,0.2); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-      </div>
-    </div>
-
-    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
-    <div class="lane-thumbs-strip" style="display:flex; gap:10px; margin-top:18px; overflow-x:auto; scrollbar-width:none; padding:6px 2px 12px; justify-content:center;">
-      <div class="lane-thumb active" onclick="selectLanePhoto(0)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Interier 1"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(1)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg" alt="Interier 2"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(2)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg" alt="Interier 3"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(3)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg" alt="Interier 4"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(4)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg" alt="Interier 5"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(5)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG" alt="Interier 6"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(6)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG" alt="Interier 7"></div>
-    </div>
-  </div>
-</section>
-
-<!-- BOOK / GALLERY SHOWCASE -->
-<section id="book" style="padding: 20px 60px 60px;">
-  <h2 class="s-title" style="font-size:26px; font-weight:700; text-align:center;" data-ka="სტუდიის ტიპოლოგიები" data-en="Studio Typologies">სტუდიის ტიპოლოგიები</h2>
-  <div class="divider" style="margin:12px auto 30px;"></div>
-  
-  <div class="book-gallery-wrapper" style="max-width:900px; margin:0 auto;">
-    <!-- MAIN BIG FEATURED PHOTO FRAME -->
-    <div class="book-main-frame" onclick="openBookPhotoZoom(activeBookIndex)" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:14px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 45px rgba(0,0,0,0.6); cursor:pointer; background:var(--dark2);">
-      <img id="book-main-img" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Studio Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
-    </div>
-
-    <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
-    <div class="book-thumbs-strip" style="display:flex; gap:10px; margin-top:18px; overflow-x:auto; scrollbar-width:none; padding:6px 2px 12px;">
-      <div class="book-thumb active" onclick="selectBookPhoto(0)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Thumb 1"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(1)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg" alt="Thumb 2"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(2)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg" alt="Thumb 3"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(3)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg" alt="Thumb 4"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(4)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg" alt="Thumb 5"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(5)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg" alt="Thumb 6"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(6)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg" alt="Thumb 7"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(7)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg" alt="Thumb 8"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(8)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg" alt="Thumb 9"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(9)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg" alt="Thumb 10"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(10)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg" alt="Thumb 11"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(11)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg" alt="Thumb 12"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(12)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg" alt="Thumb 13"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(13)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg" alt="Thumb 14"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(14)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg" alt="Thumb 15"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(15)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg" alt="Thumb 16"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(16)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg" alt="Thumb 17"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(17)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg" alt="Thumb 18"></div>
-    </div>
-  </div>
-</section>
 
 <!-- FOREGROUND ZOOM LIGHTBOX BOX & BACKDROP -->
 <div class="port-backdrop" id="port-backdrop" onclick="closeForegroundZoom()"></div>
