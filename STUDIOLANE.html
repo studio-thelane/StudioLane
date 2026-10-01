@@ -1524,13 +1524,13 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
 .sp-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 107, 0, 0.5);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  border-color: rgba(255, 107, 0, 0.6);
+  box-shadow: 0 14px 35px rgba(255, 107, 0, 0.25);
 }
 .sp-card.sp-featured {
   border-color: #ff6b00;
@@ -1737,7 +1737,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ პროფესიონალური განათება</li>
           </ul>
         </div>
-        <button class="sp-btn" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 2. RECORDING + EDITING -->
@@ -1754,7 +1753,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ ფერთა კორექცია & ხმის დიზაინი</li>
           </ul>
         </div>
-        <button class="sp-btn sp-btn-orange" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 3. PARTNERSHIP STANDARD -->
@@ -1771,7 +1769,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ არხის მართვა & მხარდაჭერა</li>
           </ul>
         </div>
-        <button class="sp-btn" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 4. PARTNERSHIP PRO -->
@@ -1788,7 +1785,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ სოციალური ქსელების მენეჯმენტი</li>
           </ul>
         </div>
-        <button class="sp-btn sp-btn-blue" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
     </div>
   </div>
@@ -1813,7 +1809,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ FHD / 4K ნედლი მასალის ჩანაწერები</li>
           </ul>
         </div>
-        <button class="sp-btn" onclick="openModal('solo')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 2. SOLO RECORDING + EDITING -->
@@ -1830,7 +1825,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ მზა კონტენტი Reels/TikTok-ისთვის</li>
           </ul>
         </div>
-        <button class="sp-btn sp-btn-orange" onclick="openModal('solo')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
     </div>
   </div>
@@ -1854,7 +1848,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ კომფორტული სავარძლები & მაგიდა</li>
           </ul>
         </div>
-        <button class="sp-btn" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 2. SELECT STUDIO -->
@@ -1870,7 +1863,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ ექსკლუზიური რეკვიზიტები & დეკორი</li>
           </ul>
         </div>
-        <button class="sp-btn sp-btn-orange" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
 
       <!-- 3. FULL CUSTOM STUDIO -->
@@ -1886,7 +1878,6 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
             <li>✓ პრემიუმ არქიტექტურული განათება</li>
           </ul>
         </div>
-        <button class="sp-btn sp-btn-blue" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
       </div>
     </div>
   </div>
