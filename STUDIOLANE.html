@@ -2594,14 +2594,24 @@ function handleModalFormSubmit(e, finalTotalPrice) {
     total_price: `${finalTotalPrice} ₾`
   };
 
-  if (typeof emailjs !== 'undefined') {
-    emailjs.send("service_abc123", "template_kqsobyd", templateParams)
-      .then(function(response) {
-        console.log('EmailJS SUCCESS!', response.status, response.text);
-      }, function(error) {
-        console.log('EmailJS FAILED...', error);
-      });
-  }
+  try {
+    fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
+        _template: "table",
+        "სახელი": fname,
+        "გვარი": lname,
+        "ტელეფონი": phone,
+        "ელ_ფოსტა": email,
+        "პაკეტი": selectedPackageTier,
+        "ხანგრძლივობა": selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
+        "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
+        "ჯამური_ფასი": finalTotalPrice + ' ₾'
+      })
+    }).catch(err => console.error("Modal FormSubmit error:", err));
+  } catch(e){}
 
   // Hide form and summary box, display success box inline in the same modal view
   setTimeout(() => {
@@ -2879,24 +2889,33 @@ async function dispatchImmediateLeadEmailJS() {
   
   leadEmailSentForThisSession = true;
 
-  const templateParams = {
-    fname: bookingData.name || 'მომხმარებელი',
-    lname: '(Immediate Chatbot Lead)',
-    phone: bookingData.phone || 'არ არის მითითებული',
-    email: bookingData.email || 'არ არის მითითებული',
-    package: bookingData.service || 'პოდკასტის დაწყება/ინტერესი',
-    duration: `${bookingData.duration || 'N/A'} (თარიღი: ${bookingData.date || 'N/A'}, დრო: ${bookingData.startTime || 'N/A'})`,
-    decor: bookingData.decor || 'Standard',
-    total_price: 'მყისიერი ლიდი ჩათბოტიდან'
+  const payload = {
+    _subject: "[ახალი მყისიერი ლიდი ჩათბოტიდან] Studio The Lane",
+    _template: "table",
+    "სახელი_გვარი": bookingData.name || "მომხმარებელი",
+    "ტელეფონი": bookingData.phone || "არ არის მითითებული",
+    "სოც_ქსელი_ან_მაილი": bookingData.socialOrEmail || bookingData.email || "არ არის მითითებული",
+    "მომსახურება": bookingData.service || "პოდკასტის ჩაწერა/ინტერესი",
+    "თარიღი": bookingData.date || "N/A",
+    "დრო": bookingData.startTime || "N/A",
+    "ხანგრძლივობა": bookingData.duration || "N/A",
+    "დეკორი": bookingData.decor || "Standard",
+    "დამატებითი_ინფო": "მყისიერი ლიდი ჩათბოტიდან (2-ე ეტაპი)"
   };
 
   try {
-    if (typeof emailjs !== 'undefined') {
-      await emailjs.send("service_abc123", "template_kqsobyd", templateParams);
-      console.log("Immediate Lead EmailJS Sent!");
-    }
+    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    console.log("FormSubmit Instant Lead Sent:", data);
   } catch (err) {
-    console.error("Immediate Lead EmailJS Error:", err);
+    console.error("FormSubmit Instant Lead Error:", err);
   }
 }
 
@@ -2907,6 +2926,7 @@ function extractBookingEntities(text) {
   const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
   if (emailMatch && !bookingData.email) {
     bookingData.email = emailMatch[0];
+    if (!bookingData.socialOrEmail) bookingData.socialOrEmail = emailMatch[0];
   }
 
   // Extract Phone Number
@@ -2917,9 +2937,13 @@ function extractBookingEntities(text) {
 
   // Extract Service
   if (!bookingData.service) {
-    if (lower.includes('პოდკასტ') || lower.includes('podcast')) bookingData.service = 'Podcast Studio';
+    if (lower.includes('300') || lower.includes('ჩაწერა + მონტაჟი') || lower.includes('editing')) bookingData.service = 'RECORDING + EDITING (300 ₾/სთ)';
+    else if (lower.includes('200') || lower.includes('მხოლოდ ჩაწერა') || lower.includes('recording')) bookingData.service = 'RECORDING (200 ₾/სთ)';
+    else if (lower.includes('2500') || lower.includes('2,500') || lower.includes('standard')) bookingData.service = 'Partnership Standard (2,500 ₾/თვე)';
+    else if (lower.includes('5500') || lower.includes('5,500') || lower.includes('pro')) bookingData.service = 'Partnership Pro (5,500 ₾/თვე)';
+    else if (lower.includes('პოდკასტ') || lower.includes('podcast')) bookingData.service = 'Podcast Studio';
     else if (lower.includes('სოლო') || lower.includes('solo')) bookingData.service = 'Solo Studio';
-    else if (lower.includes('ხმის ჩაწერა') || lower.includes('voiceover') || lower.includes('voice over')) bookingData.service = 'Voice Over Booth';
+    else if (lower.includes('ხმის') || lower.includes('voiceover')) bookingData.service = 'Voice Over Booth';
     else if (lower.includes('ლაივ') || lower.includes('live')) bookingData.service = 'Live Podcast';
     else if (lower.includes('პარტნიორ') || lower.includes('partnership')) bookingData.service = 'Monthly Partnership';
   }
@@ -2941,7 +2965,7 @@ function extractBookingEntities(text) {
     }
   }
 
-  // Extract Time (e.g., 15:00, 3-ზე, 14:30)
+  // Extract Time
   if (!bookingData.startTime) {
     const timeMatch = text.match(/\b([0-1]?[0-9]|2[0-3]):[0-5][0-9]\b/);
     if (timeMatch) {
@@ -2954,7 +2978,7 @@ function extractBookingEntities(text) {
     }
   }
 
-  // Extract Date (e.g. ხვალ, დღეს, 15 ოქტომბერს, 2026-10-05)
+  // Extract Date
   if (!bookingData.date) {
     if (lower.includes('ხვალ')) bookingData.date = 'ხვალ';
     else if (lower.includes('დღეს')) bookingData.date = 'დღეს';
@@ -2965,21 +2989,24 @@ function extractBookingEntities(text) {
     }
   }
 
-  // Immediately dispatch email as soon as name or phone is extracted
-  if ((bookingData.name || bookingData.phone) && !leadEmailSentForThisSession) {
+  // Immediately dispatch instant lead email as soon as name & phone are collected
+  if (bookingData.name && bookingData.phone && !leadEmailSentForThisSession) {
     dispatchImmediateLeadEmailJS();
   }
 }
 
 function getNextMissingField() {
   if (!bookingData.service) return 'service';
+  if (!bookingData.name) return 'name';
+  if (!bookingData.phone) return 'phone';
+  if (!bookingData.socialOrEmail && !bookingData.email) return 'socialOrEmail';
   if (!bookingData.date) return 'date';
   if (!bookingData.startTime) return 'startTime';
   if (!bookingData.duration) return 'duration';
   if (!bookingData.decor) return 'decor';
-  if (!bookingData.name) return 'name';
-  if (!bookingData.phone) return 'phone';
-  if (!bookingData.email) return 'email';
+  if (bookingData.service && (bookingData.service.includes('EDITING') || bookingData.service.includes('300'))) {
+    if (bookingData.addons === undefined || bookingData.addons === '') return 'addons';
+  }
   return null;
 }
 
@@ -2988,36 +3015,40 @@ function getQuestionForField(field) {
   switch (field) {
     case 'service':
       return isKa 
-        ? "რომელი მომსახურების დაჯავშნა გსურთ?\n(1. Podcast Studio 2. Solo Studio 3. Voice Over 4. Live Podcast 5. Partnership)"
-        : "Which service would you like to book?\n(1. Podcast Studio 2. Solo Studio 3. Voice Over 4. Live Podcast 5. Partnership)";
-    case 'date':
-      return isKa 
-        ? "რომელ თარიღს ისურვებდით? (მაგ: ხვალ, 15 ოქტომბერს...)"
-        : "Which date would you prefer? (e.g., Tomorrow, Oct 15...)";
-    case 'startTime':
-      return isKa 
-        ? "რომელ საათზე გსურთ დაწყება? (მაგ: 15:00)"
-        : "What start time works for you? (e.g., 15:00)";
-    case 'duration':
-      return isKa 
-        ? "რამდენი ხნით გსურთ სტუდიის დაჯავშნა? (მაგ: 1 საათი, 2 საათი)"
-        : "For how long would you like to book? (e.g., 1 hour, 2 hours)";
-    case 'decor':
-      return isKa 
-        ? "დეკორაციის რომელი ტიპი გსურთ?\n(Standard - უფასო | Select Studio - +150₾ | Custom)"
-        : "Which decor option do you prefer?\n(Standard - Free | Select Studio - +150 GEL | Custom)";
+        ? "ჩვენ გვაქვს როგორც საათობრივი ჩაწერა (RECORDING — 200 ₾/სთ, RECORDING + EDITING — 300 ₾/სთ), ისე სრული ყოველთვიური პარტნიორობა (Partnership Standard — 2,500 ₾/თვე და Pro — 5,500 ₾/თვე, სადაც შედის 4 ეპიზოდი სრული მონტაჟით, Shorts-ებითა და არხის მართვით).\n\nრომელი ფორმატი უფრო გიხდებათ?\n1. RECORDING (200 ₾/სთ)\n2. RECORDING + EDITING (300 ₾/სთ)\n3. Partnership Standard (2,500 ₾/თვე)\n4. Partnership Pro (5,500 ₾/თვე)"
+        : "We offer hourly recording (RECORDING — 200 GEL/hr, RECORDING + EDITING — 300 GEL/hr) as well as full monthly partnerships (Partnership Standard — 2,500 GEL/mo, Pro — 5,500 GEL/mo including 4 episodes with full editing, Shorts & channel management).\n\nWhich format suits you best?\n1. RECORDING (200 GEL/hr)\n2. RECORDING + EDITING (300 GEL/hr)\n3. Partnership Standard (2,500 GEL/mo)\n4. Partnership Pro (5,500 GEL/mo)";
     case 'name':
       return isKa 
-        ? "გთხოვთ მიუთითოთ თქვენი სახელი და გვარი."
-        : "Please provide your full name.";
+        ? "გთხოვთ მიუთითოთ თქვენი სახელი და გვარი 👤"
+        : "Please provide your full name 👤";
     case 'phone':
       return isKa 
-        ? "გთხოვთ მიუთითოთ თქვენი ტელეფონის ნომერი (მაგ: 577 11 43 55)."
-        : "Please provide your contact phone number.";
-    case 'email':
+        ? "გთხოვთ მიუთითოთ თქვენი მობილურის ნომერი (მაგ: 577 11 43 55) 📞"
+        : "Please provide your mobile phone number 📞";
+    case 'socialOrEmail':
       return isKa 
-        ? "გთხოვთ მიუთითოთ თქვენი ელ-ფოსტის მისამართი."
-        : "Please provide your email address.";
+        ? "გთხოვთ მიუთითოთ თქვენი ფეისბუქი, ინსტაგრამი ან ელ-ფოსტა 📲"
+        : "Please provide your Facebook, Instagram, or Email address 📲";
+    case 'date':
+      return isKa 
+        ? "რომელ თარიღს ისურვებდით? (მაგ: ხვალ, 15 ოქტომბერს...) 📅"
+        : "Which date would you prefer? (e.g., Tomorrow, Oct 15...) 📅";
+    case 'startTime':
+      return isKa 
+        ? "რომელ საათზე გსურთ დაწყება? (მაგ: 15:00) ⏰"
+        : "What start time works for you? (e.g., 15:00) ⏰";
+    case 'duration':
+      return isKa 
+        ? "რამდენი ხნით გსურთ სტუდიის დაჯავშნა? (მაგ: 1 საათი, 2 საათი) ⏱"
+        : "For how long would you like to book? (e.g., 1 hour, 2 hours) ⏱";
+    case 'decor':
+      return isKa 
+        ? "დეკორაციის რომელი ტიპი გსურთ?\n(Standard - უფასო | Select Studio - +150 ₾ | Custom) 🎨"
+        : "Which decor option do you prefer?\n(Standard - Free | Select Studio - +150 GEL | Custom) 🎨";
+    case 'addons':
+      return isKa
+        ? "გსურთ დამატებითი სერვისების ჩართვა? 🎬\n• 3 Shorts/Reels (+100 ₾)\n• YouTube Thumbnail (+50 ₾)\n• ანიმაციური ანონსი (+100 ₾)\n(თუ არ გსურთ, მოგვწერეთ 'არა' ან 'არაფერი')"
+        : "Would you like optional add-on services? 🎬\n• 3 Shorts/Reels (+100 GEL)\n• YouTube Thumbnail (+50 GEL)\n• Animated Announcement (+100 GEL)\n(Reply 'No' if not needed)";
     default:
       return "";
   }
@@ -3031,9 +3062,8 @@ async function handleBookingFlow(text) {
 
   const lower = text.toLowerCase();
 
-  // If in review state
   if (chatState === 'review') {
-    if (lower.includes('დიახ') || lower.includes('კი') || lower.includes('yes') || lower.includes('confirm') || lower.includes('ვადასტურებ') || lower.includes('გაგზავნა')) {
+    if (lower.includes('დიახ') || lower.includes('კი') || lower.includes('yes') || lower.includes('confirm') || lower.includes('ვადასტურებ') || lower.includes('გაგზავნა') || lower.includes('დაჯავშნა')) {
       await dispatchBookingEmailJS();
       return;
     } else if (lower.includes('შეცვლა') || lower.includes('change') || lower.includes('edit')) {
@@ -3049,38 +3079,44 @@ async function handleBookingFlow(text) {
 
   const currentMissing = getNextMissingField();
 
-  if (currentMissing === 'name' && !bookingData.name && !text.includes('@') && !/\d{5,}/.test(text)) {
+  if (currentMissing === 'service' && !bookingData.service) {
+    const sLower = text.trim().toLowerCase();
+    if (sLower === '1' || sLower.includes('200') || sLower.includes('მხოლოდ ჩაწერა')) bookingData.service = 'RECORDING (200 ₾/სთ)';
+    else if (sLower === '2' || sLower.includes('300') || sLower.includes('მონტაჟი')) bookingData.service = 'RECORDING + EDITING (300 ₾/სთ)';
+    else if (sLower === '3' || sLower.includes('2500') || sLower.includes('standard')) bookingData.service = 'Partnership Standard (2,500 ₾/თვე)';
+    else if (sLower === '4' || sLower.includes('5500') || sLower.includes('pro')) bookingData.service = 'Partnership Pro (5,500 ₾/თვე)';
+    else bookingData.service = text.trim();
+  } else if (currentMissing === 'name' && !bookingData.name && !text.includes('@') && !/\d{5,}/.test(text)) {
     bookingData.name = text.trim();
   } else if (currentMissing === 'phone' && !bookingData.phone && /\d{5,}/.test(text)) {
     bookingData.phone = text.replace(/\s+/g, '');
-  } else if (currentMissing === 'email' && !bookingData.email && text.includes('@')) {
-    bookingData.email = text.trim();
+  } else if (currentMissing === 'socialOrEmail' && !bookingData.socialOrEmail && !bookingData.email) {
+    bookingData.socialOrEmail = text.trim();
+    if (text.includes('@')) bookingData.email = text.trim();
   } else if (currentMissing === 'date' && !bookingData.date) {
     bookingData.date = text.trim();
   } else if (currentMissing === 'startTime' && !bookingData.startTime) {
     bookingData.startTime = text.trim();
   } else if (currentMissing === 'duration' && !bookingData.duration) {
     bookingData.duration = text.trim();
-  } else if (currentMissing === 'service' && !bookingData.service) {
-    const sLower = text.trim().toLowerCase();
-    if (sLower === '1' || sLower.includes('პოდკასტ') || sLower.includes('podcast')) bookingData.service = 'Podcast Studio';
-    else if (sLower === '2' || sLower.includes('სოლო') || sLower.includes('solo')) bookingData.service = 'Solo Studio';
-    else if (sLower === '3' || sLower.includes('ხმის') || sLower.includes('voice')) bookingData.service = 'Voice Over Booth';
-    else if (sLower === '4' || sLower.includes('ლაივ') || sLower.includes('live')) bookingData.service = 'Live Podcast';
-    else if (sLower === '5' || sLower.includes('პარტნიორ') || sLower.includes('partner')) bookingData.service = 'Monthly Partnership';
-    else bookingData.service = text.trim();
   } else if (currentMissing === 'decor' && !bookingData.decor) {
     const dLower = text.trim().toLowerCase();
     if (dLower === '1' || dLower.includes('standard') || dLower.includes('სტანდარტ') || dLower.includes('უფასო')) bookingData.decor = 'Standard Decor (უფასო)';
     else if (dLower === '2' || dLower.includes('select') || dLower.includes('სელექტ')) bookingData.decor = 'Select Studio (+150 ₾)';
     else if (dLower === '3' || dLower.includes('custom') || dLower.includes('ქასთომ')) bookingData.decor = 'Full Custom Studio';
     else bookingData.decor = text.trim();
+  } else if (currentMissing === 'addons' && (bookingData.addons === undefined || bookingData.addons === '')) {
+    bookingData.addons = text.trim();
   } else {
     extractBookingEntities(text);
   }
 
+  if (bookingData.name && bookingData.phone && !leadEmailSentForThisSession) {
+    dispatchImmediateLeadEmailJS();
+  }
+
   if (text.includes('?') || lower.includes('ფასი') || lower.includes('price') || lower.includes('მისამართი') || lower.includes('სად')) {
-    if (GEMINI_API_KEY) {
+    if (typeof GEMINI_API_KEY !== 'undefined' && GEMINI_API_KEY) {
       const qResponse = await callGemini(text);
       addChatMsg(qResponse, 'bot');
     }
@@ -3101,28 +3137,30 @@ async function handleBookingFlow(text) {
 function showBookingReviewSummary() {
   const isKa = (lang === 'ka');
   const summaryMsg = isKa ?
-    `📋 <strong>გთხოვთ გადაამოწმოთ თქვენი ჯავშნის დეტალები:</strong><br><br>` +
-    `🎬 <strong>მომსახურება:</strong> ${bookingData.service}<br>` +
-    `📅 <strong>თარიღი:</strong> ${bookingData.date}<br>` +
-    `⏰ <strong>დაწყების დრო:</strong> ${bookingData.startTime}<br>` +
-    `⏱ <strong>ხანგრძლივობა:</strong> ${bookingData.duration}<br>` +
-    `🎨 <strong>დეკორი:</strong> ${bookingData.decor || 'Standard Decor (უფასო)'}<br>` +
-    `👤 <strong>სახელი:</strong> ${bookingData.name}<br>` +
-    `📞 <strong>ტელეფონი:</strong> ${bookingData.phone}<br>` +
-    `✉️ <strong>ელ-ფოსტა:</strong> ${bookingData.email}<br><br>` +
-    `გსურთ ამ მოთხოვნის გაგზავნა?<br>` +
+    `📋 <strong>გთხოვთ გადაამოწმოთ თქვენი ჯავშნის დეტალები:</strong><br><br` +
+    `🎬 <strong>მომსახურება:</strong> ${bookingData.service}<br` +
+    `👤 <strong>სახელი:</strong> ${bookingData.name}<br` +
+    `📞 <strong>ტელეფონი:</strong> ${bookingData.phone}<br` +
+    `📲 <strong>სოც.ქსელი/მაილი:</strong> ${bookingData.socialOrEmail || bookingData.email || 'N/A'}<br` +
+    `📅 <strong>თარიღი:</strong> ${bookingData.date || 'N/A'}<br` +
+    `⏰ <strong>დაწყების დრო:</strong> ${bookingData.startTime || 'N/A'}<br` +
+    `⏱ <strong>ხანგრძლივობა:</strong> ${bookingData.duration || 'N/A'}<br` +
+    `🎨 <strong>დეკორი:</strong> ${bookingData.decor || 'Standard Decor (უფასო)'}<br` +
+    `🍿 <strong>დამატებები:</strong> ${bookingData.addons || 'არაფერი'}<br><br` +
+    `გსურთ ამ მოთხოვნის გაგზავნა?<br` +
     `<span style="font-size:11px; color:var(--muted);">(მოგვწერეთ <strong>"დიახ"</strong> გაგზავნისთვის ან <strong>"შეცვლა"</strong> მონაცემების ჩასასწორებლად)</span>`
     :
-    `📋 <strong>Please review your booking details:</strong><br><br>` +
-    `🎬 <strong>Service:</strong> ${bookingData.service}<br>` +
-    `📅 <strong>Date:</strong> ${bookingData.date}<br>` +
-    `⏰ <strong>Start Time:</strong> ${bookingData.startTime}<br>` +
-    `⏱ <strong>Duration:</strong> ${bookingData.duration}<br>` +
-    `🎨 <strong>Decor:</strong> ${bookingData.decor || 'Standard Decor (Free)'}<br>` +
-    `👤 <strong>Name:</strong> ${bookingData.name}<br>` +
-    `📞 <strong>Phone:</strong> ${bookingData.phone}<br>` +
-    `✉️ <strong>Email:</strong> ${bookingData.email}<br><br>` +
-    `Would you like to send this request?<br>` +
+    `📋 <strong>Please review your booking details:</strong><br><br` +
+    `🎬 <strong>Service:</strong> ${bookingData.service}<br` +
+    `👤 <strong>Name:</strong> ${bookingData.name}<br` +
+    `📞 <strong>Phone:</strong> ${bookingData.phone}<br` +
+    `📲 <strong>Social/Email:</strong> ${bookingData.socialOrEmail || bookingData.email || 'N/A'}<br` +
+    `📅 <strong>Date:</strong> ${bookingData.date || 'N/A'}<br` +
+    `⏰ <strong>Start Time:</strong> ${bookingData.startTime || 'N/A'}<br` +
+    `⏱ <strong>Duration:</strong> ${bookingData.duration || 'N/A'}<br` +
+    `🎨 <strong>Decor:</strong> ${bookingData.decor || 'Standard Decor (Free)'}<br` +
+    `🍿 <strong>Add-ons:</strong> ${bookingData.addons || 'None'}<br><br` +
+    `Would you like to send this request?<br` +
     `<span style="font-size:11px; color:var(--muted);">(Reply <strong>"Yes"</strong> to send or <strong>"Change"</strong> to edit details)</span>`;
 
   addChatMsg(summaryMsg, 'bot', true);
@@ -3134,33 +3172,43 @@ async function dispatchBookingEmailJS() {
 
   const isKa = (lang === 'ka');
 
-  const templateParams = {
-    fname: bookingData.name,
-    lname: '(Gemini Chatbot)',
-    phone: bookingData.phone,
-    email: bookingData.email,
-    package: bookingData.service,
-    duration: `${bookingData.duration} (თარიღი: ${bookingData.date}, დრო: ${bookingData.startTime})`,
-    decor: bookingData.decor || 'Standard Decor',
-    total_price: 'გადასამოწმებელია (Chatbot Request)'
+  const payload = {
+    _subject: "[სრული ჯავშნის განაცხადი ჩათბოტიდან] Studio The Lane",
+    _template: "table",
+    "კლიენტი": bookingData.name || "N/A",
+    "ტელეფონი": bookingData.phone || "N/A",
+    "სოც_ქსელი_ან_მაილი": bookingData.socialOrEmail || bookingData.email || "N/A",
+    "მომსახურება": bookingData.service || "N/A",
+    "თარიღი": bookingData.date || "N/A",
+    "დაწყების_დრო": bookingData.startTime || "N/A",
+    "ხანგრძლივობა": bookingData.duration || "N/A",
+    "დეკორი": bookingData.decor || "Standard Decor",
+    "დამატებითი_სერვისები": bookingData.addons || "არაფერი"
   };
 
   const sendingMsg = isKa ? "⏳ იგზავნება ჯავშნის მოთხოვნა..." : "⏳ Sending booking request...";
   addChatMsg(sendingMsg, 'bot');
 
   try {
-    if (typeof emailjs !== 'undefined') {
-      await emailjs.send("service_abc123", "template_kqsobyd", templateParams);
-    }
+    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    const resData = await res.json();
+    console.log("FormSubmit Final Booking Response:", resData);
   } catch (err) {
-    console.error("EmailJS Error from Chatbot:", err);
+    console.error("FormSubmit Final Booking Error:", err);
   }
 
   const finalNotice = isKa 
     ? "თქვენი მოთხოვნა მიღებულია. ხელმისაწვდომობას The Lane Studio-ის გუნდი გადაამოწმებს და დაგიკავშირდებათ ან დადასტურებას ელფოსტით მიიღებთ."
     : "Your request has been received. The Lane Studio team will verify availability and contact you or send a confirmation email.";
 
-  const waText = `📥 ახალი ჯავშნის მოთხოვნა ჩათბოტიდან!\n\n👤 კლიენტი: ${bookingData.name}\n📞 ტელეფონი: ${bookingData.phone}\n✉️ ელ-ფოსტა: ${bookingData.email}\n🎬 მომსახურება: ${bookingData.service}\n📅 თარიღი: ${bookingData.date}\n⏰ დრო: ${bookingData.startTime}\n⏱ ხანგრძლივობა: ${bookingData.duration}\n🎨 დეკორი: ${bookingData.decor || 'Standard'}`;
+  const waText = `📥 ახალი ჯავშნის მოთხოვნა ჩათბოტიდან!\n\n👤 კლიენტი: ${bookingData.name}\n📞 ტელეფონი: ${bookingData.phone}\n📲 სოც.ქსელი/მაილი: ${bookingData.socialOrEmail || bookingData.email || 'N/A'}\n🎬 მომსახურება: ${bookingData.service}\n📅 თარიღი: ${bookingData.date}\n⏰ დრო: ${bookingData.startTime}\n⏱ ხანგრძლივობა: ${bookingData.duration}\n🎨 დეკორი: ${bookingData.decor || 'Standard'}\n🍿 დამატებები: ${bookingData.addons || 'არაფერი'}`;
   const waUrl = `https://wa.me/995577114355?text=${encodeURIComponent(waText)}`;
 
   const btnText = isKa ? "💬 WhatsApp-ზე სწრაფი გადაგზავნა" : "💬 Fast Send via WhatsApp";
@@ -3172,8 +3220,6 @@ async function dispatchBookingEmailJS() {
   resetBookingData();
 }
 
-let chatHistory = [];
-
 async function callGemini(prompt) {
     const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
     
@@ -3181,39 +3227,37 @@ async function callGemini(prompt) {
     შენ ხარ Studio The Lane-ის გამოცდილი, მეგობრული და ემპათიური კონსულტანტი ჩათბოტში.
     გამოიყენე ეს სტუდიის ინფორმაცია: ${studioInfo}.
 
-    მნიშვნელოვანი ქცევითი წესები და საუბრის ლოგიკა (Human Conversation & Contextual Need Recognition):
+    მნიშვნელოვანი ქცევითი წესები და 3-ეტაპიანი საუბრის ლოგიკა:
 
-    1. კონტექსტური საჭიროების ამოცნობა (Contextual Need Recognition):
-       - ამოიცანი მომხმარებლის შიში, ეჭვი, გამოუცდელობა ან ინტერესი საუბრის შინაარსიდან და წინა დიალოგის კონტექსტიდან (გაითვალისწინე ჩათის მთლიანი ისტორია), და არა მხოლოდ კონკრეტული საკვანძო სიტყვებით ("მეშინია კამერის", "პირველად ვაკეთებ").
-       - მაგალითად: თუ მომხმარებელი სვამს ბევრ კითხვას მომზადებაზე, პროცესზე, კამერებთან ურთიერთობაზე, ტელესუფლიორზე, სტუმრებთან საუბარზე, ყოყმანობს ან სვამს დაზუსტებით კითხვებს, უპასუხე ამომწურავად და მხარდამჭერად.
+    1️⃣ ეტაპი 1 — საწყისი კონსულტაცია:
+    - თუ მომხმარებელი ამბობს ზოგად ფრაზას (მაგ. „პოდკასტი მინდა“, „პოდკასტის დაწყება მინდა“, „საუბარი მინდა“), ჯერ არ ჰკითხო ინდივიდუალური საკონტაქტო ინფორმაცია (სახელი, ტელეფონი).
+    - უპასუხე მოკლედ, მეგობრულად და მიმზიდველად შესთავაზე ვარიანტები:
+      „ჩვენ გვაქვს როგორც საათობრივი ჩაწერა (RECORDING — 200 ₾/სთ, RECORDING + EDITING — 300 ₾/სთ), ისე სრული ყოველთვიური პარტნიორობა (Partnership Standard — 2,500 ₾/თვე და Pro — 5,500 ₾/თვე, სადაც შედის 4 ეპიზოდი სრული მონტაჟით, Shorts-ებითა და არხის მართვით). რომელი ფორმატი უფრო გიხდებათ?“
 
-    2. საკვანძო განსხვავება: "დაწყება მინდა" vs "ჩაწერა მინდა":
-       - "პოდკასტის დაწყება მინდა" (ან იდეის/პროექტის დაწყების სურვილი): ეს ნიშნავს, რომ მომხმარებელი ახლა იწყებს გზას. შესთავაზე უფასო კონსულტაცია, სტუდიის დათვალიერება და ადგილზე უფასოდ ჩაწერის სინჯი ("სცადე ჩაწერა"), რათა ნახოს, როგორ ერგება ფორმატი.
-       - "პოდკასტის ჩაწერა მინდა" (ან კონკრეტული სესიის მოთხოვნა): მომხმარებელს უკვე გადაწყვეტილი აქვს და ეძებს სტუდიას/დროს/ფასს. ნუ შესთავაზებ ავტომატურად უფასო სინჯს/დათვალიერებას! პირდაპირ მიეცი მოთხოვნილი ინფორმაცია (RECORDING — 200 ₾/სთ, RECORDING + EDITING — 300 ₾/სთ, PARTNERSHIP STANDARD — 2,500 ₾/თვე, PRO — 5,500 ₾/თვე) ან გადაიყვანე დაჯავშნის პროცესზე.
+    2️⃣ ეტაპი 2 — მომსახურების არჩევა და საკონტაქტო ინფოს შეგროვება:
+    - როგორც კი მომხმარებელი დააფინანსებს/აირჩევს კონკრეტულ მომსახურებას (მაგ. „300-იანი“, „ჩაწერა მონტაჟით“, „RECORDING“, „Partnership“), გადადი საკონტაქტო ინფორმაციის შეგროვებაზე ამ ზუსტი თანმიმდევრობით:
+      1. 👤 სახელი და გვარი
+      2. 📞 მობილურის ნომერი
+      3. 📲 ფეისბუქი, ინსტაგრამი ან ელ-ფოსტა
 
-    3. ოთხივე საკონტაქტო საშუალების მიწოდების წესი (Contact Methods Requirement):
-       - ყოველთვის, როდესაც მომხმარებელს შესთავაზებ უფასო ცდას / დათვალიერებას / კონსულტაციას, ან როდესაც დააზუსტებ მომხმარებელთან, რომ მას პოდკასტის დაწყება/ჩაწერა სურს, აუცილებლად მიაწოდე დაკავშირების ოთხივე საშუალება (სურვილისამებრ):
-         1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ: "დაჯავშნა")
-         2. ტელეფონით დარეკვა: +995 577 11 43 55
-         3. WhatsApp: +995 577 11 43 55
-         4. ელ-ფოსტა: podcast@studiolane.ge
+    3️⃣ ეტაპი 3 — სიღრმისეული დაზუსტება და დაჯავშნის დასრულება:
+    - თუ მომხმარებელი რჩება ჩათში, დააზუსტე:
+      - 📅 თარიღი და დაწყების დრო
+      - ⏱ ხანგრძლივობა
+      - 🎨 დეკორაცია (Standard უფასო, Select Studio +150 ₾, Custom)
+      - 🎬 თუ 300 ₾-იანი პაკეტია, შესთავაზე დამატებითი სერვისები: 3 Shorts (+100 ₾), Thumbnail (+50 ₾), ანიმაციური ანონსი (+100 ₾).
+    - მიიყვანე საუბარი საბოლოო დადასტურებამდე („დაჯავშნა“).
 
-    4. სელექციური შეთავაზება (Selective Offering):
-       - ფასის კითხვაზე: მიეცი კონკრეტული განახლებული ფასები პირდაპირ (RECORDING — 200 ₾/სთ, RECORDING + EDITING — 300 ₾/სთ, PARTNERSHIP STANDARD — 2,500 ₾/თვე, PRO — 5,500 ₾/თვე). ნუ შესთავაზებ უფასო კონსულტაციას/სინჯს, თუ თავად არ გამოხატა ეჭვი ან დაწყების სურვილი.
-       - ტექნიკურ კითხვაზე: უპასუხე ტექნიკურად მოკლედ და ამომწურავად (3 კამერა Sony FX30/A7IV, RODE CASTER PRO II, PodMic/Shure).
-       - მზადყოფნისას ("ჩაწერა მინდა", "დაჯავშნა მინდა"): გადაიყვანე დაჯავშნის პროცესზე.
+    4️⃣ კატეგორიული აკრძალვა მისალმების გამეორებაზე:
+    - თუ საუბარი უკვე დაწყებულია (ჩათის ისტორიაში არის წინა შეტყობინებები), კატეგორიულად აკრძალულია პასუხის დასაწყისში მისალმების ("გამარჯობა", "გამარჯობათ", "მოგესალმებით") თქმა! პირდაპირ გადადი პასუხზე წინა კონტექსტის გათვალისწინებით.
 
-    5. კატეგორიული აკრძალვა მისალმების გამეორებაზე:
-       - თუ საუბარი უკვე დაწყებულია (ჩათის ისტორიაში არის წინა შეტყობინებები), კატეგორიულად აკრძალულია პასუხის დასაწყისში მისალმების ("გამარჯობა", "გამარჯობათ", "მოგესალმებით") თქმა! პირდაპირ გადადი პასუხზე წინა კონტექსტის გათვალისწინებით.
-
-    6. ტონი და სტილი:
-       - ბიზნესური + ადამიანური + დამხმარე + ზომიერად გაყიდვებზე ორიენტირებული.
-       - ილაპარაკე ბუნებრივად, პასუხები იყოს მოკლე და მკაფიო (1-3 წინადადება).
-       - კატეგორიულად მოერიდე გადაჭარბებულ ქება-დიდებას ან კლიშეებს: "ძალიან მაგარი ინიციატივაა", "წარმატებებს გისურვებ", "ძალიან კარგი იდეაა".
-       - ნუ გაიმეორებ სტუდიის სახელს ("The Lane Studio") ყოველ მეორე წინადადებაში.
-       - რუსულ ენაზე მოთხოვნებზე უპასუხე strictly: "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად."
-       - არასოდეს თქვა "Booking Confirmed" ან "ადგილი დაჯავშნილია".
-    `;
+    5️⃣ ტონი და სტილი:
+    - ბიზნესური + ადამიანური + დამხმარე + ზომიერად გაყიდვებზე ორიენტირებული.
+    - ილაპარაკე ბუნებრივად, პასუხები იყოს მოკლე და მკაფიო (1-3 წინადადება).
+    - კატეგორიულად მოერიდე გადაჭარბებულ ქება-დიდებას ან კლიშეებს: "ძალიან მაგარი ინიციატივაა", "წარმატებებს გისურვებ".
+    - რუსულ ენაზე მოთხოვნებზე უპასუხე strictly: "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად."
+    - არასოდეს თქვა "Booking Confirmed" ან "ადგილი დაჯავშნილია".
+    `
 
     chatHistory.push({ role: 'user', parts: [{ text: prompt }] });
 
