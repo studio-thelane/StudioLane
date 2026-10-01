@@ -1695,6 +1695,329 @@ footer {
     </a>
   </div>
 </section>
+<!-- SITE PRICING SHOWCASE SECTION -->
+<style>
+.sp-showcase-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.sp-showcase-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.sp-showcase-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 700px;
+}
+.sp-card {
+  background: #141418;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+.sp-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 107, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.sp-card.sp-featured {
+  border-color: #ff6b00;
+  background: linear-gradient(180deg, rgba(255, 107, 0, 0.08) 0%, #141418 100%);
+}
+.sp-card.sp-pro {
+  border-color: #00d2ff;
+  background: linear-gradient(180deg, rgba(0, 210, 255, 0.08) 0%, #141418 100%);
+}
+.sp-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  margin-bottom: 10px;
+}
+.sp-badge-orange {
+  background: rgba(255, 107, 0, 0.2);
+  color: #ff8c32;
+}
+.sp-badge-blue {
+  background: rgba(0, 210, 255, 0.2);
+  color: #00d2ff;
+}
+.sp-name {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+.sp-sub {
+  font-size: 12px;
+  color: #a1a1aa;
+  margin-bottom: 12px;
+  min-height: 32px;
+}
+.sp-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+.sp-price small {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+.sp-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  font-size: 12px;
+  color: #d1d1d6;
+  line-height: 1.6;
+}
+.sp-features li {
+  margin-bottom: 6px;
+}
+.sp-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.sp-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.sp-btn-orange {
+  background: #ff6b00;
+  color: #ffffff;
+}
+.sp-btn-orange:hover {
+  background: #e05e00;
+}
+.sp-btn-blue {
+  background: #00d2ff;
+  color: #000000;
+}
+.sp-btn-blue:hover {
+  background: #00b8e6;
+}
+
+@media (max-width: 900px) {
+  .sp-showcase-grid-4, .sp-showcase-grid-3, .sp-showcase-grid-2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+  .sp-card {
+    min-width: 250px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+</style>
+
+<section id="site-pricing-showcase" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+  
+  <!-- PODCAST STUDIO SECTION -->
+  <div style="margin-bottom: 50px;">
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="PODCAST STUDIO — პაკეტები" data-en="PODCAST STUDIO — PACKAGES">PODCAST STUDIO — პაკეტები</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+
+    <div class="sp-showcase-grid-4">
+      <!-- 1. RECORDING -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">⚡ POPULAR</div>
+          <div class="sp-name">RECORDING</div>
+          <div class="sp-sub" data-ka="ნედლი მასალის ჩაწერა" data-en="Raw recording">ნედლი მასალის ჩაწერა</div>
+          <div class="sp-price">200 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 3 კამერა Sony FX30 / A7IV</li>
+            <li>✓ RODE CASTER PRO II + PodMic</li>
+            <li>✓ FHD / 4K ვიდეო და აუდიო ფაილები</li>
+            <li>✓ პროფესიონალური განათება</li>
+          </ul>
+        </div>
+        <button class="sp-btn" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 2. RECORDING + EDITING -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">🔥 BEST VALUE</div>
+          <div class="sp-name">RECORDING + EDITING</div>
+          <div class="sp-sub" data-ka="ჩაწერა + სრული მონტაჟი" data-en="Recording + Full Editing">ჩაწერა + სრული მონტაჟი</div>
+          <div class="sp-price">300 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 3 კამერა Sony FX30 / A7IV</li>
+            <li>✓ RODE CASTER PRO II + PodMic</li>
+            <li>✓ სრული ვიდეო და აუდიო მონტაჟი</li>
+            <li>✓ ფერთა კორექცია & ხმის დიზაინი</li>
+          </ul>
+        </div>
+        <button class="sp-btn sp-btn-orange" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 3. PARTNERSHIP STANDARD -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🚀 MONTHLY</div>
+          <div class="sp-name">PARTNERSHIP STANDARD</div>
+          <div class="sp-sub" data-ka="4 ეპიზოდი თვეში ჩაწერა + მონტაჟი" data-en="4 episodes/mo shoot + edit">4 ეპიზოდი თვეში ჩაწერა + მონტაჟი</div>
+          <div class="sp-price">2,500 ₾ <small>/ თვე</small></div>
+          <ul class="sp-features">
+            <li>✓ 4 ეპიზოდი თვეში (2სთ სესია)</li>
+            <li>✓ 3 Shorts ვიდეო თითო ეპიზოდიდან</li>
+            <li>✓ YouTube Thumbnail</li>
+            <li>✓ არხის მართვა & მხარდაჭერა</li>
+          </ul>
+        </div>
+        <button class="sp-btn" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 4. PARTNERSHIP PRO -->
+      <div class="sp-card sp-pro">
+        <div>
+          <div class="sp-badge sp-badge-blue">💎 FULL SUITE</div>
+          <div class="sp-name">PARTNERSHIP PRO</div>
+          <div class="sp-sub" data-ka="სრული 360° მედია მენეჯმენტი" data-en="Full 360° Media Management">სრული 360° მედია მენეჯმენტი</div>
+          <div class="sp-price">5,500 ₾ <small>/ თვე</small></div>
+          <ul class="sp-features">
+            <li>✓ 4 ეპიზოდი 5 კამერით (Sony FX30/A7IV)</li>
+            <li>✓ 20 Shorts თვეში + ანიმაციური ანონსი</li>
+            <li>✓ Thumbnail + ბექსთეიჯი + გრაფიკა</li>
+            <li>✓ სოციალური ქსელების მენეჯმენტი</li>
+          </ul>
+        </div>
+        <button class="sp-btn sp-btn-blue" onclick="openModal('podcast')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATOR / SOLO STUDIO SECTION -->
+  <div style="margin-bottom: 50px;">
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="CREATOR / SOLO STUDIO" data-en="CREATOR / SOLO STUDIO">CREATOR / SOLO STUDIO</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+
+    <div class="sp-showcase-grid-2">
+      <!-- 1. SOLO RECORDING -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🎙 SOLO SESSION</div>
+          <div class="sp-name">SOLO RECORDING</div>
+          <div class="sp-sub" data-ka="ერთპერსონიანი სტუდიური ჩაწერა" data-en="Solo studio recording">ერთპერსონიანი სტუდიური ჩაწერა</div>
+          <div class="sp-price">150 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 1-2 კამერა Sony FX30 / A7IV</li>
+            <li>✓ პროფესიონალური მიკროფონი Shure / PodMic</li>
+            <li>✓ პერსონალური განათება & ფონები</li>
+            <li>✓ FHD / 4K ნედლი მასალის ჩანაწერები</li>
+          </ul>
+        </div>
+        <button class="sp-btn" onclick="openModal('solo')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 2. SOLO RECORDING + EDITING -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">🔥 SOLO FULL</div>
+          <div class="sp-name">SOLO RECORDING + EDITING</div>
+          <div class="sp-sub" data-ka="სოლო ჩაწერა + სრული მონტაჟი" data-en="Solo recording + full editing">სოლო ჩაწერა + სრული მონტაჟი</div>
+          <div class="sp-price">250 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 1-2 კამერა Sony FX30 / A7IV</li>
+            <li>✓ სრული ვიდეო და აუდიო მონტაჟი</li>
+            <li>✓ ფერთა კორექცია & ხმის დამუშავება</li>
+            <li>✓ მზა კონტენტი Reels/TikTok-ისთვის</li>
+          </ul>
+        </div>
+        <button class="sp-btn sp-btn-orange" onclick="openModal('solo')" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDIO DECORATION / USAGE RULES SECTION -->
+  <div>
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 34px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: left;" data-ka="STUDIO DECORATION / USAGE RULES" data-en="STUDIO DECORATION / USAGE RULES">STUDIO DECORATION / USAGE RULES</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin-bottom: 24px;"></div>
+
+    <div class="sp-showcase-grid-3">
+      <!-- 1. STANDARD DECOR -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🎨 STANDARD</div>
+          <div class="sp-name">STANDARD DECOR</div>
+          <div class="sp-sub" data-ka="არსებული მოდულარული სეტი" data-en="Existing modular set">არსებული მოდულარული სეტი</div>
+          <div class="sp-price">FREE <small>/ უფასო</small></div>
+          <ul class="sp-features">
+            <li>✓ არსებული სტუდიური დეკორაციები</li>
+            <li>✓ სტანდარტული RGB განათების სეტი</li>
+            <li>✓ კომფორტული სავარძლები & მაგიდა</li>
+          </ul>
+        </div>
+        <button class="sp-btn" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 2. SELECT STUDIO -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">🎨 CUSTOM LIGHT</div>
+          <div class="sp-name">SELECT STUDIO</div>
+          <div class="sp-sub" data-ka="პერსონალიზებული განათება & ფერები" data-en="Custom lighting & colors">პერსონალიზებული განათება & ფერები</div>
+          <div class="sp-price">+150 ₾ <small>/ ჩაწერა</small></div>
+          <ul class="sp-features">
+            <li>✓ ინდივიდუალური განათების სცენარები</li>
+            <li>✓ ბრენდის ფერების მორგება სტუდიაში</li>
+            <li>✓ ექსკლუზიური რეკვიზიტები & დეკორი</li>
+          </ul>
+        </div>
+        <button class="sp-btn sp-btn-orange" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+
+      <!-- 3. FULL CUSTOM STUDIO -->
+      <div class="sp-card sp-pro">
+        <div>
+          <div class="sp-badge sp-badge-blue">🎨 FULL TAILORED</div>
+          <div class="sp-name">FULL CUSTOM STUDIO</div>
+          <div class="sp-sub" data-ka="სრული ინდივიდუალური დიზაინი" data-en="Full custom studio design">სრული ინდივიდუალური დიზაინი</div>
+          <div class="sp-price">1500 - 2000 ₾</div>
+          <ul class="sp-features">
+            <li>✓ სრულიად ახალი სტუდიური სეტის აგება</li>
+            <li>✓ სპეციალური დეკორაციები & ბრენდინგი</li>
+            <li>✓ პრემიუმ არქიტექტურული განათება</li>
+          </ul>
+        </div>
+        <button class="sp-btn sp-btn-blue" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 
 
 <!-- FOREGROUND ZOOM LIGHTBOX BOX & BACKDROP -->
