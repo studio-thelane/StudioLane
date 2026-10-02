@@ -898,6 +898,43 @@ section { padding:48px 20px; }
   outline: none;
   font-family: 'Montserrat', sans-serif;
 }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.form-group input, .form-group select, .form-group textarea, .config-select {
+  background: #18181c !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding: 12px 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-family: inherit !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus, .config-select:focus {
+  outline: none !important;
+  border-color: #ff6b00 !important;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.3) !important;
+}
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #18181c inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
 .chat-input button {
   background: var(--orange);
   border: none;
