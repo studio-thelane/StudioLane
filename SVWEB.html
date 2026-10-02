@@ -1698,12 +1698,13 @@ footer {
 }
 .sp-card {
   background: #141418;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.25);
   border-radius: 8px;
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 6px 24px rgba(255, 107, 0, 0.16), 0 0 12px rgba(255, 107, 0, 0.08);
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
@@ -1714,7 +1715,8 @@ footer {
 }
 .sp-card.sp-featured {
   border-color: #ff6b00;
-  background: linear-gradient(180deg, rgba(255, 107, 0, 0.08) 0%, #141418 100%);
+  background: linear-gradient(180deg, rgba(255, 107, 0, 0.12) 0%, #141418 100%);
+  box-shadow: 0 8px 30px rgba(255, 107, 0, 0.28), 0 0 15px rgba(255, 107, 0, 0.15);
 }
 .sp-card.sp-pro {
   border-color: #00d2ff;
