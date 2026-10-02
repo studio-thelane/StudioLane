@@ -1807,52 +1807,68 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .sp-showcase-grid-4, .sp-showcase-grid-3, .sp-showcase-grid-2 {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 8px;
-    padding-bottom: 12px;
-    scrollbar-width: none;
-    justify-content: flex-start;
+  #site-pricing-showcase {
+    padding: 24px 6px !important;
+  }
+  .sp-showcase-grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: visible !important;
+  }
+  .sp-showcase-grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: visible !important;
+  }
+  .sp-showcase-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    overflow-x: visible !important;
   }
   .sp-card {
-    min-width: 175px;
-    max-width: 200px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    padding: 12px 10px;
-    border-radius: 8px;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 8px 4px !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
   }
   .sp-badge {
-    font-size: 9px;
-    padding: 2px 6px;
-    margin-bottom: 6px;
+    font-size: 8px !important;
+    padding: 2px 4px !important;
+    margin-bottom: 4px !important;
+    letter-spacing: 0 !important;
   }
   .sp-name {
-    font-size: 15px;
-    margin-bottom: 2px;
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.1 !important;
+    word-break: break-word !important;
   }
   .sp-sub {
-    font-size: 11px;
-    margin-bottom: 8px;
-    min-height: 28px;
-    line-height: 1.3;
+    font-size: 9px !important;
+    margin-bottom: 6px !important;
+    min-height: auto !important;
+    line-height: 1.2 !important;
   }
   .sp-price {
-    font-size: 17px;
-    margin-bottom: 8px;
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
   }
   .sp-price small {
-    font-size: 10px;
+    font-size: 9px !important;
   }
   .sp-features {
-    font-size: 10.5px;
-    line-height: 1.4;
-    margin: 0;
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
   }
   .sp-features li {
-    margin-bottom: 4px;
+    margin-bottom: 3px !important;
   }
 }
 </style>
