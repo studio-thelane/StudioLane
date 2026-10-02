@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-<meta charset="UTF-8">
+<title>Studio Lane — პოდკასტ და კონტენტ სტუდია თბილისში</title>
+<meta name="description" content="The Lane Studio — შენი სრული კონტენტის სტუდია თბილისში. პროფესიონალური სივრცე ვიდეო პოდკასტებისთვის, გადაცემებისა და ბრენდის ვიდეო კონტენტისთვის. შექმენი პრემიუმ ხარისხი ჩვენთან ერთად.">
+<link rel="canonical" href="https://studiolane.ge/">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:title" content="Studio Lane — პოდკასტ და კონტენტ სტუდია თბილისში">
+<meta property="og:description" content="The Lane Studio — შენი სრული კონტენტის სტუდია თბილისში. პროფესიონალური სივრცე ვიდეო პოდკასტებისთვის და ბრენდის ვიდეო კონტენტისთვის.">
+<meta property="og:url" content="https://studiolane.ge/">
+<meta property="og:type" content="website">
+<script type="text/javascript">
+  // Clean URL Masking for Mobile
+  (function(){
+    try {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '/');
+      }
+    } catch(e) {}
+  })();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
   (function(){
@@ -9,13 +27,19 @@
   })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio The Lane — Smartphone Version</title>
-<meta name="description" content="Studio The Lane - პოდკასტზე ორიენტირებული პროფესიონალური მედია სივრცე თბილისში. პოდკასტები, ფოტო/ვიდეო გადაღება, ხმის ჩაწერა.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="LOGO_STL/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="LOGO_STL/favicon-16x16.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
 <meta name="keywords" content="პოდკასტ სტუდია, Studio The Lane, თბილისი, ხმის ჩაწერა, ვიდეო გადაღება, პოდკასტი">
-<meta property="og:title" content="Studio The Lane - Modular Media Space">
-<meta property="og:description" content="პოდკასტზე ორიენტირებული პროფესიონალური მედია სივრცე თბილისში.">
+
+
 <meta property="og:image" content="LOGO_STL/stopkadr_clean.png">
-<meta property="og:type" content="website">
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 @font-face {
@@ -414,6 +438,9 @@ section { padding:48px 20px; }
   background: var(--dark2);
   will-change: transform, box-shadow;
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .spaces-photos:hover {
   transform: translateY(-5px) scale(1.01);
@@ -706,9 +733,11 @@ section { padding:48px 20px; }
   position: fixed;
   bottom: 84px;
   right: 16px;
-  width: calc(100vw - 32px);
-  max-width: 350px;
+  width: calc(100vw - 32px) !important;
+  max-width: 350px !important;
+  box-sizing: border-box !important;
   height: 470px;
+  max-height: calc(100vh - 120px) !important;
   background: rgba(15, 15, 18, 0.97);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border);
@@ -716,7 +745,8 @@ section { padding:48px 20px; }
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
   transform: translateY(20px) scale(0.92);
   opacity: 0;
   visibility: hidden;
@@ -735,6 +765,7 @@ section { padding:48px 20px; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box !important;
 }
 .chat-header-info h3 {
   font-family: 'Bebas Neue','BPG Nino Mtavruli',sans-serif;
@@ -767,21 +798,50 @@ section { padding:48px 20px; }
 .chat-messages {
   flex: 1;
   padding: 16px;
-  overflow-y: auto;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   display: flex;
   flex-direction: column;
   gap: 10px;
   scrollbar-width: thin;
   scrollbar-color: var(--orange) transparent;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 .chat-messages::-webkit-scrollbar { width: 4px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
 .message {
-  max-width: 88%;
+  max-width: 88% !important;
   padding: 10px 14px;
   border-radius: 14px;
   font-size: 12px;
   line-height: 1.5;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: pre-wrap !important;
+  box-sizing: border-box !important;
+}
+.message * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+.message strong, .message span, .message p, .message div, .message b {
+  white-space: normal !important;
+  display: inline !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
+.message a {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
 }
 .message.bot {
   background: var(--dark3);
@@ -837,6 +897,43 @@ section { padding:48px 20px; }
   font-size: 12px;
   outline: none;
   font-family: 'Montserrat', sans-serif;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.form-group input, .form-group select, .form-group textarea, .config-select {
+  background: #18181c !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding: 12px 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-family: inherit !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus, .config-select:focus {
+  outline: none !important;
+  border-color: #ff6b00 !important;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.3) !important;
+}
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #18181c inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s !important;
 }
 .chat-input button {
   background: var(--orange);
@@ -1137,20 +1234,25 @@ section { padding:48px 20px; }
   display: block;
   width: 100%;
   text-align: center;
-  padding: 12px;
+  padding: 13px;
   background: var(--orange);
   color: white;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
   text-decoration: none;
-  transition: all 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(232, 98, 26, 0.55);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .tier-btn:hover {
   background: var(--orange-light);
-  box-shadow: 0 0 20px rgba(232, 98, 26, 0.6);
+  box-shadow: 0 0 35px 8px rgba(232, 98, 26, 0.85), 0 0 15px 2px rgba(255, 122, 47, 0.6);
+  transform: translateY(-2px);
 }
 
 /* FOOTER MOBILE - PREMIUM DESIGN */
@@ -1271,7 +1373,104 @@ footer {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.decor-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #18181c !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.25s ease;
+}
+.decor-back-btn:hover {
+  background: #ff6b00 !important;
+  border-color: #ff6b00 !important;
+  color: #ffffff !important;
+}
+
 </style>
+
+<!-- Schema.org Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "name": "Studio Lane",
+  "alternateName": ["Studio The Lane", "The Lane Studio"],
+  "url": "https://studiolane.ge/",
+  "logo": "https://studiolane.ge/favicon.png",
+  "image": "https://studiolane.ge/favicon.png",
+  "description": "The Lane Studio — შენი სრული კონტენტის სტუდია თბილისში. ვიდეო და აუდიო პოდკასტის ჩაწერა, მონტაჟი, სოლო სტუდია და სარეკლამო ვიდეო წარმოება.",
+  "telephone": "+995577114355",
+  "email": "podcast@studiolane.ge",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vitali Daraselia Street 2",
+    "addressLocality": "Tbilisi",
+    "postalCode": "0160",
+    "addressCountry": "GE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "41.72",
+    "longitude": "44.77"
+  },
+  "priceRange": "$$",
+  "currenciesAccepted": "GEL",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "sameAs": [
+    "https://www.instagram.com/studio_the_lane"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Studio Lane Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "პოდკასტისა და ვიდეოს ჩაწერა / Podcast & Video Recording"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "პოდკასტის ჩაწერა და მონტაჟი / Podcast Recording & Editing"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "სოლო სტუდიის ჩაწერა და წარმოება / Solo Studio Production"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "სარეკლამო ფოტო და ვიდეო გადაღება / Commercial Photography & Video"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "უფასო 1-საათიანი სატესტო დრო დამწყებთათვის / Free 1-Hour Studio Trial"
+        }
+      }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 
@@ -1408,21 +1607,19 @@ footer {
 
 <!-- SPACES -->
 <section id="spaces">
-  <p class="s-label" data-ka="რას გთავაზობთ" data-en="What We Offer">რას გთავაზობთ</p>
-  <h2 class="s-title" data-ka="სივრცეები და მიმართულებები" data-en="Spaces & Services">სივრცეები და მიმართულებები</h2>
+  <h2 class="s-title" data-ka="მომსახურება" data-en="Services">მომსახურება</h2>
   <div class="divider"></div>
 
   <div class="spaces-block" id="space-podcast">
     <div class="spaces-photos" id="podcast-photos" onclick="nextPodcastPhoto()">
       <div class="spaces-photo active"><img src="Podcast_Studio_photo/PODCAST STUDIO SONY FX 30.jpg" alt="Podcast Studio FX30"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO MODULARITY.jpg" alt="Podcast Studio Modularity"></div>
       <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO ATHEM .jpg" alt="Podcast Studio ATEM"></div>
       <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO RODECASTER PRO.JPG" alt="Podcast Studio RODE"></div>
       <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO  GANATEBA.jpg" alt="Podcast Studio Lighting"></div>
       <div class="spaces-photo"><img src="Podcast_Studio_photo/thumb_11.jpg" alt="Podcast Studio Teleprompter"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/MODULAR STUDIO.jpeg" alt="Modular Studio"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/POSCAST STUDIO MAKEUP.jpg" alt="Podcast Studio Makeup"></div>
       <div class="spaces-progress-bar">
-        <div class="spaces-progress-fill" id="spaces-progress-fill"></div>
+        <div class="spaces-progress-fill" id="spaces-progress-fill" style="width: 16.66%;"></div>
       </div>
     </div>
     <div class="spaces-text">
@@ -1436,15 +1633,18 @@ footer {
 
   <div class="spaces-block" id="space-voiceover">
     <div class="spaces-photos">
-      <div class="spaces-photo active"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0a1f28,#0d3044)"></div></div>
-      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0d3044,#0a1f28)"></div></div>
-      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#12445c,#0a1f28)"></div></div>
-      <div class="spaces-photo"><div class="spaces-photo-ph" style="background:linear-gradient(135deg,#0a1f28,#061218)"></div></div>
+      <div class="spaces-photo active"><img src="Podcast_Studio_photo/CREATOR SOLO 1.JPG" alt="Creator Solo 1"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 2 .JPG" alt="Creator Solo 2"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 3.JPG" alt="Creator Solo 3"></div>
+      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 4.JPG" alt="Creator Solo 4"></div>
+      <div class="spaces-progress-bar">
+        <div class="spaces-progress-fill" style="width: 25%;"></div>
+      </div>
     </div>
     <div class="spaces-text">
       <h3 class="spaces-name">CREATOR / SOLO STUDIO</h3>
       <p class="spaces-desc" data-ka="იდეალური გარემო პირადი ბრენდის პიარისთვის, ქოუჩინგისა და სასწავლო ვიდეოებისთვის. სუფლიორის მხარდაჭერა დაგეხმარებათ ტექსტის გამართულად კითხვაში." data-en="Ideal environment for personal branding, coaching, and educational videos. Teleprompter support helps with clean script reading.">იდეალური გარემო პირადი ბრენდის პიარისთვის, ქოუჩინგისა და სასწავლო ვიდეოებისთვის. სუფლიორის მხარდაჭერა დაგეხმარებათ ტექსტის გამართულად კითხვაში.</p>
-      <a href="javascript:void(0)" onclick="openDirectContactModal()" class="btn-p" style="display:inline-block; margin-top:20px; font-size:12px; font-weight:700;" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a>
+      <a href="javascript:void(0)" onclick="openModal('solo')" class="btn-p" style="display:inline-block; margin-top:20px; font-size:12px; font-weight:700;" data-ka="სტუდიის დაჯავშნა" data-en="Book Studio">სტუდიის დაჯავშნა</a>
     </div>
   </div>
 
@@ -1482,56 +1682,261 @@ footer {
 
 <!-- SEGMENTS (01-04 NUMBERED SERVICE CARDS) -->
 <section id="segments">
-  <p class="s-label" data-ka="მომსახურება" data-en="Our Services">მომსახურება</p>
-  <h2 class="s-title" data-ka="სივრცეები და მიმართულებები" data-en="Spaces & Services">სივრცეები და მიმართულებები</h2>
+  <h2 class="s-title" data-ka="მომსახურება" data-en="Services">მომსახურება</h2>
   <div class="divider"></div>
 
   <div class="seg-grid">
     <!-- 01 PODCAST STUDIO -->
     <div class="seg-card seg-purple" onclick="openModal('podcast')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,18,40,0.85), rgba(45,16,64,0.85)), url('studio_gen_photo/PODCAST STUDIO 2.png') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">01</div>
-      <div>
+      <div style="position:relative; z-index:2;">
         <h3 class="seg-name">PODCAST STUDIO</h3>
         <p class="seg-short" data-ka="RECORDED & LIVE. მოდულარული სეტები." data-en="RECORDED & LIVE. Modular sets.">RECORDED & LIVE. მოდულარული სეტები.</p>
-        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+        <span class="seg-cta" data-ka="გაიგე მეტი" data-en="Learn More">გაიგე მეტი</span>
       </div>
       <div class="seg-bar"></div>
     </div>
 
     <!-- 02 CREATOR / SOLO STUDIO -->
     <div class="seg-card seg-teal" onclick="openModal('solo')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(10,31,40,0.85), rgba(13,48,68,0.85)), url('studio_gen_photo/ONE PERSON STUDIO.png') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">02</div>
-      <div>
+      <div style="position:relative; z-index:2;">
         <h3 class="seg-name">CREATOR / SOLO STUDIO</h3>
         <p class="seg-short" data-ka="ერთპერსონიანი სტუდია. კამერა, ხმა, განათება." data-en="One-person studio. Camera, audio, lighting.">ერთპერსონიანი სტუდია. კამერა, ხმა, განათება.</p>
-        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+        <span class="seg-cta" data-ka="გაიგე მეტი" data-en="Learn More">გაიგე მეტი</span>
       </div>
       <div class="seg-bar"></div>
     </div>
 
     <!-- 03 COMMERCIAL VIDEO -->
     <div class="seg-card seg-red" onclick="openModal('commercial')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,10,10,0.85), rgba(46,13,13,0.85)), url('studio_gen_photo/COMMERCIAL VIDEO.png') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">03</div>
-      <div>
+      <div style="position:relative; z-index:2;">
         <h3 class="seg-name">COMMERCIAL VIDEO</h3>
         <p class="seg-short" data-ka="სრული სარეკლამო ვიდეო პროდაქშენი." data-en="Full commercial video production.">სრული სარეკლამო ვიდეო პროდაქშენი.</p>
-        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+        <span class="seg-cta" data-ka="გაიგე მეტი" data-en="Learn More">გაიგე მეტი</span>
       </div>
       <div class="seg-bar"></div>
     </div>
 
     <!-- 04 ADVERTISING PHOTO / VIDEO -->
     <div class="seg-card seg-gold" onclick="openModal('photo')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,16,10,0.85), rgba(46,26,8,0.85)), url('studio_gen_photo/ADVERTISING PHOTO.VIDEO 3.jpg') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">04</div>
-      <div>
+      <div style="position:relative; z-index:2;">
         <h3 class="seg-name">ADVERTISING PHOTO / VIDEO</h3>
         <p class="seg-short" data-ka="სარეკლამო ფოტო, პროდუქტი, ბრენდი." data-en="Commercial photo, product, brand.">სარეკლამო ფოტო, პროდუქტი, ბრენდი.</p>
-        <span class="seg-cta" data-ka="ფასების ნახვა" data-en="View Pricing">ფასების ნახვა</span>
+        <span class="seg-cta" data-ka="გაიგე მეტი" data-en="Learn More">გაიგე მეტი</span>
       </div>
       <div class="seg-bar"></div>
     </div>
   </div>
 </section>
+<!-- BEGINNERS TRIAL / LEAD MAGNET SECTION -->
+
+<!-- SITE PRICING SHOWCASE SECTION -->
+<style>
+.sp-showcase-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.sp-showcase-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.sp-showcase-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 700px;
+}
+.sp-card {
+  background: #141418;
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  border-radius: 8px;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 24px rgba(255, 107, 0, 0.16), 0 0 12px rgba(255, 107, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.sp-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 107, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.sp-card.sp-featured {
+  border-color: #ff6b00;
+  background: linear-gradient(180deg, rgba(255, 107, 0, 0.12) 0%, #141418 100%);
+  box-shadow: 0 8px 30px rgba(255, 107, 0, 0.28), 0 0 15px rgba(255, 107, 0, 0.15);
+}
+.sp-card.sp-pro {
+  border-color: #00d2ff;
+  background: linear-gradient(180deg, rgba(0, 210, 255, 0.08) 0%, #141418 100%);
+}
+.sp-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  margin-bottom: 4px;
+}
+.sp-badge-orange {
+  background: rgba(255, 107, 0, 0.2);
+  color: #ff8c32;
+}
+.sp-badge-blue {
+  background: rgba(0, 210, 255, 0.2);
+  color: #00d2ff;
+}
+.sp-name {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+.sp-sub {
+  font-size: 11px;
+  color: #a1a1aa;
+  margin-bottom: 6px;
+  min-height: auto;
+}
+.sp-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.sp-price small {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+.sp-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11.4px;
+  color: #d1d1d6;
+  line-height: 1.4;
+}
+.sp-features li {
+  margin-bottom: 2px;
+}
+.sp-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.sp-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.sp-btn-orange {
+  background: #ff6b00;
+  color: #ffffff;
+}
+.sp-btn-orange:hover {
+  background: #e05e00;
+}
+.sp-btn-blue {
+  background: #00d2ff;
+  color: #000000;
+}
+.sp-btn-blue:hover {
+  background: #00b8e6;
+}
+
+@media (max-width: 900px) {
+  #site-pricing-showcase {
+    padding: 24px 6px !important;
+  }
+  .sp-showcase-grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: visible !important;
+  }
+  .sp-showcase-grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: visible !important;
+  }
+  .sp-showcase-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    overflow-x: visible !important;
+  }
+  .sp-card {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 8px 4px !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+  }
+  .sp-badge {
+    font-size: 8px !important;
+    padding: 2px 4px !important;
+    margin-bottom: 4px !important;
+    letter-spacing: 0 !important;
+  }
+  .sp-name {
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.1 !important;
+    word-break: break-word !important;
+  }
+  .sp-sub {
+    font-size: 9px !important;
+    margin-bottom: 6px !important;
+    min-height: auto !important;
+    line-height: 1.2 !important;
+  }
+  .sp-price {
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+  }
+  .sp-price small {
+    font-size: 9px !important;
+  }
+  .sp-features {
+    font-size: 8.55px !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+  }
+  .sp-features li {
+    margin-bottom: 3px !important;
+  }
+}
+</style>
+
+
+
+
 
 <!-- FOREGROUND ZOOM LIGHTBOX BOX & BACKDROP -->
 <div class="port-backdrop" id="port-backdrop" onclick="closeForegroundZoom()"></div>
@@ -1568,7 +1973,7 @@ footer {
     
     <div class="direct-contact-grid">
       <!-- 1. WHATSAPP -->
-      <a href="https://wa.me/995555123456" target="_blank" class="direct-btn direct-wa">
+      <a href="https://wa.me/995577114355" target="_blank" class="direct-btn direct-wa">
         <div class="direct-icon">💬</div>
         <div class="direct-text-wrap">
           <span class="direct-title">WhatsApp</span>
@@ -1578,11 +1983,11 @@ footer {
       </a>
 
       <!-- 2. CALL / დარეკვა -->
-      <a href="tel:+995555123456" class="direct-btn direct-call">
+      <a href="tel:+995577114355" class="direct-btn direct-call">
         <div class="direct-icon">📞</div>
         <div class="direct-text-wrap">
           <span class="direct-title" data-ka="დარეკვა" data-en="Call Us">დარეკვა</span>
-          <span class="direct-sub" data-ka="+995 555 123 456 (პირდაპირი ზარი)" data-en="+995 555 123 456 (Direct Call)">+995 555 123 456 (პირდაპირი ზარი)</span>
+          <span class="direct-sub" data-ka="+995 577 11 43 55 (პირდაპირი ზარი)" data-en="+995 577 11 43 55 (Direct Call)">+995 577 11 43 55 (პირდაპირი ზარი)</span>
         </div>
         <span class="direct-arrow">→</span>
       </a>
@@ -1678,6 +2083,215 @@ footer {
   </div>
 </section>
 
+<section id="site-pricing-showcase" style="padding: 16px 12px; max-width: 1200px; margin: 0 auto;">
+  
+  <!-- PODCAST STUDIO SECTION -->
+  <div style="margin-bottom: 20px;">
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 20px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="PODCAST STUDIO — პაკეტები" data-en="PODCAST STUDIO — PACKAGES">PODCAST STUDIO — პაკეტები</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 10px auto;"></div>
+
+    <div class="sp-showcase-grid-4">
+      <!-- 1. RECORDING -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">⚡ POPULAR</div>
+          <div class="sp-name">RECORDING</div>
+          <div class="sp-sub" data-ka="ნედლი მასალის ჩაწერა" data-en="Raw recording">ნედლი მასალის ჩაწერა</div>
+          <div class="sp-price">200 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 3 კამერა Sony FX30 / A7IV</li>
+            <li>✓ RODE CASTER PRO II + PodMic</li>
+            <li>✓ FHD / 4K ვიდეო და აუდიო ფაილები</li>
+            <li>✓ პროფესიონალური განათება</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. RECORDING + EDITING -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">🔥 BEST VALUE</div>
+          <div class="sp-name">RECORDING + EDITING</div>
+          <div class="sp-sub" data-ka="ჩაწერა + სრული მონტაჟი" data-en="Recording + Full Editing">ჩაწერა + სრული მონტაჟი</div>
+          <div class="sp-price">300 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ 3 კამერა Sony FX30 / A7IV</li>
+            <li>✓ RODE CASTER PRO II + PodMic</li>
+            <li>✓ სრული ვიდეო და აუდიო მონტაჟი</li>
+            <li>✓ ფერთა კორექცია & ხმის დიზაინი</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. PARTNERSHIP STANDARD -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🚀 MONTHLY</div>
+          <div class="sp-name">PARTNERSHIP STANDARD</div>
+          <div class="sp-sub" data-ka="4 ეპიზოდი თვეში ჩაწერა + მონტაჟი" data-en="4 episodes/mo shoot + edit">4 ეპიზოდი თვეში ჩაწერა + მონტაჟი</div>
+          <div class="sp-price">2,500 ₾ <small>/ თვე</small></div>
+          <ul class="sp-features">
+            <li>✓ 4 ეპიზოდი თვეში (2სთ სესია)</li>
+            <li>✓ 3 Shorts ვიდეო თითო ეპიზოდიდან</li>
+            <li>✓ YouTube Thumbnail</li>
+            <li>✓ არხის მართვა & მხარდაჭერა</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. PARTNERSHIP PRO -->
+      <div class="sp-card sp-pro">
+        <div>
+          <div class="sp-badge sp-badge-blue">💎 FULL SUITE</div>
+          <div class="sp-name">PARTNERSHIP PRO</div>
+          <div class="sp-sub" data-ka="სრული 360° მედია მენეჯმენტი" data-en="Full 360° Media Management">სრული 360° მედია მენეჯმენტი</div>
+          <div class="sp-price">5,500 ₾ <small>/ თვე</small></div>
+          <ul class="sp-features">
+            <li>✓ 4 ეპიზოდი 5 კამერით (Sony FX30/A7IV)</li>
+            <li>✓ 20 Shorts თვეში + ანიმაციური ანონსი</li>
+            <li>✓ Thumbnail + ბექსთეიჯი + გრაფიკა</li>
+            <li>✓ სოციალური ქსელების მენეჯმენტი</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATOR / SOLO STUDIO SECTION -->
+  <div style="margin-bottom: 20px;">
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 20px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="CREATOR / SOLO STUDIO" data-en="CREATOR / SOLO STUDIO">CREATOR / SOLO STUDIO</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 10px auto;"></div>
+
+        <div class="sp-showcase-grid-2" style="margin: 0 auto; justify-content: center;">
+      <!-- 1. RECORDING ONLY -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🎙 SOLO SESSION</div>
+          <div class="sp-name">RECORDING ONLY</div>
+          <div class="sp-sub" data-ka="ერთჯერადი მხოლოდ ჩაწერა" data-en="One-time recording only">ერთჯერადი მხოლოდ ჩაწერა</div>
+          <div class="sp-price">200 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ ერთი კამერა</li>
+            <li>✓ RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+            <li>✓ პროფესიონალური განათება</li>
+            <li>✓ ხმის და კადრის ლაივ კონტროლი</li>
+            <li style="opacity: 0.45; text-decoration: line-through;">✕ 3 Short ვიდეო</li>
+            <li style="opacity: 0.45; text-decoration: line-through;">✕ თამბნეილი</li>
+            <li style="opacity: 0.45; text-decoration: line-through;">✕ ანონსი</li>
+            <li style="opacity: 0.45; text-decoration: line-through;">✕ ბექსთეიჯი</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. RECORDING + EDITING -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">⚡ პოპულარული</div>
+          <div class="sp-name">RECORDING + EDITING</div>
+          <div class="sp-sub" data-ka="ერთჯერადი ჩაწერა + მონტაჟი" data-en="One-time recording + editing">ერთჯერადი ჩაწერა + მონტაჟი</div>
+          <div class="sp-price">300 ₾ <small>/ სთ</small></div>
+          <ul class="sp-features">
+            <li>✓ ერთი კამერა</li>
+            <li>✓ RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+            <li>✓ პროფესიონალური განათება</li>
+            <li>✓ ხმის და კადრის ლაივ კონტროლი</li>
+            <li style="opacity: 0.45;">✕ 3 Short ვიდეო (+100₾)</li>
+            <li style="opacity: 0.45;">✕ თამბნეილი (+50₾)</li>
+            <li style="opacity: 0.45;">✕ ანონსი (+100₾)</li>
+            <li style="opacity: 0.45;">✕ ბექსთეიჯი</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDIO DECORATION / USAGE RULES SECTION -->
+  <div>
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 20px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="STUDIO DECORATION / USAGE RULES" data-en="STUDIO DECORATION / USAGE RULES">STUDIO DECORATION / USAGE RULES</h2>
+    <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 10px auto;"></div>
+
+    <div class="sp-showcase-grid-3">
+      <!-- 1. STANDART DECOR -->
+      <div class="sp-card">
+        <div>
+          <div class="sp-badge">🟢 STANDARD</div>
+          <div class="sp-name">STANDART DECOR</div>
+          <div class="sp-sub" data-ka="ფარდებით მოწყობილი სტანდარტული სივრცე" data-en="Standard curtain-styled space">ფარდებით მოწყობილი სტანდარტული სივრცე</div>
+          <div class="sp-price">FREE <small>[INCLUDED IN PACKAGE]</small></div>
+          <ul class="sp-features">
+            <li>• ფარდებით მოწყობილი სტანდარტული სივრცე</li>
+            <li>• ნეიტრალური, უნივერსალური ვიზუალი</li>
+            <li>• გადაღების დღეს შესაძლებელია მხოლოდ მცირე დეტალების შეცვლა</li>
+          </ul>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #3498db; line-height: 1.4;">
+            <div>◆ სტანდარტულ დეკორაციაზე შესაძლებელია მხოლოდ მცირე დეტალების ცვლილება</div>
+            <div>◆ ძირითადი კონცეფცია რჩება უცვლელი</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SELECT STUDIO -->
+      <div class="sp-card sp-featured">
+        <div>
+          <div class="sp-badge sp-badge-orange">🔵 SELECT</div>
+          <div class="sp-name">SELECT STUDIO</div>
+          <div class="sp-sub" data-ka="3 ტიპოლოგიიდან არჩევა" data-en="Choose from 3 typologies">3 ტიპოლოგიიდან არჩევა</div>
+          <div class="sp-price">+250 GEL <small>/ RECORDING</small></div>
+          <ul class="sp-features">
+            <li>• 3 ტიპოლოგიიდან არჩევა</li>
+            <li>• არჩეული ტიპოლოგიის განლაგება</li>
+          </ul>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #ff6b00; line-height: 1.4;">
+            <div>❗️ არჩეული ტიპოლოგიის ცვლილება ხდება გადაღებამდე 24 საათით ადრე</div>
+            <div>❗️ გადაღების დღეს ტიპოლოგიის შეცვლა შეუძლებელია</div>
+            <div style="margin-top: 3px; color: #ff8c32; font-weight: 600;">👉 24 საათზე ნაკლებ დროში ცვლილების მოთხოვნის შემთხვევაში ემატება +100 GEL</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FULL CUSTOM STUDIO -->
+      <div class="sp-card sp-pro">
+        <div>
+          <div class="sp-badge sp-badge-blue">🔴 FULL CUSTOM</div>
+          <div class="sp-name">FULL CUSTOM STUDIO</div>
+          <div class="sp-sub" data-ka="სივრცის სრული გარდაქმნა" data-en="Full space transformation">სივრცის სრული გარდაქმნა</div>
+          <div class="sp-price">1 500 – 2 000 GEL <small>+250GEL/BUILD</small></div>
+          <ul class="sp-features">
+            <li>• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
+            <li>• სივრცის სრული გარდაქმნა</li>
+            <li>• ინდივიდუალური დიზაინერის მომსახურება</li>
+          </ul>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #e74c3c; line-height: 1.4;">
+            <div>❗️ აუცილებელია მინიმუმ 7-10 დღით ადრე შეკვეთა</div>
+            <div>❗️ პროექტის დამტკიცების შემდეგ ცვლილებები აღარ მიიღება</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="beginners-trial" style="padding: 6px 6px; max-width: 476px; margin: 0 auto;">
+  <div style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(18, 18, 22, 0.95)); border: 2px solid var(--orange, #ff6b00); border-radius: 20px; padding: 8px 10px; text-align: center; box-shadow: 0 12px 35px rgba(255, 107, 0, 0.15); backdrop-filter: blur(8px); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,107,0,0.3) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
+    
+    <span style="display: inline-block; background: rgba(255, 107, 0, 0.2); color: #ff8c32; border: 1px solid rgba(255, 107, 0, 0.4); border-radius: 30px; padding: 4px 11px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;" data-ka="🎬 პირველი ნაბიჯი" data-en="🎬 First Step">🎬 პირველი ნაბიჯი</span>
+    
+    <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 15px; color: #ffffff; margin: 0 0 4px 0; line-height: 1.2; letter-spacing: 0.5px;" data-ka="პირველად ხარ კამერასთან? გატესტე სტუდია 1 საათი უფასოდ!" data-en="First Time in Front of the Camera? Test the Studio Free for 1 Hour!">პირველად ხარ კამერასთან? გატესტე სტუდია 1 საათი უფასოდ!</h2>
+    
+    <p style="font-size: 9px; color: #d1d1d6; line-height: 1.6; max-width: 800px; margin: 0 auto 6px auto;" data-ka="თუ ნერვიულობ, კამერასთან მუშაობის გამოცდილება არ გაქვს და ჯერ ვერ ბედავ დაწყებას — მოდი Studio Lane-ში! ჩვენ სრულიად უფასოდ დაგითმობთ სტუდიას 1 საათით: შეეჩვიე კამერას, გაიარე კონსულტაცია ჩვენს პროფესიონალებთან და მოსინჯე შენი ძალები ყოველგვარი წნეხის გარეშე." data-en="If you feel nervous, lack camera experience, or hesitate to start — come to Studio Lane! We will provide the studio completely free for 1 hour: get comfortable with the camera, consult with our professionals, and test your skills without any pressure.">თუ ნერვიულობ, კამერასთან მუშაობის გამოცდილება არ გაქვს და ჯერ ვერ ბედავ დაწყებას — მოდი Studio Lane-ში! ჩვენ სრულიად უფასოდ დაგითმობთ სტუდიას 1 საათით: შეეჩვიე კამერას, გაიარე კონსულტაცია ჩვენს პროფესიონალებთან და მოსინჯე შენი ძალები ყოველგვარი წნეხის გარეშე.</p>
+    
+    <a href="https://wa.me/995577114355?text=%E1%83%92%E1%83%90%E1%83%99%E1%83%90%E1%83%A0%E1%83%AE%E1%83%9D%E1%83%91%E1%83%90,%20%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90%20%E1%83%A3%E1%83%A4%E1%83%90%E1%83%A1%E1%83%9D%20%E1%83%A1%E1%83%90%E1%83%A2%E1%83%90%E1%83%A1%E1%83%A2%E1%83%9D%20%E1%83%A1%E1%83%90%E1%83%90%E1%83%97%E1%83%98%E1%83%A1%20%E1%83%93%E1%83%90%E1%83%97%E1%83%95%E1%83%90%E1%83%9A%E1%83%98%E1%83%94%E1%83%A0%E1%83%94%E1%83%91%E1%83%90/%E1%83%93%E1%83%90%E1%83%97%E1%83%9B%E1%83%9D%E1%83%91%E1%83%90" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #ffffff; text-decoration: none; padding: 7px 14px; border-radius: 9px; font-weight: 800; font-size: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      <span data-ka="დაჯავშნე უფასო სატესტო საათი" data-en="Book Free Test Hour">დაჯავშნე უფასო სატესტო საათი</span>
+    </a>
+  </div>
+</section>
+
+
+
+
+
     <!-- CUSTOM SUCCESS SCREEN WITH DYNAMIC PAYMENT & QR -->
     <div id="custom-success-screen">
       <div class="success-icon pending-color">⏳</div>
@@ -1766,7 +2380,7 @@ footer {
       <h4 data-ka="კავშირი" data-en="Contact">კავშირი</h4>
       <ul>
         <li><a href="javascript:void(0)" onclick="openDirectContactModal()" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
-        <li><a href="mailto:studio@thelane.ge">studio@thelane.ge</a></li>
+        <li><a href="mailto:podcast@studiolane.ge">podcast@studiolane.ge</a></li>
         <li><a href="https://instagram.com/studio_the_lane" target="_blank">Instagram</a></li>
       </ul>
     </div>
@@ -1802,13 +2416,13 @@ const modals = {
           prices: [
             { 
               name: 'Recording', 
-              sub: 'ნედლი მასალა · 3x Sony FX30 Cinema Line კამერა · ოპერატორი · RODE CASTER PRO II · ALIENWARE ლეპტოპი · სუფლიორი · 2 პერსონა უფასოდ.', 
-              val: '180₾ / სთ' 
+              sub: 'ნედლი მასალა · 3x Sony FX30 / Sony A7IV კამერა · ოპერატორი · RODE CASTER PRO II · 2x RODE PodMic · FHD/4K ფაილები.', 
+              val: '200₾ / სთ' 
             },
             { 
-              name: 'Recording + PRO Editing', 
-              sub: 'ჩაწერა + PRO მონტაჟი · Zoom, YouTube, OBS მხარდაჭერა · ოპერატორი · 3x Sony FX30 · პოდკასტის პროფესიული მონტაჟი · 2 პერსონა უფასოდ.', 
-              val: '400₾ / სთ' 
+              name: 'Recording + EDITING', 
+              sub: 'ჩაწერა + მონტაჟი · 3x Sony FX30 / Sony A7IV · RODE CASTER PRO II / PodMic · FHD/4K ფაილები + მონტაჟი.', 
+              val: '300₾ / სთ' 
             }
           ]
         },
@@ -1817,12 +2431,12 @@ const modals = {
           prices: [
             { 
               name: 'Partnership Standard', 
-              sub: 'RECORDING + PRO EDITING-ის სრული პაკეტი · 4 ეპიზოდი თვეში (ჩაწერა+მონტაჟი+გრაფიკა) · 3 Shorts ვიდეო ყველა ეპიზოდიდან · 4 პერსონა უფასოდ.', 
+              sub: '4 ეპიზოდი თვეში (თითო 2 სთ, ჩაწერა+მონტაჟი) · 3 Shorts თითოეული ეპიზოდიდან · Thumbnail.', 
               val: '2500₾ / თვე' 
             },
             { 
               name: 'Partnership Pro', 
-              sub: 'PARTNERSHIP STANDARD-ის სრული პაკეტი · 4 ეპიზოდი თვეში · 5 Shorts ვიდეო ყველა ეპიზოდიდან · არხის მენეჯმენტი და SEO ოპტიმიზაცია · გრაფიკა და ვიზუალური გაფორმება · 5 პერსონა უფასოდ.', 
+              sub: '4 ეპიზოდი თვეში (ჩაწერა+მონტაჟი) · 5 კამერა · 20 Shorts თვეში · Thumbnail, გრაფიკა, ანონსი, ბექსთეიჯი, სოც. მედია მენეჯმენტი.', 
               val: '5500₾ / თვე' 
             }
           ]
@@ -1838,13 +2452,13 @@ const modals = {
           prices: [
             { 
               name: 'Recording', 
-              sub: 'Raw files · 3x Sony FX30 Cinema Line · operator · RODE CASTER PRO II · ALIENWARE laptop · teleprompter · 2 people free.', 
-              val: '₾180 / hr' 
+              sub: 'Raw files · 3x Sony FX30 / A7IV · operator · RODE CASTER PRO II · 2x PodMic · FHD/4K files.', 
+              val: '₾200 / hr' 
             },
             { 
-              name: 'Recording + PRO Editing', 
-              sub: 'Recording + PRO editing · Zoom, YouTube, OBS support · operator · 3x Sony FX30 · professional podcast edit · 2 people free.', 
-              val: '₾400 / hr' 
+              name: 'Recording + EDITING', 
+              sub: 'Recording + Editing · 3x Sony FX30 / A7IV · RODE CASTER PRO II / PodMic · FHD/4K files + editing.', 
+              val: '₾300 / hr' 
             }
           ]
         },
@@ -1979,16 +2593,87 @@ function scrollToSpace(id, e) {
 }
 
 function openModal(key) {
-  const data = modals[key][lang];
+  const data = modals[key] ? modals[key][lang] : null;
   const modalEl = document.querySelector('.modal');
   if (modalEl) {
-    if (key === 'podcast') modalEl.classList.add('modal-wide');
+    if (key === 'podcast' || key === 'solo') modalEl.classList.add('modal-wide');
     else modalEl.classList.remove('modal-wide');
   }
 
-  let html = `<h2 class="modal-title">${data.title}</h2>`;
+  let html = `<h2 class="modal-title">${data ? data.title : (key === 'solo' ? 'CREATOR / SOLO STUDIO' : '')}</h2>`;
   
-  if (key === 'podcast') {
+  if (key === 'solo') {
+    const isKa = (lang === 'ka');
+    html += `
+      <div class="pricing-tiers-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <!-- 1. RECORDING ONLY -->
+        <div class="pricing-tier-card">
+          <div>
+            <div class="tier-name">RECORDING ONLY</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი მხოლოდ ჩაწერა' : 'One-time recording only'}</div>
+            <div class="tier-price">200 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ერთი კამერა' : '1 Camera'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათება' : 'Professional lighting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ხმის და კადრის ლაივ კონტროლი' : 'Live audio & video control'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? '3 Short ვიდეო' : '3 Shorts'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'თამბნეილი' : 'Thumbnail'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> ${isKa ? 'ანონსი' : 'Teaser'}</li>
+              <li class="tier-feature excluded"><span class="icon">✕</span> <s style="opacity:0.4;">${isKa ? 'ბექსთეიჯი' : 'Backstage'}</s></li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('solo', 'RECORDING ONLY', 200, 'hourly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+
+        <!-- 2. RECORDING + EDITING (WITH ADD-ON CHECKBOXES) -->
+        <div class="pricing-tier-card featured" id="solo-tier-card-editing">
+          <div>
+            <div class="tier-badge">${isKa ? '⚡ პოპულარული' : '⚡ POPULAR'}</div>
+            <div class="tier-name">RECORDING + EDITING</div>
+            <div class="tier-sub">${isKa ? 'ერთჯერადი ჩაწერა + მონტაჟი' : 'Recording + Editing'}</div>
+            <div class="tier-price" id="solo-price-display">300 ₾ / სთ</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ერთი კამერა' : '1 Camera'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> RODECASTER II PRO / 1 MIC RODE PODMIC</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათება' : 'Professional lighting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ხმის და კადრის ლაივ კონტროლი' : 'Live audio & video control'}</li>
+
+              <!-- ADD-ON 1: 3 Shorts (+100 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-shorts" onclick="toggleSoloAddon('shorts')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-shorts">✕</span> 
+                  <span id="solo-label-shorts">${isKa ? '3 Short ვიდეო (+100₾)' : '3 Shorts (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-shorts" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 2: Thumbnail (+50 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-thumb" onclick="toggleSoloAddon('thumb')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-thumb">✕</span> 
+                  <span id="solo-label-thumb">${isKa ? 'თამბნეილი (+50₾)' : 'Thumbnail (+50₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-thumb" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <!-- ADD-ON 3: Teaser (+100 GEL) -->
+              <li class="tier-feature excluded" id="solo-item-teaser" onclick="toggleSoloAddon('teaser')" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                  <span class="icon" id="solo-icon-teaser">✕</span> 
+                  <span id="solo-label-teaser">${isKa ? 'ანონსი (+100₾)' : 'Teaser (+100₾)'}</span>
+                </div>
+                <input type="checkbox" id="solo-addon-teaser" onchange="calcSoloPrice()" style="cursor:pointer; margin-left:auto;" onclick="event.stopPropagation()">
+              </li>
+
+              <li class="tier-feature excluded"><span class="icon">✕</span> <s style="opacity:0.4;">${isKa ? 'ბექსთეიჯი' : 'Backstage'}</s></li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectSoloWithAddons()">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+      </div>
+    `;
+  } else if (key === 'podcast') {
     const isKa = (lang === 'ka');
     html += `
       <div class="pricing-tiers-grid">
@@ -2103,7 +2788,54 @@ function openModal(key) {
               <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სოციალური ქსელების მენეჯმენტი / მართვა' : 'Social media management'}</li>
             </ul>
           </div>
-          <button class="tier-btn" style="background:#00d2ff; color:#000; font-weight:800;" onclick="selectPackage('podcast', 'PARTNERSHIP PRO', 5500, 'monthly')">${isKa ? 'არჩევა' : 'Select'}</button>
+          <button class="tier-btn" style="background:#00d2ff; color:#000; font-weight:800; box-shadow: 0 4px 22px rgba(0, 210, 255, 0.55);" onclick="selectPackage('podcast', 'PARTNERSHIP PRO', 5500, 'monthly')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+      </div>
+    `;
+  } else if (key === 'commercial') {
+    const isKa = (lang === 'ka');
+    html += `
+      <div class="pricing-tiers-grid" style="grid-template-columns: 1fr; max-width: 540px; margin: 0 auto;">
+        <div class="pricing-tier-card featured">
+          <div>
+            <div class="tier-badge">${isKa ? '⚡ FULL PRODUCTION' : '⚡ FULL PRODUCTION'}</div>
+            <div class="tier-name">COMMERCIAL VIDEO</div>
+            <div class="tier-sub">${isKa ? 'სრული სარეკლამო ვიდეო პროდაქშენი' : 'Full commercial video production'}</div>
+            <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'იდეა, სცენარი & კონცეფციის შემუშავება' : 'Idea, script & concept development'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური ვიდეოგადაღება' : 'Professional video shooting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სტუდიური განათება & აუდიო სისტემა' : 'Studio lighting & audio system'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მონტაჟი, ფერთა კორექცია & ხმის დიზაინი' : 'Editing, color grading & sound design'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'VFX & გრაფიკული გაფორმება' : 'VFX & graphic styling'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ადაპტაცია სოციალური ქსელებისთვის (Reels, TikTok, Web)' : 'Social media adaptations (Reels, TikTok, Web)'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა 4K / FHD ვიდეო ფაილი' : 'Final 4K / FHD video file'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('commercial', 'COMMERCIAL VIDEO', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
+        </div>
+      </div>
+    `;
+  } else if (key === 'photo') {
+    const isKa = (lang === 'ka');
+    html += `
+      <div class="pricing-tiers-grid" style="grid-template-columns: 1fr; max-width: 540px; margin: 0 auto;">
+        <div class="pricing-tier-card featured">
+          <div>
+            <div class="tier-badge">${isKa ? '⚡ PHOTO & VIDEO' : '⚡ PHOTO & VIDEO'}</div>
+            <div class="tier-name">ADVERTISING PHOTO / VIDEO</div>
+            <div class="tier-sub">${isKa ? 'სარეკლამო ფოტო და ვიდეო კონტენტი' : 'Commercial photo & video content'}</div>
+            <div class="tier-price">${isKa ? 'შეთანხმებით' : 'By Quote'}</div>
+            <ul class="tier-features">
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროდუქტის, ბრენდის & ანბოქსინგის გადაღება' : 'Product, brand & unboxing shooting'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'სტუდიური სივრცე, ფონები & დეკორაციები' : 'Studio space, backgrounds & decorations'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'პროფესიონალური განათების სრული სეტი' : 'Full professional lighting setup'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'ფოტოების დამუშავება & რიტუში' : 'Photo retouching & processing'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მოკლე სარეკლამო ვიდეო როლიკები' : 'Short commercial video reels'}</li>
+              <li class="tier-feature included"><span class="icon">✓</span> ${isKa ? 'მზა კონტენტი სოციალური ქსელებისთვის' : 'Ready content for social media'}</li>
+            </ul>
+          </div>
+          <button class="tier-btn" onclick="selectPackage('photo', 'ADVERTISING PHOTO / VIDEO', '${isKa ? 'შეთანხმებით' : 'By Quote'}', 'quote')">${isKa ? 'არჩევა' : 'Select'}</button>
         </div>
       </div>
     `;
@@ -2132,6 +2864,75 @@ let selectedHours = 1;
 let selectedDecorPrice = 0;
 let selectedDecorName = 'STANDART DECOR (უფასო)';
 let selectedAddonsTotal = 0;
+
+function toggleSoloAddon(id) {
+  const cb = document.getElementById('solo-addon-' + id);
+  if (cb) {
+    cb.checked = !cb.checked;
+    calcSoloPrice();
+  }
+}
+
+function calcSoloPrice() {
+  let hourlyRate = 300;
+  let addonsTotal = 0;
+  let addons = [];
+
+  const cbShorts = document.getElementById('solo-addon-shorts');
+  const itemShorts = document.getElementById('solo-item-shorts');
+  const iconShorts = document.getElementById('solo-icon-shorts');
+  if (cbShorts && cbShorts.checked) {
+    addonsTotal += 100;
+    addons.push('3 Shorts (+100₾)');
+    if (itemShorts) itemShorts.className = 'tier-feature included';
+    if (iconShorts) { iconShorts.textContent = '✓'; iconShorts.style.color = '#2ecc71'; }
+  } else {
+    if (itemShorts) itemShorts.className = 'tier-feature excluded';
+    if (iconShorts) { iconShorts.textContent = '✕'; iconShorts.style.color = ''; }
+  }
+
+  const cbThumb = document.getElementById('solo-addon-thumb');
+  const itemThumb = document.getElementById('solo-item-thumb');
+  const iconThumb = document.getElementById('solo-icon-thumb');
+  if (cbThumb && cbThumb.checked) {
+    addonsTotal += 50;
+    addons.push('თამბნეილი (+50₾)');
+    if (itemThumb) itemThumb.className = 'tier-feature included';
+    if (iconThumb) { iconThumb.textContent = '✓'; iconThumb.style.color = '#2ecc71'; }
+  } else {
+    if (itemThumb) itemThumb.className = 'tier-feature excluded';
+    if (iconThumb) { iconThumb.textContent = '✕'; iconThumb.style.color = ''; }
+  }
+
+  const cbTeaser = document.getElementById('solo-addon-teaser');
+  const itemTeaser = document.getElementById('solo-item-teaser');
+  const iconTeaser = document.getElementById('solo-icon-teaser');
+  if (cbTeaser && cbTeaser.checked) {
+    addonsTotal += 100;
+    addons.push('ანონსი (+100₾)');
+    if (itemTeaser) itemTeaser.className = 'tier-feature included';
+    if (iconTeaser) { iconTeaser.textContent = '✓'; iconTeaser.style.color = '#2ecc71'; }
+  } else {
+    if (itemTeaser) itemTeaser.className = 'tier-feature excluded';
+    if (iconTeaser) { iconTeaser.textContent = '✕'; iconTeaser.style.color = ''; }
+  }
+
+  const displayPrice = hourlyRate + addonsTotal;
+  const display = document.getElementById('solo-price-display');
+  if (display) display.textContent = `${displayPrice} ₾ / სთ`;
+
+  return { hourlyRate, addonsTotal, addons };
+}
+
+function selectSoloWithAddons() {
+  const info = calcSoloPrice();
+  let fullName = 'RECORDING + EDITING (300₾/სთ)';
+  if (info.addons.length > 0) {
+    fullName += ' [' + info.addons.join(', ') + ']';
+  }
+  selectedAddonsTotal = info.addonsTotal;
+  selectPackage('solo', fullName, 300, 'hourly');
+}
 
 function toggleAddon(id) {
   const cb = document.getElementById('addon-' + id);
@@ -2217,6 +3018,9 @@ function selectPackage(key, tierName, basePrice, type = 'hourly') {
 
   if (type === 'hourly') {
     openHoursView(key, tierName, basePrice);
+  } else if (type === 'quote') {
+    closeModal();
+    openDirectContactModal();
   } else {
     openDecorationView(key, tierName, basePrice, 1);
   }
@@ -2410,7 +3214,7 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
     <iframe name="hidden_mail_iframe" id="hidden_mail_iframe" style="display:none;"></iframe>
 
     <!-- CLIENT CONTACT FORM -->
-    <form id="decor-app-form" action="https://formsubmit.co/studiothelane@gmail.com" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:left;">
+    <form id="decor-app-form" action="https://formsubmit.co/podcast@studiolane.ge" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:left;">
       <input type="hidden" name="_subject" id="h-subject" value="[ახალი ჯავშანი] Studio The Lane">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
@@ -2547,14 +3351,24 @@ function handleModalFormSubmit(e, finalTotalPrice) {
     total_price: `${finalTotalPrice} ₾`
   };
 
-  if (typeof emailjs !== 'undefined') {
-    emailjs.send("service_abc123", "template_kqsobyd", templateParams)
-      .then(function(response) {
-        console.log('EmailJS SUCCESS!', response.status, response.text);
-      }, function(error) {
-        console.log('EmailJS FAILED...', error);
-      });
-  }
+  try {
+    fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
+        _template: "table",
+        "სახელი": fname,
+        "გვარი": lname,
+        "ტელეფონი": phone,
+        "ელ_ფოსტა": email,
+        "პაკეტი": selectedPackageTier,
+        "ხანგრძლივობა": selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
+        "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
+        "ჯამური_ფასი": finalTotalPrice + ' ₾'
+      })
+    }).catch(err => console.error("Modal FormSubmit error:", err));
+  } catch(e){}
 
   // Hide form and summary box, display success box inline in the same modal view
   setTimeout(() => {
@@ -2913,53 +3727,100 @@ document.querySelectorAll('.spaces-photos').forEach(function(wrap) {
     else p.classList.remove('active');
   });
   if (fill) fill.style.width = ((1 / photos.length) * 100) + '%';
-  wrap.addEventListener('click', function() {
+
+  function updatePhoto(newIdx) {
     photos[cur].classList.remove('active');
-    cur = (cur + 1) % photos.length;
+    cur = (newIdx + photos.length) % photos.length;
     photos[cur].classList.add('active');
     if (fill) {
       fill.style.width = (((cur + 1) / photos.length) * 100) + '%';
     }
+  }
+
+  var startX = 0;
+  var startY = 0;
+  var isSwiping = false;
+
+  wrap.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isSwiping = false;
+    }
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length === 1) {
+      var diffX = startX - e.changedTouches[0].clientX;
+      var diffY = startY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > 25 && Math.abs(diffX) > Math.abs(diffY)) {
+        isSwiping = true;
+        if (diffX > 0) {
+          updatePhoto(cur + 1);
+        } else {
+          updatePhoto(cur - 1);
+        }
+      }
+    }
+  }, { passive: true });
+
+  wrap.addEventListener('click', function(e) {
+    if (isSwiping) {
+      isSwiping = false;
+      return;
+    }
+    updatePhoto(cur + 1);
   });
 });
 
 // CHAT STATE & LOGIC
 let chatState = 'idle'; 
-let bookingData = { name: '', service: '', time: '' };
+let bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '' };
+let isSubmittingBooking = false;
 
-const GEMINI_API_KEY = "";
+const GEMINI_API_KEY = typeof atob === 'function' ? atob('QVEuQWI4Uk42STB6MzV0amNHd3J2M3Z4ekRtUDhBZ2NWaldJeDAzMmtpb3g2S3pQSFc0aVE=') : '';
 
 // Studio Knowledge Base
 const studioInfo = `
 მისამართი: ვიტალი დარასელიას 2 (გაგარინის მოედნიდან სოფრომ მგალობლიშვილის ქუჩაზე, პირველივე ჩასახვევი მარჯვნივ).
 სტუდია: Studio The Lane - მოდულარული კრეატიული სივრცე.
-მიმართულებები: პოდკასტები, ფოტო/ვიდეო გადაღება, ხმის ჩაწერა, სოლო სტრიმინგი.
+კონტაქტი: ელ-ფოსტა: podcast@studiolane.ge, ტელეფონი: +995 577 11 43 55.
+მიმართულებები: პოდკასტები, ფოტო/ვიდეო გადაღება, სოლო სტრიმინგი.
 
-ფასები და მომსახურებები:
-1. პოდკასტი (Podcast Studio):
-- Recording Only: 180 ₾/სთ (1-2 ადამიანი, დამატებითი +50 ₾) - სტუდია, 3 კამერა, აუდიო, Raw ფაილები.
-- Only Edit: 250 ₾/ეპიზოდი - 3 კამერის მონტაჟი და ხმის დამუშავება.
-- Episode + Graphics: 350 ₾/ეპიზოდი - სრული ეპიზოდი, გრაფიკა, Intro/Outro, ტიტრები.
+ფასები და მომსახურებები (PODCAST STUDIO):
+1. RECORDING — 200 ₾ / სთ:
+   - არსებული სტუდიის ტიპოლოგია
+   - 3 კამერა — Sony FX30 / Sony A7IV
+   - RODE CASTER PRO II, 2 × RODE PodMic
+   - FHD / 4K ვიდეო და აუდიო ფაილი
 
-2. პარტნიორობა (Monthly Partnership):
-- Standard: 2500 ₾/თვე - 4 ეპიზოდი, სრული მონტაჟი, გრაფიკა, თითოზე 3 Shorts.
-- Pro: 5500 ₾/თვე - 4 ეპიზოდი, სრული მონტაჟი, 5 Shorts, არხების მართვა.
+2. RECORDING + EDITING — 300 ₾ / სთ:
+   - არსებული სტუდიის ტიპოლოგია
+   - 3 კამერა — Sony FX30 / Sony A7IV
+   - RODE CASTER PRO II / RODE PodMic
+   - FHD / 4K ვიდეო და აუდიო ფაილი
+   - მონტაჟი
+   - დამატებითი შესათავაზებლები (Optional Add-ons): 3 Short (+100 ₾), Thumbnail (+50 ₾), ანონსი (+100 ₾)
 
-3. Live Podcast (პირდაპირი ეთერი):
-- 1 კამერა: 200 ₾/სთ. 2 კამერა: 500 ₾/სთ. 3 კამერა: 1500 ₾/სთ.
+3. PARTNERSHIP STANDARD — 2,500 ₾ / თვე:
+   - 4 ეპიზოდი თვეში, თითო 2 სთ (ჩაწერა + მონტაჟი)
+   - არსებული სტუდიის ტიპოლოგია ან ინდივიდუალური სტუდიის მოწყობის შესაძლებლობა
+   - 3 კამერა — Sony FX30 / Sony A7IV
+   - RODE CASTER PRO II / RODE PodMic / Shure mic
+   - 3 Shorts თითოეული ეპიზოდიდან
+   - Thumbnail
 
-4. სტუდიის დეკორი:
-- Standard Decor: უფასო. Select Studio: +150 ₾/ჩაწერა. Full Custom Studio: 1500-2000 ₾ (ერთჯერადი).
+4. PARTNERSHIP PRO — 5,500 ₾ / თვე:
+   - 4 ეპიზოდი თვეში (ჩაწერა + მონტაჟი)
+   - 5 კამერა — Sony FX30 / Sony A7IV
+   - RODE CASTER PRO II, 4 × RODE PodMic, 2 × Shure mic
+   - 5 Shorts თითოეული ეპიზოდიდან (20 Shorts თვეში)
+   - Thumbnail, 5 პერსონა უფასოდ, გრაფიკა და ვიზუალური გაფორმება, ანონსი, ბექსთეიჯი, სოციალური ქსელების მენეჯმენტი / მართვა.
 
-5. სოლო სტუდია (One-Person):
-- Recording Only: 120 ₾/სთ. Video + Edit + Graphics: 350 ₾/ეპიზოდი.
-
-6. სარეკლამო ვიდეო / ფოტო: ფასი ინდივიდუალურია (დამოკიდებულია სირთულეზე).
-
-7. Voice Over Booth (ხმის ჩაწერა):
-- 30 წთ: 50 ₾. 1 სთ: 80 ₾. 2 სთ: 150 ₾. დამატებითი სთ: 100 ₾.
-
-8. გარე სიუჟეტური ვიდეო (თბილისი): 800 ₾ - 1 კამერა, 2 ლოკაცია, ნახევარი დღე, მონტაჟი.
+5. Live Podcast (პირდაპირი ეთერი): 1 კამერა: 200 ₾/სთ, 2 კამერა: 500 ₾/სთ, 3 კამერა: 1500 ₾/სთ.
+6. სტუდიის დეკორი: Standard Decor: უფასო. Select Studio: +150 ₾/ჩაწერა. Full Custom Studio: 1500-2000 ₾.
+7. სარეკლამო ვიდეო / ფოტო: ინდივიდუალური ფასი.
 `;
 
 function toggleChat() {
@@ -2982,74 +3843,503 @@ function sendMsg() {
 
 function checkEnter(e) { if(e.key==='Enter') sendMsg(); }
 
-function addChatMsg(text, sender, isLink = false) {
+function addChatMsg(text, sender, isLink = false, animateTypewriter = true) {
   const box = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = 'message ' + sender;
-  if(isLink) div.innerHTML = text;
-  else div.innerText = text;
   box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+
+  if (isLink) {
+    div.innerHTML = text;
+    box.scrollTop = box.scrollHeight;
+  } else if (sender === 'bot' && animateTypewriter) {
+    div.innerText = '';
+    let i = 0;
+    const speed = 15;
+    function type() {
+      if (i < text.length) {
+        div.innerText += text.charAt(i);
+        i++;
+        box.scrollTop = box.scrollHeight;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  } else {
+    div.innerText = text;
+    box.scrollTop = box.scrollHeight;
+  }
+  return div;
 }
 
-function handleBookingFlow(text) {
-  if (chatState === 'booking_name') {
-    bookingData.name = text;
-    chatState = 'booking_service';
-    setTimeout(() => addChatMsg(lang === 'ka' ? "რომელი მომსახურება გსურთ? (პოდკასტი, სოლო, ხმის ჩაწერა...)" : "Which service would you like? (Podcast, Solo, Voiceover...)", 'bot'), 600);
-  } else if (chatState === 'booking_service') {
-    bookingData.service = text;
-    chatState = 'booking_time';
-    setTimeout(() => addChatMsg(lang === 'ka' ? "როდის გსურთ მობრძანება? (მაგ: ხვალ 15:00)" : "When would you like to come? (e.g., Tomorrow 15:00)", 'bot'), 600);
-  } else if (chatState === 'booking_time') {
-    bookingData.time = text;
-    chatState = 'idle';
-    generateCalendarLink();
+function isRussianText(str) {
+  return /[\u0400-\u04FF]/.test(str);
+}
+
+function resetBookingData() {
+  bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '' };
+  chatState = 'idle';
+  isSubmittingBooking = false;
+  leadEmailSentForThisSession = false;
+}
+
+let leadEmailSentForThisSession = false;
+
+async function dispatchImmediateLeadEmailJS() {
+  if (leadEmailSentForThisSession) return;
+  if (!bookingData.contact && !bookingData.name && !bookingData.phone && !bookingData.socialOrEmail && !bookingData.email) return;
+  
+  leadEmailSentForThisSession = true;
+
+  const payload = {
+    _subject: "[ახალი მყისიერი ლიდი ჩათბოტიდან] Studio The Lane",
+    _template: "table",
+    "მომსახურება": bookingData.service || bookingData.studioType || "პოდკასტის ჩაწერა/ინტერესი",
+    "საკონტაქტო_ინფო": bookingData.contact || "N/A",
+    "სახელი_გვარი": bookingData.name || "მომხმარებელი",
+    "ტელეფონი": bookingData.phone || "არ არის მითითებული",
+    "სოც_ქსელი_ან_მაილი": bookingData.socialOrEmail || bookingData.email || "არ არის მითითებული",
+    "თარიღი": bookingData.date || "N/A",
+    "დრო": bookingData.startTime || "N/A",
+    "ხანგრძლივობა": bookingData.duration || "N/A",
+    "დეკორი": bookingData.decor || "Standard"
+  };
+
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    console.log("FormSubmit Instant Lead Sent:", data);
+  } catch (err) {
+    console.error("FormSubmit Instant Lead Error:", err);
   }
 }
 
-function generateCalendarLink() {
-  const title = encodeURIComponent('Studio Booking: ' + bookingData.service);
-  const details = encodeURIComponent('Customer: ' + bookingData.name + '\nTime: ' + bookingData.time);
-  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
+function extractBookingEntities(text) {
+  const lower = text.toLowerCase();
   
-  const msg = lang === 'ka' 
-    ? `შესანიშნავია, ${bookingData.name}! ჯავშნის ჩასანიშნად დააჭირეთ ქვედა ღილაკს:<br><br><a href="${url}" target="_blank" class="btn-p" style="display:block;text-align:center;text-decoration:none;font-size:11px;">📅 კალენდარში დამატება</a>`
-    : `Great, ${bookingData.name}! Click the button below to add to your calendar:<br><br><a href="${url}" target="_blank" class="btn-p" style="display:block;text-align:center;text-decoration:none;font-size:11px;">📅 Add to Calendar</a>`;
-  
-  setTimeout(() => addChatMsg(msg, 'bot', true), 600);
+  // Extract Email
+  const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  if (emailMatch) {
+    bookingData.email = emailMatch[0];
+    if (!bookingData.socialOrEmail) bookingData.socialOrEmail = emailMatch[0];
+    if (!bookingData.contact) bookingData.contact = emailMatch[0];
+  }
+
+  // Extract Phone Number
+  const phoneMatch = text.match(/(\+?995)?\s*5\d{2}[\s-]?\d{2}[\s-]?\d{2}[\s-]?\d{2}|\b5\d{8}\b/);
+  if (phoneMatch) {
+    bookingData.phone = phoneMatch[0].replace(/\s+/g, '');
+    if (!bookingData.contact) bookingData.contact = bookingData.phone;
+  }
+
+  // Extract Studio Type
+  if (!bookingData.studioType) {
+    if (lower.includes('solo') || lower.includes('სოლო') || lower.includes('creator')) {
+      bookingData.studioType = 'Solo / Creator Studio';
+    } else if (lower.includes('podcast') || lower.includes('პოდკასტ')) {
+      bookingData.studioType = 'Podcast Studio';
+    }
+  }
+
+  // Extract Service
+  if (!bookingData.service) {
+    if (lower.includes('300') || lower.includes('ჩაწერა + მონტაჟი') || lower.includes('editing')) bookingData.service = 'RECORDING + EDITING (300 ₾/სთ)';
+    else if (lower.includes('200') || lower.includes('მხოლოდ ჩაწერა') || lower.includes('recording')) bookingData.service = 'RECORDING (200 ₾/სთ)';
+    else if (lower.includes('2500') || lower.includes('2,500') || lower.includes('standard')) bookingData.service = 'Partnership Standard (2,500 ₾/თვე)';
+    else if (lower.includes('5500') || lower.includes('5,500') || lower.includes('pro')) bookingData.service = 'Partnership Pro (5,500 ₾/თვე)';
+    else if (lower.includes('ლაივ') || lower.includes('live')) bookingData.service = 'Live Podcast';
+    else if (lower.includes('პარტნიორ') || lower.includes('partnership')) bookingData.service = 'Monthly Partnership';
+  }
+
+  // Extract Decor
+  if (!bookingData.decor) {
+    if (lower.includes('select') || lower.includes('სელექტ')) bookingData.decor = 'Select Studio (+150 ₾)';
+    else if (lower.includes('custom') || lower.includes('ქასთომ') || lower.includes('კასტომ')) bookingData.decor = 'Full Custom Studio';
+    else if (lower.includes('standard') || lower.includes('სტანდარტ') || lower.includes('უფასო')) bookingData.decor = 'Standard Decor (უფასო)';
+  }
+
+  // Extract Duration
+  if (!bookingData.duration) {
+    const durMatch = text.match(/(\d+)\s*(საათი|სთ|hour|hours|hr|hrs|წუთი|წთ)/i);
+    if (durMatch) {
+      bookingData.duration = durMatch[0];
+    } else if (lower.includes('ნახევარი საათი')) {
+      bookingData.duration = '30 წუთი';
+    }
+  }
+
+  // Extract Time
+  if (!bookingData.startTime) {
+    const timeMatch = text.match(/\b([0-1]?[0-9]|2[0-3]):[0-5][0-9]\b/);
+    if (timeMatch) {
+      bookingData.startTime = timeMatch[0];
+    } else {
+      const timeHourMatch = text.match(/(\d{1,2})\s*(-ზე|-სთვის| საათზე|:00)/);
+      if (timeHourMatch) {
+        bookingData.startTime = timeHourMatch[1] + ':00';
+      }
+    }
+  }
+
+  // Extract Date
+  if (!bookingData.date) {
+    if (lower.includes('ხვალ')) bookingData.date = 'ხვალ';
+    else if (lower.includes('დღეს')) bookingData.date = 'დღეს';
+    else if (lower.includes('ზეგ')) bookingData.date = 'ზეგ';
+    else {
+      const dateMatch = text.match(/\b\d{1,2}[\/\.-]\d{1,2}([\/\.-]\d{2,4})?\b/) || text.match(/\b\d{1,2}\s*(იანვარს|თებერვალს|მარტს|აპრილს|მაისს|ივნისს|ივლისს|აგვისტოს|სექტემბერს|ოქტომბერს|ნოემბერს|დეკემბერს)/i);
+      if (dateMatch) bookingData.date = dateMatch[0];
+    }
+  }
+
+  // Immediately dispatch instant lead email as soon as contact detail is available
+  if ((bookingData.contact || bookingData.name || bookingData.phone || bookingData.email || bookingData.socialOrEmail) && !leadEmailSentForThisSession) {
+    dispatchImmediateLeadEmailJS();
+  }
 }
 
+function getNextMissingField() {
+  if (!bookingData.studioType && !bookingData.service) return 'studioType';
+  if (!bookingData.service) return 'service';
+  if (!bookingData.contact && !bookingData.name && !bookingData.phone && !bookingData.socialOrEmail && !bookingData.email) return 'contact';
+  if (!bookingData.date) return 'date';
+  if (!bookingData.startTime) return 'startTime';
+  if (!bookingData.duration) return 'duration';
+  if (!bookingData.decor) return 'decor';
+  if (bookingData.service && (bookingData.service.includes('EDITING') || bookingData.service.includes('300'))) {
+    if (bookingData.addons === undefined || bookingData.addons === '') return 'addons';
+  }
+  return null;
+}
+
+function getQuestionForField(field) {
+  const isKa = (lang === 'ka');
+  switch (field) {
+    case 'studioType':
+      return isKa 
+        ? "სიამოვნებით! რომელი სტუდიური ფორმატი გნებავთ?\n🎬 **Podcast Studio** (ჯგუფური/ინტერვიუ) თუ 🎙 **Solo / Creator Studio** (სოლო ჩანაწერები)?"
+        : "Gladly! Which studio format do you prefer?\n🎬 **Podcast Studio** (Group/Interview) or 🎙 **Solo / Creator Studio** (Solo recordings)?";
+    case 'service':
+      return isKa 
+        ? "Podcast Studio-ში გვაქვს 4 მთავარი ფორმატი:\n1. **RECORDING** (200 ₾/სთ) — საათობრივი ჩაწერა\n2. **RECORDING + EDITING** (300 ₾/სთ) — ჩაწერა + სრული მონტაჟი\n3. **Partnership Standard** (2,500 ₾/თვე) — ყოველთვიური პაკეტი\n4. **Partnership Pro** (5,500 ₾/თვე) — სრული პრემიუმ პარტნიორობა\n\nრომელი ფორმატი უფრო აინტერესებთ?"
+        : "In Podcast Studio we offer 4 main formats:\n1. **RECORDING** (200 GEL/hr) — Hourly recording\n2. **RECORDING + EDITING** (300 GEL/hr) — Recording + full editing\n3. **Partnership Standard** (2,500 GEL/mo) — Monthly package\n4. **Partnership Pro** (5,500 GEL/mo) — Premium partnership\n\nWhich format interests you?";
+    case 'contact':
+      return isKa 
+        ? "დაგვიტოვეთ თქვენი საკონტაქტო: სახელი, გვარი, ტელეფონის ნომერი, ინსტაგრამი, ფეისბუქი ან მაილი."
+        : "Please leave your contact info: Name, Surname, Phone number, Instagram, Facebook, or Email.";
+    case 'date':
+      return isKa 
+        ? "რომელ თარიღს ისურვებდით? (მაგ: ხვალ, 15 ოქტომბერს...)"
+        : "Which date would you prefer? (e.g., Tomorrow, Oct 15...)";
+    case 'startTime':
+      return isKa 
+        ? "რომელ საათზე გსურთ დაწყება? (მაგ: 15:00)"
+        : "What start time works for you? (e.g., 15:00)";
+    case 'duration':
+      return isKa 
+        ? "რამდენი ხნით გსურთ სტუდიის დაჯავშნა? (მაგ: 1 საათი, 2 საათი)"
+        : "For how long would you like to book? (e.g., 1 hour, 2 hours)";
+    case 'decor':
+      return isKa 
+        ? "დეკორაციის რომელი ტიპი გსურთ?\n(Standard - უფასო | Select Studio - +150 ₾ | Custom)"
+        : "Which decor option do you prefer?\n(Standard - Free | Select Studio - +150 GEL | Custom)";
+    case 'addons':
+      return isKa
+        ? "გსურთ დამატებითი სერვისების ჩართვა?\n• 3 Shorts/Reels (+100 ₾)\n• YouTube Thumbnail (+50 ₾)\n• ანიმაციური ანონსი (+100 ₾)\n(თუ არ გსურთ, მოგვწერეთ 'არა' ან 'არაფერი')"
+        : "Would you like optional add-on services?\n• 3 Shorts/Reels (+100 GEL)\n• YouTube Thumbnail (+50 GEL)\n• Animated Announcement (+100 GEL)\n(Reply 'No' if not needed)";
+    default:
+      return "";
+  }
+}
+
+function getPackageSummary(serviceName) {
+  const isKa = (lang === 'ka');
+  if (serviceName.includes('200') || (serviceName.includes('RECORDING') && !serviceName.includes('EDITING'))) {
+    return isKa 
+      ? "ამ ფორმატში შედის 3-კამერიანი 4K ჩაწერა, პროფესიონალური განათება და ხმის ჩაწერა RODE Caster Pro II-ით. 🎬"
+      : "Includes 3-camera 4K recording, professional lighting & RODE Caster Pro II audio. 🎬";
+  } else if (serviceName.includes('300') || serviceName.includes('EDITING')) {
+    return isKa
+      ? "ამ პაკეტში შედის 3-კამერიანი 4K ჩაწერა, პროფესიონალური ხმის დამუშავება, სრული ვიდეო მონტაჟი და ფერების კორექცია. 🎬"
+      : "Includes 3-camera 4K recording, professional audio processing, full video editing & color grading. 🎬";
+  } else if (serviceName.includes('2500') || serviceName.includes('Standard')) {
+    return isKa
+      ? "ეს პაკეტი მოიცავს თვეში 4 ეპიზოდს სრული ჩაწერა/მონტაჟით, 3 Shorts-ს თითო ეპიზოდიდან და YouTube Thumbnail-ს. 🚀"
+      : "Includes 4 episodes/month with full recording & editing, 3 Shorts per episode & YouTube Thumbnail. 🚀";
+  } else if (serviceName.includes('5500') || serviceName.includes('Pro')) {
+    return isKa
+      ? "სრული პრემიუმ პარტნიორობა: 4 ეპიზოდი 5 კამერით, 20 Shorts თვეში, სოციალური ქსელების მენეჯმენტი, გრაფიკა და ბექსთეიჯი. 🌟"
+      : "Premium partnership: 4 episodes with 5 cameras, 20 Shorts/mo, social media management, graphics & backstage. 🌟";
+  }
+  return "";
+}
+
+async function handleBookingFlow(text) {
+  if (isRussianText(text)) {
+    addChatMsg(lang === 'ka' ? "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად." : "Service is available in Georgian and English.", 'bot');
+    return;
+  }
+
+  const lower = text.toLowerCase();
+
+  if (chatState === 'review') {
+    if (lower.includes('დიახ') || lower.includes('კი') || lower.includes('yes') || lower.includes('confirm') || lower.includes('ვადასტურებ') || lower.includes('გაგზავნა') || lower.includes('დაჯავშნა')) {
+      await dispatchBookingEmailJS();
+      return;
+    } else if (lower.includes('შეცვლა') || lower.includes('change') || lower.includes('edit')) {
+      chatState = 'booking';
+      addChatMsg(lang === 'ka' ? "რისი შეცვლა გსურთ? (მაგ: თარიღი, დრო, სერვისი, ტელეფონი...)" : "What would you like to change? (e.g., date, time, service, phone...)", 'bot');
+      return;
+    } else {
+      extractBookingEntities(text);
+      showBookingReviewSummary();
+      return;
+    }
+  }
+
+  const currentMissing = getNextMissingField();
+
+  if (currentMissing === 'studioType' && !bookingData.studioType && !bookingData.service) {
+    if (lower.includes('solo') || lower.includes('სოლო') || lower.includes('creator')) {
+      bookingData.studioType = 'Solo / Creator Studio';
+      bookingData.service = 'Solo / Creator Studio (150 ₾/სთ)';
+    } else {
+      bookingData.studioType = 'Podcast Studio';
+    }
+  } else if (currentMissing === 'service' && !bookingData.service) {
+    const sLower = text.trim().toLowerCase();
+    if (sLower === '1' || sLower.includes('200') || sLower.includes('მხოლოდ ჩაწერა')) bookingData.service = 'RECORDING (200 ₾/სთ)';
+    else if (sLower === '2' || sLower.includes('300') || sLower.includes('მონტაჟი')) bookingData.service = 'RECORDING + EDITING (300 ₾/სთ)';
+    else if (sLower === '3' || sLower.includes('2500') || sLower.includes('standard')) bookingData.service = 'Partnership Standard (2,500 ₾/თვე)';
+    else if (sLower === '4' || sLower.includes('5500') || sLower.includes('pro')) bookingData.service = 'Partnership Pro (5,500 ₾/თვე)';
+    else bookingData.service = text.trim();
+
+    const pkgSummary = getPackageSummary(bookingData.service);
+    if (pkgSummary) {
+      addChatMsg(pkgSummary, 'bot');
+    }
+  } else if (currentMissing === 'contact' && !bookingData.contact) {
+    bookingData.contact = text.trim();
+    extractBookingEntities(text);
+  } else if (currentMissing === 'date' && !bookingData.date) {
+    bookingData.date = text.trim();
+  } else if (currentMissing === 'startTime' && !bookingData.startTime) {
+    bookingData.startTime = text.trim();
+  } else if (currentMissing === 'duration' && !bookingData.duration) {
+    bookingData.duration = text.trim();
+  } else if (currentMissing === 'decor' && !bookingData.decor) {
+    const dLower = text.trim().toLowerCase();
+    if (dLower === '1' || dLower.includes('standard') || dLower.includes('სტანდარტ') || dLower.includes('უფასო')) bookingData.decor = 'Standard Decor (უფასო)';
+    else if (dLower === '2' || dLower.includes('select') || dLower.includes('სელექტ')) bookingData.decor = 'Select Studio (+150 ₾)';
+    else if (dLower === '3' || dLower.includes('custom') || dLower.includes('ქასთომ')) bookingData.decor = 'Full Custom Studio';
+    else bookingData.decor = text.trim();
+  } else if (currentMissing === 'addons' && (bookingData.addons === undefined || bookingData.addons === '')) {
+    bookingData.addons = text.trim();
+  } else {
+    extractBookingEntities(text);
+  }
+
+  if ((bookingData.contact || bookingData.name || bookingData.phone || bookingData.email || bookingData.socialOrEmail) && !leadEmailSentForThisSession) {
+    dispatchImmediateLeadEmailJS();
+  }
+
+  if (text.includes('?') || lower.includes('ფასი') || lower.includes('price') || lower.includes('მისამართი') || lower.includes('სად')) {
+    if (typeof GEMINI_API_KEY !== 'undefined' && GEMINI_API_KEY) {
+      const qResponse = await callGemini(text);
+      addChatMsg(qResponse, 'bot');
+    }
+  }
+
+  const nextMissing = getNextMissingField();
+  if (!nextMissing) {
+    chatState = 'review';
+    showBookingReviewSummary();
+  } else {
+    chatState = 'booking';
+    setTimeout(() => {
+      addChatMsg(getQuestionForField(nextMissing), 'bot');
+    }, 400);
+  }
+}
+
+function showBookingReviewSummary() {
+  const isKa = (lang === 'ka');
+  const summaryMsg = isKa ?
+    "📋 <strong>გთხოვთ გადაამოწმოთ თქვენი ჯავშნის დეტალები:</strong><br><br>" +
+    "🎬 <strong>მომსახურება:</strong> " + (bookingData.service || bookingData.studioType) + "<br>" +
+    "📲 <strong>საკონტაქტო:</strong> " + (bookingData.contact || bookingData.phone || bookingData.email || bookingData.name || 'N/A') + "<br>" +
+    "📅 <strong>თარიღი:</strong> " + (bookingData.date || 'N/A') + "<br>" +
+    "⏰ <strong>დაწყების დრო:</strong> " + (bookingData.startTime || 'N/A') + "<br>" +
+    "⏱ <strong>ხანგრძლივობა:</strong> " + (bookingData.duration || 'N/A') + "<br>" +
+    "🎨 <strong>დეკორი:</strong> " + (bookingData.decor || 'Standard Decor (უფასო)') + "<br>" +
+    "🍿 <strong>დამატებები:</strong> " + (bookingData.addons || 'არაფერი') + "<br><br>" +
+    "გსურთ ამ მოთხოვნის გაგზავნა?<br>" +
+    "<span style=\"font-size:11px; color:var(--muted);\">(მოგვწერეთ <strong>\"დიახ\"</strong> გაგზავნისთვის ან <strong>\"შეცვლა\"</strong> მონაცემების ჩასასწორებლად)</span>"
+    :
+    "📋 <strong>Please review your booking details:</strong><br><br>" +
+    "🎬 <strong>Service:</strong> " + (bookingData.service || bookingData.studioType) + "<br>" +
+    "📲 <strong>Contact:</strong> " + (bookingData.contact || bookingData.phone || bookingData.email || bookingData.name || 'N/A') + "<br>" +
+    "📅 <strong>Date:</strong> " + (bookingData.date || 'N/A') + "<br>" +
+    "⏰ <strong>Start Time:</strong> " + (bookingData.startTime || 'N/A') + "<br>" +
+    "⏱ <strong>Duration:</strong> " + (bookingData.duration || 'N/A') + "<br>" +
+    "🎨 <strong>Decor:</strong> " + (bookingData.decor || 'Standard Decor (Free)') + "<br>" +
+    "🍿 <strong>Add-ons:</strong> " + (bookingData.addons || 'None') + "<br><br>" +
+    "Would you like to send this request?<br>" +
+    "<span style=\"font-size:11px; color:var(--muted);\">(Reply <strong>\"Yes\"</strong> to send or <strong>\"Change\"</strong> to edit details)</span>";
+
+  addChatMsg(summaryMsg, 'bot', true);
+}
+
+async function dispatchBookingEmailJS() {
+  if (isSubmittingBooking) return;
+  isSubmittingBooking = true;
+
+  const isKa = (lang === 'ka');
+
+  const payload = {
+    _subject: "[სრული ჯავშნის განაცხადი ჩათბოტიდან] Studio The Lane",
+    _template: "table",
+    "საკონტაქტო_ინფო": bookingData.contact || bookingData.phone || bookingData.email || bookingData.name || "N/A",
+    "მომსახურება": bookingData.service || bookingData.studioType || "N/A",
+    "თარიღი": bookingData.date || "N/A",
+    "დაწყების_დრო": bookingData.startTime || "N/A",
+    "ხანგრძლივობა": bookingData.duration || "N/A",
+    "დეკორი": bookingData.decor || "Standard Decor",
+    "დამატებითი_სერვისები": bookingData.addons || "არაფერი"
+  };
+
+  const sendingMsg = isKa ? "⏳ იგზავნება ჯავშნის მოთხოვნა..." : "⏳ Sending booking request...";
+  addChatMsg(sendingMsg, 'bot');
+
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    const resData = await res.json();
+    console.log("FormSubmit Final Booking Response:", resData);
+  } catch (err) {
+    console.error("FormSubmit Final Booking Error:", err);
+  }
+
+  const finalNotice = isKa 
+    ? "თქვენი მოთხოვნა მიღებულია. ხელმისაწვდომობას The Lane Studio-ის გუნდი გადაამოწმებს და დაგიკავშირდებათ ან დადასტურებას ელფოსტით მიიღებთ."
+    : "Your request has been received. The Lane Studio team will verify availability and contact you or send a confirmation email.";
+
+  const waText = "📥 ახალი ჯავშნის მოთხოვნა ჩათბოტიდან!\n\n📲 საკონტაქტო: " + (bookingData.contact || bookingData.phone || bookingData.email || 'N/A') + "\n🎬 მომსახურება: " + (bookingData.service || bookingData.studioType) + "\n📅 თარიღი: " + bookingData.date + "\n⏰ დრო: " + bookingData.startTime + "\n⏱ ხანგრძლივობა: " + bookingData.duration + "\n🎨 დეკორი: " + (bookingData.decor || 'Standard') + "\n🍿 დამატებები: " + (bookingData.addons || 'არაფერი');
+  const waUrl = "https://wa.me/995577114355?text=" + encodeURIComponent(waText);
+
+  const btnText = isKa ? "💬 WhatsApp-ზე სწრაფი გადაგზავნა" : "💬 Fast Send via WhatsApp";
+
+  const successHtml = finalNotice + "<br><br><a href=\"" + waUrl + "\" target=\"_blank\" class=\"btn-p\" style=\"display:block;text-align:center;text-decoration:none;font-size:11px;padding:8px 12px;background:#25D366;color:white;border-radius:6px;font-weight:bold;\">" + btnText + "</a>";
+
+  addChatMsg(successHtml, 'bot', true);
+
+  resetBookingData();
+}
+
+let chatHistory = [];
+
 async function callGemini(prompt) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
     
+    const systemInstructionText = `
+    შენ ხარ Studio The Lane-ის გამოცდილი, მეგობრული და ემპათიური კონსულტანტი ჩათბოტში.
+    გამოიყენე ეს სტუდიის ინფორმაცია: ${studioInfo}.
+
+    მნიშვნელოვანი ქცევითი წესები და 4-ნაბიჯიანი პროგრესული საუბრის ლოგიკა:
+
+    1️⃣ ნაბიჯი 1 — საწყისი ინტერესი (სტუდიის ფორმატი):
+    - როდესაც მომხმარებელი იტყვის ზოგად ფრაზას („პოდკასტის ჩაწერა მინდა“, „სტუდია მინდა“), ნუ დაწერ დიდი ტექსტით დეტალებს!
+    - უპასუხე მოკლედ და ჰკითხე სტუდიის ფორმატი:
+      „სიამოვნებით! რომელი სტუდიური ფორმატი გნებავთ?
+      🎬 **Podcast Studio** (ჯგუფური/ინტერვიუ) თუ 🎙 **Solo / Creator Studio** (სოლო ჩანაწერები)?“
+
+    2️⃣ ნაბიჯი 2 — სტუდიის არჩევა ➔ 4 პაკეტის მოკლე სათაურები:
+    - როდესაც მომხმარებელი აირჩევს „Podcast Studio“-ს, მიეცი 4 პაკეტის მოკლე სათაურები (დიდი ტექსტის გარეშე):
+      „Podcast Studio-ში გვაქვს 4 მთავარი ფორმატი:
+      1. **RECORDING** (200 ₾/სთ) — საათობრივი ჩაწერა
+      2. **RECORDING + EDITING** (300 ₾/სთ) — ჩაწერა + სრული მონტაჟი
+      3. **Partnership Standard** (2,500 ₾/თვე) — ყოველთვიური პაკეტი
+      4. **Partnership Pro** (5,500 ₾/თვე) — სრული პრემიუმ პარტნიორობა
+
+      რომელი ფორმატი უფრო აინტერესებთ?“
+
+    3️⃣ ნაბიჯი 3 — პაკეტის დაზუსტება + საკონტაქტოს მოთხოვნა:
+    - როდესაც მომხმარებელი აირჩევს კონკრეტულ პაკეტს (მაგ. RECORDING + EDITING / 300-იანი), მიეცი ამ პაკეტის მოკლე 1-2 წინადადებიანი შინაარსი და იქვე მოითხოვე საკონტაქტო:
+      „ამ პაკეტში შედის 3-კამერიანი 4K ჩაწერა, პროფესიონალური ხმის დამუშავება, სრული ვიდეო მონტაჟი და ფერების კორექცია 🎬
+
+      დაგვიტოვეთ თქვენი საკონტაქტო: სახელი, გვარი, ტელეფონის ნომერი, ინსტაგრამი, ფეისბუქი ან მაილი.“
+
+    4️⃣ კატეგორიული აკრძალვები:
+    - ნუ დაწერ სტუდიის ნომერს/მაილს/WhatsApp-ს, თუ მომხმარებელმა თავად არ იკითხა!
+    - ნუ გამოიყენებ ოფიციალურ/ბიუროკრატიულ ფრაზებს: „გთხოვთ მიუთითოთ“.
+    - კატეგორიულად აკრძალულია საუბრის შუაში მისალმების გამეორება ("გამარჯობა", "გამარჯობათ", "მოგესალმებით").
+    - ხმის ჩაწერის (Voice Over Booth) მომსახურება ამოღებულია და აღარ არსებობს!
+    - რუსულ ენაზე მოთხოვნებზე უპასუხე strictly: "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად."
+    `;
+
+    chatHistory.push({ role: 'user', parts: [{ text: prompt }] });
+
     const data = {
-        contents: [{ parts: [{ text: `შენ ხარ Studio The Lane-ის ასისტენტი. გამოიყენე ეს ინფორმაცია: ${studioInfo}. უპასუხე ქართულად მოკლედ. კითხვა: ${prompt}` }] }]
+        system_instruction: {
+            parts: [{ text: systemInstructionText }]
+        },
+        contents: chatHistory
     };
 
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        const json = await response.json();
-        
-        if (json.error) {
-            return `შეცდომა: ${json.error.message}`;
-        }
-        return json.candidates[0].content.parts[0].text;
-    } catch (e) {
-        return "კავშირის შეცდომა: " + e.message;
+    for (const model of models) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const json = await response.json();
+            
+            if (json.candidates && json.candidates[0] && json.candidates[0].content && json.candidates[0].content.parts && json.candidates[0].content.parts[0]) {
+                const botReply = json.candidates[0].content.parts[0].text;
+                chatHistory.push({ role: 'model', parts: [{ text: botReply }] });
+                return botReply;
+            }
+        } catch (e) {}
     }
+
+    chatHistory.pop();
+    return null;
 }
 
 async function botResponse(text) {
+  if (isRussianText(text)) {
+    addChatMsg(lang === 'ka' ? "მომსახურება ხელმისაწვდომია ქართულად და ინგლისურად." : "Service is available in Georgian and English.", 'bot');
+    return;
+  }
+
   const lowerText = text.toLowerCase();
   
-  if (lowerText.includes('დაჯავშნა') || lowerText.includes('book') || lowerText.includes('ჯავშანი')) {
-    chatState = 'booking_name';
-    addChatMsg(lang === 'ka' ? "სიამოვნებით! ჯერ მითხარით თქვენი სახელი." : "Certainly! First, tell me your name.", 'bot');
+  if (lowerText.includes('დაჯავშნა') || lowerText.includes('book') || lowerText.includes('ჯავშანი') || lowerText.includes('booking') || lowerText.includes('резерв')) {
+    chatState = 'booking';
+    extractBookingEntities(text);
+    const nextMissing = getNextMissingField();
+    const introMsg = lang === 'ka' 
+      ? `სიამოვნებით დაგეხმარებით ჯავშნის გაფორმებაში! 🎬` 
+      : `Gladly! I'll help you submit a booking request! 🎬`;
+    addChatMsg(introMsg, 'bot');
+    setTimeout(() => {
+      addChatMsg(getQuestionForField(nextMissing), 'bot');
+    }, 400);
     return;
   }
 
@@ -3060,21 +4350,46 @@ async function botResponse(text) {
       document.getElementById('chat-messages').appendChild(typingMsg);
       
       const aiResponse = await callGemini(text);
-      typingMsg.innerText = aiResponse;
-      document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
-      return;
+      if (aiResponse) {
+          typingMsg.innerText = '';
+          let i = 0;
+          const speed = 15;
+          function type() {
+            if (i < aiResponse.length) {
+              typingMsg.innerText += aiResponse.charAt(i);
+              i++;
+              const box = document.getElementById('chat-messages');
+              if (box) box.scrollTop = box.scrollHeight;
+              setTimeout(type, speed);
+            }
+          }
+          type();
+          return;
+      } else {
+          typingMsg.remove();
+      }
   }
 
   let r = "";
-  if(lowerText.includes('ფასი') || lowerText.includes('price')) {
-    r = lang === 'ka' ? "ჩვენი ფასები დეტალურად შეგიძლიათ ნახოთ 'მომსახურების' სექციაში. პოდკასტის ჩაწერა იწყება 180₾-დან." : "Detailed prices are in the 'Services' section. Podcast starts at ₾180.";
+  if (lowerText.includes('დაწყება') || lowerText.includes('იდეა') || lowerText.includes('პირველად') || lowerText.includes('როგორ დავიწყო')) {
+    r = lang === 'ka' 
+      ? "თუ პოდკასტის დაწყებას ახლა გეგმავ, შეგიძლია ჯერ მოხვიდე, გაიარო უფასო კონსულტაცია და ადგილზე უფასოდ სცადო ჩაწერა. დაკავშირება შეგიძლიათ ოთხივე საშუალებით (სურვილისამებრ):\n1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ 'დაჯავშნა')\n2. დარეკვა: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. ელ-ფოსტა: podcast@studiolane.ge"
+      : "If you're planning to start a podcast, you can visit us for a free consultation and try a test recording. You can contact us via any of these 4 options:\n1. Book in chat (type 'book')\n2. Call: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. Email: podcast@studiolane.ge";
+  } else if (lowerText.includes('არ ვიცი') || lowerText.includes('კამერა') || lowerText.includes('დაბნეული') || lowerText.includes('კონსულტაცია') || lowerText.includes('ნახვა')) {
+    r = lang === 'ka' 
+      ? "შეგიძლია მოხვიდე სტუდიაში, დაათვალიერო სივრცე, გაიარო უფასო კონსულტაცია ჩვენს გუნდთან და სცადო ჩაწერა. დაკავშირება შეგიძლიათ თქვენთვის სასურველი გზით:\n1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ 'დაჯავშნა')\n2. დარეკვა: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. ელ-ფოსტა: podcast@studiolane.ge"
+      : "You can visit the studio, check out the space, get a free consultation with our team, and try recording. Contact us via:\n1. Book in chat (type 'book')\n2. Call: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. Email: podcast@studiolane.ge";
+  } else if(lowerText.includes('ფასი') || lowerText.includes('price')) {
+    r = lang === 'ka' ? "ჩვენი პოდკასტის ჩაწერა იწყება 200₾-დან/სთ (RECORDING — 200 ₾/სთ; RECORDING + EDITING — 300 ₾/სთ; PARTNERSHIP STANDARD — 2,500 ₾/თვე; PRO — 5,500 ₾/თვე). დეტალური ფასები შეგიძლიათ ნახოთ 'მომსახურების' სექციაში." : "Podcast recording starts at ₾200/hr (RECORDING — ₾200/hr; RECORDING + EDITING — ₾300/hr; PARTNERSHIP STANDARD — ₾2,500/mo; PRO — ₾5,500/mo). Detailed prices are in the 'Services' section.";
   } else if(lowerText.includes('მისამართი') || lowerText.includes('ადგილი') || lowerText.includes('location')) {
-    r = "ჩვენი მისამართია: ვიტალი დარასელიას 2 (გაგარინის მოედანთან).";
+    r = "ჩვენი მისამართია: ვიტალი დარასელიას 2 (გაგარინის მოედნიდან სოფრომ მგალობლიშვილის ქუჩაზე, პირველივე ჩასახვევი მარჯვნივ).";
   } else if(lowerText.includes('whatsapp') || lowerText.includes('ვატსაპ')) {
     r = "გადაგიყვანთ WhatsApp-ზე...";
-    setTimeout(() => window.open('https://wa.me/995555123456', '_blank'), 1000);
+    setTimeout(() => window.open('https://wa.me/995577114355', '_blank'), 1000);
   } else {
-    r = "გმადლობთ! დაჯავშნისთვის მოგვწერეთ 'დაჯავშნა' ან გამოიყენეთ WhatsApp დამატებითი კითხვებისთვის.";
+    r = lang === 'ka' 
+      ? "რა თქმა უნდა! თუ გსურთ ჩაწერა, შეგვიძლია დაჯავშნაზე გადავიდეთ (მოგვწერეთ 'დაჯავშნა'), ხოლო თუ გაქვთ შეკითხვები, სიამოვნებით გიპასუხებთ."
+      : "Of course! If you want to record, type 'book' to proceed, or feel free to ask any questions.";
   }
   addChatMsg(r, 'bot');
 }
