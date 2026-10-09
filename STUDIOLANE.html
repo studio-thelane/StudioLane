@@ -1874,8 +1874,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 1. STANDART DECOR -->
       <div class="sp-card">
         <div>
-          <div class="sp-badge">🟢 01 | STANDARD</div>
-          <div class="sp-name">01 | STANDARD DECOR</div>
+          <div class="sp-badge">🟢 STANDARD</div>
+          <div class="sp-name">STANDARD DECOR / სტანდარტული სტუდია</div>
           <div class="sp-sub" data-ka="ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე" data-en="Neutral & universal curtain-styled space">ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</div>
           <div class="sp-price">უფასო <small>[შედის პაკეტის ფასში]</small></div>
           <ul class="sp-features">
@@ -1892,8 +1892,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 2. SELECT STUDIO -->
       <div class="sp-card sp-featured">
         <div>
-          <div class="sp-badge sp-badge-orange">🔵 02 | SELECT</div>
-          <div class="sp-name">02 | SELECT STUDIO</div>
+          <div class="sp-badge sp-badge-orange">🔵 SELECT</div>
+          <div class="sp-name">SELECT STUDIO / არჩევითი სტუდია</div>
           <div class="sp-sub" data-ka="ტიპოლოგიის არჩევა & პერსონალიზაცია" data-en="Typology selection & personalization">ტიპოლოგიის არჩევა & პერსონალიზაცია</div>
           <div class="sp-price">+250 ₾ <small>/ თითო ეპიზოდის ჩაწერაზე</small></div>
           <ul class="sp-features">
@@ -1912,8 +1912,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 3. FULL CUSTOM STUDIO -->
       <div class="sp-card sp-pro">
         <div>
-          <div class="sp-badge sp-badge-blue">🔴 03 | FULL CUSTOM</div>
-          <div class="sp-name">03 | FULL CUSTOM STUDIO</div>
+          <div class="sp-badge sp-badge-blue">🔴 FULL CUSTOM</div>
+          <div class="sp-name">FULL CUSTOM STUDIO / ინდივიდუალური სტუდია</div>
           <div class="sp-sub" data-ka="სივრცის სრული გარდაქმნა ბრენდზე მორგებით" data-en="Full space transformation for your brand">სივრცის სრული გარდაქმნა ბრენდზე მორგებით</div>
           <div class="sp-price">1 500 – 2 000 ₾ <small>(ერთჯერადი) + 250 ₾/ეპიზოდზე</small></div>
           <ul class="sp-features">
@@ -2648,7 +2648,8 @@ let selectedBasePrice = 0;
 let selectedPackageType = 'hourly';
 let selectedHours = 1;
 let selectedDecorPrice = 0;
-let selectedDecorName = 'STANDART DECOR (უფასო)';
+let selectedDecorName = 'STANDARD DECOR / სტანდარტული სტუდია';
+let selectedAddonsTotal = 0;
 
 function toggleAddon(id) {
   const cb = document.getElementById('addon-' + id);
@@ -2659,14 +2660,15 @@ function toggleAddon(id) {
 }
 
 function calcTier2Price() {
-  let base = 300;
+  let hourlyRate = 300;
+  let addonsTotal = 0;
   let addons = [];
 
   const cbShorts = document.getElementById('addon-shorts');
   const itemShorts = document.getElementById('item-shorts');
   const iconShorts = document.getElementById('icon-shorts');
   if (cbShorts && cbShorts.checked) {
-    base += 100;
+    addonsTotal += 100;
     addons.push('3 Shorts (+100₾)');
     if (itemShorts) itemShorts.className = 'tier-feature included';
     if (iconShorts) { iconShorts.textContent = '✓'; iconShorts.style.color = '#2ecc71'; }
@@ -2679,7 +2681,7 @@ function calcTier2Price() {
   const itemThumb = document.getElementById('item-thumb');
   const iconThumb = document.getElementById('icon-thumb');
   if (cbThumb && cbThumb.checked) {
-    base += 50;
+    addonsTotal += 50;
     addons.push('თამბნეილი (+50₾)');
     if (itemThumb) itemThumb.className = 'tier-feature included';
     if (iconThumb) { iconThumb.textContent = '✓'; iconThumb.style.color = '#2ecc71'; }
@@ -2692,7 +2694,7 @@ function calcTier2Price() {
   const itemTeaser = document.getElementById('item-teaser');
   const iconTeaser = document.getElementById('icon-teaser');
   if (cbTeaser && cbTeaser.checked) {
-    base += 100;
+    addonsTotal += 100;
     addons.push('ანონსი (+100₾)');
     if (itemTeaser) itemTeaser.className = 'tier-feature included';
     if (iconTeaser) { iconTeaser.textContent = '✓'; iconTeaser.style.color = '#2ecc71'; }
@@ -2701,19 +2703,21 @@ function calcTier2Price() {
     if (iconTeaser) { iconTeaser.textContent = '✕'; iconTeaser.style.color = ''; }
   }
 
+  const displayPrice = hourlyRate + addonsTotal;
   const display = document.getElementById('tier-2-price-display');
-  if (display) display.textContent = `${base} ₾ / სთ`;
+  if (display) display.textContent = `${displayPrice} ₾ / სთ`;
 
-  return { base, addons };
+  return { hourlyRate, addonsTotal, addons };
 }
 
 function selectTier2WithAddons(key, name) {
   const info = calcTier2Price();
-  let fullName = name + ' (' + info.base + '₾/სთ)';
+  let fullName = name + ' (300₾/სთ)';
   if (info.addons.length > 0) {
     fullName += ' [' + info.addons.join(', ') + ']';
   }
-  selectPackage(key, fullName, info.base, 'hourly');
+  selectedAddonsTotal = info.addonsTotal;
+  selectPackage(key, fullName, 300, 'hourly');
 }
 
 function toggleSoloAddon(id) {
@@ -2725,15 +2729,16 @@ function toggleSoloAddon(id) {
 }
 
 function calcSoloPrice() {
-  let base = 300;
+  let hourlyRate = 300;
+  let addonsTotal = 0;
   let addons = [];
 
   const cbShorts = document.getElementById('solo-addon-shorts');
   const itemShorts = document.getElementById('solo-item-shorts');
   const iconShorts = document.getElementById('solo-icon-shorts');
   if (cbShorts && cbShorts.checked) {
-    base += 100;
-    addons.push('3 Short');
+    addonsTotal += 100;
+    addons.push('3 Shorts (+100₾)');
     if (itemShorts) itemShorts.className = 'tier-feature included';
     if (iconShorts) { iconShorts.textContent = '✓'; iconShorts.style.color = '#2ecc71'; }
   } else {
@@ -2745,8 +2750,8 @@ function calcSoloPrice() {
   const itemThumb = document.getElementById('solo-item-thumb');
   const iconThumb = document.getElementById('solo-icon-thumb');
   if (cbThumb && cbThumb.checked) {
-    base += 50;
-    addons.push('თამბნეილი');
+    addonsTotal += 50;
+    addons.push('თამბნეილი (+50₾)');
     if (itemThumb) itemThumb.className = 'tier-feature included';
     if (iconThumb) { iconThumb.textContent = '✓'; iconThumb.style.color = '#2ecc71'; }
   } else {
@@ -2758,8 +2763,8 @@ function calcSoloPrice() {
   const itemTeaser = document.getElementById('solo-item-teaser');
   const iconTeaser = document.getElementById('solo-icon-teaser');
   if (cbTeaser && cbTeaser.checked) {
-    base += 100;
-    addons.push('ანონსი');
+    addonsTotal += 100;
+    addons.push('ანონსი (+100₾)');
     if (itemTeaser) itemTeaser.className = 'tier-feature included';
     if (iconTeaser) { iconTeaser.textContent = '✓'; iconTeaser.style.color = '#2ecc71'; }
   } else {
@@ -2767,19 +2772,21 @@ function calcSoloPrice() {
     if (iconTeaser) { iconTeaser.textContent = '✕'; iconTeaser.style.color = ''; }
   }
 
+  const displayPrice = hourlyRate + addonsTotal;
   const display = document.getElementById('solo-price-display');
-  if (display) display.textContent = `${base} ₾ / სთ`;
+  if (display) display.textContent = `${displayPrice} ₾ / სთ`;
 
-  return { base, addons };
+  return { hourlyRate, addonsTotal, addons };
 }
 
 function selectSoloWithAddons() {
   const info = calcSoloPrice();
-  let fullName = 'RECORDING + EDITING (' + info.base + '₾/სთ)';
+  let fullName = 'RECORDING + EDITING (300₾/სთ)';
   if (info.addons.length > 0) {
     fullName += ' [' + info.addons.join(', ') + ']';
   }
-  selectPackage('solo', fullName, info.base, 'hourly');
+  selectedAddonsTotal = info.addonsTotal;
+  selectPackage('solo', fullName, 300, 'hourly');
 }
 
 function selectPackage(key, tierName, basePrice, type = 'hourly') {
@@ -2789,7 +2796,11 @@ function selectPackage(key, tierName, basePrice, type = 'hourly') {
   selectedPackageType = type;
   selectedHours = 1;
   selectedDecorPrice = 0;
-  selectedDecorName = 'STANDART DECOR (უფასო)';
+  selectedDecorName = 'STANDARD DECOR / სტანდარტული სტუდია';
+
+  if (!tierName.includes('RECORDING + EDITING')) {
+    selectedAddonsTotal = 0;
+  }
 
   if (type === 'hourly') {
     openHoursView(key, tierName, basePrice);
@@ -2814,18 +2825,20 @@ function openHoursView(key, tierName, basePrice) {
       <span class="decor-sub-label">${isKa ? 'ნაბიჯი 2: ხანგრძლივობის არჩევა' : 'STEP 2: SELECT DURATION'}</span>
       <h2 class="decor-title">SELECT DURATION / HOURS</h2>
       <p style="font-size:14px; color:var(--orange); margin:0; font-weight:600;">
-        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName} (${basePrice} ₾/სთ)</strong>
+        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName} (${basePrice} ₾/სთ${selectedAddonsTotal > 0 ? ` + ${selectedAddonsTotal}₾ დამატებები` : ''})</strong>
       </p>
     </div>
 
     <!-- HOURS SELECTOR GRID -->
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:16px; margin:28px 0;">
-      ${[1, 2, 3, 4, 5].map(h => `
+      ${[1, 2, 3, 4, 5].map(h => {
+        const totalForH = (basePrice * h) + (selectedAddonsTotal || 0);
+        return `
         <div onclick="setHoursChoice(${h}, ${basePrice}, '${key}', '${tierName}')" style="background:var(--dark3); border:2px solid ${selectedHours===h ? 'var(--orange)' : 'var(--border)'}; border-radius:12px; padding:20px 14px; text-align:center; cursor:pointer; transition:all 0.25s ease;">
           <div style="font-size:24px; font-weight:800; color:var(--white);">${h}${h===5 ? '+' : ''} ${isKa ? 'საათი' : 'hr'}</div>
-          <div style="font-size:14px; color:var(--orange); font-weight:700; margin-top:6px;">${basePrice * h} ₾</div>
+          <div style="font-size:14px; color:var(--orange); font-weight:700; margin-top:6px;">${totalForH} ₾</div>
         </div>
-      `).join('')}
+      `}).join('')}
     </div>
 
     <div style="text-align:center; margin-top:32px;">
@@ -2852,7 +2865,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
   const modalEl = document.querySelector('.modal');
   if (modalEl) modalEl.classList.add('modal-wide');
 
-  const packageSubtotal = selectedPackageType === 'hourly' ? (basePrice * hours) : basePrice;
+  const packageSubtotal = selectedPackageType === 'hourly' ? ((basePrice * hours) + (selectedAddonsTotal || 0)) : basePrice;
 
   let html = `
     <button class="decor-back-btn" onclick="${selectedPackageType === 'hourly' ? `openHoursView('${key}', '${tierName}', ${basePrice})` : `openModal('${key}')`}">
@@ -2862,7 +2875,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <span class="decor-sub-label">${isKa ? 'ნაბიჯი 3: სტუდიის დეკორაციის არჩევა' : 'STEP 3: SELECT STUDIO DECORATION'}</span>
       <h2 class="decor-title">STUDIO DECORATION / USAGE RULES</h2>
       <p style="font-size:14px; color:var(--orange); margin:0; font-weight:600;">
-        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName}</strong> ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
+        ${isKa ? 'არჩეული პაკეტი:' : 'Selected Package:'} <strong style="color:var(--white);">${tierName}</strong> ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ${selectedAddonsTotal > 0 ? ` + ${selectedAddonsTotal} ₾` : ''} = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
       </p>
     </div>
 
@@ -2873,7 +2886,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-green" style="background:var(--dark3); border:1px solid #2ecc71; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">01 | STANDARD DECOR</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">STANDARD DECOR / სტანდარტული სტუდია</h3>
             <span class="decor-dot dot-green" style="width:12px; height:12px; border-radius:50%; background:#2ecc71; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#2ecc71; margin-bottom:12px;">
@@ -2887,7 +2900,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:12px 0;">
           <div style="font-size:12px; color:var(--muted); margin-top:6px; line-height:1.4;">(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)</div>
         </div>
-        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'STANDART DECOR', 0)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'STANDARD DECOR / სტანდარტული სტუდია', 0)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
         </button>
       </div>
@@ -2896,7 +2909,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-blue" style="background:var(--dark3); border:1px solid #3498db; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">02 | SELECT STUDIO</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">SELECT STUDIO / არჩევითი სტუდია</h3>
             <span class="decor-dot dot-blue" style="width:12px; height:12px; border-radius:50%; background:#3498db; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#3498db; margin-bottom:12px;">
@@ -2912,7 +2925,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
           <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე.</div>
           <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია.</div>
         </div>
-        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'SELECT STUDIO', 250)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'SELECT STUDIO / არჩევითი სტუდია', 250)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
         </button>
       </div>
@@ -2921,7 +2934,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-red" style="background:var(--dark3); border:1px solid #e74c3c; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">03 | FULL CUSTOM STUDIO</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">FULL CUSTOM STUDIO / ინდივიდუალური სტუდია</h3>
             <span class="decor-dot dot-red" style="width:12px; height:12px; border-radius:50%; background:#e74c3c; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#e74c3c; margin-bottom:12px;">
@@ -2939,7 +2952,7 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
           <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე.</div>
           <div style="font-size:12px; color:var(--muted); margin-top:4px; line-height:1.4;">(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)</div>
         </div>
-        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'FULL CUSTOM STUDIO', 1500)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
+        <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'FULL CUSTOM STUDIO / ინდივიდუალური სტუდია', 1500)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
         </button>
       </div>
@@ -2961,7 +2974,7 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
   const modalEl = document.querySelector('.modal');
   if (modalEl) modalEl.classList.add('modal-wide');
 
-  const packageSubtotal = selectedPackageType === 'hourly' ? (basePrice * hours) : basePrice;
+  const packageSubtotal = selectedPackageType === 'hourly' ? ((basePrice * hours) + (selectedAddonsTotal || 0)) : basePrice;
   const finalTotalPrice = packageSubtotal + decorPrice;
 
   let html = `
@@ -2976,7 +2989,7 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
     <!-- FINAL TOTAL PRICE SUMMARY BOX -->
     <div id="decor-summary-price" style="background:var(--dark3); border:2px solid var(--orange); border-radius:12px; padding:20px; margin:20px 0; text-align:center;">
       <div style="font-size:14px; color:var(--white); margin-bottom:6px;">
-        <strong>არჩეული პაკეტი:</strong> ${tierName} ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
+        <strong>არჩეული პაკეტი:</strong> ${tierName} ${selectedPackageType === 'hourly' ? `(${basePrice} ₾ × ${hours} სთ${selectedAddonsTotal > 0 ? ` + ${selectedAddonsTotal} ₾` : ''} = ${packageSubtotal} ₾)` : `(${packageSubtotal} ₾)`}
       </div>
       <div style="font-size:14px; color:var(--white); margin-bottom:10px;">
         <strong>დეკორაცია:</strong> ${decorName} (${decorPrice > 0 ? '+' + decorPrice + ' ₾' : 'უფასო'})
