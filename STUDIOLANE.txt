@@ -1874,18 +1874,17 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 1. STANDART DECOR -->
       <div class="sp-card">
         <div>
-          <div class="sp-badge">🟢 STANDARD</div>
-          <div class="sp-name">STANDART DECOR</div>
-          <div class="sp-sub" data-ka="ფარდებით მოწყობილი სტანდარტული სივრცე" data-en="Standard curtain-styled space">ფარდებით მოწყობილი სტანდარტული სივრცე</div>
-          <div class="sp-price">FREE <small>[INCLUDED IN PACKAGE]</small></div>
+          <div class="sp-badge">🟢 01 | STANDARD</div>
+          <div class="sp-name">01 | STANDARD DECOR</div>
+          <div class="sp-sub" data-ka="ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე" data-en="Neutral & universal curtain-styled space">ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</div>
+          <div class="sp-price">უფასო <small>[შედის პაკეტის ფასში]</small></div>
           <ul class="sp-features">
-            <li>• ფარდებით მოწყობილი სტანდარტული სივრცე</li>
-            <li>• ნეიტრალური, უნივერსალური ვიზუალი</li>
-            <li>• გადაღების დღეს შესაძლებელია მხოლოდ მცირე დეტალების შეცვლა</li>
+            <li>• ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</li>
+            <li>• სტუდიაში არსებული საბაზისო ავეჯის (მაგიდები, სკამები) გამოყენება</li>
+            <li>• განათების ფერებისა და ტონალობის მორგება თქვენთვის სასურველი ატმოსფეროს შესაქმნელად</li>
           </ul>
-          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #3498db; line-height: 1.4;">
-            <div>◆ სტანდარტულ დეკორაციაზე შესაძლებელია მხოლოდ მცირე დეტალების ცვლილება</div>
-            <div>◆ ძირითადი კონცეფცია რჩება უცვლელი</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: var(--muted); line-height: 1.4;">
+            <div>(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)</div>
           </div>
         </div>
       </div>
@@ -1893,18 +1892,19 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 2. SELECT STUDIO -->
       <div class="sp-card sp-featured">
         <div>
-          <div class="sp-badge sp-badge-orange">🔵 SELECT</div>
-          <div class="sp-name">SELECT STUDIO</div>
-          <div class="sp-sub" data-ka="3 ტიპოლოგიიდან არჩევა" data-en="Choose from 3 typologies">3 ტიპოლოგიიდან არჩევა</div>
-          <div class="sp-price">+250 GEL <small>/ RECORDING</small></div>
+          <div class="sp-badge sp-badge-orange">🔵 02 | SELECT</div>
+          <div class="sp-name">02 | SELECT STUDIO</div>
+          <div class="sp-sub" data-ka="ტიპოლოგიის არჩევა & პერსონალიზაცია" data-en="Typology selection & personalization">ტიპოლოგიის არჩევა & პერსონალიზაცია</div>
+          <div class="sp-price">+250 ₾ <small>/ თითო ეპიზოდის ჩაწერაზე</small></div>
           <ul class="sp-features">
-            <li>• 3 ტიპოლოგიიდან არჩევა</li>
-            <li>• არჩეული ტიპოლოგიის განლაგება</li>
+            <li>• არსებული ტიპოლოგიიდან არჩევა</li>
+            <li>• სტუდიაში არსებული დეკორითა და ავეჯით სივრცის სასურველი კომპოზიციის აწყობა</li>
+            <li>• შერჩეული ვიზუალის სრული მომზადება ჩაწერისთვის</li>
           </ul>
           <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #ff6b00; line-height: 1.4;">
-            <div>❗️ არჩეული ტიპოლოგიის ცვლილება ხდება გადაღებამდე 24 საათით ადრე</div>
-            <div>❗️ გადაღების დღეს ტიპოლოგიის შეცვლა შეუძლებელია</div>
-            <div style="margin-top: 3px; color: #ff8c32; font-weight: 600;">👉 24 საათზე ნაკლებ დროში ცვლილების მოთხოვნის შემთხვევაში ემატება +100 GEL</div>
+            <div style="font-weight: 700; margin-bottom: 2px;">პირობები:</div>
+            <div style="color: #e74c3c;">• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე.</div>
+            <div style="color: #e74c3c;">• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია.</div>
           </div>
         </div>
       </div>
@@ -1912,18 +1912,21 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       <!-- 3. FULL CUSTOM STUDIO -->
       <div class="sp-card sp-pro">
         <div>
-          <div class="sp-badge sp-badge-blue">🔴 FULL CUSTOM</div>
-          <div class="sp-name">FULL CUSTOM STUDIO</div>
-          <div class="sp-sub" data-ka="სივრცის სრული გარდაქმნა" data-en="Full space transformation">სივრცის სრული გარდაქმნა</div>
-          <div class="sp-price">1 500 – 2 000 GEL <small>+250GEL/BUILD</small></div>
+          <div class="sp-badge sp-badge-blue">🔴 03 | FULL CUSTOM</div>
+          <div class="sp-name">03 | FULL CUSTOM STUDIO</div>
+          <div class="sp-sub" data-ka="სივრცის სრული გარდაქმნა ბრენდზე მორგებით" data-en="Full space transformation for your brand">სივრცის სრული გარდაქმნა ბრენდზე მორგებით</div>
+          <div class="sp-price">1 500 – 2 000 ₾ <small>(ერთჯერადი) + 250 ₾/ეპიზოდზე</small></div>
           <ul class="sp-features">
             <li>• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
-            <li>• სივრცის სრული გარდაქმნა</li>
-            <li>• ინდივიდუალური დიზაინერის მომსახურება</li>
+            <li>• სივრცის სრული გარდაქმნა შოუს სპეციფიკიდან გამომდინარე</li>
+            <li>• ინდივიდუალური ვიზუალური კონცეფციის შექმნა თქვენი ბრენდის იდენტობაზე მორგებით</li>
+            <li>• შექმნილი სეტის შენახვა სტუდიაში და ყოველი ჩაწერის წინ მისი ხელახლა გამართვა</li>
           </ul>
           <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #e74c3c; line-height: 1.4;">
-            <div>❗️ აუცილებელია მინიმუმ 7-10 დღით ადრე შეკვეთა</div>
-            <div>❗️ პროექტის დამტკიცების შემდეგ ცვლილებები აღარ მიიღება</div>
+            <div style="font-weight: 700; color: #ff6b00; margin-bottom: 2px;">პირობები:</div>
+            <div>• სამუშაოების მასშტაბიდან გამომდინარე, შეკვეთა ხდება მინიმუმ 7–10 დღით ადრე.</div>
+            <div>• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე.</div>
+            <div style="color: var(--muted); margin-top: 2px;">(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)</div>
           </div>
         </div>
       </div>
@@ -2870,20 +2873,19 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-green" style="background:var(--dark3); border:1px solid #2ecc71; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">STANDART DECOR</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">01 | STANDARD DECOR</h3>
             <span class="decor-dot dot-green" style="width:12px; height:12px; border-radius:50%; background:#2ecc71; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#2ecc71; margin-bottom:12px;">
-            FREE <small style="font-size:12px; color:var(--muted); font-weight:400;">[Included in package]</small>
+            უფასო <small style="font-size:12px; color:var(--muted); font-weight:400;">[შედის პაკეტის ფასში]</small>
           </div>
           <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 12px 0; font-size:13px; color:var(--white); line-height:1.6;">
-            <li>• ფარდებით მოწყობილი სტანდარტული სივრცე</li>
-            <li>• ნეიტრალური, უნივერსალური ვიზუალი</li>
-            <li>• გადაღების დღეს შესაძლებელია მხოლოდ მცირე დეტალების შეცვლა</li>
+            <li>• ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</li>
+            <li>• სტუდიაში არსებული საბაზისო ავეჯის (მაგიდები, სკამები) გამოყენება</li>
+            <li>• განათების ფერებისა და ტონალობის მორგება თქვენთვის სასურველი ატმოსფეროს შესაქმნელად</li>
           </ul>
           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:12px 0;">
-          <div style="font-size:12px; color:#3498db; margin-top:6px; line-height:1.4;">◆ სტანდარტულ დეკორაციაზე შესაძლებელია მხოლოდ მცირე დეტალების ცვლილება</div>
-          <div style="font-size:12px; color:#3498db; margin-top:4px; line-height:1.4;">◆ ძირითადი კონცეფცია რჩება უცვლელი</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px; line-height:1.4;">(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)</div>
         </div>
         <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'STANDART DECOR', 0)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
@@ -2894,20 +2896,21 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-blue" style="background:var(--dark3); border:1px solid #3498db; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">SELECT STUDIO</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">02 | SELECT STUDIO</h3>
             <span class="decor-dot dot-blue" style="width:12px; height:12px; border-radius:50%; background:#3498db; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#3498db; margin-bottom:12px;">
-            +250 GEL <small style="font-size:12px; color:var(--muted); font-weight:400;">/ recording</small>
+            +250 ₾ <small style="font-size:12px; color:var(--muted); font-weight:400;">/ თითო ეპიზოდის ჩაწერაზე</small>
           </div>
           <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 12px 0; font-size:13px; color:var(--white); line-height:1.6;">
-            <li>• 3 ტიპოლოგიიდან არჩევა</li>
-            <li>• არჩეული ტიპოლოგიის განლაგება</li>
+            <li>• არსებული ტიპოლოგიიდან არჩევა</li>
+            <li>• სტუდიაში არსებული დეკორითა და ავეჯით სივრცის სასურველი კომპოზიციის აწყობა</li>
+            <li>• შერჩეული ვიზუალის სრული მომზადება ჩაწერისთვის</li>
           </ul>
           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:12px 0;">
-          <div style="font-size:12px; color:#e74c3c; margin-top:6px; line-height:1.4; font-weight:600;">! არჩეული ტიპოლოგიის ცვლილება ხდება გადაღებამდე 24 საათით ადრე</div>
-          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! გადაღების დღეს ტიპოლოგიის შეცვლა შეუძლებელია</div>
-          <div style="font-size:12px; color:#f39c12; margin-top:6px; line-height:1.4; font-weight:600;">👉 24 საათზე ნაკლებ დროში ცვლილების მოთხოვნის შემთხვევაში ემატება +100 GEL</div>
+          <div style="font-size:12px; color:#ff6b00; font-weight:700; margin-top:6px; line-height:1.4;">პირობები:</div>
+          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე.</div>
+          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია.</div>
         </div>
         <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'SELECT STUDIO', 250)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
@@ -2918,20 +2921,23 @@ function openDecorationView(key, tierName, basePrice, hours = 1) {
       <div class="decor-card decor-red" style="background:var(--dark3); border:1px solid #e74c3c; border-radius:12px; padding:20px; display:flex; flex-direction:column; justify-between:space-between;">
         <div>
           <div class="decor-card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">FULL CUSTOM STUDIO</h3>
+            <h3 class="decor-card-title" style="font-size:20px; font-weight:800; color:var(--white); margin:0;">03 | FULL CUSTOM STUDIO</h3>
             <span class="decor-dot dot-red" style="width:12px; height:12px; border-radius:50%; background:#e74c3c; display:inline-block;"></span>
           </div>
           <div class="decor-price" style="font-size:18px; font-weight:800; color:#e74c3c; margin-bottom:12px;">
-            1 500 – 2 000 GEL <small style="font-size:12px; color:var(--muted); font-weight:400;">+250GEL/build</small>
+            1 500 – 2 000 ₾ <small style="font-size:12px; color:var(--muted); font-weight:400;">(ერთჯერადი) + 250 ₾/ეპიზოდზე</small>
           </div>
           <ul class="decor-list" style="list-style:none; padding:0; margin:0 0 12px 0; font-size:13px; color:var(--white); line-height:1.6;">
             <li>• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
-            <li>• სივრცის სრული გარდაქმნა</li>
-            <li>• ინდივიდუალური დიზაინერის მომსახურება</li>
+            <li>• სივრცის სრული გარდაქმნა შოუს სპეციფიკიდან გამომდინარე</li>
+            <li>• ინდივიდუალური ვიზუალური კონცეფციის შექმნა თქვენი ბრენდის იდენტობაზე მორგებით</li>
+            <li>• შექმნილი სეტის შენახვა სტუდიაში და ყოველი ჩაწერის წინ მისი ხელახლა გამართვა</li>
           </ul>
           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:12px 0;">
-          <div style="font-size:12px; color:#e74c3c; margin-top:6px; line-height:1.4; font-weight:600;">! აუცილებელია მინიმუმ 7-10 დღით ადრე შეკვეთა</div>
-          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4; font-weight:600;">! პროექტის დამტკიცების შემდეგ ცვლილებები აღარ მიიღება</div>
+          <div style="font-size:12px; color:#ff6b00; font-weight:700; margin-top:6px; line-height:1.4;">პირობები:</div>
+          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• სამუშაოების მასშტაბიდან გამომდინარე, შეკვეთა ხდება მინიმუმ 7–10 დღით ადრე.</div>
+          <div style="font-size:12px; color:#e74c3c; margin-top:4px; line-height:1.4;">• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე.</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px; line-height:1.4;">(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)</div>
         </div>
         <button onclick="selectDecorAndProceed('${key}', '${tierName}', ${basePrice}, ${hours}, 'FULL CUSTOM STUDIO', 1500)" class="btn-p" style="width:100%; margin-top:20px; padding:12px; font-size:14px; font-weight:800; text-transform:uppercase;">
           არჩევა
