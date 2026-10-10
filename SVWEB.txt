@@ -48,7 +48,7 @@
 <meta name="keywords" content="პოდკასტ სტუდია, Studio The Lane, თბილისი, ხმის ჩაწერა, ვიდეო გადაღება, პოდკასტი">
 
 
-<meta property="og:image" content="LOGO_STL/stopkadr_clean.png">
+<meta property="og:image" content="LOGO_STL/HERO_STRUCTURE_TRANSPARENT_2.webp">
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -286,7 +286,7 @@ nav { position:fixed; top:0; left:0; right:0; z-index:1005; padding:16px 24px; d
   transition: opacity 0.5s ease-in-out;
 }
 .hero-structure.show-png {
-  background: url('LOGO_STL/Tagi%20SVWeb%20photo00182028.jpg') no-repeat center center;
+  background: url('LOGO_STL/Tagi%20SVWeb%20photo00182028.webp') no-repeat center center;
   background-size: 104.5% auto;
   transform: scale(1.045);
 }
@@ -1550,7 +1550,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 <!-- HERO -->
 <section id="home">
   <div class="slideshow">
-    <div class="slide active" style="background-image:url('IMAGE/stopkadr_clean.png')"></div>
+    <div class="slide active" style="background-image:url('')"></div>
   </div>
   <div class="hero-structure-wrap">
     <div class="hero-structure">
@@ -1583,7 +1583,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   
   <div class="port-grid">
     <div class="port-card" onclick="openForegroundZoom(0)">
-      <img src="Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.jpeg" alt="Beauty Talks">
+      <img loading="lazy" src="Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.webp" alt="Beauty Talks">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
         <h3 class="port-name">Beauty Talks</h3>
@@ -1591,7 +1591,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="port-card" onclick="openForegroundZoom(1)">
-      <img src="Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.jpeg" alt="ჩცდ Rewatch">
+      <img loading="lazy" src="Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.webp" alt="ჩცდ Rewatch">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
         <h3 class="port-name">ჩცდ Rewatch</h3>
@@ -1599,7 +1599,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="port-card" onclick="openForegroundZoom(2)">
-      <img src="Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.jpeg" alt="Biblusi Talks">
+      <img loading="lazy" src="Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.webp" alt="Biblusi Talks">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
         <h3 class="port-name">Biblusi Talks</h3>
@@ -1607,14 +1607,14 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="port-card" onclick="openForegroundZoom(3)">
-      <img src="Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.jpeg" alt="ლაი ლაი Live">
+      <img loading="lazy" src="Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.webp" alt="ლაი ლაი Live">
       <div class="port-info">
         <span class="port-cat">LIVE SHOW</span>
         <h3 class="port-name">ლაი ლაი World Cup Live</h3>
       </div>
     </div>
     <div class="port-card" onclick="openForegroundZoom(4)">
-      <img src="Podcast_Studio_photo/AA POKER PODCAST_2K_.jpg" alt="AA POKER PODCAST">
+      <img loading="lazy" src="Podcast_Studio_photo/AA POKER PODCAST_2K_.webp" alt="AA POKER PODCAST">
       <div class="port-info">
         <span class="port-cat">PERSONAL</span>
         <h3 class="port-name">AA POKER PODCAST</h3>
@@ -1622,7 +1622,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="port-card" onclick="openForegroundZoom(5)">
-      <img src="Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.jpg" alt="EEU PODCAST">
+      <img loading="lazy" src="Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.webp" alt="EEU PODCAST">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
         <h3 class="port-name">EEU PODCAST</h3>
@@ -1639,12 +1639,12 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
   <div class="spaces-block" id="space-podcast">
     <div class="spaces-photos" id="podcast-photos" onclick="nextPodcastPhoto()">
-      <div class="spaces-photo active"><img src="Podcast_Studio_photo/PODCAST STUDIO SONY FX 30.jpg" alt="Podcast Studio FX30"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO ATHEM .jpg" alt="Podcast Studio ATEM"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO RODECASTER PRO.JPG" alt="Podcast Studio RODE"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/PODCAST STUDIO  GANATEBA.jpg" alt="Podcast Studio Lighting"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/thumb_11.jpg" alt="Podcast Studio Teleprompter"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/POSCAST STUDIO MAKEUP.jpg" alt="Podcast Studio Makeup"></div>
+      <div class="spaces-photo active"><img loading="lazy" src="Podcast_Studio_photo/PODCAST STUDIO SONY FX 30.webp" alt="Podcast Studio FX30"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/PODCAST STUDIO ATHEM .webp" alt="Podcast Studio ATEM"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/PODCAST STUDIO RODECASTER PRO.webp" alt="Podcast Studio RODE"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/PODCAST STUDIO  GANATEBA.webp" alt="Podcast Studio Lighting"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/thumb_11.webp" alt="Podcast Studio Teleprompter"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/POSCAST STUDIO MAKEUP.webp" alt="Podcast Studio Makeup"></div>
       <div class="spaces-progress-bar">
         <div class="spaces-progress-fill" id="spaces-progress-fill" style="width: 16.66%;"></div>
       </div>
@@ -1660,10 +1660,10 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
   <div class="spaces-block" id="space-voiceover">
     <div class="spaces-photos">
-      <div class="spaces-photo active"><img src="Podcast_Studio_photo/CREATOR SOLO 1.JPG" alt="Creator Solo 1"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 2 .JPG" alt="Creator Solo 2"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 3.JPG" alt="Creator Solo 3"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/CREATOR SOLO 4.JPG" alt="Creator Solo 4"></div>
+      <div class="spaces-photo active"><img loading="lazy" src="Podcast_Studio_photo/CREATOR SOLO 1.webp" alt="Creator Solo 1"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/CREATOR SOLO 2 .webp" alt="Creator Solo 2"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/CREATOR SOLO 3.webp" alt="Creator Solo 3"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/CREATOR SOLO 4.webp" alt="Creator Solo 4"></div>
       <div class="spaces-progress-bar">
         <div class="spaces-progress-fill" style="width: 25%;"></div>
       </div>
@@ -1677,7 +1677,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
   <div class="spaces-block" id="space-commercial">
     <div class="spaces-photos">
-      <div class="spaces-photo active"><img src="Podcast_Studio_photo/COMMERCIAL VIDEO COVER.jpg" alt="Commercial Video"></div>
+      <div class="spaces-photo active"><img loading="lazy" src="Podcast_Studio_photo/COMMERCIAL VIDEO COVER.webp" alt="Commercial Video"></div>
     </div>
     <div class="spaces-text">
       <h3 class="spaces-name">COMMERCIAL VIDEO</h3>
@@ -1691,10 +1691,10 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
   <div class="spaces-block" id="space-photo">
     <div class="spaces-photos">
-      <div class="spaces-photo active"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 1.jpg" alt="Advertising Photo 1"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO  2.jpg" alt="Advertising Photo 2"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 3.jpg" alt="Advertising Photo 3"></div>
-      <div class="spaces-photo"><img src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 4.jpg" alt="Advertising Photo 4"></div>
+      <div class="spaces-photo active"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 1.webp" alt="Advertising Photo 1"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO  2.webp" alt="Advertising Photo 2"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 3.webp" alt="Advertising Photo 3"></div>
+      <div class="spaces-photo"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO PHOTO.VIDEO 4.webp" alt="Advertising Photo 4"></div>
       <div class="spaces-progress-bar">
         <div class="spaces-progress-fill" style="width: 25%;"></div>
       </div>
@@ -1715,7 +1715,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   <div class="seg-grid">
     <!-- 01 PODCAST STUDIO -->
     <div class="seg-card seg-purple" onclick="openModal('podcast')">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,18,40,0.85), rgba(45,16,64,0.85)), url('studio_gen_photo/PODCAST STUDIO 2.png') center/cover;position:absolute;inset:0;"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,18,40,0.85), rgba(45,16,64,0.85)), url('studio_gen_photo/PODCAST STUDIO 2.webp') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">01</div>
       <div style="position:relative; z-index:2;">
         <h3 class="seg-name">PODCAST STUDIO</h3>
@@ -1727,7 +1727,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
     <!-- 02 CREATOR / SOLO STUDIO -->
     <div class="seg-card seg-teal" onclick="openModal('solo')">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(10,31,40,0.85), rgba(13,48,68,0.85)), url('studio_gen_photo/ONE PERSON STUDIO.png') center/cover;position:absolute;inset:0;"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(10,31,40,0.85), rgba(13,48,68,0.85)), url('studio_gen_photo/ONE PERSON STUDIO.webp') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">02</div>
       <div style="position:relative; z-index:2;">
         <h3 class="seg-name">CREATOR / SOLO STUDIO</h3>
@@ -1739,7 +1739,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
     <!-- 03 COMMERCIAL VIDEO -->
     <div class="seg-card seg-red" onclick="openModal('commercial')">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,10,10,0.85), rgba(46,13,13,0.85)), url('studio_gen_photo/COMMERCIAL VIDEO.png') center/cover;position:absolute;inset:0;"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,10,10,0.85), rgba(46,13,13,0.85)), url('studio_gen_photo/COMMERCIAL VIDEO.webp') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">03</div>
       <div style="position:relative; z-index:2;">
         <h3 class="seg-name">COMMERCIAL VIDEO</h3>
@@ -1751,7 +1751,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
     <!-- 04 ADVERTISING PHOTO / VIDEO -->
     <div class="seg-card seg-gold" onclick="openModal('photo')">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,16,10,0.85), rgba(46,26,8,0.85)), url('studio_gen_photo/ADVERTISING PHOTO.VIDEO 3.jpg') center/cover;position:absolute;inset:0;"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(135deg, rgba(26,16,10,0.85), rgba(46,26,8,0.85)), url('studio_gen_photo/ADVERTISING PHOTO.VIDEO 3.webp') center/cover;position:absolute;inset:0;"></div>
       <div class="seg-num">04</div>
       <div style="position:relative; z-index:2;">
         <h3 class="seg-name">ADVERTISING PHOTO / VIDEO</h3>
@@ -1969,7 +1969,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 <div class="port-backdrop" id="port-backdrop" onclick="closeForegroundZoom()"></div>
 <div class="port-zoom-box" id="port-zoom-box" onclick="nextForegroundZoom(event)">
   <button class="port-zoom-close" onclick="closeForegroundZoom(); event.stopPropagation();">✕</button>
-  <img id="port-zoom-img" src="Beauty Talks.jpg" alt="Enlarged Project">
+  <img loading="lazy" id="port-zoom-img" src="Beauty Talks.webp" alt="Enlarged Project">
   <div class="port-zoom-overlay">
     <span id="port-zoom-cat" class="port-cat">PODCAST</span>
     <h3 id="port-zoom-title" class="port-zoom-title">Beauty Talks</h3>
@@ -2087,7 +2087,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   <div class="lane-gallery-wrapper" style="max-width:650px; margin:0 auto;">
     <!-- MAIN BIG FEATURED PHOTO FRAME -->
     <div class="lane-main-frame" onclick="nextLanePhoto()" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 40px rgba(0,0,0,0.5); cursor:pointer; background:var(--dark2);">
-      <img id="lane-main-img" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Studio Lane Main Photo" style="width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;">
+      <img loading="lazy" id="lane-main-img" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.webp" alt="Studio Lane Main Photo" style="width:100%; height:100%; object-fit:contain; transition:opacity 0.25s ease;">
       <div onclick="event.stopPropagation(); openLanePhotoZoom(activeLaneIndex);" title="გადიდება" style="position:absolute; bottom:12px; right:12px; background:rgba(10,10,11,0.75); border:1px solid rgba(255,255,255,0.2); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
       </div>
@@ -2095,13 +2095,13 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
     <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
     <div class="lane-thumbs-strip" style="display:flex; gap:6px; margin-top:14px; overflow-x:auto; scrollbar-width:none; padding:4px 2px 10px;">
-      <div class="lane-thumb active" onclick="selectLanePhoto(0)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg" alt="Interier 1"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(1)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg" alt="Interier 2"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(2)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg" alt="Interier 3"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(3)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg" alt="Interier 4"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(4)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg" alt="Interier 5"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(5)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG" alt="Interier 6"></div>
-      <div class="lane-thumb" onclick="selectLanePhoto(6)"><img src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG" alt="Interier 7"></div>
+      <div class="lane-thumb active" onclick="selectLanePhoto(0)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.webp" alt="Interier 1"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(1)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.webp" alt="Interier 2"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(2)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.webp" alt="Interier 3"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(3)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.webp" alt="Interier 4"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(4)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.webp" alt="Interier 5"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(5)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.webp" alt="Interier 6"></div>
+      <div class="lane-thumb" onclick="selectLanePhoto(6)"><img loading="lazy" src="Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.webp" alt="Interier 7"></div>
     </div>
   </div>
 </section>
@@ -2114,29 +2114,29 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   <div class="book-gallery-wrapper" style="max-width:650px; margin:0 auto;">
     <!-- MAIN BIG FEATURED PHOTO FRAME -->
     <div class="book-main-frame" onclick="openBookPhotoZoom(activeBookIndex)" style="position:relative; aspect-ratio:16/9; width:100%; border-radius:12px; overflow:hidden; border:2px solid var(--orange); box-shadow:0 15px 40px rgba(0,0,0,0.5); cursor:pointer; background:var(--dark2);">
-      <img id="book-main-img" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Studio Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
+      <img loading="lazy" id="book-main-img" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.webp" alt="Studio Main Photo" style="width:100%; height:100%; object-fit:cover; transition:opacity 0.25s ease;">
     </div>
 
     <!-- SMALL HORIZONTAL THUMBNAILS STRIP WITH ACTIVE ORANGE GLOW -->
     <div class="book-thumbs-strip" style="display:flex; gap:6px; margin-top:14px; overflow-x:auto; scrollbar-width:none; padding:4px 2px 10px;">
-      <div class="book-thumb active" onclick="selectBookPhoto(0)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg" alt="Thumb 1"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(1)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg" alt="Thumb 2"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(2)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg" alt="Thumb 3"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(3)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg" alt="Thumb 4"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(4)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg" alt="Thumb 5"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(5)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg" alt="Thumb 6"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(6)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg" alt="Thumb 7"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(7)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg" alt="Thumb 8"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(8)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg" alt="Thumb 9"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(9)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg" alt="Thumb 10"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(10)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg" alt="Thumb 11"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(11)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg" alt="Thumb 12"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(12)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg" alt="Thumb 13"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(13)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg" alt="Thumb 14"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(14)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg" alt="Thumb 15"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(15)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg" alt="Thumb 16"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(16)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg" alt="Thumb 17"></div>
-      <div class="book-thumb" onclick="selectBookPhoto(17)"><img src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg" alt="Thumb 18"></div>
+      <div class="book-thumb active" onclick="selectBookPhoto(0)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.webp" alt="Thumb 1"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(1)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.webp" alt="Thumb 2"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(2)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.webp" alt="Thumb 3"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(3)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.webp" alt="Thumb 4"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(4)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.webp" alt="Thumb 5"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(5)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.webp" alt="Thumb 6"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(6)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.webp" alt="Thumb 7"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(7)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.webp" alt="Thumb 8"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(8)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.webp" alt="Thumb 9"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(9)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.webp" alt="Thumb 10"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(10)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.webp" alt="Thumb 11"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(11)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.webp" alt="Thumb 12"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(12)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.webp" alt="Thumb 13"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(13)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.webp" alt="Thumb 14"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(14)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.webp" alt="Thumb 15"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(15)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.webp" alt="Thumb 16"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(16)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.webp" alt="Thumb 17"></div>
+      <div class="book-thumb" onclick="selectBookPhoto(17)"><img loading="lazy" src="Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.webp" alt="Thumb 18"></div>
     </div>
   </div>
 </section>
@@ -2368,7 +2368,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
         <div class="qr-container">
           <p class="qr-label">გადახდა QR კოდით (დასკანერეთ მობილბანკით):</p>
           <div class="qr-box">
-            <img class="qr-image-dark" src="https://i.ibb.co/cK5j5R26/TBC-QR.png" alt="TBC QR Code" onerror="this.style.display='none'; document.querySelector('.qr-placeholder').style.display='block';">
+            <img loading="lazy" class="qr-image-dark" src="https://i.ibb.co/cK5j5R26/TBC-QR.png" alt="TBC QR Code" onerror="this.style.display='none'; document.querySelector('.qr-placeholder').style.display='block';">
             <div class="qr-placeholder" style="display:none;">TBC QR კოდი</div>
           </div>
         </div>
@@ -3550,12 +3550,12 @@ function closeModalBg(e) {
 
 // FOREGROUND ZOOM PORTFOLIO LOGIC
 const foregroundProjects = [
-  { img: 'Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.jpeg', title: 'Beauty Talks', cat: 'PODCAST', by: 'by Natalli Group' },
-  { img: 'Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.jpeg', title: 'ჩცდ Rewatch', cat: 'PODCAST', by: 'by Cavea' },
-  { img: 'Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.jpeg', title: 'Biblusi Talks', cat: 'PODCAST', by: 'by ბიბლუსი' },
-  { img: 'Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.jpeg', title: 'ლაი ლაი World Cup Live', cat: 'LIVE SHOW', by: '' },
-  { img: 'Podcast_Studio_photo/AA POKER PODCAST_2K_.jpg', title: 'AA POKER PODCAST', cat: 'PERSONAL', by: 'პოდკასტი პოკერის შესახებ' },
-  { img: 'Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.jpg', title: 'EEU PODCAST', cat: 'PODCAST', by: 'აღმოსავლეთ ევროპის უნივერსიტეტის პოდკასტი' }
+  { img: 'Podcast_Studio_photo/Beauty_Talks.jpg_2K_202609010003.webp', title: 'Beauty Talks', cat: 'PODCAST', by: 'by Natalli Group' },
+  { img: 'Podcast_Studio_photo/ჩცდ_Rewatch.jpg_2K_202609010001.webp', title: 'ჩცდ Rewatch', cat: 'PODCAST', by: 'by Cavea' },
+  { img: 'Podcast_Studio_photo/BIBLUSI_TALKS.jpg_2K_202609010001.webp', title: 'Biblusi Talks', cat: 'PODCAST', by: 'by ბიბლუსი' },
+  { img: 'Podcast_Studio_photo/LAI_LAI_LIVE.jpg_2K.webp', title: 'ლაი ლაი World Cup Live', cat: 'LIVE SHOW', by: '' },
+  { img: 'Podcast_Studio_photo/AA POKER PODCAST_2K_.webp', title: 'AA POKER PODCAST', cat: 'PERSONAL', by: 'პოდკასტი პოკერის შესახებ' },
+  { img: 'Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.webp', title: 'EEU PODCAST', cat: 'PODCAST', by: 'აღმოსავლეთ ევროპის უნივერსიტეტის პოდკასტი' }
 ];
 let activeFgIndex = 0;
 let activeZoomMode = 'portfolio'; // 'portfolio' or 'spaces'
@@ -4549,24 +4549,24 @@ function prevPodcastPhoto() {
 
 // STUDIO GALLERY BOOK SHOWCASE LOGIC
 const studioSpacesPhotos = [
-  "Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.jpg",
-  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.jpg"
+  "Podcast_Studio_photo/TIPOLOGIEBI/1 PHOTO.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0002.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0003.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0004.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0005.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0006.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0007.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0008.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0010.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0011.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0012.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0013.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0014.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0015.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0016.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0017.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0019.webp",
+  "Podcast_Studio_photo/TIPOLOGIEBI/IMG-20260410-WA0020.webp"
 ];
 let activeBookIndex = 0;
 
@@ -4636,13 +4636,13 @@ function updateBookGalleryUI() {
 }
 
 const studioLanePhotos = [
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.jpeg",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.jpeg",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.jpeg",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.jpeg",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.jpg",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.JPG",
-  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.JPG"
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 1.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 2.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 3.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 4.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 5.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 6.webp",
+  "Podcast_Studio_photo/INTERIER/STDUIO INTERIER 7.webp"
 ];
 
 let activeLaneIndex = 0;
