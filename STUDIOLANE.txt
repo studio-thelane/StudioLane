@@ -1174,6 +1174,120 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 .decor-select-btn:hover {
   background: var(--orange-light);
 }
+
+/* FAQ Accordion Styles */
+.faq-section {
+  padding: 60px 24px;
+  max-width: 860px;
+  margin: 40px auto 60px auto;
+  position: relative;
+  z-index: 10;
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.faq-badge {
+  display: inline-block;
+  background: rgba(255, 107, 0, 0.15);
+  color: #ff8c32;
+  border: 1px solid rgba(255, 107, 0, 0.35);
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+.faq-title {
+  font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+.faq-subtitle {
+  font-size: 13px;
+  color: #a0a0aa;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-transform: none;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: rgba(18, 18, 22, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+.faq-item[open] {
+  border-color: rgba(255, 107, 0, 0.55);
+  box-shadow: 0 6px 24px rgba(255, 107, 0, 0.12);
+  background: rgba(24, 24, 30, 0.95);
+}
+.faq-item:hover {
+  border-color: rgba(255, 107, 0, 0.35);
+}
+.faq-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+.faq-summary::marker {
+  display: none;
+}
+.faq-item[open] .faq-summary {
+  color: #ff8c32;
+}
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ff8c32;
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 14px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+  background: rgba(255, 107, 0, 0.2);
+}
+.faq-body {
+  padding: 0 20px 18px 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #c8c8d0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 14px;
+  text-transform: none;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1250,6 +1364,80 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
       }
     ]
   }
+}
+</script>
+
+<!-- Schema.org FAQPage Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "რა მომსახურება გაქვთ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Studio Lane არის სრული კონტენტის სტუდია: პოდკასტის ჩაწერა და მონტაჟი, Solo Studio ექსპერტული ვიდეოებისთვის, მრავალზონიანი ფართო სივრცე ბექსთეიჯების გადაღებით, თვიური პარტნიორული პაკეტები და ინდივიდუალური დეკორაცია."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "რამდენი კამერით არის შესაძლებელი გადაღება?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "სტუდიაში შესაძლებელია 5-მდე კამერით ერთდროულად გადაღება ATEM Mini Pro სვიჩერით (ლაივ ვიდეო კონტროლით), ასევე 5-მდე მიკროფონის ჩაწერა RODE Caster Pro II-ის აუდიო კონტროლით."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "სტუდიის სივრცე და აპარატურა გათვლილია 5-6 ადამიანის ერთდროულ, სრულფასოვან და კომფორტულ ჩაწერაზე."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ჩაწერა ღირს 200 ₾/სთ (3x 4K Sony კამერა, Rode აუდიო). ჩაწერა + მონტაჟი — 300 ₾/სთ. თვიური პარტნიორობა (Standard) — 2,500 ₾/თვე, ხოლო სრული მენეჯმენტი (Pro) — 5,500 ₾/თვე."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "სტუდია მდებარეობს თბილისში, ვიტალი დარასელიას ქუჩა 2-ში (გაგარინის მოედანთან)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "დიახ! გვაქვს „პირველი დუბლის“ პროგრამა: 1 საათს გითმობთ საჩუქრად, რათა შეეჩვიოთ კამერებს, გაიაროთ კონსულტაცია პროფესიონალებთან და მოსინჯოთ ძალები ყოველგვარი წნეხის გარეშე."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "დიახ, გვაქვს 3 დონე: Standard Decor (უფასო), Select Studio (+250 ₾) და Full Custom Studio (1,500 – 2,000 ₾, სივრცის სრული გარდაქმნა და კედლების დამზადება)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "როგორ ხდება სტუდიის დაჯავშნა?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "დაჯავშნა შეგიძლიათ პირდაპირ საიტიდან WhatsApp-ზე სწრაფი შეტყობინებით ან ტელეფონზე დარეკვით: +995 577 11 43 55."
+      }
+    }
+  ]
 }
 </script>
 <!-- Meta Pixel Code -->
@@ -1952,9 +2140,105 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ================= FAQ SECTION ================= -->
+<section id="faq-section" class="faq-section">
+  <div class="faq-header">
+    <span class="faq-badge" data-ka="ხშირად დასმული კითხვები" data-en="Frequently Asked Questions">ხშირად დასმული კითხვები</span>
+    <h2 class="faq-title" data-ka="ხშირად დასმული კითხვები | FAQ" data-en="Frequently Asked Questions | FAQ">ხშირად დასმული კითხვები | FAQ</h2>
+    <p class="faq-subtitle" data-ka="ყველაფერი, რაც უნდა იცოდეთ Studio Lane-ის სივრცის, ფასებისა და მომსახურების შესახებ" data-en="Everything you need to know about Studio Lane space, pricing, and services">ყველაფერი, რაც უნდა იცოდეთ Studio Lane-ის სივრცის, ფასებისა და მომსახურების შესახებ</p>
+  </div>
 
+  <div class="faq-list">
+    <!-- FAQ Item 1 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="1. რა მომსახურება გაქვთ?" data-en="1. What services do you offer?">1. რა მომსახურება გაქვთ?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="Studio Lane არის სრული კონტენტის სტუდია. ჩვენთან შეგიძლიათ მიიღოთ:<br>• ვიდეო და აუდიო პოდკასტის ჩაწერა და სრული მონტაჟი;<br>• Solo Studio — ექსპერტული და საავტორო ვიდეოები (Reels / TikTok / ონლაინ კურსები);<br>• მრავალზონიანი და ფართო სტუდიური გარემო — გადასაღები, მოსასვენებელი ლოკაციებითა და კრეატიული, ბექსთეიჯების გადაღების შესაძლებლობით თქვენი სოციალური ქსელებისთვის;<br>• თვიური პარტნიორული პაკეტები (სადაც სარეკლამო ვიდეოები და ფოტოგადაღება გაქვთ სპეციალურ, საპარტნიორო ფასში);<br>• ინდივიდუალური სტუდიური დეკორაციის მოწყობა." data-en="Studio Lane is a full-cycle content studio. With us you get:<br>• Video & audio podcast recording and full editing;<br>• Solo Studio — expert and creator videos (Reels / TikTok / online courses);<br>• Multi-zone spacious studio environment — shooting and lounge locations with creative backstage capture for your social networks;<br>• Monthly partnership packages (with promotional videos and photoshoot at special partner rates);<br>• Custom studio set decoration.">Studio Lane არის სრული კონტენტის სტუდია. ჩვენთან შეგიძლიათ მიიღოთ:<br>• ვიდეო და აუდიო პოდკასტის ჩაწერა და სრული მონტაჟი;<br>• Solo Studio — ექსპერტული და საავტორო ვიდეოები (Reels / TikTok / ონლაინ კურსები);<br>• მრავალზონიანი და ფართო სტუდიური გარემო — გადასაღები, მოსასვენებელი ლოკაციებითა და კრეატიული, ბექსთეიჯების გადაღების შესაძლებლობით თქვენი სოციალური ქსელებისთვის;<br>• თვიური პარტნიორული პაკეტები (სადაც სარეკლამო ვიდეოები და ფოტოგადაღება გაქვთ სპეციალურ, საპარტნიორო ფასში);<br>• ინდივიდუალური სტუდიური დეკორაციის მოწყობა.</p>
+      </div>
+    </details>
 
+    <!-- FAQ Item 2 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="2. რამდენი კამერით არის შესაძლებელი გადაღება?" data-en="2. How many cameras can be used for recording?">2. რამდენი კამერით არის შესაძლებელი გადაღება?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="სტუდიაში შესაძლებელია 5-მდე კამერით ერთდროულად გადაღება ATEM Mini Pro სვიჩერით (ლაივ ვიდეო კონტროლით), ასევე 5-მდე მიკროფონის ჩაწერა RODE Caster Pro II-ის პროფესიონალური აუდიო კონტროლით." data-en="Up to 5 cameras simultaneously using ATEM Mini Pro switcher (with live video control), as well as up to 5 microphones recorded with RODE Caster Pro II professional audio control.">სტუდიაში შესაძლებელია 5-მდე კამერით ერთდროულად გადაღება ATEM Mini Pro სვიჩერით (ლაივ ვიდეო კონტროლით), ასევე 5-მდე მიკროფონის ჩაწერა RODE Caster Pro II-ის პროფესიონალური აუდიო კონტროლით.</p>
+      </div>
+    </details>
 
+    <!-- FAQ Item 3 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="3. რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?" data-en="3. How many people can the podcast studio accommodate?">3. რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="სტუდიის სივრცე და აპარატურა გათვლილია 5-6 ადამიანის ერთდროულ, სრულფასოვან და კომფორტულ ჩაწერაზე." data-en="The studio space and equipment are designed for comfortable, full-scale recording of 5-6 people simultaneously.">სტუდიის სივრცე და აპარატურა გათვლილია 5-6 ადამიანის ერთდროულ, სრულფასოვან და კომფორტულ ჩაწერაზე.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 4 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="4. რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?" data-en="4. How much does podcast recording cost and what is included?">4. რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="• ერთჯერადი ჩაწერა: 200 ₾/სთ (3x 4K Sony კამერა, Rode აუდიო სისტემა, 4K/FHD მასალა);<br>• ჩაწერა + სრული მონტაჟი: 300 ₾/სთ;<br>• თვიური პარტნიორობა (Standard): 2,500 ₾/თვე (4 ეპიზოდი + Shorts + თამბნეილი);<br>• სრული მენეჯმენტი (Pro): 5,500 ₾/თვე (5 კამერა, 20 Shorts, სოც. მედიის მართვა და საპარტნიორო ტარიფი რეკლამებზე)." data-en="• Single recording session: 200 ₾/hr (3x 4K Sony cameras, Rode audio system, 4K/FHD footage);<br>• Recording + full editing: 300 ₾/hr;<br>• Monthly partnership (Standard): 2,500 ₾/mo (4 episodes + Shorts + Thumbnails);<br>• Full management (Pro): 5,500 ₾/mo (5 cameras, 20 Shorts, social media management & partner rates for ads).">• ერთჯერადი ჩაწერა: 200 ₾/სთ (3x 4K Sony კამერა, Rode აუდიო სისტემა, 4K/FHD მასალა);<br>• ჩაწერა + სრული მონტაჟი: 300 ₾/სთ;<br>• თვიური პარტნიორობა (Standard): 2,500 ₾/თვე (4 ეპიზოდი + Shorts + თამბნეილი);<br>• სრული მენეჯმენტი (Pro): 5,500 ₾/თვე (5 კამერა, 20 Shorts, სოც. მედიის მართვა და საპარტნიორო ტარიფი რეკლამებზე).</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 5 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="5. სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?" data-en="5. Where is Studio Lane located and how to find us?">5. სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="სტუდია მდებარეობს თბილისში, ვიტალი დარასელიას ქუჩა 2-ში (გაგარინის მოედანთან). ლოკაციასთან მარტივია მოსვლა როგორც ავტომობილით, ისე საზოგადოებრივი ტრანსპორტით." data-en="The studio is located in Tbilisi, at Vitali Daraselia Street 2 (near Gagarini Square). Easy access by both car and public transport.">სტუდია მდებარეობს თბილისში, ვიტალი დარასელიას ქუჩა 2-ში (გაგარინის მოედანთან). ლოკაციასთან მარტივია მოსვლა როგორც ავტომობილით, ისე საზოგადოებრივი ტრანსპორტით.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 6 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="6. შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?" data-en="6. Can I test the studio for free if I have no camera experience?">6. შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="დიახ! დამწყები ავტორებისთვის გვაქვს „პირველი დუბლის“ პროგრამა: ჩვენ სრულიად საჩუქრად დაგითმობთ სტუდიას 1 საათით, რათა შეეჩვიოთ კამერებს, გაიაროთ კონსულტაცია პროფესიონალებთან და მოსინჯოთ ძალები ყოველგვარი წნეხის გარეშე." data-en="Yes! For beginner creators we offer the 'First Take' program: we provide the studio completely free for 1 hour to get comfortable with cameras, consult with professionals, and test your skills without any pressure.">დიახ! დამწყები ავტორებისთვის გვაქვს „პირველი დუბლის“ პროგრამა: ჩვენ სრულიად საჩუქრად დაგითმობთ სტუდიას 1 საათით, რათა შეეჩვიოთ კამერებს, გაიაროთ კონსულტაცია პროფესიონალებთან და მოსინჯოთ ძალები ყოველგვარი წნეხის გარეშე.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 7 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="7. შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?" data-en="7. Is custom set decoration possible?">7. შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="დიახ, გვაქვს 3 დონე: Standard Decor (უფასო, ფარდებით მოწყობილი სივრცე), Select Studio (+250 ₾, არჩევანი 3 მზა ტიპოლოგიიდან) და Full Custom Studio (1,500 – 2,000 ₾, სივრცის სრული გარდაქმნა და კედლების დამზადება)." data-en="Yes, we have 3 levels: Standard Decor (free, curtained space), Select Studio (+250 ₾, choice of 3 pre-built concepts), and Full Custom Studio (1,500 – 2,000 ₾, full space transformation and custom wall fabrication).">დიახ, გვაქვს 3 დონე: Standard Decor (უფასო, ფარდებით მოწყობილი სივრცე), Select Studio (+250 ₾, არჩევანი 3 მზა ტიპოლოგიიდან) და Full Custom Studio (1,500 – 2,000 ₾, სივრცის სრული გარდაქმნა და კედლების დამზადება).</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 8 -->
+    <details class="faq-item">
+      <summary class="faq-summary">
+        <span data-ka="8. როგორ ხდება სტუდიის დაჯავშნა?" data-en="8. How can I book the studio?">8. როგორ ხდება სტუდიის დაჯავშნა?</span>
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        <p data-ka="დაჯავშნა შეგიძლიათ პირდაპირ საიტიდან WhatsApp-ზე სწრაფი შეტყობინებით ან ტელეფონზე დარეკვით: +995 577 11 43 55." data-en="You can book directly from the website via WhatsApp quick message or by calling us at: +995 577 11 43 55.">დაჯავშნა შეგიძლიათ პირდაპირ საიტიდან WhatsApp-ზე სწრაფი შეტყობინებით ან ტელეფონზე დარეკვით: +995 577 11 43 55.</p>
+      </div>
+    </details>
+  </div>
+</section>
+<!-- ================= END FAQ SECTION ================= -->
 
 <!-- FOREGROUND ZOOM LIGHTBOX BOX & BACKDROP -->
 <div class="port-backdrop" id="port-backdrop" onclick="closeForegroundZoom()"></div>
