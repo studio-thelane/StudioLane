@@ -2244,6 +2244,66 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     margin-bottom: 3px !important;
   }
 }
+
+.sp-decor-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+}
+.sp-decor-card-h {
+  background: #141418;
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  width: 100%;
+}
+.sp-decor-card-h.sp-featured {
+  border-color: #ff6b00;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, #141418 60%);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.2);
+}
+.sp-decor-card-h.sp-pro {
+  border-color: #00d2ff;
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, #141418 60%);
+}
+.sp-decor-col-left {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+.sp-decor-col-left .sp-name {
+  font-size: 14px !important;
+  margin-top: 4px;
+  color: #ffffff;
+}
+.sp-decor-col-left .sp-sub {
+  font-size: 11px !important;
+  color: #a1a1aa;
+}
+.sp-decor-col-left .sp-price {
+  font-size: 16px !important;
+  color: #ff6b00;
+  font-weight: 800;
+  margin-top: 4px;
+}
+.sp-decor-col-right {
+  width: 100%;
+}
+.sp-decor-col-right .sp-features {
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+}
+.sp-decor-col-right .sp-features li {
+  margin-bottom: 4px !important;
+}
 </style>
 
 
@@ -2645,63 +2705,69 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     <h2 style="font-family: 'Bebas Neue', 'BPG Nino Mtavruli', sans-serif; font-size: 20px; color: #ffffff; letter-spacing: 1.5px; margin: 0 0 8px 0; text-align: center;" data-ka="STUDIO DECORATION / USAGE RULES" data-en="STUDIO DECORATION / USAGE RULES">STUDIO DECORATION / USAGE RULES</h2>
     <div style="height: 3px; width: 60px; background: #ff6b00; margin: 0 auto 10px auto;"></div>
 
-    <div class="sp-showcase-grid-3">
+    <div class="sp-decor-stack">
       <!-- 1. STANDART DECOR -->
-      <div class="sp-card">
-        <div>
+      <div class="sp-decor-card-h">
+        <div class="sp-decor-col-left">
           <div class="sp-badge">🟢 STANDARD</div>
           <div class="sp-name">STANDARD DECOR / სტანდარტული სტუდია</div>
           <div class="sp-sub" data-ka="ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე" data-en="Neutral & universal curtain-styled space">ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</div>
-          <div class="sp-price">უფასო <small>[შედის პაკეტის ფასში]</small></div>
+          <div class="sp-price" data-ka="უფასო <small>[შედის პაკეტის ფასში]</small>" data-en="Free <small>[Included in package]</small>">უფასო <small>[შედის პაკეტის ფასში]</small></div>
+        </div>
+        <div class="sp-decor-col-right">
           <ul class="sp-features">
-            <li>• ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</li>
-            <li>• სტუდიაში არსებული საბაზისო ავეჯის (მაგიდები, სკამები) გამოყენება</li>
-            <li>• განათების ფერებისა და ტონალობის მორგება თქვენთვის სასურველი ატმოსფეროს შესაქმნელად</li>
+            <li data-ka="• ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე" data-en="• Neutral and universal space styled with curtains">• ფარდებით მოწყობილი ნეიტრალური და უნივერსალური სივრცე</li>
+            <li data-ka="• სტუდიაში არსებული საბაზისო ავეჯის (მაგიდები, სკამები) გამოყენება" data-en="• Use of basic studio furniture (tables, chairs)">• სტუდიაში არსებული საბაზისო ავეჯის (მაგიდები, სკამები) გამოყენება</li>
+            <li data-ka="• განათების ფერებისა და ტონალობის მორგება თქვენთვის სასურველი ატმოსფეროს შესაქმნელად" data-en="• Custom lighting colors and tones to fit your desired atmosphere">• განათების ფერებისა და ტონალობის მორგება თქვენთვის სასურველი ატმოსფეროს შესაქმნელად</li>
           </ul>
-          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: var(--muted); line-height: 1.4;">
-            <div>(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 10px; color: var(--muted); line-height: 1.4;">
+            <div data-ka="(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)" data-en="(Note: Wall construction and core layout remain unchanged)">(შენიშვნა: კედლების კონსტრუქცია და ძირითადი განლაგება რჩება უცვლელი)</div>
           </div>
         </div>
       </div>
 
       <!-- 2. SELECT STUDIO -->
-      <div class="sp-card sp-featured">
-        <div>
+      <div class="sp-decor-card-h sp-featured">
+        <div class="sp-decor-col-left">
           <div class="sp-badge sp-badge-orange">🔵 SELECT</div>
           <div class="sp-name">SELECT STUDIO / არჩევითი სტუდია</div>
           <div class="sp-sub" data-ka="ტიპოლოგიის არჩევა & პერსონალიზაცია" data-en="Typology selection & personalization">ტიპოლოგიის არჩევა & პერსონალიზაცია</div>
-          <div class="sp-price">+250 ₾ <small>/ თითო ეპიზოდის ჩაწერაზე</small></div>
+          <div class="sp-price" data-ka="+250 ₾ <small>/ თითო ეპიზოდის ჩაწერაზე</small>" data-en="+250 ₾ <small>/ per episode recording</small>">+250 ₾ <small>/ თითო ეპიზოდის ჩაწერაზე</small></div>
+        </div>
+        <div class="sp-decor-col-right">
           <ul class="sp-features">
-            <li>• არსებული ტიპოლოგიიდან არჩევა</li>
-            <li>• სტუდიაში არსებული დეკორითა და ავეჯით სივრცის სასურველი კომპოზიციის აწყობა</li>
-            <li>• შერჩეული ვიზუალის სრული მომზადება ჩაწერისთვის</li>
+            <li data-ka="• არსებული ტიპოლოგიიდან არჩევა" data-en="• Choice from existing typologies">• არსებული ტიპოლოგიიდან არჩევა</li>
+            <li data-ka="• სტუდიაში არსებული დეკორითა და ავეჯით სივრცის სასურველი კომპოზიციის აწყობა" data-en="• Assembling desired space composition with studio decor & furniture">• სტუდიაში არსებული დეკორითა და ავეჯით სივრცის სასურველი კომპოზიციის აწყობა</li>
+            <li data-ka="• შერჩეული ვიზუალის სრული მომზადება ჩაწერისთვის" data-en="• Complete preparation of selected visual setup for recording">• შერჩეული ვიზუალის სრული მომზადება ჩაწერისთვის</li>
           </ul>
-          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #ff6b00; line-height: 1.4;">
-            <div style="font-weight: 700; margin-bottom: 2px;">პირობები:</div>
-            <div style="color: #e74c3c;">• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე.</div>
-            <div style="color: #e74c3c;">• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია.</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 10px; color: #ff6b00; line-height: 1.4;">
+            <div style="font-weight: 700; margin-bottom: 2px;" data-ka="პირობები:" data-en="Terms:">პირობები:</div>
+            <div style="color: #e74c3c;" data-ka="• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე." data-en="• Decor selection and changes must be confirmed 24 hours prior to shoot.">• დეკორის შერჩევა და ცვლილებების შეთანხმება ხდება გადაღებამდე 24 საათით ადრე.</div>
+            <div style="color: #e74c3c;" data-ka="• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია." data-en="• Re-arranging decoration on the shooting day is not possible.">• გადაღების დღეს დეკორაციის ხელახალი გადაადგილება შეუძლებელია.</div>
           </div>
         </div>
       </div>
 
       <!-- 3. FULL CUSTOM STUDIO -->
-      <div class="sp-card sp-pro">
-        <div>
+      <div class="sp-decor-card-h sp-pro">
+        <div class="sp-decor-col-left">
           <div class="sp-badge sp-badge-blue">🔴 FULL CUSTOM</div>
           <div class="sp-name">FULL CUSTOM STUDIO / ინდივიდუალური სტუდია</div>
           <div class="sp-sub" data-ka="სივრცის სრული გარდაქმნა ბრენდზე მორგებით" data-en="Full space transformation for your brand">სივრცის სრული გარდაქმნა ბრენდზე მორგებით</div>
-          <div class="sp-price">1 500 – 2 000 ₾ <small>(ერთჯერადი) + 250 ₾/ეპიზოდზე</small></div>
+          <div class="sp-price" data-ka="1 500 – 2 000 ₾ <small>(ერთჯერადი) + 250 ₾/ეპიზოდზე</small>" data-en="1 500 – 2 000 ₾ <small>(one-time) + 250 ₾/episode</small>">1 500 – 2 000 ₾ <small>(ერთჯერადი) + 250 ₾/ეპიზოდზე</small></div>
+        </div>
+        <div class="sp-decor-col-right">
           <ul class="sp-features">
-            <li>• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
-            <li>• სივრცის სრული გარდაქმნა შოუს სპეციფიკიდან გამომდინარე</li>
-            <li>• ინდივიდუალური ვიზუალური კონცეფციის შექმნა თქვენი ბრენდის იდენტობაზე მორგებით</li>
-            <li>• შექმნილი სეტის შენახვა სტუდიაში და ყოველი ჩაწერის წინ მისი ხელახლა გამართვა</li>
+            <li data-ka="• კედლების სრულად შეცვლა ან ახლის დამზადება" data-en="• Full replacement of walls or fabrication of new ones">• კედლების სრულად შეცვლა ან ახლის დამზადება</li>
+            <li data-ka="• სივრცის სრული გარდაქმნა შოუს სპეციფიკიდან გამომდინარე" data-en="• Complete space transformation tailored to the show's specifics">• სივრცის სრული გარდაქმნა შოუს სპეციფიკიდან გამომდინარე</li>
+            <li data-ka="• ინდივიდუალური ვიზუალური კონცეფციის შექმნა თქვენი ბრენდის იდენტობაზე მორგებით" data-en="• Creation of custom visual concept matching your brand identity">• ინდივიდუალური ვიზუალური კონცეფციის შექმნა თქვენი ბრენდის იდენტობაზე მორგებით</li>
+            <li data-ka="• შექმნილი სეტის შენახვა სტუდიაში და ყოველი ჩაწერის წინ მისი ხელახლა გამართვა" data-en="• Storing fabricated set in studio and resetting it before each recording">• შექმნილი სეტის შენახვა სტუდიაში და ყოველი ჩაწერის წინ მისი ხელახლა გამართვა</li>
           </ul>
-          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 9.5px; color: #e74c3c; line-height: 1.4;">
-            <div style="font-weight: 700; color: #ff6b00; margin-bottom: 2px;">პირობები:</div>
-            <div>• სამუშაოების მასშტაბიდან გამომდინარე, შეკვეთა ხდება მინიმუმ 7–10 დღით ადრე.</div>
-            <div>• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე.</div>
-            <div style="color: var(--muted); margin-top: 2px;">(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 6px; margin-top: 6px; font-size: 10px; color: #e74c3c; line-height: 1.4;">
+            <div style="font-weight: 700; color: #ff6b00; margin-bottom: 2px;" data-ka="პირობები:" data-en="Terms:">პირობები:</div>
+            <div data-ka="• სამუშაოების მასშტაბიდან გამომდინარე, შეკვეთა ხდება მინიმუმ 7–10 დღით ადრე." data-en="• Due to scale of work, order must be placed at least 7–10 days in advance.">• სამუშაოების მასშტაბიდან გამომდინარე, შეკვეთა ხდება მინიმუმ 7–10 დღით ადრე.</div>
+            <div data-ka="• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე." data-en="• All design & concept details agreed with client prior to fabrication.">• დიზაინისა და კონცეფციის ყველა დეტალი თანხმდება დამკვეთთან დამზადების დაწყებამდე.</div>
+            <div style="color: var(--muted); margin-top: 2px;" data-ka="(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)" data-en="(Note: Material costs are evaluated individually per project)">(შენიშვნა: გამოყენებული მასალების ღირებულება ფასდება ინდივიდუალურად პროექტის მიხედვით)</div>
           </div>
         </div>
       </div>
