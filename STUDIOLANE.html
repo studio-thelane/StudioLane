@@ -1255,11 +1255,11 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
   color: #ffffff;
 }
 .faq-chat-body {
-  padding: 20px 18px;
+  padding: 18px 20px 22px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   background: #121216;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 107, 0, 0.3) transparent;
@@ -1274,47 +1274,115 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 .faq-msg-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+  width: 100%;
 }
 .faq-msg {
-  padding: 12px 16px;
-  font-size: 13px;
+  font-family: inherit;
+  font-size: 13.5px;
   line-height: 1.6;
   text-transform: none;
-  position: relative;
-}
-.faq-bubble-tag {
-  display: block;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-  opacity: 0.8;
-  text-transform: uppercase;
+  box-sizing: border-box;
 }
 .user-msg {
-  align-self: flex-end;
-  background: #231b18;
-  border: 1px solid rgba(255, 107, 0, 0.35);
-  color: #ffffff;
-  border-radius: 16px 16px 4px 16px;
-  max-width: 82%;
-  margin-left: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 18px;
+  background: #1a1a20;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #f1f1f5;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+  user-select: none;
+  margin: 0;
 }
-.user-msg .faq-bubble-tag {
-  color: #ff8c32;
+.user-msg:hover,
+.user-msg:focus-visible {
+  background: #231c19;
+  border-color: rgba(255, 107, 0, 0.45);
+  color: #ffffff;
+}
+.user-msg:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.45);
+}
+.user-msg[aria-expanded="true"] {
+  background: #241c18;
+  border-color: var(--orange, #ff6b00);
+  color: #ffffff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.12);
+}
+.user-msg::after {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #ff8c32;
+  border-bottom: 2px solid #ff8c32;
+  transform: rotate(45deg);
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  margin-right: 2px;
+}
+.user-msg[aria-expanded="true"]::after {
+  transform: rotate(-135deg);
 }
 .bot-msg {
-  align-self: flex-start;
-  background: #1b1b22;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #d6d6df;
-  border-radius: 16px 16px 16px 4px;
-  max-width: 90%;
-  margin-right: auto;
+  width: 100%;
+  background: #17171d;
+  border: 1px solid rgba(255, 107, 0, 0.18);
+  border-left: 3px solid var(--orange, #ff6b00);
+  border-radius: 10px;
+  color: #cfd0da;
+  padding: 14px 18px;
+  margin: 0;
+  animation: faqFadeSlide 0.22s ease-out;
+}
+.bot-msg[hidden] {
+  display: none !important;
+}
+.bot-msg p {
+  margin: 0;
+  color: #cfd0da;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.faq-bubble-tag {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 .bot-tag {
-  color: #ff7a2f;
+  color: #ff8c32;
+}
+@keyframes faqFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .user-msg,
+  .user-msg::after,
+  .bot-msg {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -2214,11 +2282,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     <div class="faq-chat-body">
       <!-- Item 1 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 1" data-en="Question 1">კითხვა 1</span>
-          <p data-ka="რა მომსახურება გაქვთ?" data-en="What services do you offer?">რა მომსახურება გაქვთ?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="რა მომსახურება გაქვთ?" data-en="What services do you offer?">რა მომსახურება გაქვთ?</button>
+        <div class="faq-msg bot-msg" id="faq-a-1" role="region" aria-labelledby="faq-q-1" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="Studio Lane არის სრული კონტენტის სტუდია. ჩვენთან შეგიძლიათ მიიღოთ: ვიდეო და აუდიო პოდკასტის ჩაწერა და სრული მონტაჟი; Solo Studio — ექსპერტული და საავტორო ვიდეოები (Reels / TikTok / კურსები); მრავალზონიანი და ფართო სტუდიური გარემო ბექსთეიჯების გადაღებით; თვიური პარტნიორული პაკეტები (საპარტნიორო ტარიფით სარეკლამო ვიდეოებსა და ფოტოებზე); ინდივიდუალური სტუდიური დეკორაციის მოწყობა." data-en="Studio Lane is a full-cycle content studio. With us you get: Video and audio podcast recording and full editing; Solo Studio — expert and creator videos (Reels / TikTok / courses); Multi-zone spacious studio environment with backstage recording; Monthly partnership packages (partner rates for commercial videos and photos); Custom studio set decoration.">Studio Lane არის სრული კონტენტის სტუდია. ჩვენთან შეგიძლიათ მიიღოთ: ვიდეო და აუდიო პოდკასტის ჩაწერა და სრული მონტაჟი; Solo Studio — ექსპერტული და საავტორო ვიდეოები (Reels / TikTok / კურსები); მრავალზონიანი და ფართო სტუდიური გარემო ბექსთეიჯების გადაღებით; თვიური პარტნიორული პაკეტები (საპარტნიორო ტარიფით სარეკლამო ვიდეოებსა და ფოტოებზე); ინდივიდუალური სტუდიური დეკორაციის მოწყობა.</p>
         </div>
@@ -2226,11 +2291,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 2 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 2" data-en="Question 2">კითხვა 2</span>
-          <p data-ka="რამდენი კამერით არის შესაძლებელი გადაღება?" data-en="How many cameras can be used for recording?">რამდენი კამერით არის შესაძლებელი გადაღება?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="რამდენი კამერით არის შესაძლებელი გადაღება?" data-en="How many cameras can be used for recording?">რამდენი კამერით არის შესაძლებელი გადაღება?</button>
+        <div class="faq-msg bot-msg" id="faq-a-2" role="region" aria-labelledby="faq-q-2" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="სტუდიაში შესაძლებელია 5-მდე კამერით ერთდროულად გადაღება ATEM Mini Pro სვიჩერით (ლაივ ვიდეო კონტროლით), ასევე 5-მდე მიკროფონის ჩაწერა RODE Caster Pro II-ის აუდიო კონტროლით." data-en="Up to 5 cameras can be used simultaneously with ATEM Mini Pro switcher (live video control), as well as recording up to 5 microphones with RODE Caster Pro II audio control.">სტუდიაში შესაძლებელია 5-მდე კამერით ერთდროულად გადაღება ATEM Mini Pro სვიჩერით (ლაივ ვიდეო კონტროლით), ასევე 5-მდე მიკროფონის ჩაწერა RODE Caster Pro II-ის აუდიო კონტროლით.</p>
         </div>
@@ -2238,11 +2300,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 3 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 3" data-en="Question 3">კითხვა 3</span>
-          <p data-ka="რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?" data-en="How many people can the podcast studio accommodate?">რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?" data-en="How many people can the podcast studio accommodate?">რამდენ პერსონაზეა გათვლილი პოდკასტ სტუდია?</button>
+        <div class="faq-msg bot-msg" id="faq-a-3" role="region" aria-labelledby="faq-q-3" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="სტუდიის სივრცე და აპარატურა გათვლილია 5-6 ადამიანის ერთდროულ, სრულფასოვან და კომფორტულ ჩაწერაზე." data-en="The studio space and equipment are designed for 5-6 people simultaneous, comfortable recording.">სტუდიის სივრცე და აპარატურა გათვლილია 5-6 ადამიანის ერთდროულ, სრულფასოვან და კომფორტულ ჩაწერაზე.</p>
         </div>
@@ -2250,11 +2309,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 4 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 4" data-en="Question 4">კითხვა 4</span>
-          <p data-ka="რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?" data-en="How much does podcast recording cost and what is included?">რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?" data-en="How much does podcast recording cost and what is included?">რა ღირს პოდკასტის ჩაწერა და რა შედის ფასში?</button>
+        <div class="faq-msg bot-msg" id="faq-a-4" role="region" aria-labelledby="faq-q-4" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="ერთჯერადი ჩაწერა: 200 ₾/სთ (3x 4K Sony კამერა, Rode აუდიო). ჩაწერა + მონტაჟი: 300 ₾/სთ. თვიური პარტნიორობა (Standard): 2,500 ₾/თვე, ხოლო სრული მენეჯმენტი (Pro): 5,500 ₾/თვე." data-en="Single recording: 200 ₾/hr (3x 4K Sony cameras, Rode audio). Recording + editing: 300 ₾/hr. Monthly partnership (Standard): 2,500 ₾/mo, full management (Pro): 5,500 ₾/mo.">ერთჯერადი ჩაწერა: 200 ₾/სთ (3x 4K Sony კამერა, Rode აუდიო). ჩაწერა + მონტაჟი: 300 ₾/სთ. თვიური პარტნიორობა (Standard): 2,500 ₾/თვე, ხოლო სრული მენეჯმენტი (Pro): 5,500 ₾/თვე.</p>
         </div>
@@ -2262,11 +2318,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 5 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 5" data-en="Question 5">კითხვა 5</span>
-          <p data-ka="სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?" data-en="Where is Studio Lane located and how to find us?">სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?" data-en="Where is Studio Lane located and how to find us?">სად მდებარეობს Studio Lane და როგორ მოგაგნოთ?</button>
+        <div class="faq-msg bot-msg" id="faq-a-5" role="region" aria-labelledby="faq-q-5" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="სტუდია მდებარეობს თბილისში, ვიტალი დარასელიას ქუჩა 2-ში (გაგარინის მოედანთან)." data-en="The studio is located in Tbilisi, at Vitali Daraselia Street 2 (near Gagarini Square).">სტუდია მდებარეობს თბილისში, ვიტალი დარასელიას ქუჩა 2-ში (გაგარინის მოედანთან).</p>
         </div>
@@ -2274,11 +2327,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 6 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 6" data-en="Question 6">კითხვა 6</span>
-          <p data-ka="შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?" data-en="Can I test the studio for free if I have no camera experience?">შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?" data-en="Can I test the studio for free if I have no camera experience?">შემიძლია სტუდიის უფასოდ გატესტვა, თუ კამერასთან მუშაობის გამოცდილება არ მაქვს?</button>
+        <div class="faq-msg bot-msg" id="faq-a-6" role="region" aria-labelledby="faq-q-6" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="დიახ! გვაქვს „პირველი დუბლის“ პროგრამა: 1 საათს გითმობთ საჩუქრად, რათა შეეჩვიოთ კამერებს, გაიაროთ კონსულტაცია პროფესიონალებთან და მოსინჯოთ ძალები ყოველგვარი წნეხის გარეშე." data-en="Yes! We offer the 'First Take' trial: we provide 1 hour free to get comfortable with cameras, consult with professionals, and test your skills without any pressure.">დიახ! გვაქვს „პირველი დუბლის“ პროგრამა: 1 საათს გითმობთ საჩუქრად, რათა შეეჩვიოთ კამერებს, გაიაროთ კონსულტაცია პროფესიონალებთან და მოსინჯოთ ძალები ყოველგვარი წნეხის გარეშე.</p>
         </div>
@@ -2286,11 +2336,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 7 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 7" data-en="Question 7">კითხვა 7</span>
-          <p data-ka="შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?" data-en="Is custom set decoration possible?">შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?" data-en="Is custom set decoration possible?">შესაძლებელია თუ არა ინდივიდუალური დეკორაციის მოწყობა?</button>
+        <div class="faq-msg bot-msg" id="faq-a-7" role="region" aria-labelledby="faq-q-7" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="დიახ, გვაქვს 3 დონე: Standard Decor (უფასო), Select Studio (+250 ₾) და Full Custom Studio (1,500 – 2,000 ₾, სივრცის სრული გარდაქმნა და კედლების დამზადება)." data-en="Yes, we have 3 levels: Standard Decor (free), Select Studio (+250 ₾), and Full Custom Studio (1,500 – 2,000 ₾, full space transformation and custom wall fabrication).">დიახ, გვაქვს 3 დონე: Standard Decor (უფასო), Select Studio (+250 ₾) და Full Custom Studio (1,500 – 2,000 ₾, სივრცის სრული გარდაქმნა და კედლების დამზადება).</p>
         </div>
@@ -2298,11 +2345,8 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
 
       <!-- Item 8 -->
       <div class="faq-msg-group">
-        <div class="faq-msg user-msg">
-          <span class="faq-bubble-tag" data-ka="კითხვა 8" data-en="Question 8">კითხვა 8</span>
-          <p data-ka="როგორ ხდება სტუდიის დაჯავშნა?" data-en="How can I book the studio?">როგორ ხდება სტუდიის დაჯავშნა?</p>
-        </div>
-        <div class="faq-msg bot-msg">
+        <button type="button" class="faq-msg user-msg" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8" onclick="toggleFaqItem(this)" onkeydown="handleFaqKeydown(event, this)" data-ka="როგორ ხდება სტუდიის დაჯავშნა?" data-en="How can I book the studio?">როგორ ხდება სტუდიის დაჯავშნა?</button>
+        <div class="faq-msg bot-msg" id="faq-a-8" role="region" aria-labelledby="faq-q-8" hidden>
           <span class="faq-bubble-tag bot-tag">Studio Lane</span>
           <p data-ka="დაჯავშნა შეგიძლიათ პირდაპირ საიტიდან WhatsApp-ზე სწრაფი შეტყობინებით ან ტელეფონზე დარეკვით: +995 577 11 43 55." data-en="You can book directly from the website via WhatsApp quick message or by calling: +995 577 11 43 55.">დაჯავშნა შეგიძლიათ პირდაპირ საიტიდან WhatsApp-ზე სწრაფი შეტყობინებით ან ტელეფონზე დარეკვით: +995 577 11 43 55.</p>
         </div>
@@ -2454,6 +2498,56 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   function closeFaqModalBg(e) {
     if (e.target === document.getElementById('faq-modal')) {
       closeFaqModal();
+    }
+  }
+
+  function toggleFaqItem(btn) {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    const panelId = btn.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    const modal = document.getElementById('faq-modal');
+    if (!modal) return;
+
+    const allBtns = modal.querySelectorAll('.user-msg');
+    allBtns.forEach(b => {
+      if (b !== btn) {
+        b.setAttribute('aria-expanded', 'false');
+        const pId = b.getAttribute('aria-controls');
+        const p = document.getElementById(pId);
+        if (p) p.hidden = true;
+      }
+    });
+
+    if (isExpanded) {
+      btn.setAttribute('aria-expanded', 'false');
+      if (panel) panel.hidden = true;
+    } else {
+      btn.setAttribute('aria-expanded', 'true');
+      if (panel) panel.hidden = false;
+    }
+  }
+
+  function handleFaqKeydown(e, btn) {
+    const modal = document.getElementById('faq-modal');
+    if (!modal) return;
+    const buttons = Array.from(modal.querySelectorAll('.user-msg'));
+    const index = buttons.indexOf(btn);
+    if (index === -1) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = buttons[(index + 1) % buttons.length];
+      if (next) next.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prev = buttons[(index - 1 + buttons.length) % buttons.length];
+      if (prev) prev.focus();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      if (buttons[0]) buttons[0].focus();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      if (buttons[buttons.length - 1]) buttons[buttons.length - 1].focus();
     }
   }
 
