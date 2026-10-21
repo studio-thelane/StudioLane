@@ -762,6 +762,7 @@ section { padding:48px 20px; }
   visibility: hidden;
   transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 10000;
+  overscroll-behavior: contain;
 }
 .chat-window.active {
   transform: translateY(0) scale(1);
@@ -818,6 +819,8 @@ section { padding:48px 20px; }
   width: 100% !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .chat-messages::-webkit-scrollbar { width: 4px; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
@@ -4414,7 +4417,15 @@ const studioInfo = `
 `;
 
 function toggleChat() {
-  document.getElementById('chat-window').classList.toggle('active');
+  const win = document.getElementById('chat-window');
+  if (!win) return;
+  const isActive = win.classList.toggle('active');
+  if (isActive) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    const modalOpen = document.querySelector('.modal-bg.open, .port-zoom-box.open');
+    if (!modalOpen) document.body.style.overflow = '';
+  }
 }
 
 function sendMsg() {
