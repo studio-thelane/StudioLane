@@ -4423,10 +4423,89 @@ const studioInfo = `
 7. სარეკლამო ვიდეო / ფოტო: ინდივიდუალური ფასი.
 `;
 
+let chatTranscriptLog = [];
+let hasUnsentChatMessages = false;
+let chatTranscriptTimer = null;
+
+function recordChatTranscript(speaker, text) {
+  if (!text) return;
+  const cleanText = String(text).replace(/<[^>]*>?/gm, '').trim();
+  if (!cleanText || cleanText === '...') return;
+  const time = new Date().toLocaleTimeString('ka-GE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  chatTranscriptLog.push({ speaker, text: cleanText, time });
+}
+
+function scheduleChatTranscriptSend(delayMs = 45000) {
+  if (chatTranscriptTimer) clearTimeout(chatTranscriptTimer);
+  chatTranscriptTimer = setTimeout(() => {
+    if (hasUnsentChatMessages) {
+      flushChatTranscriptEmail('მიმოწერა ჩათში (ავტომატური)');
+    }
+  }, delayMs);
+}
+
+async function flushChatTranscriptEmail(reason = 'ჩათის დახურვა') {
+  if (!hasUnsentChatMessages || chatTranscriptLog.length === 0) return;
+  hasUnsentChatMessages = false;
+  if (chatTranscriptTimer) {
+    clearTimeout(chatTranscriptTimer);
+    chatTranscriptTimer = null;
+  }
+
+  const transcriptFormatted = chatTranscriptLog
+    .map((item, idx) => `${idx + 1}. [${item.time}] ${item.speaker}: ${item.text}`)
+    .join('\n');
+
+  const userMessagesOnly = chatTranscriptLog
+    .filter(item => item.speaker === 'მომხმარებელი')
+    .map(item => item.text)
+    .join(' | ');
+
+  const payload = {
+    _subject: "[ჩათბოტის მიმოწერა] Studio The Lane",
+    _template: "table",
+    "გაგზავნის_მიზეზი": reason,
+    "მომხმარებლის_მესიჯები": userMessagesOnly || "N/A",
+    "სრული_დიალოგი": transcriptFormatted,
+    "ამოცნობილი_ტელეფონი": bookingData.phone || "იხილეთ დიალოგში",
+    "ამოცნობილი_მეილი": bookingData.email || "იხილეთ დიალოგში",
+    "მომსახურება": bookingData.service || bookingData.studioType || "კონსულტაცია ჩათში"
+  };
+
+  try {
+    await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      keepalive: true,
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.error("FormSubmit Chat Transcript Error:", err);
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && hasUnsentChatMessages) {
+    flushChatTranscriptEmail('საიტიდან გასვლა / ჩაკეცვა');
+  }
+});
+
+window.addEventListener('pagehide', () => {
+  if (hasUnsentChatMessages) {
+    flushChatTranscriptEmail('საიტის დახურვა');
+  }
+});
+
 function toggleChat() {
   const win = document.getElementById('chat-window');
   if (!win) return;
   const isActive = win.classList.toggle('active');
+  if (!isActive && hasUnsentChatMessages) {
+    flushChatTranscriptEmail('ჩათის დახურვა');
+  }
   if (isActive) {
     document.body.style.overflow = 'hidden';
   } else {
@@ -4442,6 +4521,11 @@ function sendMsg() {
   addChatMsg(text, 'user');
   input.value = '';
   
+  extractBookingEntities(text);
+  hasUnsentChatMessages = true;
+  const hasContact = Boolean(bookingData.phone || bookingData.email);
+  scheduleChatTranscriptSend(hasContact ? 15000 : 45000);
+
   if (chatState !== 'idle') {
     handleBookingFlow(text);
   } else {
@@ -4452,6 +4536,7 @@ function sendMsg() {
 function checkEnter(e) { if(e.key==='Enter') sendMsg(); }
 
 function addChatMsg(text, sender, isLink = false, animateTypewriter = true) {
+  recordChatTranscript(sender === 'user' ? 'მომხმარებელი' : 'Studio Lane Bot', text);
   const box = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = 'message ' + sender;
@@ -4494,38 +4579,8 @@ function resetBookingData() {
 let leadEmailSentForThisSession = false;
 
 async function dispatchImmediateLeadEmailJS() {
-  if (leadEmailSentForThisSession) return;
-  if (!bookingData.contact && !bookingData.name && !bookingData.phone && !bookingData.socialOrEmail && !bookingData.email) return;
-  
-  leadEmailSentForThisSession = true;
-
-  const payload = {
-    _subject: "[ახალი მყისიერი ლიდი ჩათბოტიდან] Studio The Lane",
-    _template: "table",
-    "მომსახურება": bookingData.service || bookingData.studioType || "პოდკასტის ჩაწერა/ინტერესი",
-    "საკონტაქტო_ინფო": bookingData.contact || "N/A",
-    "სახელი_გვარი": bookingData.name || "მომხმარებელი",
-    "ტელეფონი": bookingData.phone || "არ არის მითითებული",
-    "სოც_ქსელი_ან_მაილი": bookingData.socialOrEmail || bookingData.email || "არ არის მითითებული",
-    "თარიღი": bookingData.date || "N/A",
-    "დრო": bookingData.startTime || "N/A",
-    "ხანგრძლივობა": bookingData.duration || "N/A",
-    "დეკორი": bookingData.decor || "Standard"
-  };
-
-  try {
-    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    console.log("FormSubmit Instant Lead Sent:", data);
-  } catch (err) {
-    console.error("FormSubmit Instant Lead Error:", err);
+  if (hasUnsentChatMessages) {
+    scheduleChatTranscriptSend(15000);
   }
 }
 
@@ -4540,8 +4595,8 @@ function extractBookingEntities(text) {
     if (!bookingData.contact) bookingData.contact = emailMatch[0];
   }
 
-  // Extract Phone Number
-  const phoneMatch = text.match(/(\+?995)?\s*5\d{2}[\s-]?\d{2}[\s-]?\d{2}[\s-]?\d{2}|\b5\d{8}\b/);
+  // Extract Phone Number (supports 5XX XX XX XX, 5XX XXX XXX, 5XXXXXXXX, +995..., 05XX...)
+  const phoneMatch = text.match(/(?:\+?995[\s-]?)?0?5\d{2}(?:[\s-]?\d{2,3}){2,3}\b|\b5\d{8}\b/);
   if (phoneMatch) {
     bookingData.phone = phoneMatch[0].replace(/\s+/g, '');
     if (!bookingData.contact) bookingData.contact = bookingData.phone;
@@ -4959,6 +5014,7 @@ async function botResponse(text) {
       
       const aiResponse = await callGemini(text);
       if (aiResponse) {
+          recordChatTranscript('Studio Lane Bot', aiResponse);
           typingMsg.innerText = '';
           let i = 0;
           const speed = 15;
