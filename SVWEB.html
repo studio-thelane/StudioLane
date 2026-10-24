@@ -4386,21 +4386,25 @@ const studioInfo = `
 მისამართი: ვიტალი დარასელიას 2 (გაგარინის მოედნიდან სოფრომ მგალობლიშვილის ქუჩაზე, პირველივე ჩასახვევი მარჯვნივ).
 სტუდია: Studio The Lane - მოდულარული კრეატიული სივრცე.
 კონტაქტი: ელ-ფოსტა: podcast@studiolane.ge, ტელეფონი: +995 577 11 43 55.
-მიმართულებები: პოდკასტები, ფოტო/ვიდეო გადაღება, სოლო სტრიმინგი.
+მიმართულებები: პოდკასტები, სტუდიის საათობრივი ქირაობა, ფოტო/ვიდეო გადაღება, სოლო სტრიმინგი / რილსები.
 
-ფასები და მომსახურებები (PODCAST STUDIO):
-1. RECORDING — 200 ₾ / სთ:
+სტუდიის საათობრივი ქირაობა და პაკეტები:
+- შესაძლებელია უბრალოდ სტუდიის ქირაობა საათობრივად (როგორც პოდკასტისთვის, ისე ნებისმიერი ვიდეო გადაღებისთვის).
+- SOLO / CREATOR STUDIO (1 ადამიანისთვის) — 150 ₾ / სთ: სოლო სივრცე, 1 კამერა (Sony FX30 / A7IV), 1 მიკროფონი, პროფესიონალური განათება + საჩუქრად ტელესუფლიორი (Teleprompter).
+
+ფასები და მომსახურებები (PODCAST STUDIO — 2-4 ადამიანი):
+1. RECORDING (სტუდიის საათობრივი ქირაობა და ჩაწერა) — 200 ₾ / სთ:
+   - არსებული სტუდიის ტიპოლოგია (20+ დეკორის კომბინაცია)
+   - 3 კამერა — Sony FX30 / Sony A7IV
+   - RODE CASTER PRO II, Shure SM7B / RODE PodMic მიკროფონები
+   - FHD / 4K ვიდეო და აუდიო ფაილი, ოპერატორი ადგილზე
+
+2. RECORDING + EDITING (საათობრივი ჩაწერა + მონტაჟი) — 300 ₾ / სთ:
    - არსებული სტუდიის ტიპოლოგია
    - 3 კამერა — Sony FX30 / Sony A7IV
-   - RODE CASTER PRO II, 2 × RODE PodMic
+   - RODE CASTER PRO II / RODE PodMic / Shure SM7B
    - FHD / 4K ვიდეო და აუდიო ფაილი
-
-2. RECORDING + EDITING — 300 ₾ / სთ:
-   - არსებული სტუდიის ტიპოლოგია
-   - 3 კამერა — Sony FX30 / Sony A7IV
-   - RODE CASTER PRO II / RODE PodMic
-   - FHD / 4K ვიდეო და აუდიო ფაილი
-   - მონტაჟი
+   - სრული მონტაჟი
    - დამატებითი შესათავაზებლები (Optional Add-ons): 3 Short (+100 ₾), Thumbnail (+50 ₾), ანონსი (+100 ₾)
 
 3. PARTNERSHIP STANDARD — 2,500 ₾ / თვე:
@@ -4418,14 +4422,64 @@ const studioInfo = `
    - 5 Shorts თითოეული ეპიზოდიდან (20 Shorts თვეში)
    - Thumbnail, 5 პერსონა უფასოდ, გრაფიკა და ვიზუალური გაფორმება, ანონსი, ბექსთეიჯი, სოციალური ქსელების მენეჯმენტი / მართვა.
 
-5. Live Podcast (პირდაპირი ეთერი): 1 კამერა: 200 ₾/სთ, 2 კამერა: 500 ₾/სთ, 3 კამერა: 1500 ₾/სთ.
-6. სტუდიის დეკორი: Standard Decor: უფასო. Select Studio: +150 ₾/ჩაწერა. Full Custom Studio: 1500-2000 ₾.
-7. სარეკლამო ვიდეო / ფოტო: ინდივიდუალური ფასი.
+5. დამწყებებისთვის — 1-საათიანი უფასო ჩაწერა („პირველი დუბლი“): თუ სტუმარი პირველად არის კამერის წინ და ჯერ არ ჰქონია ჩაწერები, ვთავაზობთ 1-საათიან უფასო სატესტო ჩაწერას და კონსულტაციას ადგილზე, რათა მშვიდად მოსინჯოს გარემო, განათება, ხმა და კამერები.
+6. Live Podcast (პირდაპირი ეთერი): 1 კამერა: 200 ₾/სთ, 2 კამერა: 500 ₾/სთ, 3 კამერა: 1500 ₾/სთ.
+7. სტუდიის დეკორი: Standard Decor: უფასო. Select Studio: +150 ₾/ჩაწერა. Full Custom Studio: 1500-2000 ₾.
+8. სარეკლამო ვიდეო / ფოტო: ინდივიდუალური ფასი.
 `;
 
 let chatTranscriptLog = [];
 let hasUnsentChatMessages = false;
 let chatTranscriptTimer = null;
+let chatSessionCode = null;
+let chatSessionCodePromise = null;
+
+function getLocalNextChatCode() {
+  try {
+    const prev = parseInt(localStorage.getItem('studiolane_chat_code_seq') || '0', 10);
+    const next = (isNaN(prev) ? 0 : prev) + 1;
+    localStorage.setItem('studiolane_chat_code_seq', String(next));
+    return String(next).padStart(2, '0');
+  } catch (e) {
+    return '01';
+  }
+}
+
+async function ensureChatSessionCode() {
+  if (chatSessionCode) return chatSessionCode;
+  if (chatSessionCodePromise) return chatSessionCodePromise;
+  chatSessionCode = getLocalNextChatCode();
+  chatSessionCodePromise = (async () => {
+    try {
+      const ctrl = new AbortController();
+      const tid = setTimeout(() => ctrl.abort(), 2500);
+      const res = await fetch('https://api.counterapi.dev/v1/studiolane_ge_chat_v1/leads/up', { signal: ctrl.signal });
+      clearTimeout(tid);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && typeof data.count === 'number' && data.count > 0) {
+          chatSessionCode = String(data.count).padStart(2, '0');
+          try { localStorage.setItem('studiolane_chat_code_seq', String(data.count)); } catch (e) {}
+        }
+      }
+    } catch (e) {}
+    return chatSessionCode;
+  })();
+  return chatSessionCodePromise;
+}
+
+function formatCodeAndName() {
+  if (!chatSessionCode) {
+    chatSessionCode = getLocalNextChatCode();
+  }
+  const cleanName = (bookingData.name || '').trim() || 'არ მიუთითებია';
+  return `CODE ${chatSessionCode} NAME ${cleanName}`;
+}
+
+function isCallbackRequest(text) {
+  if (!text) return false;
+  return /დამირეკ|დამიკავშირდ|შემეხმიან|გადმომირეკ|დარეკე|დაგვირეკ|დარეკვა|ზარი|call me|contact me/i.test(text);
+}
 
 function recordChatTranscript(speaker, text) {
   if (!text) return;
@@ -4452,6 +4506,8 @@ async function flushChatTranscriptEmail(reason = 'ჩათის დახუ�
     chatTranscriptTimer = null;
   }
 
+  const codeAndName = formatCodeAndName();
+
   const transcriptFormatted = chatTranscriptLog
     .map((item, idx) => `${idx + 1}. [${item.time}] ${item.speaker}: ${item.text}`)
     .join('\n');
@@ -4462,14 +4518,15 @@ async function flushChatTranscriptEmail(reason = 'ჩათის დახუ�
     .join(' | ');
 
   const payload = {
-    _subject: "[ჩათბოტის მიმოწერა] Studio The Lane",
+    _subject: `${codeAndName} — Studio The Lane`,
     _template: "table",
+    "კოდი_და_სახელი": codeAndName,
     "გაგზავნის_მიზეზი": reason,
-    "მომხმარებლის_მესიჯები": userMessagesOnly || "N/A",
-    "სრული_დიალოგი": transcriptFormatted,
     "ამოცნობილი_ტელეფონი": bookingData.phone || "იხილეთ დიალოგში",
     "ამოცნობილი_მეილი": bookingData.email || "იხილეთ დიალოგში",
-    "მომსახურება": bookingData.service || bookingData.studioType || "კონსულტაცია ჩათში"
+    "მომსახურება": bookingData.service || bookingData.studioType || "კონსულტაცია ჩათში",
+    "მომხმარებლის_მესიჯები": userMessagesOnly || "N/A",
+    "სრული_დიალოგი": transcriptFormatted
   };
 
   try {
@@ -4518,13 +4575,27 @@ function sendMsg() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
   if(!text) return;
+  ensureChatSessionCode();
   addChatMsg(text, 'user');
   input.value = '';
   
+  const prevPhone = bookingData.phone;
   extractBookingEntities(text);
   hasUnsentChatMessages = true;
+
+  const callbackAskedNow = isCallbackRequest(text);
+  if (callbackAskedNow) {
+    bookingData.requestedCallback = true;
+  }
+
   const hasContact = Boolean(bookingData.phone || bookingData.email);
-  scheduleChatTranscriptSend(hasContact ? 15000 : 45000);
+  const newPhoneProvidedAfterCallback = Boolean(bookingData.requestedCallback && bookingData.phone && bookingData.phone !== prevPhone);
+
+  if (callbackAskedNow || newPhoneProvidedAfterCallback) {
+    flushChatTranscriptEmail('🚨 მომხმარებელმა დარეკვა / დაკავშირება მოითხოვა');
+  } else {
+    scheduleChatTranscriptSend(hasContact ? 15000 : 45000);
+  }
 
   if (chatState !== 'idle') {
     handleBookingFlow(text);
@@ -4570,7 +4641,7 @@ function isRussianText(str) {
 }
 
 function resetBookingData() {
-  bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '' };
+  bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '', requestedCallback: false };
   chatState = 'idle';
   isSubmittingBooking = false;
   leadEmailSentForThisSession = false;
@@ -4584,9 +4655,71 @@ async function dispatchImmediateLeadEmailJS() {
   }
 }
 
+const NON_NAME_CHAT_WORDS = new Set([
+  'გამარჯობა','გამარჯობათ','სალამი','მოგესალმებით','პოდკასტი','პოდკასტის','პოდკასტ','სტუდია','სტუდიის','სტუდიაში',
+  'ქირაობა','ჩაწერა','ჩაწერის','მინდა','მსურს','მაინტერესებს','ფასი','ფასები','რა','ღირს','სად','ხართ','მისამართი',
+  'ლოკაცია','კონსულტაცია','დეკორაცია','დეკორი','ინფორმაცია','დამირეკე','დამირეკეთ','დამიკავშირდი','დამიკავშირდით',
+  'შემეხმიანეთ','გადმომირეკეთ','დარეკეთ','დარეკვა','ზარი','მადლობა','დიახ','კი','არა','ხვალ','დღეს','ზეგ','სოლო',
+  'სტანდარტ','სტანდარტული','პრო','მონტაჟი','მონტაჟით','საათი','საათით','წუთი','კამერა','მიკროფონი','განათება',
+  'ოპერატორი','დაჯავშნა','ჯავშანი','პირველად','ვარ','მე','ჩემი','სახელი','სახელია','გვარი','გვარია','ნომერი',
+  'ტელეფონი','მეილი','მაილი','ინსტაგრამი','ფეისბუქი','უბრალოდ','მარტო','მხოლოდ','ეხლა','ახლა','როგორ','რამდენი',
+  'podcast','studio','solo','creator','recording','editing','standard','partnership','live','select','custom',
+  'decor','book','booking','yes','no','hello','hi','call','contact'
+]);
+
+function extractUserNameFromText(text) {
+  if (!text) return '';
+  // 1. Explicit intro: "მე ვარ ილიკო გოგიბერიძე", "მქვია ილიკო", "სახელი: ილიკო გოგიბერიძე"
+  const explicitMatch = text.match(/(?:მე\s+ვარ|მქვია|ჩემი\s+სახელია|სახელი\s+და\s+გვარია?|სახელი\s*:?)\s+([ა-ჰa-zA-Z]{2,20}(?:\s+[ა-ჰa-zA-Z]{2,25})?)/i);
+  if (explicitMatch && explicitMatch[1]) {
+    const candidateWords = explicitMatch[1].trim().split(/\s+/).filter(w => !NON_NAME_CHAT_WORDS.has(w.toLowerCase()));
+    if (candidateWords.length > 0) return candidateWords.slice(0, 2).join(' ');
+  }
+
+  // Clean out emails, phones, URLs, numbers, symbols
+  let cleaned = text
+    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, ' ')
+    .replace(/(?:\+?995[\s-]?)?0?5\d{2}(?:[\s-]?\d{2,3}){2,3}\b|\b5\d{8}\b/g, ' ')
+    .replace(/https?:\/\/\S+/g, ' ')
+    .replace(/[^ა-ჰa-zA-Z\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!cleaned) return '';
+
+  const words = cleaned.split(' ').filter(w => w.length >= 2 && !NON_NAME_CHAT_WORDS.has(w.toLowerCase()));
+  if (words.length === 0) return '';
+
+  // 2. Check for Georgian First Name + Surname (ending in -ძე, -შვილი, -ია, -უა, -ავა, -ანი, -ური, -ული, -ელი, -ყვა, -ქვა)
+  for (let i = 0; i < words.length - 1; i++) {
+    const w1 = words[i];
+    const w2 = words[i + 1];
+    if (/^(?:[ა-ჰ]{2,16})$/.test(w1) && /^(?:[ა-ჰ]{2,22})(?:ძე|შვილი|ია|უა|ავა|ანი|ური|ული|ელი|ყვა|ქვა)$/.test(w2)) {
+      return `${w1} ${w2}`;
+    }
+  }
+
+  // 3. If the message also contained a phone/email or the bot just asked for name/contact, accept 1-2 clean words as name
+  const hasPhoneOrEmailInMsg = /(?:\+?995[\s-]?)?0?5\d{2}(?:[\s-]?\d{2,3}){2,3}\b|\b5\d{8}\b|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(text);
+  const lastBotMsg = [...chatTranscriptLog].reverse().find(m => m.speaker === 'Studio Lane Bot');
+  const botAskedForName = lastBotMsg && /სახელი|გვარი|საკონტაქტო|როგორ მოგმართოთ/i.test(lastBotMsg.text);
+
+  if ((hasPhoneOrEmailInMsg || botAskedForName) && words.length >= 1 && words.length <= 3) {
+    return words.slice(0, 2).join(' ');
+  }
+
+  return '';
+}
+
 function extractBookingEntities(text) {
   const lower = text.toLowerCase();
   
+  // Extract Name & Surname
+  const detectedName = extractUserNameFromText(text);
+  if (detectedName && (!bookingData.name || detectedName.split(' ').length >= bookingData.name.split(' ').length)) {
+    bookingData.name = detectedName;
+  }
+
   // Extract Email
   const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
   if (emailMatch) {
@@ -4865,10 +4998,12 @@ async function dispatchBookingEmailJS() {
   isSubmittingBooking = true;
 
   const isKa = (lang === 'ka');
+  const codeAndName = formatCodeAndName();
 
   const payload = {
-    _subject: "[სრული ჯავშნის განაცხადი ჩათბოტიდან] Studio The Lane",
+    _subject: `${codeAndName} — [სრული ჯავშანი] Studio The Lane`,
     _template: "table",
+    "კოდი_და_სახელი": codeAndName,
     "საკონტაქტო_ინფო": bookingData.contact || bookingData.phone || bookingData.email || bookingData.name || "N/A",
     "მომსახურება": bookingData.service || bookingData.studioType || "N/A",
     "თარიღი": bookingData.date || "N/A",
@@ -4921,31 +5056,43 @@ async function callGemini(prompt) {
     შენ ხარ Studio The Lane-ის გამოცდილი, მეგობრული და ემპათიური კონსულტანტი ჩათბოტში.
     გამოიყენე ეს სტუდიის ინფორმაცია: ${studioInfo}.
 
-    მნიშვნელოვანი ქცევითი წესები და 4-ნაბიჯიანი პროგრესული საუბრის ლოგიკა:
+    მნიშვნელოვანი ქცევითი წესები და პროგრესული საუბრის ლოგიკა:
 
-    1️⃣ ნაბიჯი 1 — საწყისი ინტერესი (სტუდიის ფორმატი):
-    - როდესაც მომხმარებელი იტყვის ზოგად ფრაზას („პოდკასტის ჩაწერა მინდა“, „სტუდია მინდა“), ნუ დაწერ დიდი ტექსტით დეტალებს!
-    - უპასუხე მოკლედ და ჰკითხე სტუდიის ფორმატი:
-      „სიამოვნებით! რომელი სტუდიური ფორმატი გნებავთ?
-      🎬 **Podcast Studio** (ჯგუფური/ინტერვიუ) თუ 🎙 **Solo / Creator Studio** (სოლო ჩანაწერები)?“
+    1️⃣ ნაბიჯი 1 — საწყისი ინტერესი, სახელის გაგება და სტუდიის ფორმატი:
+    - როდესაც მომხმარებელი მოგწერს („გამარჯობა“, „პოდკასტის ჩაწერა მინდა“, „სტუდია მინდა“, „სტუდიის ქირაობა მინდა“), ნუ დაწერ დიდი ტექსტით დეტალებს!
+    - თუ მომხმარებელს ჯერ არ დაუწერია თავისი სახელი, მეგობრულად ჰკითხე სახელი (და გვარი) და იქვე დააზუსტებინე სტუდიის ფორმატი:
+      „სიამოვნებით! როგორ მოგმართოთ, თქვენი სახელი და გვარი რომ მითხრათ? 😊
+      და რომელი სტუდიური ფორმატი გნებავთ — 🎬 **Podcast Studio** (ჯგუფური/ინტერვიუ) თუ 🎙 **Solo / Creator Studio** (სოლო ჩანაწერები)?“
+    - თუ მომხმარებელს **უბრალოდ სტუდიის ქირაობა** აინტერესებს, თავისუფლად ესაუბრე და იხელმძღვანელე **საათობრივი პაკეტებით**:
+      • **Podcast Studio (2–4 ადამიანი):** 200 ₾/სთ (სტუდიის ქირაობა და ჩაწერა 3 კამერით, მიკროფონებით, განათებით და ოპერატორით) ან 300 ₾/სთ (ჩაწერა + სრული მონტაჟი).
+      • **Solo / Creator Studio (1 ადამიანი):** 150 ₾/სთ (1 კამერა, მიკროფონი, განათება + საჩუქრად ტელესუფლიორი).
 
-    2️⃣ ნაბიჯი 2 — სტუდიის არჩევა ➔ 4 პაკეტის მოკლე სათაურები:
+    2️⃣ ნაბიჯი 2 — სტუდიის არჩევა ➔ პაკეტების მოკლე სათაურები:
     - როდესაც მომხმარებელი აირჩევს „Podcast Studio“-ს, მიეცი 4 პაკეტის მოკლე სათაურები (დიდი ტექსტის გარეშე):
       „Podcast Studio-ში გვაქვს 4 მთავარი ფორმატი:
-      1. **RECORDING** (200 ₾/სთ) — საათობრივი ჩაწერა
+      1. **RECORDING** (200 ₾/სთ) — სტუდიის საათობრივი ქირაობა და ჩაწერა
       2. **RECORDING + EDITING** (300 ₾/სთ) — ჩაწერა + სრული მონტაჟი
       3. **Partnership Standard** (2,500 ₾/თვე) — ყოველთვიური პაკეტი
       4. **Partnership Pro** (5,500 ₾/თვე) — სრული პრემიუმ პარტნიორობა
 
-      რომელი ფორმატი უფრო აინტერესებთ?“
+      რომელი ფორმატი უფრო გაინტერესებთ?“
+    - თუ მომხმარებელი აირჩევს „Solo / Creator Studio“-ს, გააცანი საათობრივი პაკეტი (150 ₾/სთ — 1 კამერა, მიკროფონი, განათება და საჩუქრად ტელესუფლიორი) და სთხოვე სახელი, გვარი და საკონტაქტო.
 
-    3️⃣ ნაბიჯი 3 — პაკეტის დაზუსტება + საკონტაქტოს მოთხოვნა:
-    - როდესაც მომხმარებელი აირჩევს კონკრეტულ პაკეტს (მაგ. RECORDING + EDITING / 300-იანი), მიეცი ამ პაკეტის მოკლე 1-2 წინადადებიანი შინაარსი და იქვე მოითხოვე საკონტაქტო:
+    3️⃣ ნაბიჯი 3 — პაკეტის დაზუსტება + სახელის, გვარის და საკონტაქტოს მოთხოვნა:
+    - როდესაც მომხმარებელი აირჩევს კონკრეტულ პაკეტს (მაგ. RECORDING + EDITING / 300-იანი ან საათობრივი ქირაობა), მიეცი ამ პაკეტის მოკლე 1-2 წინადადებიანი შინაარსი და იქვე სთხოვე სახელი, გვარი და საკონტაქტო:
       „ამ პაკეტში შედის 3-კამერიანი 4K ჩაწერა, პროფესიონალური ხმის დამუშავება, სრული ვიდეო მონტაჟი და ფერების კორექცია 🎬
 
-      დაგვიტოვეთ თქვენი საკონტაქტო: სახელი, გვარი, ტელეფონის ნომერი, ინსტაგრამი, ფეისბუქი ან მაილი.“
+      დაგვიტოვეთ თქვენი სახელი, გვარი და ტელეფონის ნომერი (ან ინსტაგრამი, ფეისბუქი, მაილი).“
 
-    4️⃣ კატეგორიული აკრძალვები:
+    4️⃣ ნაბიჯი 4 — საკონტაქტოს ან სახელ-გვარის დაწერის შემდეგ საუბრის გაგრძელება:
+    - როდესაც მომხმარებელი დაწერს თავის სახელს, გვარს ან საკონტაქტო ინფორმაციას (ნომერს, მაილს, სოც. ქსელს), **არ დაუმთავრო ლაპარაკი!**
+    - გაუგრძელე საუბარი მეგობრულად და დააკონკრეტებინე რა სურს:
+      • გამოჰკითხე, **პირველად წერს თუ უკვე აქვს ჩაწერები**, ან იქნებ **უბრალოდ სტუდიის საათობრივი ქირაობა** სჭირდება თავისი გადაღებისთვის.
+      • **თუ პირველად არის (ჯერ არ ჰქონია ჩაწერა):** თბილად გაამხნევე, უთხარი რომ ყველაფერში დავეხმარებით და **შესთავაზე 1-საათიანი უფასო ჩაწერა („პირველი დუბლი“)**, რათა უფასოდ მოსინჯოს სტუდია, კამერებთან მუშაობა, განათება და ხმა.
+      • **თუ უკვე აქვს გამოცდილება ან უბრალოდ სტუდიის ქირაობა უნდა:** გამოჰკითხე დეტალები (რა ტიპის გადაღებაა, რამდენი ადამიანი იქნება კადრში, რამდენი საათით სურს სტუდიის ქირაობა, რომელი დეკორი ან დრო აინტერესებს) და იხელმძღვანელე საათობრივი პაკეტებით.
+      • **თუ მომხმარებელი პირდაპირ მოითხოვს დარეკვას/დაკავშირებას („დამირეკე“, „დამიკავშირდი“):** თუ ნომერი და სახელი უკვე მოწერილი აქვს, დაუდასტურე რომ მონაცემები გადაცემულია და მალე დავუკავშირდებით (და იქვე შეგიძლია ჰკითხო მოკლედ, რა ფორმატი აინტერესებს); ხოლო თუ ნომერი ან სახელი ჯერ არ დაუწერია, სთხოვე სახელი, გვარი და ნომერი რომ მაშინვე დავურეკოთ.
+
+    5️⃣ დამატებითი წესები:
     - ნუ დაწერ სტუდიის ნომერს/მაილს/WhatsApp-ს, თუ მომხმარებელმა თავად არ იკითხა!
     - ნუ გამოიყენებ ოფიციალურ/ბიუროკრატიულ ფრაზებს: „გთხოვთ მიუთითოთ“.
     - კატეგორიულად აკრძალულია საუბრის შუაში მისალმების გამეორება ("გამარჯობა", "გამარჯობათ", "მოგესალმებით").
