@@ -3827,18 +3827,37 @@ let chatTranscriptTimer = null;
 let chatSessionCode = null;
 let chatSessionCodePromise = null;
 
+function loadSavedUserIdentity() {
+  try {
+    const savedCode = localStorage.getItem('studiolane_user_permanent_code');
+    if (savedCode) chatSessionCode = savedCode;
+    const savedName = localStorage.getItem('studiolane_user_saved_name');
+    if (savedName && !bookingData.name) bookingData.name = savedName;
+    const savedPhone = localStorage.getItem('studiolane_user_saved_phone');
+    if (savedPhone && !bookingData.phone) bookingData.phone = savedPhone;
+    const savedEmail = localStorage.getItem('studiolane_user_saved_email');
+    if (savedEmail && !bookingData.email) bookingData.email = savedEmail;
+  } catch (e) {}
+}
+loadSavedUserIdentity();
+
 function getLocalNextChatCode() {
   try {
+    const existing = localStorage.getItem('studiolane_user_permanent_code');
+    if (existing) return existing;
     const prev = parseInt(localStorage.getItem('studiolane_chat_code_seq') || '0', 10);
     const next = (isNaN(prev) ? 0 : prev) + 1;
+    const code = String(next).padStart(2, '0');
     localStorage.setItem('studiolane_chat_code_seq', String(next));
-    return String(next).padStart(2, '0');
+    localStorage.setItem('studiolane_user_permanent_code', code);
+    return code;
   } catch (e) {
     return '01';
   }
 }
 
 async function ensureChatSessionCode() {
+  loadSavedUserIdentity();
   if (chatSessionCode) return chatSessionCode;
   if (chatSessionCodePromise) return chatSessionCodePromise;
   chatSessionCode = getLocalNextChatCode();
@@ -3852,7 +3871,10 @@ async function ensureChatSessionCode() {
         const data = await res.json();
         if (data && typeof data.count === 'number' && data.count > 0) {
           chatSessionCode = String(data.count).padStart(2, '0');
-          try { localStorage.setItem('studiolane_chat_code_seq', String(data.count)); } catch (e) {}
+          try {
+            localStorage.setItem('studiolane_chat_code_seq', String(data.count));
+            localStorage.setItem('studiolane_user_permanent_code', chatSessionCode);
+          } catch (e) {}
         }
       }
     } catch (e) {}
@@ -3862,6 +3884,7 @@ async function ensureChatSessionCode() {
 }
 
 function formatCodeAndName() {
+  loadSavedUserIdentity();
   if (!chatSessionCode) {
     chatSessionCode = getLocalNextChatCode();
   }
@@ -4114,6 +4137,7 @@ function extractBookingEntities(text) {
   const detectedName = extractUserNameFromText(text);
   if (detectedName && (!bookingData.name || detectedName.split(' ').length >= bookingData.name.split(' ').length)) {
     bookingData.name = detectedName;
+    try { localStorage.setItem('studiolane_user_saved_name', bookingData.name); } catch (e) {}
   }
 
   // Extract Email
@@ -4122,6 +4146,7 @@ function extractBookingEntities(text) {
     bookingData.email = emailMatch[0];
     if (!bookingData.socialOrEmail) bookingData.socialOrEmail = emailMatch[0];
     if (!bookingData.contact) bookingData.contact = emailMatch[0];
+    try { localStorage.setItem('studiolane_user_saved_email', bookingData.email); } catch (e) {}
   }
 
   // Extract Phone Number (supports 5XX XX XX XX, 5XX XXX XXX, 5XXXXXXXX, +995..., 05XX...)
@@ -4129,6 +4154,7 @@ function extractBookingEntities(text) {
   if (phoneMatch) {
     bookingData.phone = phoneMatch[0].replace(/\s+/g, '');
     if (!bookingData.contact) bookingData.contact = bookingData.phone;
+    try { localStorage.setItem('studiolane_user_saved_phone', bookingData.phone); } catch (e) {}
   }
 
   // Extract Studio Type
