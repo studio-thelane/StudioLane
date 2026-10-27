@@ -4058,6 +4058,7 @@ const NON_NAME_CHAT_WORDS = new Set([
   'სტანდარტ','სტანდარტული','პრო','მონტაჟი','მონტაჟით','საათი','საათით','წუთი','კამერა','მიკროფონი','განათება',
   'ოპერატორი','დაჯავშნა','ჯავშანი','პირველად','ვარ','მე','ჩემი','სახელი','სახელია','გვარი','გვარია','ნომერი',
   'ტელეფონი','მეილი','მაილი','ინსტაგრამი','ფეისბუქი','უბრალოდ','მარტო','მხოლოდ','ეხლა','ახლა','როგორ','რამდენი',
+  'ვინ','ხარ','გქვია','ნიშნავს','რატომ','ჯუნი','ჯუნიორი','ასისტენტი','ბოტი','juni','junior',
   'podcast','studio','solo','creator','recording','editing','standard','partnership','live','select','custom',
   'decor','book','booking','yes','no','hello','hi','call','contact'
 ]);
@@ -4448,8 +4449,12 @@ async function callGemini(prompt) {
     const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
     
     const systemInstructionText = `
-    შენ ხარ Studio The Lane-ის გამოცდილი, მეგობრული და ემპათიური კონსულტანტი ჩათბოტში.
+    შენ ხარ ჯუნი (Juni) — Studio Lane-ის AI ასისტენტი და გამოცდილი, მეგობრული, ემპათიური კონსულტანტი ჩათბოტში.
     გამოიყენე ეს სტუდიის ინფორმაცია: ${studioInfo}.
+
+    შენი ვინაობა და სახელი:
+    - როდესაც მომხმარებელი გკითხავს „რა გქვია?“, „ვინ ხარ?“ ან მსგავს კითხვას, უპასუხე, რომ შენ ხარ **Studio Lane-ის AI ასისტენტი ჯუნი**.
+    - თუ ჩაგეკითხებიან „ჯუნი რას ნიშნავს?“, „რატომ ჯუნი?“ ან „რისი შემოკლებაა?“, უთხარი: **„ლუკა ჯუნიორი — შემოკლებით ჯუნი 😊“**.
 
     მნიშვნელოვანი ქცევითი წესები და პროგრესული საუბრის ლოგიკა:
 
@@ -4577,7 +4582,15 @@ async function botResponse(text) {
   }
 
   let r = "";
-  if (lowerText.includes('დაწყება') || lowerText.includes('იდეა') || lowerText.includes('პირველად') || lowerText.includes('როგორ დავიწყო')) {
+  if ((lowerText.includes('ჯუნი') || lowerText.includes('juni')) && (lowerText.includes('ნიშნავს') || lowerText.includes('რატომ') || lowerText.includes('რისი') || lowerText.includes('mean'))) {
+    r = lang === 'ka'
+      ? "ლუკა ჯუნიორი — შემოკლებით ჯუნი 😊"
+      : "Luka Junior — Juni for short 😊";
+  } else if (lowerText.includes('რა გქვია') || lowerText.includes('ვინ ხარ') || lowerText.includes('შენი სახელი') || lowerText.includes('your name') || lowerText.includes('who are you')) {
+    r = lang === 'ka'
+      ? "მე ვარ Studio Lane-ის AI ასისტენტი — ჯუნი 😊"
+      : "I am Studio Lane's AI assistant — Juni 😊";
+  } else if (lowerText.includes('დაწყება') || lowerText.includes('იდეა') || lowerText.includes('პირველად') || lowerText.includes('როგორ დავიწყო')) {
     r = lang === 'ka' 
       ? "თუ პოდკასტის დაწყებას ახლა გეგმავ, შეგიძლია ჯერ მოხვიდე, გაიარო უფასო კონსულტაცია და ადგილზე უფასოდ სცადო ჩაწერა. დაკავშირება შეგიძლიათ ოთხივე საშუალებით (სურვილისამებრ):\n1. ონლაინ დაჯავშნა ჩათშივე (მოწერეთ 'დაჯავშნა')\n2. დარეკვა: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. ელ-ფოსტა: podcast@studiolane.ge"
       : "If you're planning to start a podcast, you can visit us for a free consultation and try a test recording. You can contact us via any of these 4 options:\n1. Book in chat (type 'book')\n2. Call: +995 577 11 43 55\n3. WhatsApp: +995 577 11 43 55\n4. Email: podcast@studiolane.ge";
