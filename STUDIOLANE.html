@@ -608,6 +608,10 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
   line-height: 1.1;
   margin: 2px 0;
 }
+.port-zoom-overlay .port-by {
+  opacity: 1;
+  transform: none;
+}
 .port-zoom-close {
   position: absolute;
   top: 16px;
@@ -1711,7 +1715,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   <div class="divider"></div>
   
   <div class="port-grid horizontal-track">
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(0)">
       <img loading="lazy" src="BIBLUSI TALKS.webp" alt="Biblusi Talks">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
@@ -1719,7 +1723,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
         <span class="port-by">by ბიბლუსი</span>
       </div>
     </div>
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(1)">
       <img loading="lazy" src="ჩცდ Rewatch.webp" alt="ჩცდ Rewatch">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
@@ -1727,14 +1731,14 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
         <span class="port-by">by Cavea</span>
       </div>
     </div>
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(2)">
       <img loading="lazy" src="LAI LAI LIVE.webp" alt="ლაი ლაი Live">
       <div class="port-info">
         <span class="port-cat">LIVE SHOW</span>
         <h3 class="port-name">ლაი ლაი World Cup Live</h3>
       </div>
     </div>
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(3)">
       <img loading="lazy" src="Podcast_Studio_photo/AA POKER PODCAST_2K_.webp" alt="AA POKER PODCAST">
       <div class="port-info">
         <span class="port-cat">PERSONAL</span>
@@ -1742,7 +1746,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
         <span class="port-by">პოდკასტი პოკერის შესახებ</span>
       </div>
     </div>
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(4)">
       <img loading="lazy" src="Beauty Talks.webp" alt="Beauty Talks">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
@@ -1750,7 +1754,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
         <span class="port-by">by Natalli Group</span>
       </div>
     </div>
-    <div class="port-card">
+    <div class="port-card" onclick="openForegroundZoom(5)">
       <img loading="lazy" src="Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.webp" alt="EEU PODCAST">
       <div class="port-info">
         <span class="port-cat">PODCAST</span>
@@ -4838,6 +4842,47 @@ function updateLaneGalleryUI() {
   });
 }
 
+const foregroundProjects = [
+  { img: 'BIBLUSI TALKS.webp', title: 'Biblusi Talks', cat: 'PODCAST', by: 'by ბიბლუსი' },
+  { img: 'ჩცდ Rewatch.webp', title: 'ჩცდ Rewatch', cat: 'PODCAST', by: 'by Cavea' },
+  { img: 'LAI LAI LIVE.webp', title: 'ლაი ლაი World Cup Live', cat: 'LIVE SHOW', by: '' },
+  { img: 'Podcast_Studio_photo/AA POKER PODCAST_2K_.webp', title: 'AA POKER PODCAST', cat: 'PERSONAL', by: 'პოდკასტი პოკერის შესახებ' },
+  { img: 'Beauty Talks.webp', title: 'Beauty Talks', cat: 'PODCAST', by: 'by Natalli Group' },
+  { img: 'Podcast_Studio_photo/EEU PODCAST_2K_20260926032433.webp', title: 'EEU PODCAST', cat: 'PODCAST', by: 'აღმოსავლეთ ევროპის უნივერსიტეტის პოდკასტი' }
+];
+let activeFgIndex = 0;
+
+function openForegroundZoom(index) {
+  activeZoomMode = 'portfolio';
+  activeFgIndex = index;
+  renderForegroundZoom();
+  const backdrop = document.getElementById('port-backdrop');
+  const box = document.getElementById('port-zoom-box');
+  if (backdrop) backdrop.classList.add('open');
+  if (box) box.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderForegroundZoom() {
+  const item = foregroundProjects[activeFgIndex];
+  const imgEl = document.getElementById('port-zoom-img');
+  const pBar = document.getElementById('modal-progress-bar');
+  if (pBar) pBar.style.display = 'none';
+  if (imgEl && item) {
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      imgEl.src = item.img;
+      const catEl = document.getElementById('port-zoom-cat');
+      const titleEl = document.getElementById('port-zoom-title');
+      const byEl = document.getElementById('port-zoom-by');
+      if (catEl) catEl.textContent = item.cat;
+      if (titleEl) titleEl.textContent = item.title;
+      if (byEl) byEl.textContent = item.by || '';
+      imgEl.style.opacity = '1';
+    }, 100);
+  }
+}
+
 function closeForegroundZoom() {
   const backdrop = document.getElementById('port-backdrop');
   const box = document.getElementById('port-zoom-box');
@@ -4854,6 +4899,9 @@ function nextForegroundZoom(e) {
   } else if (activeZoomMode === 'spaces') {
     activeBookIndex = (activeBookIndex + 1) % studioSpacesPhotos.length;
     renderBookZoomPhoto();
+  } else {
+    activeFgIndex = (activeFgIndex + 1) % foregroundProjects.length;
+    renderForegroundZoom();
   }
 }
 
