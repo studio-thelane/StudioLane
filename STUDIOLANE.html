@@ -24,13 +24,15 @@
 <script type="text/javascript">
     // Automatic Mobile Redirect & Clean URL Masking
     (function() {
+      var suffix = (window.location.search || '') + (window.location.hash || '');
+      window.__initialHash = window.location.hash || '';
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (isMobile) {
-        window.location.replace("SVWEB.html");
+        window.location.replace("SVWEB.html" + suffix);
       } else {
         try {
-          if (window.history && window.history.replaceState) {
-            window.history.replaceState(null, '', '/');
+          if (window.history && window.history.replaceState && window.location.protocol !== 'file:') {
+            window.history.replaceState(null, '', '/' + suffix);
           }
         } catch(e) {}
       }
@@ -1588,7 +1590,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
   <ul class="nav-links">
     <li><a href="#segments" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
     <li><a href="javascript:void(0)" onclick="openAboutModal()" data-ka="ჩვენს შესახებ" data-en="About" style="white-space:nowrap">ჩვენს შესახებ</a></li>
-    <li><a href="#book" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
+    <li><a href="#gallery-section" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
     <li><a href="portfolio.html" data-ka="ნამუშევრები" data-en="Portfolio">ნამუშევრები</a></li>
     <li><a href="javascript:void(0)" onclick="openDirectContactModal()" class="nav-book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
   </ul>
@@ -2574,6 +2576,10 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     const modal = document.getElementById('about-modal');
     if (modal) modal.classList.remove('open');
     document.body.style.overflow = '';
+    window.__initialHash = '';
+    if (window.location.hash === '#about' && window.history && window.history.replaceState) {
+      try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch(e) {}
+    }
   }
 
   function closeAboutModalBg(e) {
@@ -5001,7 +5007,27 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    window.addEventListener('load', () => ScrollTrigger.refresh());
+    function handleInitialHashNavigation() {
+      const rawHash = window.location.hash || window.__initialHash || '';
+      if (!rawHash) return;
+      if (rawHash === '#about') {
+        if (typeof openAboutModal === 'function') openAboutModal();
+      } else {
+        try {
+          const targetEl = document.querySelector(rawHash);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch(e) {}
+      }
+    }
+
+    setTimeout(handleInitialHashNavigation, 120);
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+      setTimeout(handleInitialHashNavigation, 150);
+    });
+    window.addEventListener('hashchange', handleInitialHashNavigation);
     console.log("[+] GSAP Animations successfully initialized on Desktop!");
   } else {
     console.warn("[!] GSAP or ScrollTrigger libraries are missing.");

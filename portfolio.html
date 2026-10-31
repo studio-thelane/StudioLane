@@ -103,11 +103,40 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 .foot-bottom { background:var(--black); padding:20px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; position: relative; z-index: 1;}
 .foot-bottom p { font-size:11px; color:var(--muted); }
 
+.mobile-nav-toggle { display:none; background:none; border:none; color:var(--white); font-size:28px; cursor:pointer; z-index:1010; outline:none; line-height:1; }
+.menu-backdrop { display:none; position:fixed; inset:0; background:rgba(10, 10, 15, 0.7); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); z-index:995; }
+.menu-backdrop.active { display:block; }
+
 @media(max-width:900px) {
   html, body { width: 100%; max-width: 100vw; overflow-x: hidden; position: relative; }
-  nav { padding:14px 16px; width: 100%; max-width: 100vw; box-sizing: border-box; }
-  .nav-links { display:none; }
-  .lang-toggle { top:16px; right:16px; padding:3px; }
+  nav { padding:14px 16px; width: 100%; max-width: 100vw; box-sizing: border-box; z-index: 1005; }
+  .mobile-nav-toggle { display:block; }
+  .nav-links { 
+    display:none; 
+    flex-direction:column; 
+    position:fixed; 
+    top:0; 
+    right:0; 
+    left:auto;
+    width:70%; 
+    max-width:260px; 
+    min-height:100vh;
+    height:100vh;
+    background: rgba(10, 10, 15, 0.85); 
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-left:1px solid var(--border); 
+    padding:85px 24px 30px; 
+    gap:22px; 
+    list-style:none;
+    z-index: 1010; 
+    box-shadow:-10px 0 40px rgba(0,0,0,0.8); 
+    align-items: stretch;
+  }
+  .nav-links.active { display:flex; }
+  .nav-links a { color:#ffffff !important; font-size:15px; font-weight:700; letter-spacing:1px; display:block; }
+  .nav-book { text-align:center; }
+  .lang-toggle { top:14px; right:56px; padding:3px; z-index:1006; }
   .lang-btn { padding:4px 10px; font-size:11px; }
   #portfolio-page { padding: 90px 16px 40px; width: 100%; max-width: 100vw; box-sizing: border-box; overflow-x: hidden; }
   .port-header { margin-bottom: 28px; width: 100%; max-width: 100%; }
@@ -129,6 +158,8 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
 </head>
 <body>
 
+<div class="menu-backdrop" id="menu-backdrop" onclick="toggleMobileMenu()"></div>
+
 <div class="lang-toggle">
   <button class="lang-btn active" onclick="setLang('ka')" id="btn-ka">KA</button>
   <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
@@ -139,12 +170,13 @@ footer { background:var(--black); padding:60px; border-top:1px solid var(--borde
     <div class="logo-bars"><span></span><span></span></div>
     <div class="logo-text">STUDIO <em>Lane</em></div>
   </a>
+  <button class="mobile-nav-toggle" onclick="toggleMobileMenu(event)" aria-label="მენიუ">☰</button>
   <ul class="nav-links">
-    <li><a href="index.html#segments" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
-    <li><a href="about.html" data-ka="ჩვენს შესახებ" data-en="About">ჩვენს შესახებ</a></li>
-    <li><a href="index.html#gallery" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
-    <li><a href="portfolio.html" style="color:var(--white);" data-ka="ნამუშევრები" data-en="Portfolio">ნამუშევრები</a></li>
-    <li><a href="index.html" class="nav-book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
+    <li><a href="index.html#segments" onclick="closeMobileMenu()" data-ka="მომსახურება" data-en="Services">მომსახურება</a></li>
+    <li><a href="index.html#about" onclick="closeMobileMenu()" data-ka="ჩვენს შესახებ" data-en="About">ჩვენს შესახებ</a></li>
+    <li><a href="index.html#gallery-section" onclick="closeMobileMenu()" data-ka="გალერეა" data-en="Gallery">გალერეა</a></li>
+    <li><a href="portfolio.html" onclick="closeMobileMenu()" style="color:var(--white);" data-ka="ნამუშევრები" data-en="Portfolio">ნამუშევრები</a></li>
+    <li><a href="index.html#book" onclick="closeMobileMenu()" class="nav-book" data-ka="დაჯავშნა" data-en="Book Now">დაჯავშნა</a></li>
   </ul>
 </nav>
 
@@ -325,7 +357,39 @@ function closeYoutubeModal() {
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeYoutubeModal(); });
+function toggleMobileMenu(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
+  const navLinks = document.querySelector('.nav-links');
+  const backdrop = document.getElementById('menu-backdrop');
+  if (navLinks) {
+    const isOpen = navLinks.classList.toggle('active');
+    if (backdrop) backdrop.classList.toggle('active', isOpen);
+  }
+}
+
+function closeMobileMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  const backdrop = document.getElementById('menu-backdrop');
+  if (navLinks) navLinks.classList.remove('active');
+  if (backdrop) backdrop.classList.remove('active');
+}
+
+document.addEventListener('click', function(e) {
+  const navLinks = document.querySelector('.nav-links');
+  const toggleBtn = document.querySelector('.mobile-nav-toggle');
+  if (navLinks && navLinks.classList.contains('active')) {
+    if (!navLinks.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+      closeMobileMenu();
+    }
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeYoutubeModal();
+    closeMobileMenu();
+  }
+});
 
 // Reveal animation on scroll
 const obs=new IntersectionObserver(entries=>{

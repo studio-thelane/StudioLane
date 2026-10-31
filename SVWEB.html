@@ -23,9 +23,11 @@
 <script type="text/javascript">
   // Clean URL Masking for Mobile
   (function(){
+    var suffix = (window.location.search || '') + (window.location.hash || '');
+    window.__initialHash = window.location.hash || '';
     try {
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', '/');
+      if (window.history && window.history.replaceState && window.location.protocol !== 'file:') {
+        window.history.replaceState(null, '', '/' + suffix);
       }
     } catch(e) {}
   })();
@@ -3921,12 +3923,18 @@ function pushModalHistoryState() {
 
 window.addEventListener('popstate', function(e) {
   const modalBg = document.getElementById('modal-bg');
+  const aboutModal = document.getElementById('about-modal');
   const portBackdrop = document.getElementById('port-backdrop');
   const portZoomBox = document.getElementById('port-zoom-box');
   const navLinks = document.querySelector('.nav-links');
+  const menuBackdrop = document.getElementById('menu-backdrop');
 
   if (modalBg && modalBg.classList.contains('open')) {
     modalBg.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (aboutModal && aboutModal.classList.contains('open')) {
+    aboutModal.classList.remove('open');
     document.body.style.overflow = '';
   }
   if (portBackdrop && portBackdrop.classList.contains('open')) {
@@ -3936,6 +3944,7 @@ window.addEventListener('popstate', function(e) {
   }
   if (navLinks && navLinks.classList.contains('active')) {
     navLinks.classList.remove('active');
+    if (menuBackdrop) menuBackdrop.classList.remove('active');
   }
 
   pushedModalState = false;
@@ -4263,6 +4272,10 @@ function closeAboutModal() {
   const modal = document.getElementById('about-modal');
   if (modal) modal.classList.remove('open');
   document.body.style.overflow = '';
+  window.__initialHash = '';
+  if (window.location.hash === '#about' && window.history && window.history.replaceState) {
+    try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch(e) {}
+  }
 }
 
 function closeAboutModalBg(e) {
@@ -5675,6 +5688,28 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     ScrollTrigger.refresh();
+
+    function handleInitialHashNavigation() {
+      const rawHash = window.location.hash || window.__initialHash || '';
+      if (!rawHash) return;
+      if (rawHash === '#about') {
+        if (typeof openAboutModal === 'function') openAboutModal();
+      } else {
+        try {
+          const targetEl = document.querySelector(rawHash);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch(e) {}
+      }
+    }
+
+    setTimeout(handleInitialHashNavigation, 120);
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+      setTimeout(handleInitialHashNavigation, 150);
+    });
+    window.addEventListener('hashchange', handleInitialHashNavigation);
     
     console.log("[+] GSAP Animations successfully initialized on Native Scroll!");
   } else {
