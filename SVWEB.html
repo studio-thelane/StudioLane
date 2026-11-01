@@ -8,7 +8,17 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JL7PSGB16W');
+  var initialReferrer = null;
+  try {
+    initialReferrer = sessionStorage.getItem('sl_initial_referrer');
+    sessionStorage.removeItem('sl_initial_referrer');
+  } catch (e) {}
+
+  if (initialReferrer) {
+    gtag('config', 'G-JL7PSGB16W', { page_referrer: initialReferrer });
+  } else {
+    gtag('config', 'G-JL7PSGB16W');
+  }
 </script>
 <meta charset="UTF-8">
 <title>Studio Lane — პოდკასტ და კონტენტ სტუდია თბილისში</title>
