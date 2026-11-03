@@ -2821,7 +2821,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     <!-- CUSTOM SUCCESS SCREEN WITH DYNAMIC PAYMENT & QR -->
     <div id="custom-success-screen">
       <div class="success-icon pending-color">⏳</div>
-      <h3 class="success-title">ჯავშანი მიღებულია! (PENDING)</h3>
+      <h3 class="success-title">განაცხადი გაგზავნილია! (PENDING)</h3>
       <h4 class="payment-title">ჯავშნის დასადასტურებლად:</h4>
       <p class="success-text">
         გთხოვთ 1 საათის განმავლობაში ჩარიცხოთ ჯავშნის გადასახადი. <br>
@@ -3784,7 +3784,7 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
         ჯავშანი მიღებულია!
       </h2>
       <p style="font-size:14px; color:var(--orange); font-weight:600; margin:0 0 20px 0;">
-        დაგიკავშირდებით უახლოეს 5 წუთში.
+        ჯავშნის ხელმისაწვდომობას გუნდი გადაამოწმებს და დაგიკავშირდებათ.
       </p>
 
       <!-- CLEAN WHATSAPP FAST SEND BUTTON WITHOUT RECTANGLE WRAPPER -->
@@ -3804,7 +3804,17 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
   document.getElementById('modal-body').innerHTML = html;
 }
 
-function handleModalFormSubmit(e, finalTotalPrice) {
+async function handleModalFormSubmit(e, finalTotalPrice) {
+  // Cancel the native POST synchronously; this request is sent only once via AJAX.
+  if (e) e.preventDefault();
+  const formEl = e && e.currentTarget ? e.currentTarget : document.getElementById('decor-app-form');
+  if (!formEl || formEl.dataset.submitting === 'true') return false;
+  const modalBody = formEl.parentElement;
+  const summaryEl = modalBody.querySelector('#decor-summary-price');
+  const successBox = modalBody.querySelector('#m-success-box');
+  const submitButton = formEl.querySelector('button[type="submit"]');
+  const isKa = lang === 'ka';
+
   const elFname = document.getElementById('m-fname');
   const elLname = document.getElementById('m-lname');
   const elPhone = document.getElementById('m-phone');
@@ -3867,21 +3877,19 @@ function handleModalFormSubmit(e, finalTotalPrice) {
   const waLinkEl = document.getElementById('wa-fast-link');
   if (waLinkEl) waLinkEl.href = waUrl;
 
-  // Direct EmailJS send execution using user credentials
-  const templateParams = {
-    fname: fname,
-    lname: lname,
-    phone: phone,
-    email: email,
-    package: selectedPackageTier,
-    duration: selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
-    decor: `${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})`,
-    total_price: `${finalTotalPrice} ₾`
-  };
-
+  formEl.dataset.submitting = 'true';
+  formEl.setAttribute('aria-busy', 'true');
+  const buttonText = submitButton ? submitButton.textContent : '';
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = isKa ? 'იგზავნება…' : 'Sending…';
+  }
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 20000);
   try {
-    fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+    const response = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
       method: "POST",
+      signal: controller.signal,
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({
         _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
@@ -3895,20 +3903,35 @@ function handleModalFormSubmit(e, finalTotalPrice) {
         "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
         "ჯამური_ფასი": finalTotalPrice + ' ₾'
       })
-    }).catch(err => console.error("Modal FormSubmit error:", err));
-  } catch(e){}
-
-  // Hide form and summary box, display success box inline in the same modal view
-  setTimeout(() => {
-    const formEl = document.getElementById('decor-app-form');
-    const summaryEl = document.getElementById('decor-summary-price');
-    if (formEl) formEl.style.display = 'none';
-    if (summaryEl) summaryEl.style.display = 'none';
-    const successBox = document.getElementById('m-success-box');
-    if (successBox) successBox.style.display = 'block';
-  }, 100);
-
-  return true; // Form submits natively into hidden_mail_iframe
+    });
+    const result = await response.json();
+    if (!response.ok || !result || (result.success !== true && result.success !== 'true')) {
+      throw new Error('Submission not acknowledged');
+    }
+    // Only update the original form, even if another modal was opened meanwhile.
+    if (formEl.isConnected) {
+      formEl.style.display = 'none';
+      if (summaryEl) summaryEl.style.display = 'none';
+      if (successBox) successBox.style.display = 'block';
+    }
+  } catch (error) {
+    if (formEl.isConnected && errorMsgBox) {
+      errorMsgBox.setAttribute('role', 'alert');
+      errorMsgBox.textContent = isKa
+        ? 'გაგზავნა ვერ დადასტურდა. მონაცემები შენარჩუნებულია. სცადეთ ხელახლა ან დაგვიკავშირდით: +995 577 11 43 55.'
+        : 'We could not confirm submission. Your details are preserved. Please retry or call +995 577 11 43 55.';
+      errorMsgBox.style.display = 'block';
+    }
+  } finally {
+    clearTimeout(timeoutId);
+    delete formEl.dataset.submitting;
+    formEl.removeAttribute('aria-busy');
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = buttonText;
+    }
+  }
+  return false;
 }
 
 function showFormError(msg) {
