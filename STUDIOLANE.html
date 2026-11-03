@@ -3622,8 +3622,9 @@ async function handleModalFormSubmit(e, finalTotalPrice) {
     const response = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
       method: "POST",
       signal: controller.signal,
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
+      // URL-encoded form data avoids the failing JSON preflight.
+      headers: { "Accept": "application/json" },
+      body: new URLSearchParams({
         _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
         _template: "table",
         "სახელი": fname,
