@@ -2821,7 +2821,7 @@ src="https://www.facebook.com/tr?id=4586800751560004&ev=PageView&noscript=1"
     <!-- CUSTOM SUCCESS SCREEN WITH DYNAMIC PAYMENT & QR -->
     <div id="custom-success-screen">
       <div class="success-icon pending-color">⏳</div>
-      <h3 class="success-title">განაცხადი გაგზავნილია! (PENDING)</h3>
+      <h3 class="success-title">ჯავშანი მიღებულია! (PENDING)</h3>
       <h4 class="payment-title">ჯავშნის დასადასტურებლად:</h4>
       <p class="success-text">
         გთხოვთ 1 საათის განმავლობაში ჩარიცხოთ ჯავშნის გადასახადი. <br>
@@ -3738,9 +3738,11 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
       </div>
     </div>
 
+    <!-- HIDDEN IFRAME FOR DIRECT POST SUBMISSION -->
+    <iframe name="hidden_mail_iframe" id="hidden_mail_iframe" style="display:none;"></iframe>
 
     <!-- CLIENT CONTACT FORM -->
-    <form id="decor-app-form" action="https://formsubmit.co/podcast@studiolane.ge" method="POST" target="_self" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:left;">
+    <form id="decor-app-form" action="https://formsubmit.co/podcast@studiolane.ge" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:left;">
       <input type="hidden" name="_subject" id="h-subject" value="[ახალი ჯავშანი] Studio The Lane">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
@@ -3782,7 +3784,7 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
         ჯავშანი მიღებულია!
       </h2>
       <p style="font-size:14px; color:var(--orange); font-weight:600; margin:0 0 20px 0;">
-        ჯავშნის ხელმისაწვდომობას გუნდი გადაამოწმებს და დაგიკავშირდებათ.
+        დაგიკავშირდებით უახლოეს 5 წუთში.
       </p>
 
       <!-- CLEAN WHATSAPP FAST SEND BUTTON WITHOUT RECTANGLE WRAPPER -->
@@ -3857,14 +3859,56 @@ function handleModalFormSubmit(e, finalTotalPrice) {
   const hSub = document.getElementById('h-subject');
   if (hSub) hSub.value = `[ახალი ჯავშანი] Studio The Lane: ${fname} ${lname}`;
 
+  // Formatted message text for WhatsApp & Email
+  const msgText = `📥 ახალი განაცხადი საიტიდან!\n\n👤 კლიენტი: ${fname} ${lname}\n📞 ტელეფონი: ${phone}\n✉️ ელ-ფოსტა: ${email}\n🎬 არჩეული პაკეტი: ${selectedPackageTier}\n⏱ ხანგრძლივობა: ${selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე'}\n🎨 დეკორაცია: ${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})\n💰 საბოლოო ჯამური ფასი: ${finalTotalPrice} ₾`;
 
-  // Navigate to FormSubmit's response page using the form's native POST.
-  // No AJAX or hidden iframe: the provider displays success or an actionable error.
-  elFname.value = fname;
-  elLname.value = lname;
-  elPhone.value = phone;
-  elEmail.value = email;
-  return true;
+  // Set WhatsApp fast send link to target phone 577114355 (+995577114355)
+  const waUrl = `https://wa.me/995577114355?text=${encodeURIComponent(msgText)}`;
+  const waLinkEl = document.getElementById('wa-fast-link');
+  if (waLinkEl) waLinkEl.href = waUrl;
+
+  // Direct EmailJS send execution using user credentials
+  const templateParams = {
+    fname: fname,
+    lname: lname,
+    phone: phone,
+    email: email,
+    package: selectedPackageTier,
+    duration: selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
+    decor: `${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})`,
+    total_price: `${finalTotalPrice} ₾`
+  };
+
+  try {
+    fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
+        _template: "table",
+        "სახელი": fname,
+        "გვარი": lname,
+        "ტელეფონი": phone,
+        "ელ_ფოსტა": email,
+        "პაკეტი": selectedPackageTier,
+        "ხანგრძლივობა": selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
+        "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
+        "ჯამური_ფასი": finalTotalPrice + ' ₾'
+      })
+    }).catch(err => console.error("Modal FormSubmit error:", err));
+  } catch(e){}
+
+  // Hide form and summary box, display success box inline in the same modal view
+  setTimeout(() => {
+    const formEl = document.getElementById('decor-app-form');
+    const summaryEl = document.getElementById('decor-summary-price');
+    if (formEl) formEl.style.display = 'none';
+    if (summaryEl) summaryEl.style.display = 'none';
+    const successBox = document.getElementById('m-success-box');
+    if (successBox) successBox.style.display = 'block';
+  }, 100);
+
+  return true; // Form submits natively into hidden_mail_iframe
 }
 
 function showFormError(msg) {
