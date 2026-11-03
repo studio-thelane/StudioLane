@@ -3474,10 +3474,11 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
     <iframe name="hidden_mail_iframe" id="hidden_mail_iframe" style="display:none;"></iframe>
 
     <!-- CLIENT CONTACT FORM -->
-    <form id="decor-app-form" action="https://formsubmit.co/podcast@studiolane.ge" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:24px; border-radius:12px; text-align:left;">
-      <input type="hidden" name="_subject" id="h-subject" value="[ახალი ჯავშანი] Studio The Lane">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
+    <form id="decor-app-form" action="https://api.web3forms.com/submit" method="POST" target="hidden_mail_iframe" onsubmit="return handleModalFormSubmit(event, ${finalTotalPrice})" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:24px; border-radius:12px; text-align:left;">
+      <input type="hidden" name="access_key" value="5f8abec8-a873-4463-82a9-cfa8234b43e1">
+      <input type="hidden" name="subject" id="h-subject" value="[ახალი ჯავშანი] Studio The Lane">
+      <input type="hidden" name="from_name" value="Studio The Lane Website">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
       <input type="hidden" name="არჩეული_პაკეტი" value="${selectedPackageTier}">
       <input type="hidden" name="ხანგრძლივობა" value="${selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე'}">
       <input type="hidden" name="დეკორაცია" value="${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})">
@@ -3612,12 +3613,13 @@ function handleModalFormSubmit(e, finalTotalPrice) {
   };
 
   try {
-    fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+    fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({
-        _subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
-        _template: "table",
+        access_key: "5f8abec8-a873-4463-82a9-cfa8234b43e1",
+        subject: "[ახალი განაცხადი საიტიდან] Studio The Lane: " + fname + " " + lname,
+        from_name: fname + " " + lname,
         "სახელი": fname,
         "გვარი": lname,
         "ტელეფონი": phone,
@@ -3627,7 +3629,7 @@ function handleModalFormSubmit(e, finalTotalPrice) {
         "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
         "ჯამური_ფასი": finalTotalPrice + ' ₾'
       })
-    }).catch(err => console.error("Modal FormSubmit error:", err));
+    }).catch(err => console.error("Modal Web3Forms error:", err));
   } catch(e){}
 
   // Hide form and summary box, display success box inline in the same modal view
@@ -3794,7 +3796,7 @@ let chatState = 'idle';
 let bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '' };
 let isSubmittingBooking = false;
 
-const GEMINI_API_KEY = typeof atob === 'function' ? atob('QVEuQWI4Uk42STB6MzV0amNHd3J2M3Z4ekRtUDhBZ2NWaldJeDAzMmtpb3g2S3pQSFc0aVE=') : '';
+const GEMINI_API_KEY = '';
 
 // Studio Knowledge Base
 const studioInfo = `
@@ -3956,8 +3958,9 @@ async function flushChatTranscriptEmail(reason = 'ჩათის დახუ�
     .join(' | ');
 
   const payload = {
-    _subject: `${codeAndName} — Studio The Lane`,
-    _template: "table",
+    access_key: "5f8abec8-a873-4463-82a9-cfa8234b43e1",
+    subject: `[ჩათის ისტორია / დაკავშირება] ${codeAndName}`,
+    from_name: "The Lane Chatbot",
     "კოდი_და_სახელი": codeAndName,
     "გაგზავნის_მიზეზი": reason,
     "ამოცნობილი_ტელეფონი": bookingData.phone || "იხილეთ დიალოგში",
@@ -3968,7 +3971,7 @@ async function flushChatTranscriptEmail(reason = 'ჩათის დახუ�
   };
 
   try {
-    await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+    await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       keepalive: true,
       headers: {
@@ -3978,7 +3981,7 @@ async function flushChatTranscriptEmail(reason = 'ჩათის დახუ�
       body: JSON.stringify(payload)
     });
   } catch (err) {
-    console.error("FormSubmit Chat Transcript Error:", err);
+    console.error("Web3Forms Chat Transcript Error:", err);
   }
 }
 
@@ -4445,8 +4448,9 @@ async function dispatchBookingEmailJS() {
   const codeAndName = formatCodeAndName();
 
   const payload = {
-    _subject: `${codeAndName} — [სრული ჯავშანი] Studio The Lane`,
-    _template: "table",
+    access_key: "5f8abec8-a873-4463-82a9-cfa8234b43e1",
+    subject: `${codeAndName} — [სრული ჯავშანი ჩათიდან] Studio The Lane`,
+    from_name: "The Lane Chatbot",
     "კოდი_და_სახელი": codeAndName,
     "საკონტაქტო_ინფო": bookingData.contact || bookingData.phone || bookingData.email || bookingData.name || "N/A",
     "მომსახურება": bookingData.service || bookingData.studioType || "N/A",
@@ -4461,7 +4465,7 @@ async function dispatchBookingEmailJS() {
   addChatMsg(sendingMsg, 'bot');
 
   try {
-    const res = await fetch("https://formsubmit.co/ajax/podcast@studiolane.ge", {
+    const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -4470,9 +4474,9 @@ async function dispatchBookingEmailJS() {
       body: JSON.stringify(payload)
     });
     const resData = await res.json();
-    console.log("FormSubmit Final Booking Response:", resData);
+    console.log("Web3Forms Final Booking Response:", resData);
   } catch (err) {
-    console.error("FormSubmit Final Booking Error:", err);
+    console.error("Web3Forms Final Booking Error:", err);
   }
 
   const finalNotice = isKa 
