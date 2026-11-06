@@ -3537,7 +3537,12 @@ function openContactFormView(key, tierName, basePrice, hours, decorName, decorPr
   document.getElementById('modal-body').innerHTML = html;
 }
 
-function handleModalFormSubmit(e, finalTotalPrice) {
+async function handleModalFormSubmit(e, finalTotalPrice) {
+  if (e) e.preventDefault();
+  const formEl = e && e.currentTarget ? e.currentTarget : document.getElementById('decor-app-form');
+  if (!formEl || formEl.dataset.submitting === 'true') return false;
+  const summaryEl = document.getElementById('decor-summary-price');
+  const successBox = document.getElementById('m-success-box');
   const elFname = document.getElementById('m-fname');
   const elLname = document.getElementById('m-lname');
   const elPhone = document.getElementById('m-phone');
@@ -3600,20 +3605,28 @@ function handleModalFormSubmit(e, finalTotalPrice) {
   const waLinkEl = document.getElementById('wa-fast-link');
   if (waLinkEl) waLinkEl.href = waUrl;
 
-  // Direct EmailJS send execution using user credentials
-  const templateParams = {
-    fname: fname,
-    lname: lname,
-    phone: phone,
-    email: email,
-    package: selectedPackageTier,
-    duration: selectedPackageType === 'hourly' ? selectedHours + ' საათი' : '1 თვე',
-    decor: `${selectedDecorName} (${selectedDecorPrice > 0 ? '+' + selectedDecorPrice + ' ₾' : 'უფასო'})`,
-    total_price: `${finalTotalPrice} ₾`
-  };
-
+  const submitButton = formEl.querySelector('button[type="submit"]');
+  const originalLabel = submitButton ? submitButton.textContent : '';
+  formEl.dataset.submitting = 'true';
+  formEl.setAttribute('aria-busy', 'true');
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'იგზავნება...';
+  }
+  const controller = new AbortController();
+  let timer;
+  let expired = false;
+  const timeout = new Promise((resolve, reject) => {
+    timer = setTimeout(() => {
+      expired = true;
+      controller.abort();
+      reject(new Error('Booking confirmation timeout'));
+    }, 10000);
+  });
   try {
-    fetch("https://api.web3forms.com/submit", {
+    const request = (async () => {
+      const response = await fetch("https://api.web3forms.com/submit", {
+      signal: controller.signal,
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({
@@ -3629,20 +3642,98 @@ function handleModalFormSubmit(e, finalTotalPrice) {
         "დეკორაცია": selectedDecorName + (selectedDecorPrice > 0 ? ' (+' + selectedDecorPrice + ' ₾)' : ' (უფასო)'),
         "ჯამური_ფასი": finalTotalPrice + ' ₾'
       })
-    }).catch(err => console.error("Modal Web3Forms error:", err));
-  } catch(e){}
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true) throw new Error('Booking rejected');
+      return result;
+    })();
+    await Promise.race([request, timeout]);
+    if (formEl.isConnected) {
+      formEl.style.display = 'none';
+      if (summaryEl) summaryEl.style.display = 'none';
+      if (successBox) successBox.style.display = 'block';
+    }
+  } catch (err) {
+    if (formEl.isConnected) {
+      const message = expired
+        ? 'შეფერხებაა: 10 წამში გაგზავნა ვერ დადასტურდა. შესაძლოა განაცხადი მიღებულია. მონაცემები შენარჩუნებულია — სცადეთ ხელახლა ან დაგვიკავშირდით ქვემოთ.'
+        : 'გაგზავნა ვერ დადასტურდა. მონაცემები შენარჩუნებულია — სცადეთ ხელახლა ან დაგვიკავშირდით ქვემოთ.';
+      showModalBookingFallback(errorMsgBox, message, waUrl, msgText, waLinkEl);
+    }
+  } finally {
+    clearTimeout(timer);
+    formEl.dataset.submitting = 'false';
+    formEl.removeAttribute('aria-busy');
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+    }
+  }
+  return false;
+}
 
-  // Hide form and summary box, display success box inline in the same modal view
-  setTimeout(() => {
-    const formEl = document.getElementById('decor-app-form');
-    const summaryEl = document.getElementById('decor-summary-price');
-    if (formEl) formEl.style.display = 'none';
-    if (summaryEl) summaryEl.style.display = 'none';
-    const successBox = document.getElementById('m-success-box');
-    if (successBox) successBox.style.display = 'block';
-  }, 100);
 
-  return true; // Form submits natively into hidden_mail_iframe
+function showModalBookingFallback(box, message, waUrl, msgText, waTemplate) {
+  if (!box) return;
+  box.replaceChildren();
+  box.setAttribute('role', 'alert');
+  box.style.display = 'block';
+  const notice = document.createElement('p');
+  notice.textContent = message;
+  box.appendChild(notice);
+  const wa = waTemplate ? waTemplate.cloneNode(true) : document.createElement('a');
+  wa.removeAttribute('id');
+  wa.href = waUrl;
+  wa.target = '_blank';
+  wa.rel = 'noopener noreferrer';
+  if (!waTemplate) wa.textContent = 'WhatsApp — სწრაფი გაგზავნა';
+  wa.style.marginTop = '12px';
+  box.appendChild(wa);
+  const socials = document.createElement('div');
+  socials.style.cssText = 'display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:12px;';
+  const panel = document.createElement('div');
+  panel.style.marginTop = '12px';
+  for (const [label, url] of [['Instagram', 'https://ig.me/m/studio_the_lane'], ['Facebook', 'https://m.me/studiothelane']]) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = label;
+    button.style.cssText = 'background:none;border:0;color:var(--white);text-decoration:underline;cursor:pointer;font:inherit;';
+    button.onclick = () => {
+      panel.replaceChildren();
+      const hint = document.createElement('p');
+      hint.textContent = 'დააკოპირეთ ტექსტი, შემდეგ ჩასვით ჩათში და გააგზავნეთ.';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'დააკოპირე ტექსტი და გახსენი ჩათი';
+      copy.className = 'btn-p';
+      copy.style.cssText = 'margin-top:8px;white-space:normal;max-width:100%;';
+      copy.onclick = async () => {
+        copy.disabled = true;
+        try {
+          await navigator.clipboard.writeText(msgText);
+          window.location.assign(url);
+        } catch (err) {
+          panel.replaceChildren();
+          const instructions = document.createElement('p');
+          instructions.textContent = 'ავტომატური კოპირება ვერ მოხერხდა. დააკოპირეთ ტექსტი ქვემოთ, შემდეგ გახსენით ჩათი.';
+          const text = document.createElement('textarea');
+          text.value = msgText;
+          text.readOnly = true;
+          text.setAttribute('aria-label', 'ჯავშნის ტექსტი დასაკოპირებლად');
+          text.style.cssText = 'width:100%;min-height:130px;margin:8px 0;';
+          const link = document.createElement('a');
+          link.href = url;
+          link.textContent = label + ' — ჩათის გახსნა';
+          panel.append(instructions, text, link);
+          text.focus();
+          text.select();
+        }
+      };
+      panel.append(hint, copy);
+    };
+    socials.appendChild(button);
+  }
+  box.append(socials, panel);
 }
 
 function showFormError(msg) {
