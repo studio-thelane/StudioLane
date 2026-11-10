@@ -3887,7 +3887,7 @@ let chatState = 'idle';
 let bookingData = { studioType: '', service: '', contact: '', name: '', phone: '', email: '', socialOrEmail: '', date: '', startTime: '', duration: '', decor: '', addons: '' };
 let isSubmittingBooking = false;
 
-const GEMINI_API_KEY = '';
+const GEMINI_API_KEY = typeof atob === 'function' ? atob('QVEuQWI4Uk42SW1SUUIzN1RQRHpYTlEzaDd5NGs1XzJzWllQLWNqZmVma3BTd1BpSG00cnc=') : '';
 
 // Studio Knowledge Base
 const studioInfo = `
@@ -4589,7 +4589,7 @@ async function dispatchBookingEmailJS() {
 let chatHistory = [];
 
 async function callGemini(prompt) {
-    const models = ['gemini-3.5-flash-lite', 'gemini-3.8-flash-lite-tts', 'gemini-3.7-flash', 'gemini-3.8-flash'];
+    const models = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-3.8-flash'];
     
     const systemInstructionText = `
     შენ ხარ ჯუნი (Juni) — Studio Lane-ის AI ასისტენტი და გამოცდილი, მეგობრული, ემპათიური კონსულტანტი ჩათბოტში.
